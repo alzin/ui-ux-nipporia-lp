@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.1.6",
+    "gray-matter": "^4.0.3",
     "next": "^15.1.6",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
     "sweetalert2": "^11.22.0"
   },
   "devDependencies": {
