@@ -19,6 +19,7 @@ export default function Header() {
           <li><Link href="/#services" className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full">サービス</Link></li>
           <li><Link href="/#process" className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full">プロセス</Link></li>
           <li><Link href="/#contact" className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full">お問い合わせ</Link></li>
+          <li><Link href="/blogs" className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full">ブログ</Link></li>
         </ul>
         <div className="md:hidden flex flex-col gap-1 cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <span className="w-[25px] h-[3px] bg-white transition-all duration-300 ease-in-out"></span>
