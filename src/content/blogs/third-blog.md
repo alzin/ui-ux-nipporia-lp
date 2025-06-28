@@ -1,6 +1,8 @@
 ---
 title: "LangChain for Beginners: Easy Setup and Introduction"
 date: "2024-09-15"
+description: "numquam Perspiciatis dolor est ad consequuntur. Magni qui autem. Mollitia perspiciatis eos rerum excepturi omnis est harum. Vel id et animi ut fugit est. Saepe facere neque dolorum sapiente quod deserunt accusantium. Qui omnis qui aut accusamus nisi."
+images: ["/images/blogs/third-blog.png"]
 tags: ["LangChain", "LLMs", "OpenAI API"]
 ---
 
