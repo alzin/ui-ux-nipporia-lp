@@ -1,21 +1,21 @@
-// data
-import blogs from "@/content/blogs/blogs"
+// // data
+// import blogs from "@/content/blogs/blogs"
 
-export const getBlogByTitle = async (title: string): Promise<BlogPost | undefined> => {
+// export const getBlogByTitle = async (title: string): Promise<BlogPost | undefined> => {
 
-    const data = blogs.find((item) => item.title === decodeURI(title));
+//     const data = blogs.find((item) => item.title === decodeURI(title));
 
-    if (!data) return undefined; // Ensure undefined is returned if not found
+//     if (!data) return undefined; // Ensure undefined is returned if not found
 
-    return {
-        ...data,
-        subContent: data.subContent.map((sub) => ({
-            ...sub,
-            type: sub.type as SubContentType, // Explicitly cast type
-        })),
-    } as BlogPost;
-};
+//     return {
+//         ...data,
+//         subContent: data.subContent.map((sub) => ({
+//             ...sub,
+//             type: sub.type as SubContentType, // Explicitly cast type
+//         })),
+//     } as BlogPost;
+// };
 
-export const getAllBlogs = () => {
-    return blogs
-}
+// export const getAllBlogs = () => {
+//     return blogs
+// }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "../styles/globals.css"
 // sections
-import Navigation from "@/components/common/sections/Navigation";
+import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 
 // metadata
@@ -76,7 +76,7 @@ export default function RootLayout({
       <GoogleTagManager gtmId="G-your-gtm-id" />
       <body style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif' }}>
         <main>
-          <Navigation/>
+          <Header/>
           {children}
           <Footer />
         </main>
