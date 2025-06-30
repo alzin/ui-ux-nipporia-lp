@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import navLinks from "@/content/header/navLinks";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,70 +16,16 @@ export default function Header() {
           WebTransform
         </Link>
         <ul className="hidden md:flex gap-8">
-          <li>
-            <Link
-              href="/#home"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              ホーム
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#problems"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              課題
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#transformation"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              実績
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#visual-examples"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              変革例
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#services"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              サービス
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#process"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              プロセス
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/#contact"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              お問い合わせ
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blogs"
-              className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            >
-              ブログ
-            </Link>
-          </li>
+          {navLinks.map((link, _index) => (
+            <li key={_index}>
+              <Link
+                href={link.href}
+                className="text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
         </ul>
         <div
           role="button"
@@ -122,78 +69,17 @@ export default function Header() {
           isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 hidden"
         }`}
       >
-        <li>
-          <Link
-            href="/#home"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            ホーム
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#problems"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            課題
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#transformation"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            実績
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#visual-examples"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            変革例
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#services"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            サービス
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#process"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            プロセス
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/#contact"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            お問い合わせ
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/blogs"
-            className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            ブログ
-          </Link>
-        </li>
+        {navLinks.map((link, _index) => (
+          <li key={_index}>
+            <Link
+              href={link.href}
+              className="block py-2 text-white relative hover:text-primary transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-width after:duration-300 hover:after:w-full"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
