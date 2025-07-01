@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import BlogPage from '@/components/pages/blogs/blog';
 import { getAllBlogSlugs, getBlogDataHtml } from '@/utils/getBlog';
-import { TProcessedBlogType } from '@/types/blog.type';
+import { createProcessedBlogObject } from '@/utils/createBlog';
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
@@ -17,17 +17,8 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   try {
     const { slug } = await params;
     const blogData = await getBlogDataHtml(slug);
-    const blog: TProcessedBlogType = {
-      slug,
-      metadata: {
-        title: blogData.metadata.title,
-        date: blogData.metadata.date,
-        description: blogData.metadata.description,
-        images: blogData.metadata.images || [],
-        tags: blogData.metadata.tags || [],
-      },
-      contentHtml: blogData.contentHtml,
-    };
+    const blog = createProcessedBlogObject(slug, blogData);
+    
     return {
       title: blog.metadata.title,
       description: blog.metadata.description,
@@ -39,7 +30,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       },
     };
   } catch (error) {
-    console.error(error);
+    console.error('Error generating metadata:', error);
     return {
       title: 'Not Found',
       description: 'This blog post does not exist.',
@@ -51,20 +42,11 @@ export default async function Page({ params }: BlogPageProps) {
   try {
     const { slug } = await params;
     const blogData = await getBlogDataHtml(slug);
-    const blog: TProcessedBlogType = {
-      slug,
-      metadata: {
-        title: blogData.metadata.title,
-        date: blogData.metadata.date,
-        description: blogData.metadata.description,
-        images: blogData.metadata.images || [],
-        tags: blogData.metadata.tags || [],
-      },
-      contentHtml: blogData.contentHtml,
-    };
+    const blog = createProcessedBlogObject(slug, blogData);
+    
     return <BlogPage blog={blog} />;
   } catch (error) {
-    console.error(error);
+    console.error('Error loading blog page:', error);
     notFound();
   }
 }

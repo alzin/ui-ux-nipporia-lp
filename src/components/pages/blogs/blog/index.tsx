@@ -24,8 +24,8 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
       <div className="my-4 flex flex-col md:flex-row gap-2 justify-between items-center mb-8">
         <p className="text-zinc-500">{blog.metadata.date}</p>
         <div className="flex flex-wrap gap-2 justify-center md:justify-end">
-          {blog.metadata.tags.length > 0 ? (
-            blog.metadata.tags.map((tag) => (
+          {blog.metadata.tags && blog.metadata.tags?.length > 0 ? (
+            blog.metadata?.tags?.map((tag) => (
               <div key={tag} className="rounded-full bg-primary/20 text-primary text-xs px-3 py-1">
                 {tag}
               </div>
@@ -35,11 +35,11 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
           )}
         </div>
       </div>
-      {blog.metadata.images[0] ? (
+      {blog.metadata.images && blog.metadata.images[0] ? (
         <div className="mb-8 relative w-full h-80 rounded overflow-hidden">
           <Image
             src={blog.metadata.images[0]}
-            alt={blog.metadata.title}
+            alt={blog.metadata.title || "Blog Image"}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover group-hover:scale-125 transition-transform duration-500"

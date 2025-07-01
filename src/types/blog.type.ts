@@ -11,9 +11,9 @@ export type TProcessedBlogType = {
 };
 
 export type TMetaData = {
-  title: string;
-  date: string;
-  description: string;
-  images: string[];
-  tags: string[];
+  title?: string;
+  date?: string;
+  description?: string;
+  images?: string[];
+  tags?: string[];
 }
