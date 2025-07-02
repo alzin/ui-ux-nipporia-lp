@@ -1,49 +1,33 @@
-// "use client";
+import { TBlogType } from "@/types/blog.type";
+import BlogCard from "./components/BlogCard";
 
-// // components
-// import Pagination from "./components/Pagination";
-// import { useBlog } from "@/hooks/useBlog";
-// import PostCard from "../home/components/PostCard";
+interface IIndexProps {
+  blogs: TBlogType[];
+}
 
-// const Index = () => {
-//   const {
-//     currentBlogs,
-//     postsPerPage,
-//     currentPage,
-//     handlePageChange,
-//     numberOfBlogs,
-//   } = useBlog();
+const BlogsPage: React.FC<IIndexProps> = ({ blogs }) => {
+  return (
+    <main
+      className="container mx-auto px-4 py-8 mt-[50px] max-w-7xl"
+      aria-label="All blog posts"
+    >
+      <h1
+        className="
+          text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 md:mb-24 relative animate-titleGlow
+          after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px]
+          after:h-1 after:bg-gradient-to-r after:from-primary after:to-secondary after:rounded after:animate-lineExpand
+          translate-y-8 transition-all duration-700 ease-out
+        "
+      >
+        All Blogs
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {blogs.map(({ slug, metadata }, _index) => (
+          <BlogCard key={_index} metadata={metadata} slug={slug} />
+        ))}
+      </div>
+    </main>
+  );
+};
 
-//   return (
-//     <>
-//       <section className="bg-[#f8f7f6]" id="blogs">
-//         <div className="pt-14 lg:pt-36 pb-20 mx-auto space-y-10 lg:space-y-12 px-4 max-w-[1200px]">
-//           <h1 className="font-black text-3xl lg:text-6xl text-[#D51A16] text-center">
-//             ハディズのブログ
-//           </h1>
-//           <div className="w-full flex items-center justify-center gap-8 flex-wrap">
-//             {currentBlogs.reverse().map((item) => (
-//               <PostCard
-//                 className="max-w-[352px]"
-//                 key={item.id}
-//                 title={item.title}
-//                 imageSrc={item.imageSrc}
-//                 description={item.description}
-//                 date={item.date}
-//               />
-//             ))}
-//           </div>
-//           <Pagination
-//             totalItems={numberOfBlogs}
-//             postsPerPage={postsPerPage}
-//             currentPage={currentPage}
-//             onPageChange={handlePageChange}
-//           />
-//         </div>
-//       </section>
-//       {/* <ContactBanner /> */}
-//     </>
-//   );
-// };
-
-// export default Index;
+export default BlogsPage;

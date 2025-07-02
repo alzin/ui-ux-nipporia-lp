@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import "../styles/globals.css"
+import "../styles/globals.css";
 // sections
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
@@ -9,11 +9,13 @@ import Footer from "@/components/common/sections/Footer";
 export const metadata: Metadata = {
   icons: "/favicon.ico",
   title: {
-    default: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに変える専門家",
+    default:
+      "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに変える専門家",
     template: "%s | Webサイト変革サービス",
   },
 
-  description: "私たちは、デザインが悪く、トラフィックが少ないウェブサイトを、最新のNext.jsとSEO技術を使ってプロフェッショナルなサイトに変革します。実績豊富なWebサイト改善サービス。",
+  description:
+    "私たちは、デザインが悪く、トラフィックが少ないウェブサイトを、最新のNext.jsとSEO技術を使ってプロフェッショナルなサイトに変革します。実績豊富なWebサイト改善サービス。",
 
   applicationName: "Webサイト変革サービス",
 
@@ -21,12 +23,12 @@ export const metadata: Metadata = {
 
   keywords: [
     "ウェブサイト改善",
-    "UI/UX改善", 
+    "UI/UX改善",
     "Next.js開発",
     "SEO対策",
     "Google広告",
     "ウェブデザイン",
-    "サイトリニューアル"
+    "サイトリニューアル",
   ],
 
   referrer: "origin",
@@ -43,16 +45,16 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://your-domain.com",
     title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
-    description: "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
+    description:
+      "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     siteName: "Webサイト変革サービス",
-    images: [
-      { url: "https://your-domain.com/og-image.jpg" },
-    ],
+    images: [{ url: "https://your-domain.com/og-image.jpg" }],
   },
 
   twitter: {
     card: "summary_large_image",
-    description: "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
+    description:
+      "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
     images: "https://your-domain.com/og-image.jpg",
   },
@@ -74,12 +76,16 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <GoogleTagManager gtmId="G-your-gtm-id" />
-      <body style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif' }}>
-        <main>
-          <Header/>
-          {children}
-          <Footer />
-        </main>
+      <body
+        className="min-h-screen flex flex-col"
+        style={{
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif',
+        }}
+      >
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );

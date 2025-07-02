@@ -30,9 +30,9 @@ export default function CTASection() {
         <p className="animate-slide text-[1.3rem] text-gray mb-8 max-w-[600px] mx-auto">
           無料相談で、あなたのWebサイトの可能性をお見せします
         </p>
-        <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-dark-lighter p-12 rounded-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+        <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-dark-lighter py-4 px-6 md:p-12 rounded-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
-            <div className="mb-6">
+            <div className="mb-4 md:mb-6">
               <label htmlFor="company" className="block mb-2 text-gray">
                 会社名
               </label>
@@ -44,11 +44,11 @@ export default function CTASection() {
                 onChange={handleInputChange}
                 required
                 disabled={isSubmitting}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             
-            <div className="mb-6">
+            <div className="mb-4 md:mb-6">
               <label htmlFor="name" className="block mb-2 text-gray">
                 お名前
               </label>
@@ -60,7 +60,7 @@ export default function CTASection() {
                 onChange={handleInputChange}
                 required
                 disabled={isSubmitting}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             
@@ -76,11 +76,11 @@ export default function CTASection() {
                 onChange={handleInputChange}
                 required
                 disabled={isSubmitting}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             
-            <div className="mb-6">
+            <div className="mb-4 md:mb-6">
               <label htmlFor="website" className="block mb-2 text-gray">
                 現在のWebサイトURL（任意）
               </label>
@@ -91,11 +91,11 @@ export default function CTASection() {
                 value={formData.website}
                 onChange={handleInputChange}
                 disabled={isSubmitting}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             
-            <div className="mb-6">
+            <div className="mb-4 md:mb-6">
               <label htmlFor="message" className="block mb-2 text-gray">
                 お悩み・ご要望
               </label>
@@ -106,7 +106,7 @@ export default function CTASection() {
                 onChange={handleInputChange}
                 required
                 disabled={isSubmitting}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-[10px] text-white min-h-[120px] resize-y outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white min-h-[120px] resize-y outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             
@@ -114,7 +114,7 @@ export default function CTASection() {
               type="submit"
               disabled={isSubmitting}
               onClick={() => setClick(true)}
-              className="w-full py-5 bg-gradient-to-r from-primary to-primary-dark text-white rounded-[10px] font-bold text-[1.1rem] hover:-translate-y-[2px] hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+              className="w-full py-3 md:py-5 bg-gradient-to-r from-primary to-primary-dark text-white rounded-[10px] font-bold text-[1.1rem] hover:-translate-y-[2px] hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
             >
               {isSubmitting ? "送信中..." : "無料相談を申し込む"}
             </button>
