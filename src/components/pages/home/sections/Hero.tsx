@@ -36,9 +36,7 @@ export default function Hero() {
           {displayedText}
         </h1>
         <p className="text-[clamp(1.2rem,2.5vw,1.8rem)] text-gray mb-8 animate-fadeInUp animation-delay-200">
-          デザインが悪く、トラフィックが少ないサイトを
-          <br />
-          最新技術で高品質なWebサイトに変革します
+          デザイン刷新と最新技術でトラフィックを劇的に改善します。
         </p>
         <div className="flex gap-6 justify-center flex-wrap animate-fadeInUp animation-delay-400">
           <a

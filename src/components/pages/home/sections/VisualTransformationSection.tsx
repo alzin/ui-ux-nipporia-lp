@@ -1,5 +1,4 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import Image from "next/image";
 
 export default function VisualTransformationSection() {
   const sectionRef = useScrollAnimation({
@@ -27,14 +26,16 @@ export default function VisualTransformationSection() {
               BEFORE
             </div>
             <div className="relative rounded-[20px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:-translate-y-[10px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]">
-              <Image
-                src="/images/old_mac_hadis.gif"
-                alt="変革前のウェブサイト"
-                width={500}
-                height={300}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
-                priority
-              />
+              >
+                <source src="/videos/old_mac_hadis.mp4" type="video/mp4" />
+              </video>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                 <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-100 h-fit">
                   ❌ 時代遅れのデザイン
@@ -97,14 +98,16 @@ export default function VisualTransformationSection() {
               AFTER
             </div>
             <div className="relative rounded-[20px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:-translate-y-[10px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]">
-              <Image
-                src="/images/new_mac_haddis.gif"
-                alt="変革後のウェブサイト"
-                width={500}
-                height={300}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
-                priority
-              />
+              >
+                <source src="/videos/new_mac_haddis.mp4" type="video/mp4" />
+              </video>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                 <span className="px-4 py-2 rounded-full bg-success/20 border border-success/30 text-[#86efac] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-100 h-fit">
                   ✓ 現代的で魅力的
