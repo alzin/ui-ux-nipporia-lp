@@ -45,7 +45,7 @@ const TeamMembers = () => {
 
   return (
     <section
-      id="visual-examples"
+      id="team-members"
       className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden"
       ref={sectionRef}
     >
