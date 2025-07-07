@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { TProcessedBlogType } from '@/types/blog.type';
+import "@/styles/blog.css"
 
 interface IBlogPage {
   blog: TProcessedBlogType;
@@ -51,6 +52,7 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
       )}
       <article
         className="
+          article
           prose prose-invert prose-lg max-w-none
           bg-dark-lighter
           backdrop-blur-md
