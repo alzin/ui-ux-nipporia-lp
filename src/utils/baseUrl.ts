@@ -1,1 +1,1 @@
-export const baseUrl: string = "https://www.nippoira.com"
+export const baseUrl: string = "https://web.nipporia.com"
