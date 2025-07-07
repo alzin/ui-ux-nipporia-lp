@@ -57,7 +57,7 @@ const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
             <small className="text-center text-zinc-500 md:text-left">
               {date}
             </small>
-            <div className="flex flex-wrap gap-2 justify-center md:justify-end">
+            <div className="flex flex-wrap gap-2 justify-center md:justify-end md:max-w-[70%]">
               {tags.length > 0 ? (
                 tags.map((tag) => (
                   <div
