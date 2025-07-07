@@ -1,6 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Image from "next/image";
-import Link from "next/link";
 
 const TeamMembers = () => {
   const sectionRef = useScrollAnimation({
@@ -87,19 +86,6 @@ const TeamMembers = () => {
                   <p className="text-primary">{member.position}</p>
                   <p className="mt-2 text-sm text-slate-300">{member.bio}</p>
                 </div>
-                <Link
-                  href={`mailto:${member.email}`}
-                  target="_blank"
-                  className="mt-4 inline-flex items-center gap-2 text-sm text-slate-300 py-2 px-3 font-bold rounded-lg bg-primary"
-                >
-                  <Image
-                    src="/icons/email.svg"
-                    alt="email icon"
-                    width={20}
-                    height={20}
-                  />
-                  <span>{member.email}</span>
-                </Link>
               </div>
             </div>
           ))}
