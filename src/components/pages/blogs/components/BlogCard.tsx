@@ -31,18 +31,19 @@ const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
               "
       >
         {images[0] ? (
-          <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
+          <div className="relative w-full aspect-video mb-4 rounded overflow-hidden">
             <Image
               src={images[0]}
               alt={title}
-              fill
+              width={1200}
+              height={675}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover group-hover:scale-125 transition-transform duration-500"
+              className="group-hover:scale-125 transition-transform duration-500 rounded"
               priority
             />
           </div>
         ) : (
-          <div className="w-full h-48 bg-gray-700 mb-4 rounded" />
+          <div className="w-full aspect-video bg-gray-700 mb-4 rounded" />
         )}
         <div className="flex flex-col flex-1 justify-between">
           <div>
