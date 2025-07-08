@@ -32,14 +32,15 @@ export class ClientEmailTemplate extends EmailTemplate {
                 ${this.addField("お悩み・ご要望", this.data.message, true)}
             </ul>
 
-            <p>今後ともよろしくお願いいたします。<br /><br />
-            ◇ ◆<strong> Webサイト制作・デザインサービス </strong>◆ ◇<br />
-            <strong>株式会社 WebDesign Pro</strong><br />
-            <strong>〒000-0000 東京都渋谷区〇〇-〇-〇</strong><br />
-            <strong>TEL：</strong>03-0000-0000<br />
-            <strong>Email：</strong>info@webdesign-pro.com<br />
-            <a href="https://webdesign-pro.com/"><strong>https://webdesign-pro.com/</strong></a><br />
-            </p>
+            <p>今後ともよろしくお願いいたします。</p>
+            <hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0;">
+            <div style="font-size: 13px; color: #555;">
+                ◇ ◆ <strong>Webサイト制作・デザインサービス</strong> ◆ ◇<br>
+                <strong>Nipporia</strong><br>
+                〒000-0000 東京都渋谷区〇〇-〇-〇<br>
+                Email: <a href="mailto:info@nipporia.com">info@nipporia.com</a><br>
+                <a href="https://web.nipporia.com">https://web.nipporia.com</a>
+            </div>
         `;
     }
 }

@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import { TProcessedBlogType } from '@/types/blog.type';
+import Image from "next/image";
+import { TProcessedBlogType } from "@/types/blog.type";
+import "@/styles/blog.css";
 
 interface IBlogPage {
   blog: TProcessedBlogType;
@@ -26,7 +27,10 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
         <div className="flex flex-wrap gap-2 justify-center md:justify-end">
           {blog.metadata.tags && blog.metadata.tags?.length > 0 ? (
             blog.metadata?.tags?.map((tag) => (
-              <div key={tag} className="rounded-full bg-primary/20 text-primary text-xs px-3 py-1">
+              <div
+                key={tag}
+                className="rounded-full bg-primary/20 text-primary text-xs px-3 py-1"
+              >
                 {tag}
               </div>
             ))
@@ -36,21 +40,24 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
         </div>
       </div>
       {blog.metadata.images && blog.metadata.images[0] ? (
-        <div className="mb-8 relative w-full h-80 rounded overflow-hidden">
+        <div className="mb-8 relative w-full rounded overflow-hidden">
           <Image
             src={blog.metadata.images[0]}
             alt={blog.metadata.title || "Blog Image"}
-            fill
+            width={1200} // Pick your desired default width
+            height={600} // Pick your desired default height
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover group-hover:scale-125 transition-transform duration-500"
+            className="group-hover:scale-125 transition-transform duration-500"
             priority
           />
         </div>
       ) : (
-        <div className="w-full h-80 bg-gray-700 mb-8 rounded" />
+        <div className="w-full aspect-video bg-gray-700 mb-8 rounded" />
       )}
+
       <article
         className="
+          article
           prose prose-invert prose-lg max-w-none
           bg-dark-lighter
           backdrop-blur-md
