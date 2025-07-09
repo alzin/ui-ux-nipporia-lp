@@ -94,14 +94,13 @@ const TeamMembers = () => {
                     {member.fullName}
                   </h3>
                   <p className="text-primary">{member.position}</p>
-                  <p className="mt-16 text-sm text-slate-300">
-                    {member.bio.split("\n").map((e) => (
-                      <>
-                        <p>{e}</p>
-                        <br />
-                      </>
+                  <div className="mt-16 text-sm text-slate-300">
+                    {member.bio.split("\n").map((segment, index) => (
+                      <p key={index} className="mb-3">
+                        {segment}
+                      </p>
                     ))}
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

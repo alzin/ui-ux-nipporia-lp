@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
 import "../styles/globals.css";
 // sections
 import Header from "@/components/common/sections/Header";
@@ -75,6 +76,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="scroll-smooth">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XLXWCV0Q9V"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XLXWCV0Q9V');
+          `}
+        </Script>
+      </head>
       <GoogleTagManager gtmId="G-your-gtm-id" />
       <body
         className="min-h-screen flex flex-col"

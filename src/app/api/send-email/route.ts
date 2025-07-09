@@ -14,7 +14,6 @@ export async function POST(req: Request) {
   const clientName = body.name
 
   const adminEmail = process.env.SMTP_USER
-  // const adminEmail = "audirezk@gmail.com"
 
 
   try {
@@ -36,7 +35,7 @@ export async function POST(req: Request) {
     }
 
     const clientGmailInfo = {
-      from: `"ハディズ" <${adminEmail}>`,
+      from: `"Nipporia" <${adminEmail}>`,
       to: clientEmail,
       subject: "お問い合わせありがとうございます",
       template: clientEmailTemplate,
