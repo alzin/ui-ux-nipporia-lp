@@ -31,10 +31,13 @@ export default function VisualTransformationSection() {
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload="metadata"
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+                onError={(e) => console.error("Video error:", e)}
+                style={{ maxWidth: "100%", height: "auto" }}
               >
-                <source src="/videos/old_mac_hadis.mp4" type="video/mp4" />
+                <source src="/videos/old_mac_haddis.webm" type="video/webm" />
+                <source src="/videos/old_mac_haddis.mp4" type="video/mp4" />
               </video>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                 <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-100 h-fit">
@@ -103,9 +106,12 @@ export default function VisualTransformationSection() {
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload="metadata"
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+                onError={(e) => console.error("Video error:", e)}
+                style={{ maxWidth: "100%", height: "auto" }}
               >
+                <source src="/videos/new_mac_haddis.webm" type="video/webm" />
                 <source src="/videos/new_mac_haddis.mp4" type="video/mp4" />
               </video>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
