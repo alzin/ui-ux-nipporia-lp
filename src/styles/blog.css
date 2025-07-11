@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap");
 
 /* CSS Variables for theming */
 :root {
@@ -17,11 +16,10 @@
 
 /* Main container */
 .container {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   line-height: 1.7;
   color: var(--text-primary);
 }
-
 
 /* Reading time indicator */
 .reading-time {
@@ -220,6 +218,8 @@
 .article ol {
   margin: 1rem 0;
   padding-left: 1.5rem;
+  list-style: disc;
+  padding-left: 40px;
 }
 
 .article li {
@@ -237,9 +237,24 @@
 
 /* Links */
 .article a {
+  vertical-align: middle;
+  font-variant: tabular-nums;
+  box-sizing: border-box;
   color: var(--text-accent);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  background: #3e496c;
+  border-radius: 9px;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  margin-left: 4px;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  display: inline-flex;
+  position: relative;
+  top: -2px;
 }
 
 .article a:hover {
