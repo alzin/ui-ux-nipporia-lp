@@ -312,54 +312,59 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 px-5 max-w-7xl mx-auto overflow-hidden"
+      className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5 relative fade-in overflow-hidden"
     >
       {/* Animated background shapes */}
-      <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-purple-500/5 via-purple-500/2 to-transparent rounded-full animate-float-slow opacity-30" />
-      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-radial from-blue-500/5 via-blue-500/2 to-transparent rounded-full animate-float-delayed opacity-30" />
+      <div className="absolute top-1/10 left-1/20 w-80 h-80 bg-gradient-radial from-purple-500/3 to-transparent rounded-full animate-float opacity-30" />
+      <div className="absolute top-1/2 right-1/10 w-96 h-96 bg-gradient-radial from-blue-500/3 to-transparent rounded-full animate-float-delayed opacity-30" />
+      <div className="absolute bottom-1/10 left-1/3 w-64 h-64 bg-gradient-radial from-purple-500/3 to-transparent rounded-full animate-float-slow opacity-30" />
 
-      {/* Section Header */}
-      <SectionTitle title="提供サービス" />
+      <div className="max-w-[1200px] mx-auto px-8 relative z-10">
+        {/* Section Header */}
+        <SectionTitle title="提供サービス" />
 
-      {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="group relative bg-gradient-to-br from-white/5 to-white/2 border border-white/10 rounded-3xl p-12 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
-          >
-            {/* Service number */}
-            <span className="absolute top-5 right-5 text-5xl font-bold text-purple-500/10 group-hover:text-purple-500/20 transition-colors duration-300">
-              {service.number}
-            </span>
+        {/* Services Grid */}
+        <div className="animate-slide grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group relative bg-gradient-to-br from-white/5 to-white/2 border border-white/10 rounded-3xl p-12 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+            >
+              {/* Service number */}
+              <span className="absolute top-5 right-5 text-5xl font-bold text-purple-500/10 group-hover:text-purple-500/20 transition-colors duration-300">
+                {service.number}
+              </span>
 
-            {/* Top gradient bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              {/* Top gradient bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
-            {/* Animated background effect */}
-            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow" />
+              {/* Animated background effect */}
+              <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-purple-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* Icon wrapper */}
-            <div className="relative w-20 h-20 mb-8">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-2xl rotate-45 group-hover:rotate-90 group-hover:scale-110 transition-all duration-500" />
-              <div className="relative z-10 w-full h-full text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
-                {service.icon}
+              {/* Icon wrapper */}
+              <div className="relative w-14 md:w-20 h-14 md:h-20 mb-8">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-2xl rotate-45 group-hover:rotate-90 group-hover:scale-110 transition-all duration-500" />
+                <div className="relative z-10 w-full h-full text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
+                  {service.icon}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-2xl font-semibold text-white mb-5 group-hover:text-purple-100 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                  {service.description}
+                </p>
               </div>
             </div>
-
-            {/* Content */}
-            <h3 className="text-2xl font-semibold text-white mb-5 group-hover:text-purple-100 transition-colors duration-300">
-              {service.title}
-            </h3>
-            <p className="text-lg leading-relaxed text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
-              {service.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <style jsx>{`
-        @keyframes float-slow {
+        @keyframes float {
           0%,
           100% {
             transform: translate(0, 0) scale(1);
@@ -385,29 +390,28 @@ export default function ServicesSection() {
           }
         }
 
-        @keyframes pulse-slow {
-          0% {
-            transform: scale(0.8);
+        @keyframes float-slow {
+          0%,
+          100% {
+            transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: scale(1.2);
-          }
-          100% {
-            transform: scale(0.8);
+            transform: translate(15px, -15px) scale(1.05);
           }
         }
 
-        .animate-float-slow {
-          animation: float-slow 20s infinite ease-in-out;
+        .animate-float {
+          animation: float 20s infinite ease-in-out;
         }
 
         .animate-float-delayed {
           animation: float-delayed 20s infinite ease-in-out;
-          animation-delay: 10s;
+          animation-delay: 7s;
         }
 
-        .animate-pulse-slow {
-          animation: pulse-slow 2s infinite;
+        .animate-float-slow {
+          animation: float-slow 20s infinite ease-in-out;
+          animation-delay: 14s;
         }
 
         .bg-gradient-radial {
