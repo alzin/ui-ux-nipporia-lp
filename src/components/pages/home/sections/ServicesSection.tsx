@@ -313,6 +313,7 @@ export default function ServicesSection() {
     <section
       ref={sectionRef}
       className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5 relative fade-in overflow-hidden"
+      id="services"
     >
       {/* Animated background shapes */}
       <div className="absolute top-1/10 left-1/20 w-80 h-80 bg-gradient-radial from-purple-500/3 to-transparent rounded-full animate-float opacity-30" />
