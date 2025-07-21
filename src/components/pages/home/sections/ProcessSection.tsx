@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function ProcessSection() {
@@ -35,9 +36,7 @@ export default function ProcessSection() {
   return (
     <section id="process" className="py-20 bg-dark" ref={sectionRef}>
       <div className="max-w-[1200px] mx-auto px-8">
-        <h2 className="animate-slide text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 relative animate-titleGlow after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px] after:h-1 after:bg-gradient-to-r after:from-primary after:to-secondary after:rounded after:animate-[lineExpand_2s_ease_infinite]">
-          変革のプロセス
-        </h2>
+        <SectionTitle title="変革のプロセス" />
         <div className="relative max-w-[800px] mx-auto mt-12">
           <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary block"></div>
           {processes.map((process, index) => (

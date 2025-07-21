@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function ServicesSection() {
@@ -318,14 +319,7 @@ export default function ServicesSection() {
       <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-radial from-blue-500/5 via-blue-500/2 to-transparent rounded-full animate-float-delayed opacity-30" />
 
       {/* Section Header */}
-      <div className="text-center mb-20 relative">
-        <h2 className="text-4xl md:text-6xl font-bold mb-5 bg-gradient-to-br from-purple-400 to-blue-600 bg-clip-text text-transparent">
-          提供サービス
-        </h2>
-        <p className="text-xl text-gray-400 font-light">
-          最先端の技術で、あなたのビジネスを次のレベルへ
-        </p>
-      </div>
+      <SectionTitle title="提供サービス" />
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

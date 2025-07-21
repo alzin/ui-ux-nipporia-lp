@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Image from "next/image";
 
@@ -60,9 +61,7 @@ const TeamMembers = () => {
     >
       <div className="animate-slide absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(99,102,241,0.1)_0%,transparent_50%)] animate-[rotate_30s_linear_infinite]"></div>
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 relative z-10">
-        <h2 className="animate-slide text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 relative animate-titleGlow after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px] after:h-1 after:bg-gradient-to-r after:from-primary after:to-secondary after:rounded after:animate-[lineExpand_2s_ease_infinite]">
-          チームメンバー
-        </h2>
+        <SectionTitle title="チームメンバー" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teamMembers.map((member) => (
             <div
