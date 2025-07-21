@@ -20,6 +20,8 @@ export default function VisualTransformationSection() {
         <p className="animate-slide text-center text-[1.3rem] text-gray my-12">
           実際のクライアント様のWebサイト変革をご覧ください
         </p>
+
+        {/* Video Section */}
         <div className="animate-slide grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 items-center max-w-[1400px] mx-auto mb-16">
           <div className="relative group rounded-[20px] overflow-hidden">
             <div className="absolute top-5 left-5 px-6 py-2 bg-gradient-to-r from-error to-[#dc2626] text-white rounded-full font-bold text-[0.9rem] tracking-[2px] shadow-[0_10px_20px_rgba(239,68,68,0.3)] animate-badgeBounce z-10">
@@ -131,37 +133,210 @@ export default function VisualTransformationSection() {
             </div>
           </div>
         </div>
+
+        {/* Enhanced Cards Section */}
         <div className="animate-slide grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-[20px] p-8 text-center relative overflow-hidden group hover:-translate-y-[10px] hover:border-primary hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all duration-300">
-            <div className="absolute -top-[100%] -left-[100%] w-[300%] h-[300%] bg-[radial-gradient(circle,rgba(99,102,241,0.1)_0%,transparent_50%)] group-hover:translate-x-1/2 group-hover:translate-y-1/2 transition-transform duration-500 ease-in-out"></div>
-            <div className="text-[3rem] mb-4 animate-iconFloat">😔</div>
-            <h3 className="text-[1.5rem] mb-2 text-white">変革前の課題</h3>
-            <p className="text-gray leading-[1.6]">
-              古いデザイン・使いにくいUI・低いパフォーマンス
-            </p>
-          </div>
-          <div className="bg-white/5 border border-white/10 rounded-[20px] p-8 text-center relative overflow-hidden group hover:-translate-y-[10px] hover:border-primary hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all duration-300">
-            <div className="absolute -top-[100%] -left-[100%] w-[300%] h-[300%] bg-[radial-gradient(circle,rgba(99,102,241,0.1)_0%,transparent_50%)] group-hover:translate-x-1/2 group-hover:translate-y-1/2 transition-transform duration-500 ease-in-out"></div>
-            <div className="text-[3rem] mb-4 animate-iconFloat animation-delay-1000">
-              🚀
+          {/* Before Card */}
+          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-red-500/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 ease-out cursor-pointer">
+            {/* Animated background effect */}
+            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-red-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                変革前の課題
+              </h3>
+              <p className="text-gray-300 leading-relaxed mb-8">
+                古いデザイン・使いにくいUI・低いパフォーマンス
+              </p>
+
+              {/* Creative Illustration - Broken Website */}
+              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-red-500/10">
+                <div className="broken-site absolute inset-0 flex items-center justify-center">
+                  <div className="broken-window w-4/5 h-3/4 bg-gray-900 border-2 border-red-500 rounded-lg relative transform -skew-x-1 -rotate-1">
+                    <div className="error-404 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-red-500">
+                      404
+                    </div>
+                  </div>
+                  <div className="broken-pieces absolute w-4 h-4 bg-red-500 opacity-60 top-1/4 left-1/4 animate-ping" />
+                  <div className="broken-pieces absolute w-3 h-3 bg-red-400 opacity-60 top-1/3 right-1/4 animate-pulse" />
+                  <div className="broken-pieces absolute w-2 h-2 bg-red-600 opacity-60 top-2/5 left-1/5 animate-bounce" />
+                </div>
+              </div>
             </div>
-            <h3 className="text-[1.5rem] mb-2 text-white">実施した改善</h3>
-            <p className="text-gray leading-[1.6]">
-              Next.jsによる再構築・UI/UXの完全リデザイン・SEO最適化
-            </p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-[20px] p-8 text-center relative overflow-hidden group hover:-translate-y-[10px] hover:border-primary hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all duration-300">
-            <div className="absolute -top-[100%] -left-[100%] w-[300%] h-[300%] bg-[radial-gradient(circle,rgba(99,102,241,0.1)_0%,transparent_50%)] group-hover:translate-x-1/2 group-hover:translate-y-1/2 transition-transform duration-500 ease-in-out"></div>
-            <div className="text-[3rem] mb-4 animate-iconFloat animation-delay-2000">
-              🎉
+
+          {/* During Card */}
+          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-primary/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 ease-out cursor-pointer">
+            {/* Animated background effect */}
+            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                実施した改善
+              </h3>
+              <p className="text-gray-300 leading-relaxed mb-8">
+                Next.jsによる再構築・UI/UXの完全リデザイン・SEO最適化
+              </p>
+
+              {/* Creative Illustration - Building Process */}
+              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-primary/10">
+                <div className="building-process absolute inset-0 flex items-center justify-center p-4">
+                  <div className="code-blocks grid grid-cols-3 gap-2 w-full h-full">
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-200 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-400 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-600 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-800 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-1000 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
+                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
+                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
+                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 className="text-[1.5rem] mb-2 text-white">変革後の成果</h3>
-            <p className="text-gray leading-[1.6]">
-              モダンで使いやすいプロフェッショナルUI・49倍のトラフィック増加
-            </p>
+          </div>
+
+          {/* After Card */}
+          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-green-500/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 ease-out cursor-pointer">
+            {/* Animated background effect */}
+            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                変革後の成果
+              </h3>
+              <p className="text-gray-300 leading-relaxed mb-8">
+                モダンで使いやすいプロフェッショナルUI・49倍のトラフィック増加
+              </p>
+
+              {/* Creative Illustration - Success Metrics */}
+              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-green-500/10">
+                <div className="success-metrics absolute inset-0 flex items-center justify-center p-6">
+                  <div className="metric-chart w-full h-full flex items-end justify-around relative">
+                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-1/4 transform scale-y-0 animate-growBar origin-bottom" />
+                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-2/4 transform scale-y-0 animate-growBar origin-bottom animation-delay-200" />
+                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-3/5 transform scale-y-0 animate-growBar origin-bottom animation-delay-400" />
+                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-5/6 transform scale-y-0 animate-growBar origin-bottom animation-delay-600" />
+                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-full transform scale-y-0 animate-growBar origin-bottom animation-delay-800" />
+
+                    {/* Sparkles */}
+                    <div className="sparkles absolute w-1 h-1 bg-green-400 rounded-full top-1/4 left-1/4 animate-sparkle" />
+                    <div className="sparkles absolute w-1 h-1 bg-cyan-400 rounded-full top-1/3 right-1/4 animate-sparkle animation-delay-500" />
+                    <div className="sparkles absolute w-1 h-1 bg-green-400 rounded-full bottom-1/3 left-2/5 animate-sparkle animation-delay-1000" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slideInUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes growBar {
+          to {
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes sparkle {
+          0%,
+          100% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-slideInUp {
+          animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .animate-growBar {
+          animation: growBar 2s ease-out forwards;
+        }
+
+        .animate-sparkle {
+          animation: sparkle 2s infinite;
+        }
+
+        .bg-gradient-radial {
+          background: radial-gradient(var(--tw-gradient-stops));
+        }
+
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        .animation-delay-500 {
+          animation-delay: 0.5s;
+        }
+
+        .animation-delay-600 {
+          animation-delay: 0.6s;
+        }
+
+        .animation-delay-800 {
+          animation-delay: 0.8s;
+        }
+
+        .animation-delay-1000 {
+          animation-delay: 1s;
+        }
+
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+
+        .delay-2000 {
+          animation-delay: 2s;
+        }
+      `}</style>
     </section>
   );
 }
