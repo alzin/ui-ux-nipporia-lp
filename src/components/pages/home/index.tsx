@@ -9,6 +9,7 @@ import VisualTransformationSection from "./sections/VisualTransformationSection"
 import { useEffect } from "react";
 import { initHomeScript } from "@/lib/homeScript";
 import TeamMembers from "./sections/TeamMembers";
+import PricingSection from "./sections/PlansSection";
 
 const Index = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Index = () => {
       <ServicesSection />
       <TeamMembers />
       <ProcessSection />
+      <PricingSection />
       <CTASection />
     </>
   );
