@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useFormHandler } from "@/hooks/useFormHandler";
 import React from "react";
+import SectionTitle from "@/components/common/components/SectionTitle";
 
 export default function CTASection() {
   const sectionRef = useScrollAnimation({
@@ -9,13 +10,8 @@ export default function CTASection() {
     staggerDelay: 320,
   });
 
-  const {
-    formData,
-    isSubmitting,
-    handleInputChange,
-    handleSubmit,
-    setClick,
-  } = useFormHandler();
+  const { formData, isSubmitting, handleInputChange, handleSubmit, setClick } =
+    useFormHandler();
 
   return (
     <section
@@ -24,12 +20,10 @@ export default function CTASection() {
       ref={sectionRef}
     >
       <div className="max-w-[1200px] mx-auto px-8">
-        <h2 className="animate-slide text-[clamp(2rem,4vw,3rem)] mb-6 font-bold">
-          今すぐWebサイトを変革しましょう
-        </h2>
-        <p className="animate-slide text-[1.3rem] text-gray mb-8 max-w-[600px] mx-auto">
-          無料相談で、あなたのWebサイトの可能性をお見せします
-        </p>
+        <SectionTitle
+          title="今すぐWebサイトを変革しましょう"
+          description="無料相談で、あなたのWebサイトの可能性をお見せします"
+        />
         <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-dark-lighter py-4 px-6 md:p-12 rounded-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
             <div className="mb-4 md:mb-6">
@@ -47,7 +41,7 @@ export default function CTASection() {
                 className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            
+
             <div className="mb-4 md:mb-6">
               <label htmlFor="name" className="block mb-2 text-gray">
                 お名前
@@ -63,7 +57,7 @@ export default function CTASection() {
                 className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            
+
             <div className="mb-6">
               <label htmlFor="email" className="block mb-2 text-gray">
                 メールアドレス
@@ -79,7 +73,7 @@ export default function CTASection() {
                 className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            
+
             <div className="mb-4 md:mb-6">
               <label htmlFor="website" className="block mb-2 text-gray">
                 現在のWebサイトURL（任意）
@@ -94,7 +88,7 @@ export default function CTASection() {
                 className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 max-h-[52px] disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            
+
             <div className="mb-4 md:mb-6">
               <label htmlFor="message" className="block mb-2 text-gray">
                 お悩み・ご要望
@@ -109,7 +103,7 @@ export default function CTASection() {
                 className="w-full p-2 md:p-4 bg-white/5 border border-white/10 rounded-[10px] text-white min-h-[120px] resize-y outline-none focus:border-primary focus:bg-white/8 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            
+
             <button
               type="submit"
               disabled={isSubmitting}
