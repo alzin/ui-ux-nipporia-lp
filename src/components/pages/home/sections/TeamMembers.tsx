@@ -48,7 +48,7 @@ const TeamMembers = () => {
       id: 4,
       fullName: "Hakam aldeen",
       position: "Frontend Developer",
-      imgSrc: "/images/team-members/Hakam.png",
+      imgSrc: "/images/team-members/hakam.png",
       bio: "美しく直感的なUIを追求し、ユーザー体験を最大化するフロントエンドのスペシャリスト。\n「見た目だけではなく、動きや使いやすさまでこだわるのがプロの仕事。」\nReactやNext.jsなどの最新技術を活用し、成果につながるデザインを実装します。",
     },
   ];
