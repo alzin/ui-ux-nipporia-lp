@@ -48,7 +48,7 @@ const TeamMembers = () => {
       id: 4,
       fullName: "Hakam aldeen",
       position: "Frontend Developer",
-      imgSrc: "/images/team-members/hakam.png",
+      imgSrc: "/images/team-members/Hakam.png",
       bio: "美しく直感的なUIを追求し、ユーザー体験を最大化するフロントエンドのスペシャリスト。\n「見た目だけではなく、動きや使いやすさまでこだわるのがプロの仕事。」\nReactやNext.jsなどの最新技術を活用し、成果につながるデザインを実装します。",
     },
   ];
@@ -69,7 +69,7 @@ const TeamMembers = () => {
               className="relative flex flex-col overflow-hidden bg-white/5 border border-white/10 rounded-2xl group hover:-translate-y-2 hover:border-primary hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative w-full h-[250px]">
+              <div className="relative w-full h-[300px]">
                 <Image
                   src={member.imgSrc}
                   alt={`image for ${member.fullName}`}
