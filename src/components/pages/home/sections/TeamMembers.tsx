@@ -69,7 +69,7 @@ const TeamMembers = () => {
               className="relative flex flex-col overflow-hidden bg-white/5 border border-white/10 rounded-2xl group hover:-translate-y-2 hover:border-primary hover:shadow-[0_20px_40px_rgba(99,102,241,0.2)] transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative w-full h-[250px]">
+              <div className="relative w-full h-[300px]">
                 <Image
                   src={member.imgSrc}
                   alt={`image for ${member.fullName}`}
