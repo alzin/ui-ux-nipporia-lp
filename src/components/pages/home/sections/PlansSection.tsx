@@ -239,11 +239,14 @@ const PlansSection = () => {
               </ul>
 
               {/* CTA Button */}
-              <button className="w-full relative bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)] hover:-translate-y-1 group/btn overflow-hidden">
+              <a
+                href="#contact"
+                className="w-full relative block text-center bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-[0_10px_30px_rgba(99,102,241,0.4)] hover:-translate-y-1 group/btn overflow-hidden"
+              >
                 <span className="relative z-10">{plan.ctaText}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-white/20 scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-300 origin-left"></div>
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -353,9 +356,12 @@ const PlansSection = () => {
                 お客様のビジネスの成長段階に応じた最適なソリューションをご提供いたします。
               </p>
               <div className="mt-6">
-                <button className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <a
+                  href="#contact"
+                  className="inline-block text-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
                   無料相談を予約する
-                </button>
+                </a>
               </div>
             </div>
           </div>
