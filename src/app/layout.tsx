@@ -50,15 +50,22 @@ export const metadata: Metadata = {
     description:
       "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     siteName: "Webサイト変革サービス",
-    images: [{ url: '/images/og-image.jpg' }],
+    images: [
+      {
+        url: `${baseUrl}/images/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Webサイト変革サービスのOG画像",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
+    title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
     description:
       "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
-    title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
-    images: '/images/og-image.jpg',
+    images: [`${baseUrl}/images/og-image.jpg`],
   },
 
   verification: {
