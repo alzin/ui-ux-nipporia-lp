@@ -36,7 +36,6 @@ export class ClientEmailTemplate extends EmailTemplate {
             <div style="font-size: 13px; color: #555;">
                 ◇ ◆ <strong>Webサイト制作・デザインサービス</strong> ◆ ◇<br>
                 <strong>Nipporia</strong><br>
-                〒000-0000 東京都渋谷区〇〇-〇-〇<br>
                 Email: <a href="mailto:info@nipporia.com">info@nipporia.com</a><br>
                 <a href="https://web.nipporia.com">https://web.nipporia.com</a>
             </div>
