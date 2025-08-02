@@ -5,6 +5,7 @@ import "../styles/globals.css";
 // sections
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
+import { baseUrl } from "@/utils/baseUrl";
 
 // metadata
 export const metadata: Metadata = {
@@ -39,17 +40,17 @@ export const metadata: Metadata = {
   publisher: "Webサイト変革サービス",
 
   alternates: {
-    canonical: "https://your-domain.com",
+    canonical: baseUrl,
   },
 
   openGraph: {
     type: "website",
-    url: "https://your-domain.com",
+    url: baseUrl,
     title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
     description:
       "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     siteName: "Webサイト変革サービス",
-    images: [{ url: "https://your-domain.com/og-image.jpg" }],
+    images: [{ url: '/images/og-image.jpg' }],
   },
 
   twitter: {
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     description:
       "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
-    images: "https://your-domain.com/og-image.jpg",
+    images: '/images/og-image.jpg',
   },
 
   verification: {
