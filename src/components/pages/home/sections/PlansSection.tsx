@@ -221,9 +221,6 @@ const PlansSection = () => {
                     </span>
                   )}
                 </div>
-                {plan.priceNote && (
-                  <p className="text-sm text-gray/80">{plan.priceNote}</p>
-                )}
               </div>
 
               {/* Features */}
