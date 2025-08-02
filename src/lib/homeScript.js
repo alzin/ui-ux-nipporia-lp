@@ -37,7 +37,6 @@ export function initHomeScript() {
   };
 
   const observer = new IntersectionObserver((entries) => {
-    console.log('entre',entries)
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
