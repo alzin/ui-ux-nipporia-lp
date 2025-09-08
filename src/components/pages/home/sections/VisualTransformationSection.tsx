@@ -21,7 +21,7 @@ export default function VisualTransformationSection() {
         />
 
         {/* Video Section */}
-        <div className="animate-slide grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 items-center max-w-[1400px] mx-auto mb-16">
+        {/* <div className="animate-slide grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 items-center max-w-[1400px] mx-auto mb-16">
           <div className="relative group rounded-[20px] overflow-hidden">
             <div className="absolute top-5 left-5 px-6 py-2 bg-gradient-to-r from-error to-[#dc2626] text-white rounded-full font-bold text-[0.9rem] tracking-[2px] shadow-[0_10px_20px_rgba(239,68,68,0.3)] animate-badgeBounce z-10">
               BEFORE
@@ -131,7 +131,7 @@ export default function VisualTransformationSection() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Enhanced Cards Section */}
         <div className="animate-slide grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
