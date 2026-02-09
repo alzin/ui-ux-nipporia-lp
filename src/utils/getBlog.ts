@@ -13,10 +13,14 @@ import rehypeStringify from "rehype-stringify";
 const contentDirectory = path.join(process.cwd(), "src/content/blogs/");
 
 export function getAllBlogSlugs() {
-  const files = fs.readdirSync(contentDirectory);
-  return files.map((file) => ({
-    slug: file.replace(/\.md$/, "")
-  }));
+  try {
+    const files = fs.readdirSync(contentDirectory);
+    return files.map((file) => ({
+      slug: file.replace(/\.md$/, "")
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export function getBlogData(slug: string) {
@@ -32,10 +36,6 @@ export function getBlogData(slug: string) {
   };
 }
 
-/**
- * Clean up invalid align attributes from Hashnode images.
- * Example: ![](url align="center")
- */
 function cleanImageAlign(content: string) {
   return content.replace(/\s+align="center"\)/g, ")");
 }
@@ -63,4 +63,3 @@ export async function getBlogDataHtml(slug: string) {
     contentHtml
   };
 }
-

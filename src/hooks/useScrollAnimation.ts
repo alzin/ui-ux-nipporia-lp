@@ -29,10 +29,8 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Add visible class to main element
           entry.target.classList.add("visible");
           
-          // Find and animate child elements with stagger effect
           const children = entry.target.querySelectorAll(".animate-slide");
           children.forEach((child, i) => {
             setTimeout(() => {
@@ -40,7 +38,6 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
             }, i * staggerDelay);
           });
 
-          // Apply fadeInUp animation to elements with the specified class
           const fadeElements = entry.target.querySelectorAll(`.${animationClass}`);
           fadeElements.forEach((el, i) => {
             setTimeout(() => {
@@ -48,7 +45,6 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
             }, i * staggerDelay);
           });
 
-          // Disconnect observer after animation is triggered
           observer.unobserve(entry.target);
         }
       });
@@ -66,7 +62,6 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   return elementRef;
 };
 
-// Alternative hook for multiple elements
 export const useMultipleScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const {
     threshold = 0.1,
@@ -89,7 +84,6 @@ export const useMultipleScrollAnimation = (options: ScrollAnimationOptions = {})
       });
     }, observerOptions);
 
-    // Observe all elements with the fade-in class
     const elements = document.querySelectorAll(".fade-in");
     elements.forEach((el) => observer.observe(el));
 

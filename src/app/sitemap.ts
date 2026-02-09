@@ -1,21 +1,10 @@
 import { MetadataRoute } from 'next';
-
-// blogs data
-// import { getAllBlogs } from '@/services/blogs';
-
-// category data
-// import { getAllCategories } from '@/services/category';
-
-// baseUrl
 import { baseUrl } from '@/utils/baseUrl';
 import { getAllBlogSlugs } from '@/utils/getBlog';
 
-
 export default function sitemap(): MetadataRoute.Sitemap {
     const blogsData = getAllBlogSlugs()
-    // const categoriesData = getAllCategories()
 
-    // Static URLs
     const staticUrls: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
@@ -31,25 +20,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ];
 
-    // Dynamic Blog URLs
     const dynamicBlogUrls: MetadataRoute.Sitemap = blogsData.map((blog) => ({
         url: `${baseUrl}/blogs/${encodeURIComponent(blog.slug)}`,
-        lastModified: new Date().toISOString(), // Use actual lastModified if available
+        lastModified: new Date().toISOString(),
         changeFrequency: "weekly",
         priority: 0.7,
     }));
 
-    // Dynamic category URLs
-    // const dynamicCategoryUrls: MetadataRoute.Sitemap = categoriesData.map((category) => ({
-    //     url: `${baseUrl}/products/${category.id}`,
-    //     lastModified: new Date().toISOString(), // Use actual lastModified if available
-    //     changeFrequency: "weekly",
-    //     priority: 0.7,
-    // }));
-
     return [
         ...staticUrls,
         ...dynamicBlogUrls,
-        // ...dynamicCategoryUrls
     ];
 }

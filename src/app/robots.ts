@@ -1,6 +1,4 @@
 import { MetadataRoute } from 'next';
-
-// baseUrl
 import { baseUrl } from '@/utils/baseUrl';
 
 export default function robots(): MetadataRoute.Robots {
@@ -9,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
-                // disallow: ['/admin', '/private'], // Disallow sensitive or non-public pages
             },
         ],
         sitemap: `${baseUrl}/sitemap.xml`,

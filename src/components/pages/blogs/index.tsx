@@ -8,16 +8,11 @@ interface IIndexProps {
 const BlogsPage: React.FC<IIndexProps> = ({ blogs }) => {
   return (
     <main
-      className="container mx-auto px-4 py-8 mt-[50px] max-w-7xl"
+      className="container mx-auto px-4 py-8 mt-[80px] max-w-7xl"
       aria-label="All blog posts"
     >
       <h1
-        className="
-          text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 md:mb-24 relative animate-titleGlow
-          after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px]
-          after:h-1 after:bg-gradient-to-r after:from-primary after:to-secondary after:rounded after:animate-lineExpand
-          translate-y-8 transition-all duration-700 ease-out
-        "
+        className="text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 md:mb-24 relative text-gray-800 after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px] after:h-1 after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:rounded"
       >
         All Blogs
       </h1>

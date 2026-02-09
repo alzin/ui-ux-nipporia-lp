@@ -1,8 +1,5 @@
 import { TBlogType, TProcessedBlogType } from '@/types/blog.type';
 
-/**
- * Creates a blog object from raw blog data for listing pages
- */
 export function createBlogObject(slug: string, blogData: TBlogType) {
   return {
     slug,
@@ -17,9 +14,6 @@ export function createBlogObject(slug: string, blogData: TBlogType) {
   };
 }
 
-/**
- * Creates a processed blog object from raw blog data for individual blog pages
- */
 export function createProcessedBlogObject(slug: string, blogData: TProcessedBlogType) {
   return {
     slug,

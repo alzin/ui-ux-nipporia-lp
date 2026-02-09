@@ -9,16 +9,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#6366f1',
-        'primary-dark': '#4f46e5',
-        secondary: '#22d3ee',
-        dark: '#0f172a',
-        'dark-lighter': '#1e293b',
-        gray: '#64748b',
+        primary: '#8B5CF6',
+        'primary-dark': '#7C3AED',
+        secondary: '#06B6D4',
+        dark: '#1a1a2e',
+        'dark-lighter': '#16213e',
+        gray: '#94a3b8',
         white: '#ffffff',
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
+        cream: '#FEF7E7',
+        peach: '#FFECD2',
+        coral: '#FF6B6B',
+        mint: '#4ECDC4',
+        lavender: '#E8D5F2',
+        gold: '#FFD93D',
       },
       animation: {
         gradientShift: 'gradientShift 3s ease infinite',
@@ -34,9 +40,9 @@ export default {
         iconFloat: 'iconFloat 3s ease infinite',
         serviceFloat: 'serviceFloat 6s ease infinite',
         iconRotate: 'iconRotate 8s linear infinite',
-        lineExpand: 'lineExpand 2s ease infinite', // Added this line and fixed the name
-        titleGlow: 'titleGlow 4s ease infinite', // You're also using this but it wasn't defined
-        problemPulse: 'problemPulse 3s ease infinite', // And this one too
+        lineExpand: 'lineExpand 2s ease infinite',
+        titleGlow: 'titleGlow 4s ease infinite',
+        problemPulse: 'problemPulse 3s ease infinite',
       },
       keyframes: {
         gradientShift: {
@@ -53,8 +59,8 @@ export default {
           to: { opacity: '1', transform: 'translateY(0)' },
         },
         ctaPulse: {
-          '0%, 100%': { boxShadow: '0 10px 30px rgba(99,102,241,0.3)' },
-          '50%': { boxShadow: '0 15px 40px rgba(99,102,241,0.5)' },
+          '0%, 100%': { boxShadow: '0 10px 30px rgba(139,92,246,0.3)' },
+          '50%': { boxShadow: '0 15px 40px rgba(139,92,246,0.5)' },
         },
         iconShake: {
           '0%, 90%, 100%': { transform: 'rotate(0deg)' },
@@ -100,8 +106,8 @@ export default {
           '50%': { width: "150px" }
         },
         titleGlow: {
-          '0%, 100%': { textShadow: '0 0 20px rgba(99, 102, 241, 0.3);' },
-          '50%': { textShadow: '0 0 40px rgba(99, 102, 241, 0.5);' },
+          '0%, 100%': { textShadow: '0 0 20px rgba(139, 92, 246, 0.3);' },
+          '50%': { textShadow: '0 0 40px rgba(139, 92, 246, 0.5);' },
         },
         problemPulse: {
           '0%, 100%': { opacity: '0' },

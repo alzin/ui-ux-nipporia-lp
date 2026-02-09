@@ -1,79 +1,87 @@
+"use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function ProcessSection() {
   const sectionRef = useScrollAnimation({
     threshold: 0.1,
-    staggerDelay: 300,
+    staggerDelay: 200,
   });
+
   const processes = [
     {
       number: "01",
-      title: "現状分析",
-      description:
-        "既存サイトの問題点を徹底的に分析し、改善ポイントを明確化します。",
+      title: "無料相談",
+      description: "現状のWebサイトの課題をヒアリングし、改善の方向性をご提案します。",
+      icon: "",
+      color: "from-purple-400 to-indigo-400"
     },
     {
       number: "02",
-      title: "戦略立案",
-      description:
-        "ビジネス目標に基づいた最適な技術スタックとデザイン方針を決定します。",
+      title: "分析・提案",
+      description: "詳細な分析を行い、具体的な改善プランと見積もりをご提示します。",
+      icon: "",
+      color: "from-pink-400 to-rose-400"
     },
     {
       number: "03",
-      title: "開発・実装",
-      description:
-        "Next.jsとモダンな技術を使用し、高品質なWebサイトを構築します。",
+      title: "デザイン・開発",
+      description: "最新技術を活用し、高品質なWebサイトを構築します。",
+      icon: "",
+      color: "from-cyan-400 to-blue-400"
     },
     {
       number: "04",
-      title: "継続的改善",
-      description:
-        "データに基づいた改善とSEO対策で、持続的な成長を実現します。",
+      title: "公開・運用",
+      description: "サイト公開後も継続的なサポートで成長を支援します。",
+      icon: "",
+      color: "from-green-400 to-emerald-400"
     },
   ];
 
   return (
-    <section id="process" className="py-20 bg-dark" ref={sectionRef}>
-      <div className="max-w-[1200px] mx-auto px-8">
-        <SectionTitle title="変革のプロセス" />
-        <div className="relative max-w-[800px] mx-auto mt-12">
-          <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary to-secondary block"></div>
-          {processes.map((process, index) => (
-            <div
-              key={index}
-              className={`relative p-8 w-full md:w-1/2 animate-[fadeInScale_0.5s_ease_forwards] ${
-                index % 2 === 0
-                  ? "md:left-0 md:pr-12 md:text-right"
-                  : "md:left-1/2 md:pl-12"
-              } ${
-                index === 0
-                  ? "animation-delay-100"
-                  : index === 1
-                  ? "animation-delay-200"
-                  : index === 2
-                  ? "animation-delay-300"
-                  : "animation-delay-400"
-              }`}
-            >
+    <section
+      id="process"
+      className="py-24 bg-gradient-to-br from-white via-purple-50/50 to-cyan-50/50 fade-in"
+      ref={sectionRef}
+    >
+      <div className="max-w-[1000px] mx-auto px-8">
+        <SectionTitle title="ご利用の流れ" />
+
+        <div className="animate-slide relative mt-16">
+          {/* Timeline line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-400 via-pink-400 to-cyan-400 rounded-full hidden md:block"></div>
+
+          <div className="space-y-12">
+            {processes.map((process, index) => (
               <div
-                className={`
-                absolute w-5 h-5 bg-primary rounded-full top-8 
-                shadow-[0_0_0_4px_#0f172a,0_0_0_8px_rgba(99,102,241,0.2)]
-                ${
-                  index % 2 !== 0
-                    ? "left-[-10px]"
-                    : "left-[-10px] md:left-auto md:right-[-10px]"
-                }
-              `}
-              ></div>
-              <div className="text-[3rem] font-bold text-primary/30 mb-2">
-                {process.number}
+                key={index}
+                className={`relative flex items-center gap-8 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                } flex-col md:flex-row`}
+              >
+                {/* Content card */}
+                <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                  <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 border border-gray-100">
+                    <div className={`inline-flex items-center gap-3 mb-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                      <span className={`w-12 h-12 flex items-center justify-center text-2xl bg-gradient-to-br ${process.color} rounded-xl text-white shadow-lg`}>
+                        {process.icon}
+                      </span>
+                      <span className="text-3xl font-bold text-gray-200">{process.number}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{process.title}</h3>
+                    <p className="text-gray-600">{process.description}</p>
+                  </div>
+                </div>
+
+                {/* Center dot */}
+                <div className="hidden md:flex w-6 h-6 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+
+                {/* Spacer */}
+                <div className="flex-1 hidden md:block"></div>
               </div>
-              <h3 className="text-[1.5rem] mb-2 font-bold">{process.title}</h3>
-              <p className="text-gray">{process.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

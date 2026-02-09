@@ -12,77 +12,58 @@ export default function TransformationSection() {
   return (
     <section
       id="transformation"
-      className="py-20 bg-dark fade-in"
+      className="py-24 bg-gradient-to-br from-purple-50 via-white to-cyan-50 fade-in"
       ref={sectionRef}
     >
       <div className="max-w-[1200px] mx-auto px-8">
         <SectionTitle title="実際の変革事例" />
 
-        <div className="animate-slide grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-          <div className="transformation-card bg-dark-lighter rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-300">
-            <div className="bg-error/20 text-error text-center py-6 font-bold text-[1.2rem]">
+        <div className="animate-slide grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {/* Before Card */}
+          <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-100">
+            <div className="bg-gradient-to-r from-red-400 to-orange-400 text-white text-center py-5 font-bold text-xl">
               変革前
             </div>
-            <div className="p-8">
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">月間訪問者数</span>
-                <span className="text-[1.2rem] font-bold text-error">
-                  320人
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">直帰率</span>
-                <span className="text-[1.2rem] font-bold text-error">85%</span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">平均滞在時間</span>
-                <span className="text-[1.2rem] font-bold text-error">32秒</span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">モバイル対応</span>
-                <span className="text-[1.2rem] font-bold text-error">×</span>
-              </div>
-              <div className="flex justify-between items-center py-4">
-                <span className="text-gray">ページ読み込み速度</span>
-                <span className="text-[1.2rem] font-bold text-error">
-                  8.2秒
-                </span>
-              </div>
+            <div className="p-8 space-y-4">
+              {[
+                { label: "月間訪問者数", value: "320人", icon: "" },
+                { label: "直帰率", value: "85%", icon: "" },
+                { label: "平均滞在時間", value: "32秒", icon: "" },
+                { label: "モバイル対応", value: "×", icon: "" },
+                { label: "ページ読み込み速度", value: "8.2秒", icon: "" },
+              ].map((item, index) => (
+                <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
+                  <span className="text-gray-600 flex items-center gap-2">
+                    <span>{item.icon}</span>
+                    {item.label}
+                  </span>
+                  <span className="text-lg font-bold text-red-500">{item.value}</span>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="transformation-card bg-dark-lighter rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-300">
-            <div className="bg-success/20 text-success text-center py-6 font-bold text-[1.2rem]">
+
+          {/* After Card */}
+          <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-100">
+            <div className="bg-gradient-to-r from-green-400 to-cyan-400 text-white text-center py-5 font-bold text-xl">
               変革後
             </div>
-            <div className="p-8">
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">月間訪問者数</span>
-                <span className="text-[1.2rem] font-bold text-success">
-                  15,800人
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">直帰率</span>
-                <span className="text-[1.2rem] font-bold text-success">
-                  35%
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">平均滞在時間</span>
-                <span className="text-[1.2rem] font-bold text-success">
-                  3分45秒
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-4 border-b border-white/10">
-                <span className="text-gray">モバイル対応</span>
-                <span className="text-[1.2rem] font-bold text-success">✓</span>
-              </div>
-              <div className="flex justify-between items-center py-4">
-                <span className="text-gray">ページ読み込み速度</span>
-                <span className="text-[1.2rem] font-bold text-success">
-                  1.8秒
-                </span>
-              </div>
+            <div className="p-8 space-y-4">
+              {[
+                { label: "月間訪問者数", value: "15,800人", icon: "" },
+                { label: "直帰率", value: "35%", icon: "" },
+                { label: "平均滞在時間", value: "3分45秒", icon: "" },
+                { label: "モバイル対応", value: "✓", icon: "" },
+                { label: "ページ読み込み速度", value: "1.8秒", icon: "" },
+              ].map((item, index) => (
+                <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
+                  <span className="text-gray-600 flex items-center gap-2">
+                    <span>{item.icon}</span>
+                    {item.label}
+                  </span>
+                  <span className="text-lg font-bold text-green-500">{item.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

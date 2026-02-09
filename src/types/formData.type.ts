@@ -5,6 +5,3 @@ export type TFormData = {
   website: string,
   message: string
 };
-
-
-

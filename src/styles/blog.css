@@ -1,27 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap");
 
-/* CSS Variables for theming */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #22d3ee 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --primary-gradient: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+  --secondary-gradient: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
   --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0c0;
-  --text-accent: #6d6df7;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --glow: 0 0 20px rgba(58, 58, 255, 0.3);
-  --dark-lighter: rgba(20, 20, 30, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-accent: #8B5CF6;
+  --border-color: rgba(139, 92, 246, 0.2);
 }
 
-/* Main container */
 .container {
   font-family: "Noto Sans JP", sans-serif;
   line-height: 1.7;
   color: var(--text-primary);
 }
 
-/* Reading time indicator */
 .reading-time {
   background: var(--accent-gradient);
   color: white;
@@ -33,7 +28,6 @@
   backdrop-filter: blur(10px);
 }
 
-/* Enhanced headings */
 .article h1 {
   background: var(--primary-gradient);
   background-clip: text;
@@ -44,19 +38,6 @@
   line-height: 1.2;
   margin-bottom: 1.5rem;
   text-align: center;
-  position: relative;
-}
-
-.article h1::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 1px;
-  background: var(--primary-gradient);
-  border-radius: 2px;
 }
 
 .article h2 {
@@ -66,6 +47,7 @@
   padding-left: 20px;
   border-left: 4px solid;
   border-image: var(--primary-gradient) 1;
+  color: var(--text-primary);
 }
 
 .article h3 {
@@ -75,12 +57,11 @@
   color: var(--text-accent);
 }
 
-/* Special highlight boxes */
 .trend-highlight {
   background: var(--primary-gradient);
   color: white;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin: 1rem 0;
   font-weight: 500;
 }
@@ -89,24 +70,23 @@
   background: var(--secondary-gradient);
   color: white;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin: 1rem 0;
   font-weight: 500;
 }
 
 .warning-box {
-  background: rgba(255, 193, 7, 0.1);
-  border: 1px solid rgba(255, 193, 7, 0.3);
-  color: #ffc107;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #d97706;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   margin: 1rem 0;
 }
 
-/* Code blocks */
 .article pre {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  background: #1f2937;
+  border-radius: 12px;
   padding: 1.5rem;
   overflow-x: auto;
   font-family: "JetBrains Mono", monospace;
@@ -116,19 +96,19 @@
 
 .article code {
   font-family: "JetBrains Mono", monospace;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(139, 92, 246, 0.1);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.9em;
+  color: var(--text-accent);
 }
 
-/* Tables */
 .article table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(20px);
 }
@@ -147,10 +127,9 @@
 }
 
 .article tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(139, 92, 246, 0.05);
 }
 
-/* Comparison grid */
 .comparison-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -161,59 +140,20 @@
 .google-section,
 .yahoo-section {
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   backdrop-filter: blur(10px);
 }
 
 .google-section {
-  background: rgba(102, 126, 234, 0.1);
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .yahoo-section {
-  background: rgba(245, 87, 108, 0.1);
-  border: 1px solid rgba(245, 87, 108, 0.3);
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.3);
 }
 
-/* CTA section */
-.cta-section {
-  background: var(--accent-gradient);
-  color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  text-align: center;
-  margin: 3rem 0;
-}
-
-.cta-section h3 {
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.cta-section a {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.cta-section a:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Article container */
-.article {
-  backdrop-filter: blur(10px);
-  box-shadow: var(--glow);
-}
-
-/* List styling */
 .article ul {
   margin: 1rem 0;
   padding-left: 1.5rem;
@@ -222,15 +162,15 @@
 
 .article ol {
   margin: 1rem 0;
-  padding-left: 1.5rem; /* keeps numbers aligned with text */
+  padding-left: 1.5rem;
   list-style: decimal;
 }
 
 .article li {
   margin-bottom: 0.5rem;
+  color: var(--text-secondary);
 }
 
-/* Blockquotes */
 .article blockquote {
   border-left: 4px solid var(--text-accent);
   padding-left: 1rem;
@@ -239,34 +179,27 @@
   font-style: italic;
 }
 
-/* Links */
 .article a {
-  vertical-align: middle;
-  font-variant: tabular-nums;
-  box-sizing: border-box;
   color: var(--text-accent);
   cursor: pointer;
-  background: #3e496c;
+  background: rgba(139, 92, 246, 0.1);
   border-radius: 9px;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  height: 18px;
-  margin-left: 4px;
   padding: 0 6px;
   font-size: 12px;
-  font-weight: 400;
-  display: inline-flex;
-  position: relative;
-  top: -2px;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .article a:hover {
-  color: #5555ff;
+  background: rgba(139, 92, 246, 0.2);
   text-decoration: underline;
 }
 
-/* Responsive design */
+.article p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
 @media (max-width: 768px) {
   .article h1 {
     font-size: 2rem;
@@ -287,9 +220,5 @@
   .article th,
   .article td {
     padding: 8px 12px;
-  }
-
-  .container {
-    padding: 1rem;
   }
 }

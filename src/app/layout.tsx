@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 import "../styles/globals.css";
-// sections
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import { baseUrl } from "@/utils/baseUrl";
 
-// metadata
 export const metadata: Metadata = {
   icons: "/favicon.ico",
   title: {
@@ -15,14 +13,10 @@ export const metadata: Metadata = {
       "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに変える専門家",
     template: "%s | Webサイト変革サービス",
   },
-
   description:
     "私たちは、デザインが悪く、トラフィックが少ないウェブサイトを、最新のNext.jsとSEO技術を使ってプロフェッショナルなサイトに変革します。実績豊富なWebサイト改善サービス。",
-
   applicationName: "Webサイト変革サービス",
-
   generator: "Next.js",
-
   keywords: [
     "ウェブサイト改善",
     "UI/UX改善",
@@ -32,17 +26,12 @@ export const metadata: Metadata = {
     "ウェブデザイン",
     "サイトリニューアル",
   ],
-
   referrer: "origin",
-
   creator: "Webサイト変革サービス",
-
   publisher: "Webサイト変革サービス",
-
   alternates: {
     canonical: baseUrl,
   },
-
   openGraph: {
     type: "website",
     url: baseUrl,
@@ -59,7 +48,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
@@ -67,13 +55,10 @@ export const metadata: Metadata = {
       "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
     images: [`${baseUrl}/images/og-image.jpg`],
   },
-
   verification: {
     google: "your-google-verification-id",
   },
-
   category: "Technology",
-
   classification: "Web Development Service",
 };
 
@@ -85,7 +70,6 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <head>
-        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XLXWCV0Q9V"
           strategy="afterInteractive"

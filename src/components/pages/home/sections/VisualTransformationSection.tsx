@@ -1,3 +1,4 @@
+"use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -10,61 +11,69 @@ export default function VisualTransformationSection() {
   return (
     <section
       id="visual-examples"
-      className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden"
+      className="py-24 bg-gradient-to-br from-white via-purple-50/40 to-cyan-50/40 relative overflow-hidden"
       ref={sectionRef}
     >
-      <div className="animate-slide absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(99,102,241,0.1)_0%,transparent_50%)] animate-[rotate_30s_linear_infinite]"></div>
+      {/* Decorative elements */}
+      <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-cyan-300/20 rounded-full blur-3xl" />
+
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle
           title="ビジュアル変革の実例"
           description="実際のクライアント様のWebサイト変革をご覧ください"
         />
 
-        {/* Video Section */}
-        {/* <div className="animate-slide grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 items-center max-w-[1400px] mx-auto mb-16">
-          <div className="relative group rounded-[20px] overflow-hidden">
-            <div className="absolute top-5 left-5 px-6 py-2 bg-gradient-to-r from-error to-[#dc2626] text-white rounded-full font-bold text-[0.9rem] tracking-[2px] shadow-[0_10px_20px_rgba(239,68,68,0.3)] animate-badgeBounce z-10">
+        {/* =========================
+            Video Demo (RESTORED)
+           ========================= */}
+        <div className="animate-slide grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 items-center max-w-[1400px] mx-auto mb-16">
+          {/* BEFORE */}
+          <div className="relative group rounded-3xl overflow-hidden">
+            <div className="absolute top-5 left-5 px-5 py-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full font-bold text-[0.85rem] tracking-[2px] shadow-lg z-10 animate-badgeBounce">
               BEFORE
             </div>
-            <div className="relative rounded-[20px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:-translate-y-[10px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]">
+
+            <div className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur border border-red-100 shadow-[0_20px_45px_rgba(0,0,0,0.12)] group-hover:-translate-y-2 group-hover:shadow-[0_28px_60px_rgba(0,0,0,0.16)] transition-all duration-500">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.01]"
                 onError={(e) => console.error("Video error:", e)}
                 style={{ maxWidth: "100%", height: "auto" }}
               >
                 <source src="/videos/old_mac_haddis.webm" type="video/webm" />
-                <source src="/videos/old_mac_haddis.mp4" type="video/mp4" />
+                {/* <source src="/videos/old_mac_haddis.mp4" type="video/mp4" /> */}
               </video>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-100 h-fit">
-                  ❌ 時代遅れのデザイン
-                </span>
-                <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-200 h-fit">
-                  ❌ 情報が見つけにくい
-                </span>
-                <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-300 h-fit">
-                  ❌ モバイル非対応
-                </span>
-                <span className="px-4 py-2 rounded-full bg-error/20 border border-error/30 text-[#fca5a5] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-400 h-fit">
-                  ❌ 低いコンバージョン率
-                </span>
+
+              {/* Tags overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent py-8 px-6 flex flex-wrap gap-2 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                {[
+                  "❌ 時代遅れのデザイン",
+                  "❌ 情報が見つけにくい",
+                  "❌ モバイル非対応",
+                  "❌ 低いコンバージョン率",
+                ].map((t, i) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1.5 rounded-full bg-red-500/15 border border-red-400/20 text-red-100 text-xs md:text-sm font-medium backdrop-blur opacity-100 translate-y-5 animate-slideInUp h-fit"
+                    style={{ animationDelay: `${(i + 1) * 100}ms` }}
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
+
+          {/* ARROW / TRANSFORM */}
           <div className="flex items-center justify-center">
             <div className="relative text-center">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] bg-[radial-gradient(circle,rgba(99,102,241,0.3)_0%,transparent_70%)] rounded-full animate-pulseWave"></div>
-              <svg
-                width="60"
-                height="60"
-                viewBox="0 0 60 60"
-                className="relative z-2 animate-arrowMove"
-              >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110px] h-[110px] bg-[radial-gradient(circle,rgba(99,102,241,0.25)_0%,transparent_70%)] rounded-full animate-pulseWave" />
+              <svg width="64" height="64" viewBox="0 0 60 60" className="relative z-10 animate-arrowMove">
                 <path
                   d="M20 30 L40 30 M40 30 L35 25 M40 30 L35 35"
                   stroke="url(#arrowGradient)"
@@ -74,149 +83,119 @@ export default function VisualTransformationSection() {
                   strokeLinejoin="round"
                 />
                 <defs>
-                  <linearGradient
-                    id="arrowGradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%"
-                  >
-                    <stop
-                      offset="0%"
-                      style={{ stopColor: "#6366f1", stopOpacity: 1 }}
-                    />
-                    <stop
-                      offset="100%"
-                      style={{ stopColor: "#22d3ee", stopOpacity: 1 }}
-                    />
+                  <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style={{ stopColor: "#6366f1", stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: "#22d3ee", stopOpacity: 1 }} />
                   </linearGradient>
                 </defs>
               </svg>
-              <p className="mt-2 font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-[1.1rem] animate-textGlow">
+              <p className="mt-2 font-bold bg-gradient-to-r from-indigo-600 to-cyan-500 text-transparent bg-clip-text text-[1.05rem] animate-textGlow">
                 Transform!
               </p>
             </div>
           </div>
-          <div className="relative group rounded-[20px] overflow-hidden">
-            <div className="absolute top-5 left-5 px-6 py-2 bg-gradient-to-r from-success to-[#059669] text-white rounded-full font-bold text-[0.9rem] tracking-[2px] shadow-[0_10px_20px_rgba(16,185,129,0.3)] animate-badgeBounce z-10">
+
+          {/* AFTER */}
+          <div className="relative group rounded-3xl overflow-hidden">
+            <div className="absolute top-5 left-5 px-5 py-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-full font-bold text-[0.85rem] tracking-[2px] shadow-lg z-10 animate-badgeBounce">
               AFTER
             </div>
-            <div className="relative rounded-[20px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] group-hover:scale-105 group-hover:-translate-y-[10px] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.5)] transition-all duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]">
+
+            <div className="relative rounded-3xl overflow-hidden bg-white/70 backdrop-blur border border-emerald-100 shadow-[0_20px_45px_rgba(0,0,0,0.12)] group-hover:-translate-y-2 group-hover:shadow-[0_28px_60px_rgba(0,0,0,0.16)] transition-all duration-500">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.01]"
                 onError={(e) => console.error("Video error:", e)}
                 style={{ maxWidth: "100%", height: "auto" }}
               >
                 <source src="/videos/new_mac_haddis.webm" type="video/webm" />
-                <source src="/videos/new_mac_haddis.mp4" type="video/mp4" />
+                {/* <source src="/videos/new_mac_haddis.mp4" type="video/mp4" /> */}
               </video>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent py-8 md:py-16 px-8 flex flex-wrap gap-3 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-                <span className="px-4 py-2 rounded-full bg-success/20 border border-success/30 text-[#86efac] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-100 h-fit">
-                  ✓ 現代的で魅力的
-                </span>
-                <span className="px-4 py-2 rounded-full bg-success/20 border border-success/30 text-[#86efac] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-200 h-fit">
-                  ✓ 直感的なナビゲーション
-                </span>
-                <span className="px-4 py-2 rounded-full bg-success/20 border border-success/30 text-[#86efac] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-300 h-fit">
-                  ✓ 完全レスポンシブ対応
-                </span>
-                <span className="px-4 py-2 rounded-full bg-success/20 border border-success/30 text-[#86efac] text-[0.9rem] font-medium backdrop-blur-[10px] opacity-1 translate-y-5 animate-[slideInUp_0.5s_ease_forwards] animation-delay-400 h-fit">
-                  ✓ 高いコンバージョン率
-                </span>
+
+              {/* Tags overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent py-8 px-6 flex flex-wrap gap-2 justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                {[
+                  "✓ 現代的で魅力的",
+                  "✓ 直感的なナビゲーション",
+                  "✓ 完全レスポンシブ対応",
+                  "✓ 高いコンバージョン率",
+                ].map((t, i) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/20 text-emerald-100 text-xs md:text-sm font-medium backdrop-blur opacity-100 translate-y-5 animate-slideInUp h-fit"
+                    style={{ animationDelay: `${(i + 1) * 100}ms` }}
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
-        {/* Enhanced Cards Section */}
+        {/* =========================
+            Cards (NEW UI, OLD “pro” illustrations)
+           ========================= */}
         <div className="animate-slide grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
           {/* Before Card */}
-          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-red-500/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 ease-out cursor-pointer">
-            {/* Animated background effect */}
-            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-red-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
+          <div className="bg-white/90 backdrop-blur-sm border border-red-200 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl hover:shadow-red-500/15 transition-all duration-500 cursor-pointer">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-400 to-orange-400" />
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                変革前の課題
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-8">
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">変革前の課題</h3>
+              <p className="text-gray-600 leading-relaxed mb-8">
                 古いデザイン・使いにくいUI・低いパフォーマンス
               </p>
 
-              {/* Creative Illustration - Broken Website */}
-              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-red-500/10">
-                <div className="broken-site absolute inset-0 flex items-center justify-center">
-                  <div className="broken-window w-4/5 h-3/4 bg-gray-900 border-2 border-red-500 rounded-lg relative transform -skew-x-1 -rotate-1">
-                    <div className="error-404 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-red-500">
+              {/* Broken Website Illustration (from old design, adapted) */}
+              <div className="w-full h-48 bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl overflow-hidden relative border border-red-100">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-4/5 h-3/4 bg-gray-900/90 border-2 border-red-400 rounded-xl relative transform -skew-x-1 -rotate-1 shadow-lg">
+                    <div className="absolute top-4 left-4 right-4 h-3 bg-white/10 rounded-full" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-red-400">
                       404
                     </div>
                   </div>
-                  <div className="broken-pieces absolute w-4 h-4 bg-red-500 opacity-60 top-1/4 left-1/4 animate-ping" />
-                  <div className="broken-pieces absolute w-3 h-3 bg-red-400 opacity-60 top-1/3 right-1/4 animate-pulse" />
-                  <div className="broken-pieces absolute w-2 h-2 bg-red-600 opacity-60 top-2/5 left-1/5 animate-bounce" />
+
+                  {/* broken pieces */}
+                  <div className="absolute w-4 h-4 bg-red-400/70 top-1/4 left-1/4 animate-ping rounded-sm" />
+                  <div className="absolute w-3 h-3 bg-orange-400/70 top-1/3 right-1/4 animate-pulse rounded-sm" />
+                  <div className="absolute w-2.5 h-2.5 bg-red-500/70 top-2/5 left-1/5 animate-bounce rounded-sm" />
                 </div>
               </div>
             </div>
           </div>
 
           {/* During Card */}
-          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-primary/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 ease-out cursor-pointer">
-            {/* Animated background effect */}
-            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
+          <div className="bg-white/90 backdrop-blur-sm border border-purple-200 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/15 transition-all duration-500 cursor-pointer">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 to-pink-400" />
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                実施した改善
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-8">
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">実施した改善</h3>
+              <p className="text-gray-600 leading-relaxed mb-8">
                 Next.jsによる再構築・UI/UXの完全リデザイン・SEO最適化
               </p>
 
-              {/* Creative Illustration - Building Process */}
-              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-primary/10">
-                <div className="building-process absolute inset-0 flex items-center justify-center p-4">
-                  <div className="code-blocks grid grid-cols-3 gap-2 w-full h-full">
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-200 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-400 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-600 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-800 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
-                    <div className="code-block bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-2 opacity-0 animate-slideInUp animation-delay-1000 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent opacity-0 animate-pulse" />
-                      <div className="code-line h-1 bg-primary/60 rounded mb-1 w-4/5" />
-                      <div className="code-line h-1 bg-primary/40 rounded mb-1 w-3/5" />
-                      <div className="code-line h-1 bg-primary/60 rounded w-5/6" />
-                    </div>
+              {/* Building Process Illustration (from old design, adapted) */}
+              <div className="w-full h-48 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl overflow-hidden relative border border-purple-100">
+                <div className="absolute inset-0 flex items-center justify-center p-5">
+                  <div className="grid grid-cols-3 gap-2 w-full h-full">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="relative overflow-hidden rounded-xl border border-purple-200 bg-gradient-to-br from-purple-200/30 to-pink-200/25 opacity-0 animate-slideInUp"
+                        style={{ animationDelay: `${i * 150}ms` }}
+                      >
+                        <div className="absolute inset-0 opacity-0 animate-softPulse bg-gradient-to-b from-transparent via-purple-300/25 to-transparent" />
+                        <div className="p-2">
+                          <div className="h-1.5 bg-purple-500/50 rounded mb-1 w-4/5" />
+                          <div className="h-1.5 bg-purple-500/30 rounded mb-1 w-3/5" />
+                          <div className="h-1.5 bg-purple-500/45 rounded w-5/6" />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -224,33 +203,32 @@ export default function VisualTransformationSection() {
           </div>
 
           {/* After Card */}
-          <div className="bg-gradient-to-br from-white/5 to-white/2 border border-green-500/20 rounded-3xl px-8 py-6 relative overflow-hidden group hover:-translate-y-3 hover:border-green-500/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 ease-out cursor-pointer">
-            {/* Animated background effect */}
-            <div className="absolute -top-full -left-full w-[300%] h-[300%] bg-gradient-radial from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
+          <div className="bg-white/90 backdrop-blur-sm border border-green-200 rounded-3xl p-8 relative overflow-hidden group hover:-translate-y-3 hover:shadow-2xl hover:shadow-green-500/15 transition-all duration-500 cursor-pointer">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-cyan-400" />
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                変革後の成果
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-8">
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">変革後の成果</h3>
+              <p className="text-gray-600 leading-relaxed mb-8">
                 モダンで使いやすいプロフェッショナルUI・49倍のトラフィック増加
               </p>
 
-              {/* Creative Illustration - Success Metrics */}
-              <div className="w-full h-48 bg-white/5 rounded-2xl overflow-hidden relative mt-6 border border-green-500/10">
-                <div className="success-metrics absolute inset-0 flex items-center justify-center p-6">
-                  <div className="metric-chart w-full h-full flex items-end justify-around relative">
-                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-1/4 transform scale-y-0 animate-growBar origin-bottom" />
-                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-2/4 transform scale-y-0 animate-growBar origin-bottom animation-delay-200" />
-                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-3/5 transform scale-y-0 animate-growBar origin-bottom animation-delay-400" />
-                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-5/6 transform scale-y-0 animate-growBar origin-bottom animation-delay-600" />
-                    <div className="metric-bar w-9 md:w-5 lg:w-9 bg-gradient-to-t from-green-500 to-cyan-400 rounded-t-sm h-full transform scale-y-0 animate-growBar origin-bottom animation-delay-800" />
+              {/* Success Metrics Illustration (from old design, adapted) */}
+              <div className="w-full h-48 bg-gradient-to-br from-green-50 to-cyan-50 rounded-2xl overflow-hidden relative border border-green-100">
+                <div className="absolute inset-0 flex items-end justify-around p-6">
+                  {[25, 50, 65, 85, 100].map((h, i) => (
+                    <div
+                      key={i}
+                      className="w-8 md:w-5 lg:w-8 rounded-t-md bg-gradient-to-t from-green-500 to-cyan-400 origin-bottom transform scale-y-0 animate-growBar shadow-sm"
+                      style={{
+                        height: `${h}%`,
+                        animationDelay: `${i * 180}ms`,
+                      }}
+                    />
+                  ))}
 
-                    {/* Sparkles */}
-                    <div className="sparkles absolute w-1 h-1 bg-green-400 rounded-full top-1/4 left-1/4 animate-sparkle" />
-                    <div className="sparkles absolute w-1 h-1 bg-cyan-400 rounded-full top-1/3 right-1/4 animate-sparkle animation-delay-500" />
-                    <div className="sparkles absolute w-1 h-1 bg-green-400 rounded-full bottom-1/3 left-2/5 animate-sparkle animation-delay-1000" />
-                  </div>
+                  {/* sparkles */}
+                  <div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full top-8 left-10 animate-sparkle" />
+                  <div className="absolute w-1.5 h-1.5 bg-cyan-400 rounded-full top-12 right-12 animate-sparkle" style={{ animationDelay: "500ms" }} />
+                  <div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full bottom-12 left-1/2 animate-sparkle" style={{ animationDelay: "1000ms" }} />
                 </div>
               </div>
             </div>
@@ -258,10 +236,11 @@ export default function VisualTransformationSection() {
         </div>
       </div>
 
+      {/* Minimal animations (kept from old behavior, but lighter) */}
       <style jsx>{`
         @keyframes slideInUp {
           from {
-            transform: translateY(20px);
+            transform: translateY(18px);
             opacity: 0;
           }
           to {
@@ -269,11 +248,17 @@ export default function VisualTransformationSection() {
             opacity: 1;
           }
         }
+        .animate-slideInUp {
+          animation: slideInUp 0.7s ease-out forwards;
+        }
 
         @keyframes growBar {
           to {
             transform: scaleY(1);
           }
+        }
+        .animate-growBar {
+          animation: growBar 1.6s ease-out forwards;
         }
 
         @keyframes sparkle {
@@ -287,53 +272,78 @@ export default function VisualTransformationSection() {
             transform: scale(1);
           }
         }
-
-        .animate-slideInUp {
-          animation: slideInUp 0.8s ease-out forwards;
-        }
-
-        .animate-growBar {
-          animation: growBar 2s ease-out forwards;
-        }
-
         .animate-sparkle {
           animation: sparkle 2s infinite;
         }
 
-        .bg-gradient-radial {
-          background: radial-gradient(var(--tw-gradient-stops));
+        @keyframes badgeBounce {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
+        .animate-badgeBounce {
+          animation: badgeBounce 2.2s ease-in-out infinite;
         }
 
-        .animation-delay-200 {
-          animation-delay: 0.2s;
+        @keyframes arrowMove {
+          0%,
+          100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(6px);
+          }
+        }
+        .animate-arrowMove {
+          animation: arrowMove 1.4s ease-in-out infinite;
         }
 
-        .animation-delay-400 {
-          animation-delay: 0.4s;
+        @keyframes pulseWave {
+          0% {
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0.45;
+          }
+          70% {
+            transform: translate(-50%, -50%) scale(1.15);
+            opacity: 0.15;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.25);
+            opacity: 0;
+          }
+        }
+        .animate-pulseWave {
+          animation: pulseWave 2.2s ease-out infinite;
         }
 
-        .animation-delay-500 {
-          animation-delay: 0.5s;
+        @keyframes textGlow {
+          0%,
+          100% {
+            filter: drop-shadow(0 0 0 rgba(99, 102, 241, 0));
+          }
+          50% {
+            filter: drop-shadow(0 10px 18px rgba(99, 102, 241, 0.35));
+          }
+        }
+        .animate-textGlow {
+          animation: textGlow 2.4s ease-in-out infinite;
         }
 
-        .animation-delay-600 {
-          animation-delay: 0.6s;
+        @keyframes softPulse {
+          0%,
+          100% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
         }
-
-        .animation-delay-800 {
-          animation-delay: 0.8s;
-        }
-
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-
-        .delay-2000 {
-          animation-delay: 2s;
+        .animate-softPulse {
+          animation: softPulse 2.2s ease-in-out infinite;
         }
       `}</style>
     </section>

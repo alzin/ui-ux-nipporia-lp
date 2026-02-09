@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Hero() {
   const title = "ビジネス成長を生むウェブサイトへ変革します。";
@@ -11,7 +10,7 @@ export default function Hero() {
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShowStickyCTA(window.scrollY > 24);
+    const onScroll = () => setShowStickyCTA(window.scrollY > 300);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -20,167 +19,216 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="
-        relative min-h-[100dvh] overflow-hidden bg-[#060712]
-        px-4 sm:px-6 lg:px-10
-        pb-28 sm:pb-32
-      "
+      className="relative min-h-[100dvh] overflow-hidden bg-gradient-to-br from-cream via-peach/50 to-lavender px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32"
     >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/75" />
-
-      {/* Mesh gradients */}
+      {/* Animated background shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute w-[70vw] h-[70vw] -top-[25vw] -left-[25vw] rounded-full bg-primary/18 blur-3xl animate-pulse lg:w-[45vw] lg:h-[45vw] lg:-top-[12vw] lg:-left-[12vw]" />
-        <div className="absolute w-[60vw] h-[60vw] bottom-[-25vw] right-[-25vw] rounded-full bg-primary/10 blur-3xl animate-pulse delay-1000 lg:w-[35vw] lg:h-[35vw] lg:bottom-[-10vw] lg:right-[-10vw]" />
+        <div className="absolute w-[500px] h-[500px] -top-[100px] -left-[100px] rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-3xl animate-float" />
+        <div
+          className="absolute w-[400px] h-[400px] top-1/2 -right-[100px] rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-400/20 blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+        <div
+          className="absolute w-[300px] h-[300px] bottom-[100px] left-1/3 rounded-full bg-gradient-to-br from-yellow-400/20 to-orange-400/20 blur-3xl animate-float"
+          style={{ animationDelay: "4s" }}
+        />
       </div>
 
-      {/* Main layout */}
-      <div className="relative z-20 mx-auto w-full max-w-screen-2xl pt-20 sm:pt-24 lg:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* MOBILE: Image first (better hook), DESKTOP: text left */}
-          <div className="order-2 lg:order-1 lg:col-span-4">
-            <div className="flex flex-col gap-7">
-              <div className="flex flex-col gap-5">
-                <h1 className="text-white font-bold text-[clamp(2.2rem,8.2vw,4.7rem)] leading-[1.04] tracking-tight drop-shadow-2xl">
-                  {title}
-                </h1>
+      {/* Decorative floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-[20%] left-[10%] w-4 h-4 bg-purple-500 rounded-full opacity-60 animate-bounce"
+          style={{ animationDuration: "3s" }}
+        />
+        <div
+          className="absolute top-[30%] right-[15%] w-3 h-3 bg-cyan-500 rounded-full opacity-60 animate-bounce"
+          style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}
+        />
+        <div
+          className="absolute top-[60%] left-[20%] w-5 h-5 bg-pink-500 rounded-full opacity-50 animate-bounce"
+          style={{ animationDuration: "3.5s", animationDelay: "1s" }}
+        />
+        <div
+          className="absolute top-[70%] right-[25%] w-3 h-3 bg-yellow-500 rounded-full opacity-60 animate-bounce"
+          style={{ animationDuration: "2.8s", animationDelay: "1.5s" }}
+        />
+      </div>
 
-                <p className="text-white/92 text-[clamp(1.15rem,4.4vw,2.05rem)] leading-relaxed">
-                  {subtitle}
-                </p>
+      {/* Main content */}
+      <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-32 sm:pt-40 lg:pt-48">
+        <div className="flex flex-col items-center text-center">
+          {/* Title */}
+          <h1 className="text-gray-800 font-bold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.1] tracking-tight mb-6 max-w-4xl">
+            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
+              {title}
+            </span>
+          </h1>
 
-                <p className="text-[0.98rem] sm:text-[1.12rem] text-white/65">
-                  無料相談（60分）・最短7日で改善案をご提案
-                </p>
-              </div>
+          {/* Subtitle */}
+          <p className="text-gray-600 text-[clamp(1.2rem,3vw,1.8rem)] leading-relaxed mb-4 max-w-2xl">
+            {subtitle}
+          </p>
 
-              <div className="flex flex-wrap gap-2.5 text-[0.95rem] sm:text-[1.05rem] text-gray-200/90">
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  UI/UX
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  Next.js
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  SEO
-                </span>
-                <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  Google Ads
-                </span>
-              </div>
+          <p className="text-gray-500 text-base sm:text-lg mb-10">
+            無料相談（60分）・最短7日で改善案をご提案
+          </p>
 
-              {/* Mobile-first CTAs: full width, comfortable tap size */}
-              <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4">
-                <Link
-                  href="#contact"
-                  className="
-                    w-full sm:w-auto text-center
-                    px-10 py-4 sm:py-5 rounded-full text-white
-                    bg-gradient-to-r from-primary to-primary-dark
-                    font-semibold text-[1.05rem] sm:text-[1.12rem]
-                    shadow-[0_10px_30px_rgba(99,102,241,0.35)]
-                    hover:shadow-[0_14px_40px_rgba(99,102,241,0.5)]
-                    hover:-translate-y-[2px]
-                    transition-all duration-300
-                  "
-                >
-                  無料相談を申し込む
-                </Link>
-
-                <Link
-                  href="#transformation"
-                  className="
-                    w-full sm:w-auto text-center
-                    px-10 py-4 sm:py-5 rounded-full
-                    border-2 border-primary
-                    text-primary bg-white/5 font-semibold
-                    text-[1.05rem] sm:text-[1.12rem]
-                    hover:bg-primary hover:text-white
-                    transition-all duration-300
-                  "
-                >
-                  変革事例を見る
-                </Link>
-              </div>
-            </div>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-3 justify-center mb-12">
+            {["UI/UX", "Next.js", "SEO", "Google Ads"].map((tag) => (
+              <span
+                key={tag}
+                className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-200 text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-purple-400 transition-all duration-300"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
+          {/* CTA Buttons - Stronger hierarchy */}
+          <div className="w-full max-w-md sm:max-w-xl">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="#contact"
+                className="group sm:flex-[1.25] inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-4 text-[15px] sm:text-base font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:translate-y-0"
+              >
+                <svg
+                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+                無料相談を申し込む
+              </Link>
 
-          {/* RIGHT / HERO IMAGE */}
-          <div className="order-1 lg:order-2 lg:col-span-8">
-            <div
-              className="
-                relative w-full
-                h-[46vh] min-h-[320px]
-                sm:h-[52vh] sm:min-h-[380px]
-                lg:h-[82vh] lg:min-h-[640px]
-                rounded-3xl overflow-hidden
-                border border-white/10
-                shadow-[0_30px_90px_rgba(0,0,0,0.6)]
-                bg-black/20
-              "
-            >
-              <Image
-                src="/hero-bg.jpg"
-                alt="WebTransform hero visual"
-                fill
-                priority
-                quality={98}
-                sizes="(min-width: 1024px) 66vw, 100vw"
-                className="object-cover object-[60%_50%]"
-              />
+              <Link
+                href="#transformation"
+                className="sm:flex-1 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-purple-500 bg-white/85 px-8 py-4 text-[15px] sm:text-base font-semibold text-purple-700 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  />
+                </svg>
+                変革事例を見る
+              </Link>
+            </div>
+        </div>
+      </div>
+    </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-black/18 pointer-events-none" />
-              <div className="absolute inset-0 bg-white/3 pointer-events-none" />
-              <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-primary/14 blur-3xl pointer-events-none" />
+      {/* ===================== Sticky CTAs (Responsive) ===================== */}
+
+      {/* Desktop Sticky CTA (md+) - Right side vertical */}
+      <div
+        className={`hidden md:block fixed right-0 top-1/2 -translate-y-1/2 z-[9999] transition-all duration-500 ease-out ${
+          showStickyCTA
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0 pointer-events-none"
+        }`}
+        aria-hidden={!showStickyCTA}
+      >
+        <div className="relative">
+          {/* Glowing background effect */}
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-xl rounded-l-3xl" />
+
+          {/* Main container */}
+          <div className="relative bg-white/95 backdrop-blur-xl rounded-l-2xl shadow-2xl shadow-purple-500/20 border border-purple-100 border-r-0 overflow-hidden">
+            {/* Gradient accent line */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500" />
+
+            {/* Content */}
+            <div className="flex flex-col gap-3 p-4 pl-5">
+              {/* Primary CTA */}
+              <Link
+                href="#contact"
+                className="group relative flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold text-sm shadow-lg hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <svg
+                  className="relative w-5 h-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+                <span className="relative whitespace-nowrap">無料相談</span>
+              </Link>
+
+              {/* Secondary CTA */}
+              <Link
+                href="#transformation"
+                className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm hover:border-purple-500 hover:bg-purple-50 transition-all duration-300"
+              >
+                <svg
+                  className="w-5 h-5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  />
+                </svg>
+                <span className="whitespace-nowrap">事例を見る</span>
+              </Link>
+
+              {/* Subtle indicator */}
+              <div className="flex items-center justify-center gap-1.5 pt-1">
+                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs text-gray-500">受付中</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Sticky CTA (mobile-safe, centered, respects sides) */}
+      {/* Mobile Sticky CTA (below md) - Bottom bar */}
       <div
-        className={[
-          "fixed bottom-0 left-0 w-full z-[9999]",
-          "bg-black/70 backdrop-blur-md",
-          "transition-all duration-300",
+        className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${
           showStickyCTA
             ? "translate-y-0 opacity-100"
-            : "translate-y-full opacity-0 pointer-events-none",
-        ].join(" ")}
+            : "translate-y-6 opacity-0 pointer-events-none"
+        }`}
         aria-hidden={!showStickyCTA}
       >
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-10 py-4">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+        <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
+          <div className="flex gap-2">
             <Link
               href="#contact"
-              className="
-                w-full sm:w-auto text-center
-                px-10 py-4 sm:py-5 rounded-full text-white
-                bg-gradient-to-r from-primary to-primary-dark
-                font-semibold text-[1.05rem] sm:text-[1.12rem]
-                shadow-[0_8px_25px_rgba(99,102,241,0.3)]
-                hover:shadow-[0_12px_30px_rgba(99,102,241,0.45)]
-                hover:-translate-y-[2px]
-                transition-all duration-300
-              "
+              className="flex-1 text-center px-4 py-3 rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-500 font-semibold text-sm shadow-lg shadow-purple-500/30"
             >
-              無料相談を申し込む
+              無料相談
             </Link>
 
             <Link
               href="#transformation"
-              className="
-                w-full sm:w-auto text-center
-                px-10 py-4 sm:py-5 rounded-full
-                border-2 border-primary text-primary
-                bg-white/5 font-semibold
-                text-[1.05rem] sm:text-[1.12rem]
-                hover:bg-primary hover:text-white
-                transition-all duration-300
-              "
+              className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
             >
-              変革事例を見る
+              事例を見る
             </Link>
           </div>
         </div>

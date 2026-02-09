@@ -29,8 +29,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
         type: 'article',
       },
     };
-  } catch (error) {
-    console.error('Error generating metadata:', error);
+  } catch {
     return {
       title: 'Not Found',
       description: 'This blog post does not exist.',
@@ -45,8 +44,7 @@ export default async function Page({ params }: BlogPageProps) {
     const blog = createProcessedBlogObject(slug, blogData);
     
     return <BlogPage blog={blog} />;
-  } catch (error) {
-    console.error('Error loading blog page:', error);
+  } catch {
     notFound();
   }
 }
