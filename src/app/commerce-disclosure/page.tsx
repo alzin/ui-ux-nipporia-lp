@@ -38,7 +38,7 @@ export default function CommerceDisclosurePage() {
                     所在地
                   </th>
                   <td className="py-4 px-4 text-gray-600">
-                    埼玉県久喜市久喜中央1丁目
+                    埼玉県久喜市久喜中央1丁目9番4-902号
                   </td>
                 </tr>
                 <tr>
