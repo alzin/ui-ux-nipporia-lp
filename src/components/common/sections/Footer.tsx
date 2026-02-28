@@ -28,15 +28,23 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-slate-900">クイックリンク</h3>
+            <h3 className="text-lg font-bold mb-4 text-slate-900">
+              クイックリンク
+            </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/#services" className="text-slate-700 hover:text-purple-700 transition-colors duration-300">
+                <Link
+                  href="/#services"
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+                >
                   サービス
                 </Link>
               </li>
               <li>
-                <Link href="/#pricing" className="text-slate-700 hover:text-purple-700 transition-colors duration-300">
+                <Link
+                  href="/#pricing"
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+                >
                   料金プラン
                 </Link>
               </li>
@@ -49,12 +57,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/blogs" className="text-slate-700 hover:text-purple-700 transition-colors duration-300">
+                <Link
+                  href="/blogs"
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+                >
                   ブログ
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="text-slate-700 hover:text-purple-700 transition-colors duration-300">
+                <Link
+                  href="/#contact"
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+                >
                   お問い合わせ
                 </Link>
               </li>
@@ -100,6 +114,17 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-6">
+            <a
+              href="https://www.facebook.com/profile.php?id=61578303825627"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+              aria-label="Facebook"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+              </svg>
+            </a>  
             <a
               href="https://www.linkedin.com/company/nipporia/"
               target="_blank"
