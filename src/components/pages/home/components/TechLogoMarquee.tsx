@@ -1,68 +1,67 @@
 "use client";
 
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiJavascript,
-  SiPython,
-  SiSwift,
-  SiKotlin,
-  SiGo,
-  SiRust,
-  SiVuedotjs,
-  SiAngular,
-  SiNodedotjs,
-  SiDjango,
-  SiFlutter,
-  SiFigma,
-  SiDocker,
-  SiVercel,
-  SiGit,
-  SiPhp,
-  SiRuby,
-  SiOpenai,
-  SiTailwindcss,
-  SiPostgresql,
-  SiMongodb,
-  SiFirebase,
-} from "react-icons/si";
-import { FaJava } from "react-icons/fa";
-import { type IconType } from "react-icons";
+  React as ReactIcon,
+  NextJs,
+  TypeScript,
+  JavaScript,
+  Python,
+  Java,
+  Swift,
+  Kotlin,
+  Go,
+  RustDark,
+  VueJs,
+  Angular,
+  NodeJs,
+  Django,
+  Flutter,
+  Figma,
+  Docker,
+  VercelDark,
+  Git,
+  PHP,
+  Ruby,
+  OpenAI,
+  TailwindCSS,
+  PostgreSQL,
+  MongoDB,
+  Firebase,
+} from "developer-icons";
+import { type ComponentType, type SVGProps } from "react";
 
 interface TechLogo {
   name: string;
-  Icon: IconType;
-  color: string;
+  Icon: ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
 }
 
 const logos: TechLogo[] = [
-  { name: "React", Icon: SiReact, color: "#61DAFB" },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#000000" },
-  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
-  { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
-  { name: "Python", Icon: SiPython, color: "#3776AB" },
-  { name: "Java", Icon: FaJava, color: "#007396" },
-  { name: "Swift", Icon: SiSwift, color: "#F05138" },
-  { name: "Kotlin", Icon: SiKotlin, color: "#7F52FF" },
-  { name: "Go", Icon: SiGo, color: "#00ADD8" },
-  { name: "Rust", Icon: SiRust, color: "#000000" },
-  { name: "Vue.js", Icon: SiVuedotjs, color: "#4FC08D" },
-  { name: "Angular", Icon: SiAngular, color: "#DD0031" },
-  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
-  { name: "Django", Icon: SiDjango, color: "#092E20" },
-  { name: "Flutter", Icon: SiFlutter, color: "#02569B" },
-  { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
-  { name: "Docker", Icon: SiDocker, color: "#2496ED" },
-  { name: "Vercel", Icon: SiVercel, color: "#000000" },
-  { name: "Git", Icon: SiGit, color: "#F05032" },
-  { name: "PHP", Icon: SiPhp, color: "#777BB4" },
-  { name: "Ruby", Icon: SiRuby, color: "#CC342D" },
-  { name: "OpenAI", Icon: SiOpenai, color: "#10A37F" },
-  { name: "Tailwind", Icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
-  { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
-  { name: "Firebase", Icon: SiFirebase, color: "#FFCA28" },
+  { name: "React", Icon: ReactIcon },
+  { name: "Next.js", Icon: NextJs },
+  { name: "TypeScript", Icon: TypeScript },
+  { name: "JavaScript", Icon: JavaScript },
+  { name: "Python", Icon: Python },
+  { name: "Java", Icon: Java },
+  { name: "Swift", Icon: Swift },
+  { name: "Kotlin", Icon: Kotlin },
+  { name: "Go", Icon: Go },
+  { name: "Rust", Icon: RustDark },
+  { name: "Vue.js", Icon: VueJs },
+  { name: "Angular", Icon: Angular },
+  { name: "Node.js", Icon: NodeJs },
+  { name: "Django", Icon: Django },
+  { name: "Flutter", Icon: Flutter },
+  { name: "Figma", Icon: Figma },
+  { name: "Docker", Icon: Docker },
+  { name: "Vercel", Icon: VercelDark },
+  { name: "Git", Icon: Git },
+  { name: "PHP", Icon: PHP },
+  { name: "Ruby", Icon: Ruby },
+  { name: "OpenAI", Icon: OpenAI },
+  { name: "Tailwind", Icon: TailwindCSS },
+  { name: "PostgreSQL", Icon: PostgreSQL },
+  { name: "MongoDB", Icon: MongoDB },
+  { name: "Firebase", Icon: Firebase },
 ];
 
 export default function TechLogoMarquee() {
@@ -88,9 +87,8 @@ export default function TechLogoMarquee() {
                 key={`${copy}-${logo.name}`}
                 className="flex flex-col items-center gap-4"
               >
-                <logo.Icon 
-                  className="h-14 w-14 sm:h-16 sm:w-16 transition-transform duration-300 hover:scale-110" 
-                  style={{ color: logo.color }} 
+                <logo.Icon
+                  className="h-14 w-14 sm:h-16 sm:w-16 transition-transform duration-300 hover:scale-110"
                 />
                 <span className="text-sm sm:text-base text-gray-500 font-medium whitespace-nowrap">
                   {logo.name}
