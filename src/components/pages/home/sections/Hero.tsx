@@ -124,7 +124,7 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                変革事例を見る
+                制作実績を見る
               </Link>
             </div>
         </div>
@@ -193,7 +193,7 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                <span className="whitespace-nowrap">事例を見る</span>
+                <span className="whitespace-nowrap">実績を見る</span>
               </Link>
 
               {/* Subtle indicator */}
@@ -228,7 +228,7 @@ export default function Hero() {
               href="#transformation"
               className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
             >
-              事例を見る
+              実績を見る
             </Link>
           </div>
         </div>
