@@ -43,6 +43,7 @@ export default {
         lineExpand: 'lineExpand 2s ease infinite',
         titleGlow: 'titleGlow 4s ease infinite',
         problemPulse: 'problemPulse 3s ease infinite',
+        marquee: 'marquee 35s linear infinite',
       },
       keyframes: {
         gradientShift: {
@@ -112,6 +113,10 @@ export default {
         problemPulse: {
           '0%, 100%': { opacity: '0' },
           '50%': { opacity: '1' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },

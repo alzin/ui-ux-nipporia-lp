@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import TechLogoMarquee from "../components/TechLogoMarquee";
 
 export default function Hero() {
   const title = "ビジネス成長を生むウェブサイトへ変革します。";
@@ -21,38 +22,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-[100dvh] overflow-hidden bg-gradient-to-br from-cream via-peach/50 to-lavender px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32"
     >
-      {/* Animated background shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] -top-[100px] -left-[100px] rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-3xl animate-float" />
-        <div
-          className="absolute w-[400px] h-[400px] top-1/2 -right-[100px] rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-400/20 blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute w-[300px] h-[300px] bottom-[100px] left-1/3 rounded-full bg-gradient-to-br from-yellow-400/20 to-orange-400/20 blur-3xl animate-float"
-          style={{ animationDelay: "4s" }}
-        />
-      </div>
 
-      {/* Decorative floating elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-[20%] left-[10%] w-4 h-4 bg-purple-500 rounded-full opacity-60 animate-bounce"
-          style={{ animationDuration: "3s" }}
-        />
-        <div
-          className="absolute top-[30%] right-[15%] w-3 h-3 bg-cyan-500 rounded-full opacity-60 animate-bounce"
-          style={{ animationDuration: "2.5s", animationDelay: "0.5s" }}
-        />
-        <div
-          className="absolute top-[60%] left-[20%] w-5 h-5 bg-pink-500 rounded-full opacity-50 animate-bounce"
-          style={{ animationDuration: "3.5s", animationDelay: "1s" }}
-        />
-        <div
-          className="absolute top-[70%] right-[25%] w-3 h-3 bg-yellow-500 rounded-full opacity-60 animate-bounce"
-          style={{ animationDuration: "2.8s", animationDelay: "1.5s" }}
-        />
-      </div>
 
       {/* Main content */}
       <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-32 sm:pt-40 lg:pt-48">
@@ -73,16 +43,9 @@ export default function Hero() {
             無料相談（60分）・最短7日で改善案をご提案
           </p>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {["UI/UX", "Next.js", "SEO", "Google Ads"].map((tag) => (
-              <span
-                key={tag}
-                className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-200 text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-purple-400 transition-all duration-300"
-              >
-                {tag}
-              </span>
-            ))}
+          {/* Tech Logo Marquee */}
+          <div className="mb-12 w-full overflow-hidden">
+            <TechLogoMarquee />
           </div>
           {/* CTA Buttons - Stronger hierarchy */}
           <div className="w-full max-w-md sm:max-w-xl">
@@ -128,6 +91,8 @@ export default function Hero() {
               </Link>
             </div>
         </div>
+
+
       </div>
     </div>
 
