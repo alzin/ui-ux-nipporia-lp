@@ -13,25 +13,7 @@ export function initHomeScript() {
     });
   });
 
-  // Particle animation system
-  function createParticles() {
-    const existingContainer = document.querySelector('.particles-container');
-    if (existingContainer) return;
-    
-    const particlesContainer = document.createElement("div");
-    particlesContainer.className = "particles-container";
-    document.body.appendChild(particlesContainer);
 
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.animationDelay = Math.random() * 20 + "s";
-      particle.style.animationDuration = Math.random() * 20 + 20 + "s";
-      particlesContainer.appendChild(particle);
-    }
-  }
-  createParticles();
 
   // Enhanced scroll animations with stagger effect
   const observerOptions = {

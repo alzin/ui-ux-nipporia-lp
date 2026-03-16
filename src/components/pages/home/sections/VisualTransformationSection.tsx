@@ -5,7 +5,6 @@ import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import LaptopMockup from "../components/LaptopMockup";
 import PhoneMockup from "../components/PhoneMockup";
-import ProjectNav from "../components/ProjectNav";
 import { projects } from "../components/ProjectData";
 
 export default function VisualTransformationSection() {
@@ -58,9 +57,9 @@ export default function VisualTransformationSection() {
         <div className="animate-slide relative group mb-12 px-2 md:px-14">
           
           {/* Main Device Mockups */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 xl:gap-20 w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 xl:gap-12 w-full max-w-[1200px] mx-auto">
             {/* Laptop */}
-            <div className="w-full max-w-[1280px] lg:flex-1">
+            <div className="w-full lg:flex-[1.5]">
               <LaptopMockup
                 url={activeProject.desktopUrl}
                 isActive={!isTransitioning}
@@ -68,7 +67,7 @@ export default function VisualTransformationSection() {
             </div>
 
             {/* Phone */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 transform scale-90 md:scale-95 lg:scale-[0.85]">
               <PhoneMockup
                 url={activeProject.mobileUrl}
                 isActive={!isTransitioning}
@@ -98,13 +97,7 @@ export default function VisualTransformationSection() {
           </button>
         </div>
 
-        {/* Project Navigation */}
-        <div className="animate-slide">
-          <ProjectNav
-            projects={projects}
-            activeIndex={activeIndex}
-          />
-        </div>
+
       </div>
     </section>
   );
