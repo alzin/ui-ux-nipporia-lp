@@ -34,7 +34,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
             {/* Screen content with iframe */}
             <div
               className="relative overflow-hidden bg-white"
-              style={{ width: "240px", height: "480px" }}
+              style={{ width: "300px", height: "600px" }}
             >
               {/* Loading state */}
               {!isLoaded && (
@@ -48,12 +48,12 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                 </div>
               )}
 
-              {/* Scale trick: render at 390px then scale to 240px */}
+              {/* Scale trick: render at 390px then scale to fit 300px width */}
               <div
                 style={{
                   width: "390px",
                   height: "780px",
-                  transform: "scale(0.615)",
+                  transform: "scale(0.769)",
                   transformOrigin: "top left",
                 }}
               >
