@@ -108,7 +108,7 @@ export default function Hero() {
               </Link>
 
               <Link
-                href="#transformation"
+                href="#visual-examples"
                 className="sm:flex-1 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-purple-500 bg-white/85 px-8 py-4 text-[15px] sm:text-base font-semibold text-purple-700 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
               >
                 <svg
@@ -124,7 +124,7 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                制作実績を見る
+                制作実績
               </Link>
             </div>
         </div>
@@ -177,7 +177,7 @@ export default function Hero() {
 
               {/* Secondary CTA */}
               <Link
-                href="#transformation"
+                href="#visual-examples"
                 className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm hover:border-purple-500 hover:bg-purple-50 transition-all duration-300"
               >
                 <svg
@@ -193,7 +193,7 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                <span className="whitespace-nowrap">実績を見る</span>
+                <span className="whitespace-nowrap">制作実績</span>
               </Link>
 
               {/* Subtle indicator */}
@@ -225,10 +225,10 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="#transformation"
+              href="#visual-examples"
               className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
             >
-              実績を見る
+              制作実績
             </Link>
           </div>
         </div>
