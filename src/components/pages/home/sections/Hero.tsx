@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import TechLogoMarquee from "../components/TechLogoMarquee";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Hero() {
-  const title = "ビジネス成長を生むウェブサイトへ変革します。";
-  const subtitle = "プロ品質のデザインで、集客を伸ばす。";
-
+  const { t } = useLanguage();
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const [mockupVisible, setMockupVisible] = useState(false);
 
@@ -42,17 +41,17 @@ export default function Hero() {
           {/* Title */}
           <h1 className="text-gray-800 font-bold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.1] tracking-tight mb-6 max-w-4xl">
             <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
-              {title}
+              {t.hero.title}
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-gray-600 text-[clamp(1.2rem,3vw,1.8rem)] leading-relaxed mb-4 max-w-2xl">
-            {subtitle}
+            {t.hero.subtitle}
           </p>
 
           <p className="text-gray-500 text-base sm:text-lg mb-10">
-            無料相談（60分）・最短7日で改善案をご提案
+            {t.hero.cta}
           </p>
 
           {/* Tech Logo Marquee */}
@@ -79,7 +78,7 @@ export default function Hero() {
                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                   />
                 </svg>
-                無料相談を申し込む
+                {t.hero.primaryButton}
               </Link>
 
               <Link
@@ -99,7 +98,7 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                制作実績
+                {t.hero.secondaryButton}
               </Link>
             </div>
         </div>
@@ -149,7 +148,7 @@ export default function Hero() {
                     d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                   />
                 </svg>
-                <span className="relative whitespace-nowrap">無料相談</span>
+                <span className="relative whitespace-nowrap">{t.hero.stickyConsultation}</span>
               </Link>
 
               {/* Secondary CTA */}
@@ -170,13 +169,13 @@ export default function Hero() {
                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                   />
                 </svg>
-                <span className="whitespace-nowrap">制作実績</span>
+                <span className="whitespace-nowrap">{t.hero.stickyPortfolio}</span>
               </Link>
 
               {/* Subtle indicator */}
               <div className="flex items-center justify-center gap-1.5 pt-1">
                 <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs text-gray-500">受付中</span>
+                <span className="text-xs text-gray-500">{t.hero.accepting}</span>
               </div>
             </div>
           </div>
@@ -198,14 +197,14 @@ export default function Hero() {
               href="#contact"
               className="flex-1 text-center px-4 py-3 rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-500 font-semibold text-sm shadow-lg shadow-purple-500/30"
             >
-              無料相談
+              {t.hero.stickyConsultation}
             </Link>
 
             <Link
               href="#visual-examples"
               className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
             >
-              制作実績
+              {t.hero.stickyPortfolio}
             </Link>
           </div>
         </div>

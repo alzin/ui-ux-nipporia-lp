@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import navLinks from "@/content/header/navLinks";
+import { useLanguage } from "@/i18n/LanguageContext";
+import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +17,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { href: "/#problems", title: t.nav.problems },
+    { href: "/#transformation", title: t.nav.transformation },
+    { href: "/#visual-examples", title: t.nav.visualExamples },
+    { href: "/#services", title: t.nav.services },
+    { href: "/#process", title: t.nav.process },
+    { href: "/#pricing", title: t.nav.pricing },
+    { href: "/#contact", title: t.nav.contact },
+    { href: "/blogs", title: t.nav.blog },
+  ];
+
   return (
     <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${
-      scrolled 
-        ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10" 
+      scrolled
+        ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
         : "bg-white/70 backdrop-blur-md"
     }`}>
       <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center">
@@ -28,7 +41,7 @@ export default function Header() {
         >
           Nipporia
         </Link>
-        <ul className="hidden md:flex gap-6">
+        <ul className="hidden md:flex gap-6 items-center">
           {navLinks.map((link, _index) => (
             <li key={_index}>
               <Link
@@ -39,42 +52,48 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          <li>
+            <LanguageSwitcher />
+          </li>
         </ul>
-        <div
-          role="button"
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-          className={`md:hidden flex flex-col gap-1.5 cursor-pointer p-2 ${
-            isMenuOpen ? "open" : ""
-          }`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              setIsMenuOpen(!isMenuOpen);
-            }
-          }}
-        >
-          <span
-            className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-            style={
-              isMenuOpen
-                ? { transform: "rotate(45deg) translate(4px, 4px)" }
-                : {}
-            }
-          ></span>
-          <span
-            className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-            style={isMenuOpen ? { opacity: 0 } : {}}
-          ></span>
-          <span
-            className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-            style={
-              isMenuOpen
-                ? { transform: "rotate(-45deg) translate(5px, -5px)" }
-                : {}
-            }
-          ></span>
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageSwitcher />
+          <div
+            role="button"
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            className={`flex flex-col gap-1.5 cursor-pointer p-2 ${
+              isMenuOpen ? "open" : ""
+            }`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                setIsMenuOpen(!isMenuOpen);
+              }
+            }}
+          >
+            <span
+              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
+              style={
+                isMenuOpen
+                  ? { transform: "rotate(45deg) translate(4px, 4px)" }
+                  : {}
+              }
+            ></span>
+            <span
+              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
+              style={isMenuOpen ? { opacity: 0 } : {}}
+            ></span>
+            <span
+              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
+              style={
+                isMenuOpen
+                  ? { transform: "rotate(-45deg) translate(5px, -5px)" }
+                  : {}
+              }
+            ></span>
+          </div>
         </div>
       </div>
       <ul

@@ -1,16 +1,9 @@
 "use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 import { OldDesignIcon, LowTrafficIcon, HardToMaintainIcon } from "./ProblemIcons";
-
-type Problem = {
-  title: string;
-  description: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  color: string;     // gradient classes
-  iconColor: string; // text color classes
-};
 
 export default function ProblemSection() {
   const sectionRef = useScrollAnimation({
@@ -19,28 +12,13 @@ export default function ProblemSection() {
     staggerDelay: 150,
   });
 
-  const problems: Problem[] = [
-    {
-      title: "古いデザイン",
-      description: "10年前のようなデザインで、競合他社に比べて見劣りする。モバイル対応もできていない。",
-      icon: OldDesignIcon,
-      color: "from-red-400 to-orange-400",
-      iconColor: "text-red-500",
-    },
-    {
-      title: "低いトラフィック",
-      description: "検索エンジンからの流入がほとんどなく、月間訪問者数が数百人程度で停滞している。",
-      icon: LowTrafficIcon,
-      color: "from-orange-400 to-yellow-400",
-      iconColor: "text-orange-500",
-    },
-    {
-      title: "メンテナンスが困難",
-      description: "古いコードで構築されており、小さな変更にも多大な時間とコストがかかる。",
-      icon: HardToMaintainIcon,
-      color: "from-yellow-400 to-green-400",
-      iconColor: "text-amber-600",
-    },
+  const { t } = useLanguage();
+
+  const icons = [OldDesignIcon, LowTrafficIcon, HardToMaintainIcon];
+  const colors = [
+    { color: "from-red-400 to-orange-400", iconColor: "text-red-500" },
+    { color: "from-orange-400 to-yellow-400", iconColor: "text-orange-500" },
+    { color: "from-yellow-400 to-green-400", iconColor: "text-amber-600" },
   ];
 
   return (
@@ -54,11 +32,12 @@ export default function ProblemSection() {
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan-200/30 rounded-full blur-3xl" />
 
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
-        <SectionTitle title="こんな問題で悩んでいませんか？" />
+        <SectionTitle title={t.problems.sectionTitle} />
 
         <div className="animate-slide grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {problems.map((problem, index) => {
-            const Icon = problem.icon;
+          {t.problems.items.map((problem, index) => {
+            const Icon = icons[index];
+            const { color, iconColor } = colors[index];
 
             return (
               <div
@@ -67,18 +46,18 @@ export default function ProblemSection() {
               >
                 {/* Gradient wash on hover */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${problem.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
+                  className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
                 />
 
                 {/* Icon (SVG) */}
                 <div className="relative w-16 h-16 mb-6">
                   {/* icon background */}
                   <div
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${problem.color} opacity-10 group-hover:opacity-15 transition-opacity duration-300`}
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${color} opacity-10 group-hover:opacity-15 transition-opacity duration-300`}
                   />
                   {/* icon itself */}
                   <div
-                    className={`relative z-10 h-full w-full flex items-center justify-center ${problem.iconColor} group-hover:scale-110 transition-transform duration-300`}
+                    className={`relative z-10 h-full w-full flex items-center justify-center ${iconColor} group-hover:scale-110 transition-transform duration-300`}
                   >
                     <Icon className="w-10 h-10" />
                   </div>
@@ -96,7 +75,7 @@ export default function ProblemSection() {
 
                 {/* Bottom accent line */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${problem.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
                 />
               </div>
             );

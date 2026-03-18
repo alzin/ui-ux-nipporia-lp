@@ -2,6 +2,7 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useFormHandler } from "@/hooks/useFormHandler";
 import SectionTitle from "@/components/common/components/SectionTitle";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function CTASection() {
   const sectionRef = useScrollAnimation({
@@ -11,6 +12,7 @@ export default function CTASection() {
 
   const { formData, isSubmitting, handleInputChange, handleSubmit, setClick } =
     useFormHandler();
+  const { t } = useLanguage();
 
   return (
     <section
@@ -24,14 +26,14 @@ export default function CTASection() {
 
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle
-          title="今すぐWebサイトを変革しましょう"
-          description="無料相談で、あなたのWebサイトの可能性をお見せします"
+          title={t.contact.sectionTitle}
+          description={t.contact.sectionDescription}
         />
         <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-white/90 backdrop-blur-sm py-8 px-6 md:p-12 rounded-3xl shadow-xl border border-purple-100">
           <form onSubmit={handleSubmit} className="space-y-6 text-left">
             <div className="mb-4 md:mb-6">
               <label htmlFor="company" className="block mb-2 text-gray-700 font-medium">
-                会社名
+                {t.contact.companyLabel}
               </label>
               <input
                 type="text"
@@ -47,7 +49,7 @@ export default function CTASection() {
 
             <div className="mb-4 md:mb-6">
               <label htmlFor="name" className="block mb-2 text-gray-700 font-medium">
-                お名前
+                {t.contact.nameLabel}
               </label>
               <input
                 type="text"
@@ -63,7 +65,7 @@ export default function CTASection() {
 
             <div className="mb-6">
               <label htmlFor="email" className="block mb-2 text-gray-700 font-medium">
-                メールアドレス
+                {t.contact.emailLabel}
               </label>
               <input
                 type="email"
@@ -79,7 +81,7 @@ export default function CTASection() {
 
             <div className="mb-4 md:mb-6">
               <label htmlFor="website" className="block mb-2 text-gray-700 font-medium">
-                現在のWebサイトURL（任意）
+                {t.contact.websiteLabel}
               </label>
               <input
                 type="url"
@@ -94,7 +96,7 @@ export default function CTASection() {
 
             <div className="mb-4 md:mb-6">
               <label htmlFor="message" className="block mb-2 text-gray-700 font-medium">
-                お悩み・ご要望
+                {t.contact.messageLabel}
               </label>
               <textarea
                 id="message"
@@ -113,7 +115,7 @@ export default function CTASection() {
               onClick={() => setClick(true)}
               className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-xl font-bold text-lg hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
             >
-              {isSubmitting ? "送信中..." : "無料相談を申し込む"}
+              {isSubmitting ? t.contact.submitting : t.contact.submitButton}
             </button>
           </form>
         </div>

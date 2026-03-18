@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import { baseUrl } from "@/utils/baseUrl";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 
 export const metadata: Metadata = {
   icons: "/favicon.ico",
@@ -92,9 +93,11 @@ export default function RootLayout({
             '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif',
         }}
       >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

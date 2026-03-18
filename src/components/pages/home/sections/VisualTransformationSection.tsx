@@ -6,6 +6,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import LaptopMockup from "../components/LaptopMockup";
 import PhoneMockup from "../components/PhoneMockup";
 import { projects } from "../components/ProjectData";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function VisualTransformationSection() {
   const sectionRef = useScrollAnimation({
@@ -13,6 +14,7 @@ export default function VisualTransformationSection() {
     staggerDelay: 230,
   });
 
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -49,13 +51,13 @@ export default function VisualTransformationSection() {
 
       <div className="max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
         <SectionTitle
-          title="制作実績"
-          description="クライアント様の実際のプロジェクトをご覧ください"
+          title={t.visualTransformation.sectionTitle}
+          description={t.visualTransformation.description}
         />
 
         {/* Device Mockups and Navigation */}
         <div className="animate-slide relative group mb-12 px-2 md:px-14">
-          
+
           {/* Main Device Mockups */}
           <div className="flex items-center justify-center w-full mx-auto">
             {/* Laptop */}
@@ -79,7 +81,7 @@ export default function VisualTransformationSection() {
           <button
             onClick={handlePrev}
             className="absolute left-0 lg:left-0 top-[40%] md:top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-4 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 opacity-0 group-hover:opacity-100 sm:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            aria-label="前のプロジェクト"
+            aria-label={t.visualTransformation.prevProject}
           >
             <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -89,7 +91,7 @@ export default function VisualTransformationSection() {
           <button
             onClick={handleNext}
             className="absolute right-0 lg:right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-30 p-2.5 md:p-4 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 opacity-0 group-hover:opacity-100 sm:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            aria-label="次のプロジェクト"
+            aria-label={t.visualTransformation.nextProject}
           >
             <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />

@@ -1,6 +1,7 @@
 "use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function ProcessSection() {
   const sectionRef = useScrollAnimation({
@@ -8,35 +9,13 @@ export default function ProcessSection() {
     staggerDelay: 200,
   });
 
-  const processes = [
-    {
-      number: "01",
-      title: "無料相談",
-      description: "現状のWebサイトの課題をヒアリングし、改善の方向性をご提案します。",
-      icon: "",
-      color: "from-purple-400 to-indigo-400"
-    },
-    {
-      number: "02",
-      title: "分析・提案",
-      description: "詳細な分析を行い、具体的な改善プランと見積もりをご提示します。",
-      icon: "",
-      color: "from-pink-400 to-rose-400"
-    },
-    {
-      number: "03",
-      title: "デザイン・開発",
-      description: "最新技術を活用し、高品質なWebサイトを構築します。",
-      icon: "",
-      color: "from-cyan-400 to-blue-400"
-    },
-    {
-      number: "04",
-      title: "公開・運用",
-      description: "サイト公開後も継続的なサポートで成長を支援します。",
-      icon: "",
-      color: "from-green-400 to-emerald-400"
-    },
+  const { t } = useLanguage();
+
+  const processesMeta = [
+    { number: "01", icon: "", color: "from-purple-400 to-indigo-400" },
+    { number: "02", icon: "", color: "from-pink-400 to-rose-400" },
+    { number: "03", icon: "", color: "from-cyan-400 to-blue-400" },
+    { number: "04", icon: "", color: "from-green-400 to-emerald-400" },
   ];
 
   return (
@@ -46,41 +25,44 @@ export default function ProcessSection() {
       ref={sectionRef}
     >
       <div className="max-w-[1000px] mx-auto px-8">
-        <SectionTitle title="ご利用の流れ" />
+        <SectionTitle title={t.process.sectionTitle} />
 
         <div className="animate-slide relative mt-16">
           {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-400 via-pink-400 to-cyan-400 rounded-full hidden md:block"></div>
 
           <div className="space-y-12">
-            {processes.map((process, index) => (
-              <div
-                key={index}
-                className={`relative flex items-center gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } flex-col md:flex-row`}
-              >
-                {/* Content card */}
-                <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                  <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 border border-gray-100">
-                    <div className={`inline-flex items-center gap-3 mb-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                      <span className={`w-12 h-12 flex items-center justify-center text-2xl bg-gradient-to-br ${process.color} rounded-xl text-white shadow-lg`}>
-                        {process.icon}
-                      </span>
-                      <span className="text-3xl font-bold text-gray-200">{process.number}</span>
+            {t.process.steps.map((step, index) => {
+              const meta = processesMeta[index];
+              return (
+                <div
+                  key={index}
+                  className={`relative flex items-center gap-8 ${
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  } flex-col md:flex-row`}
+                >
+                  {/* Content card */}
+                  <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                    <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 border border-gray-100">
+                      <div className={`inline-flex items-center gap-3 mb-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                        <span className={`w-12 h-12 flex items-center justify-center text-2xl bg-gradient-to-br ${meta.color} rounded-xl text-white shadow-lg`}>
+                          {meta.icon}
+                        </span>
+                        <span className="text-3xl font-bold text-gray-200">{meta.number}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-3">{step.title}</h3>
+                      <p className="text-gray-600">{step.description}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">{process.title}</h3>
-                    <p className="text-gray-600">{process.description}</p>
                   </div>
+
+                  {/* Center dot */}
+                  <div className="hidden md:flex w-6 h-6 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+
+                  {/* Spacer */}
+                  <div className="flex-1 hidden md:block"></div>
                 </div>
-
-                {/* Center dot */}
-                <div className="hidden md:flex w-6 h-6 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-
-                {/* Spacer */}
-                <div className="flex-1 hidden md:block"></div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

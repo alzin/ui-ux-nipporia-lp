@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { TFormData } from "@/types/formData.type";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const initialFormData: TFormData = {
   company: "",
@@ -14,6 +15,7 @@ export const useFormHandler = () => {
   const [formData, setFormData] = useState<TFormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [click, setClick] = useState(false);
+  const { t } = useLanguage();
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -30,8 +32,8 @@ export const useFormHandler = () => {
     setIsSubmitting(true);
 
     Swal.fire({
-      title: "送信しています...",
-      html: "そのままお待ちください。",
+      title: t.form.sendingTitle,
+      html: t.form.sendingMessage,
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
@@ -46,17 +48,15 @@ export const useFormHandler = () => {
       });
 
       if (!response.ok) {
-        throw new Error(
-          "サーバーエラーが発生しました。もう一度お試しください。"
-        );
+        throw new Error(t.form.serverError);
       }
       setFormData(initialFormData);
 
       Swal.close();
       await Swal.fire({
         icon: "success",
-        title: "送信が完了しました",
-        html: `メールを送信しました。<br />確認メールをお送りしましたので、<br />ご確認ください。<br /> <br />
+        title: t.form.successTitle,
+        html: `${t.form.successMessage}<br /> <br />
           <button id="close-modal" class="close-button">x</button>`,
         showConfirmButton: false,
         customClass: {
@@ -77,8 +77,8 @@ export const useFormHandler = () => {
       const errMsg = error instanceof Error ? error.message : "Unknown error";
       Swal.fire({
         icon: "error",
-        title: "エラー発生！",
-        text: `送信中にエラーが発生しました: ${errMsg}`,
+        title: t.form.errorTitle,
+        text: `${t.form.errorMessage}: ${errMsg}`,
       });
     } finally {
       setIsSubmitting(false);

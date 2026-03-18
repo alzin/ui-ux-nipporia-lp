@@ -1,7 +1,10 @@
+"use client";
 import Link from "next/link";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-gradient-to-br from-[#f6effb] via-[#eddcf6] to-[#e7d2f1] text-slate-900 py-16 relative overflow-hidden">
@@ -22,14 +25,14 @@ const Footer = () => {
             </Link>
 
             <p className="mt-4 text-slate-700 leading-relaxed">
-              ビジネス成長を生むウェブサイトへ変革します。プロ品質のデザインで、集客を伸ばす。
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-4 text-slate-900">
-              クイックリンク
+              {t.footer.quickLinks}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -37,7 +40,7 @@ const Footer = () => {
                   href="/#services"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  サービス
+                  {t.footer.quickLinkItems.services}
                 </Link>
               </li>
               <li>
@@ -45,7 +48,7 @@ const Footer = () => {
                   href="/#pricing"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  料金プラン
+                  {t.footer.quickLinkItems.pricing}
                 </Link>
               </li>
               <li>
@@ -53,7 +56,7 @@ const Footer = () => {
                   href="/#transformation"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  変革事例
+                  {t.footer.quickLinkItems.transformation}
                 </Link>
               </li>
               <li>
@@ -61,7 +64,7 @@ const Footer = () => {
                   href="/blogs"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  ブログ
+                  {t.footer.quickLinkItems.blog}
                 </Link>
               </li>
               <li>
@@ -69,7 +72,7 @@ const Footer = () => {
                   href="/#contact"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  お問い合わせ
+                  {t.footer.quickLinkItems.contact}
                 </Link>
               </li>
             </ul>
@@ -77,14 +80,14 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-slate-900">法的情報</h3>
+            <h3 className="text-lg font-bold mb-4 text-slate-900">{t.footer.legalTitle}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/privacy-policy"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  プライバシーポリシー
+                  {t.footer.legalItems.privacy}
                 </Link>
               </li>
               <li>
@@ -92,7 +95,7 @@ const Footer = () => {
                   href="/terms-of-service"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  利用規約
+                  {t.footer.legalItems.terms}
                 </Link>
               </li>
               <li>
@@ -100,7 +103,7 @@ const Footer = () => {
                   href="/commerce-disclosure"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  特定商取引法に基づく表記
+                  {t.footer.legalItems.commerce}
                 </Link>
               </li>
             </ul>
@@ -110,7 +113,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-slate-900/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-sm">
-            © {currentYear} Nipporia. All rights reserved.
+            &copy; {currentYear} Nipporia. All rights reserved.
           </p>
 
           <div className="flex gap-6">
@@ -124,7 +127,7 @@ const Footer = () => {
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
               </svg>
-            </a>  
+            </a>
             <a
               href="https://www.linkedin.com/company/nipporia/"
               target="_blank"

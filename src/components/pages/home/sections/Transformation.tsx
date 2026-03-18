@@ -1,6 +1,7 @@
 "use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function TransformationSection() {
   const sectionRef = useScrollAnimation({
@@ -9,6 +10,9 @@ export default function TransformationSection() {
     staggerDelay: 200,
   });
 
+  const { t } = useLanguage();
+  const m = t.transformation.metrics;
+
   return (
     <section
       id="transformation"
@@ -16,21 +20,21 @@ export default function TransformationSection() {
       ref={sectionRef}
     >
       <div className="max-w-[1200px] mx-auto px-8">
-        <SectionTitle title="実際の変革事例" />
+        <SectionTitle title={t.transformation.sectionTitle} />
 
         <div className="animate-slide grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
           {/* Before Card */}
           <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-red-100">
             <div className="bg-gradient-to-r from-red-400 to-orange-400 text-white text-center py-5 font-bold text-xl">
-              変革前
+              {t.transformation.before}
             </div>
             <div className="p-8 space-y-4">
               {[
-                { label: "月間訪問者数", value: "320人", icon: "" },
-                { label: "直帰率", value: "85%", icon: "" },
-                { label: "平均滞在時間", value: "32秒", icon: "" },
-                { label: "モバイル対応", value: "×", icon: "" },
-                { label: "ページ読み込み速度", value: "8.2秒", icon: "" },
+                { label: m.monthlyVisitors, value: "320", icon: "" },
+                { label: m.bounceRate, value: "85%", icon: "" },
+                { label: m.avgDuration, value: "32s", icon: "" },
+                { label: m.mobileReady, value: "×", icon: "" },
+                { label: m.pageSpeed, value: "8.2s", icon: "" },
               ].map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">
@@ -46,15 +50,15 @@ export default function TransformationSection() {
           {/* After Card */}
           <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-green-100">
             <div className="bg-gradient-to-r from-green-400 to-cyan-400 text-white text-center py-5 font-bold text-xl">
-              変革後
+              {t.transformation.after}
             </div>
             <div className="p-8 space-y-4">
               {[
-                { label: "月間訪問者数", value: "15,800人", icon: "" },
-                { label: "直帰率", value: "35%", icon: "" },
-                { label: "平均滞在時間", value: "3分45秒", icon: "" },
-                { label: "モバイル対応", value: "✓", icon: "" },
-                { label: "ページ読み込み速度", value: "1.8秒", icon: "" },
+                { label: m.monthlyVisitors, value: "15,800", icon: "" },
+                { label: m.bounceRate, value: "35%", icon: "" },
+                { label: m.avgDuration, value: "3m 45s", icon: "" },
+                { label: m.mobileReady, value: "✓", icon: "" },
+                { label: m.pageSpeed, value: "1.8s", icon: "" },
               ].map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">
