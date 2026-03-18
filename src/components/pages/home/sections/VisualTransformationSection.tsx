@@ -57,9 +57,9 @@ export default function VisualTransformationSection() {
         <div className="animate-slide relative group mb-12 px-2 md:px-14">
           
           {/* Main Device Mockups */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 xl:gap-12 w-full max-w-[1200px] mx-auto">
+          <div className="flex items-center justify-center w-full mx-auto">
             {/* Laptop */}
-            <div className="w-full lg:flex-[1.5]">
+            <div className="hidden md:block w-full">
               <LaptopMockup
                 url={activeProject.desktopUrl}
                 isActive={!isTransitioning}
@@ -67,7 +67,7 @@ export default function VisualTransformationSection() {
             </div>
 
             {/* Phone */}
-            <div className="flex-shrink-0 transform scale-90 md:scale-95 lg:scale-[0.85]">
+            <div className="block md:hidden flex-shrink-0 transform scale-90">
               <PhoneMockup
                 url={activeProject.mobileUrl}
                 isActive={!isTransitioning}

@@ -85,6 +85,7 @@ export default function RootLayout({
       </head>
       <GoogleTagManager gtmId="G-your-gtm-id" />
       <body
+        suppressHydrationWarning
         className="min-h-screen flex flex-col"
         style={{
           fontFamily:

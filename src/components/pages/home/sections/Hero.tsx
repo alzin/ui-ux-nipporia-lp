@@ -9,12 +9,24 @@ export default function Hero() {
   const subtitle = "プロ品質のデザインで、集客を伸ばす。";
 
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [mockupVisible, setMockupVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowStickyCTA(window.scrollY > 300);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const target = document.getElementById("visual-examples");
+    if (!target) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setMockupVisible(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -101,11 +113,11 @@ export default function Hero() {
       {/* Desktop Sticky CTA (md+) - Right side vertical */}
       <div
         className={`hidden md:block fixed right-0 top-1/2 -translate-y-1/2 z-[9999] transition-all duration-500 ease-out ${
-          showStickyCTA
+          showStickyCTA && !mockupVisible
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA}
+        aria-hidden={!showStickyCTA || mockupVisible}
       >
         <div className="relative">
           {/* Glowing background effect */}
@@ -174,11 +186,11 @@ export default function Hero() {
       {/* Mobile Sticky CTA (below md) - Bottom bar */}
       <div
         className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${
-          showStickyCTA
+          showStickyCTA && !mockupVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA}
+        aria-hidden={!showStickyCTA || mockupVisible}
       >
         <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
           <div className="flex gap-2">
