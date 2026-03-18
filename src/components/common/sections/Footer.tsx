@@ -52,7 +52,7 @@ const Footer = () => {
                   href="/#process"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  {t.footer.quickLinkItems.process || t.nav.process}
+                  {t.nav.process}
                 </Link>
               </li>
               <li>
