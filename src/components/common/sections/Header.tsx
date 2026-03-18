@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
@@ -18,13 +19,8 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/#problems", title: t.nav.problems },
-    { href: "/#transformation", title: t.nav.transformation },
-    { href: "/#visual-examples", title: t.nav.visualExamples },
-    { href: "/#services", title: t.nav.services },
     { href: "/#process", title: t.nav.process },
     { href: "/#pricing", title: t.nav.pricing },
-    { href: "/#contact", title: t.nav.contact },
     { href: "/blogs", title: t.nav.blog },
   ];
 
@@ -34,29 +30,51 @@ export default function Header() {
         ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
         : "bg-white/70 backdrop-blur-md"
     }`}>
-      <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center">
+        {/* Logo - fixed left */}
         <Link
           href={"/"}
-          className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text bg-[length:200%_200%] animate-gradientShift hover:scale-105 transition-transform duration-300"
+          className="shrink-0 hover:scale-105 transition-transform duration-300 flex items-center gap-2"
         >
-          Nipporia
+          <div className="w-10 h-10 rounded-lg overflow-hidden relative">
+            <Image
+              src="/images/og-image.jpg"
+              alt="Nipporia"
+              width={200}
+              height={200}
+              className="absolute scale-[2] top-[20%] left-[0%]"
+            />
+          </div>
+          <span className="text-xl font-bold text-[#1a2744] uppercase tracking-[0.15em]">
+            Nipporia
+          </span>
         </Link>
-        <ul className="hidden md:flex gap-6 items-center">
+
+        {/* Nav links - center */}
+        <ul className="hidden lg:flex gap-8 items-center justify-center flex-1 mx-4">
           {navLinks.map((link, _index) => (
             <li key={_index}>
               <Link
                 href={link.href}
-                className="text-gray-700 font-medium relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
+                className="text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.title}
               </Link>
             </li>
           ))}
-          <li>
-            <LanguageSwitcher />
-          </li>
         </ul>
-        <div className="flex items-center gap-3 md:hidden">
+
+        {/* Contact Button & Language - right */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <Link
+            href="/#contact"
+            className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 text-sm whitespace-nowrap"
+          >
+            {t.nav.contact}
+          </Link>
+          <LanguageSwitcher />
+        </div>
+        <div className="flex items-center gap-3 lg:hidden ml-auto">
           <LanguageSwitcher />
           <div
             role="button"
@@ -97,7 +115,7 @@ export default function Header() {
         </div>
       </div>
       <ul
-        className={`md:hidden bg-white/95 backdrop-blur-xl p-6 transition-all duration-300 ease-in-out border-t border-purple-100 ${
+        className={`lg:hidden bg-white/95 backdrop-blur-xl p-6 transition-all duration-300 ease-in-out border-t border-purple-100 ${
           isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 hidden"
         }`}
       >
@@ -112,6 +130,15 @@ export default function Header() {
             </Link>
           </li>
         ))}
+        <li className="py-3">
+          <Link
+            href="/#contact"
+            className="inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 text-sm"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {t.nav.contact}
+          </Link>
+        </li>
       </ul>
     </nav>
   );

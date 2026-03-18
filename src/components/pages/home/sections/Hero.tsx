@@ -109,76 +109,72 @@ export default function Hero() {
 
       {/* ===================== Sticky CTAs (Responsive) ===================== */}
 
-      {/* Desktop Sticky CTA (md+) - Right side vertical */}
+      {/* Desktop Sticky CTA (md+) - Right side minimal tab */}
       <div
-        className={`hidden md:block fixed right-0 top-1/2 -translate-y-1/2 z-[9999] transition-all duration-500 ease-out ${
+        className={`hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex-col items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           showStickyCTA && !mockupVisible
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
         aria-hidden={!showStickyCTA || mockupVisible}
       >
-        <div className="relative">
-          {/* Glowing background effect */}
-          <div className="absolute inset-0 bg-gradient-to-b from-purple-500/20 via-pink-500/20 to-cyan-500/20 blur-xl rounded-l-3xl" />
+        {/* Primary CTA - consultation tab */}
+        <Link
+          href="#contact"
+          className="group relative flex items-center gap-3 pl-5 pr-4 py-3.5 rounded-l-full bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 hover:pl-7"
+        >
+          {/* Pulse ring */}
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 w-2 h-2">
+            <span className="absolute inset-0 bg-emerald-400 rounded-full animate-ping opacity-75" />
+            <span className="relative block w-2 h-2 bg-emerald-400 rounded-full" />
+          </span>
+          <svg
+            className="w-4 h-4 flex-shrink-0 ml-2 transition-transform duration-300 group-hover:rotate-12"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            />
+          </svg>
+          <span className="whitespace-nowrap">{t.hero.stickyConsultation}</span>
+          <svg className="w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
 
-          {/* Main container */}
-          <div className="relative bg-white/95 backdrop-blur-xl rounded-l-2xl shadow-2xl shadow-purple-500/20 border border-purple-100 border-r-0 overflow-hidden">
-            {/* Gradient accent line */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-cyan-500" />
+        {/* Secondary CTA - portfolio tab */}
+        <Link
+          href="#visual-examples"
+          className="group flex items-center gap-2.5 pl-5 pr-4 py-3 rounded-l-full bg-white/90 backdrop-blur-md border border-gray-200 text-[#1a2744] font-semibold text-sm shadow-lg shadow-gray-200/50 hover:shadow-xl hover:bg-white hover:border-purple-300 transition-all duration-300 hover:pl-7"
+        >
+          <svg
+            className="w-4 h-4 flex-shrink-0 text-purple-500 transition-transform duration-300 group-hover:scale-110"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+            />
+          </svg>
+          <span className="whitespace-nowrap">{t.hero.stickyPortfolio}</span>
+          <svg className="w-4 h-4 flex-shrink-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
 
-            {/* Content */}
-            <div className="flex flex-col gap-3 p-4 pl-5">
-              {/* Primary CTA */}
-              <Link
-                href="#contact"
-                className="group relative flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold text-sm shadow-lg hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <svg
-                  className="relative w-5 h-5 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-                <span className="relative whitespace-nowrap">{t.hero.stickyConsultation}</span>
-              </Link>
-
-              {/* Secondary CTA */}
-              <Link
-                href="#visual-examples"
-                className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm hover:border-purple-500 hover:bg-purple-50 transition-all duration-300"
-              >
-                <svg
-                  className="w-5 h-5 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                  />
-                </svg>
-                <span className="whitespace-nowrap">{t.hero.stickyPortfolio}</span>
-              </Link>
-
-              {/* Subtle indicator */}
-              <div className="flex items-center justify-center gap-1.5 pt-1">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs text-gray-500">{t.hero.accepting}</span>
-              </div>
-            </div>
-          </div>
+        {/* Accepting badge */}
+        <div className="flex items-center gap-1.5 pr-4 pl-4 py-1.5 rounded-l-full bg-emerald-50/90 backdrop-blur-sm border border-emerald-200/50">
+          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+          <span className="text-[11px] font-medium text-emerald-700 whitespace-nowrap">{t.hero.accepting}</span>
         </div>
       </div>
 

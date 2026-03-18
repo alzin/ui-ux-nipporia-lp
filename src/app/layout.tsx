@@ -4,6 +4,7 @@ import Script from "next/script";
 import "../styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
+import FloatingSocial from "@/components/common/components/FloatingSocial";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 
@@ -95,6 +96,7 @@ export default function RootLayout({
       >
         <LanguageProvider>
           <Header />
+          <FloatingSocial />
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
