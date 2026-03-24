@@ -76,7 +76,7 @@ export default function TechLogoMarquee() {
           "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
       }}
     >
-      <div className="flex animate-marquee will-change-transform motion-reduce:animate-none">
+      <div className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none">
         {[0, 1].map((copy) => (
           <div
             key={copy}
