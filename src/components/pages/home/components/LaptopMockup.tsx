@@ -1,39 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface LaptopMockupProps {
   url: string;
   isActive: boolean;
 }
 
+const DESKTOP_ZOOM_LG = 0.59;
+const DESKTOP_ZOOM_MD = 0.52;
+const DESKTOP_ZOOM_SM = 0.43;
+const DESKTOP_ZOOM_XS = 0.25;
+
+const getZoomByViewport = () => {
+  if (typeof window === "undefined") return DESKTOP_ZOOM_LG;
+  const width = window.innerWidth;
+  if (width < 420) return DESKTOP_ZOOM_XS;
+  if (width < 768) return DESKTOP_ZOOM_SM;
+  if (width < 1024) return DESKTOP_ZOOM_MD;
+  return DESKTOP_ZOOM_LG;
+};
+
 export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [desktopZoom, setDesktopZoom] = useState(DESKTOP_ZOOM_LG);
+
+  useEffect(() => {
+    const updateZoom = () => setDesktopZoom(getZoomByViewport());
+    updateZoom();
+    window.addEventListener("resize", updateZoom);
+    return () => window.removeEventListener("resize", updateZoom);
+  }, []);
+
+  const desktopZoomPercent = `${100 / desktopZoom}%`;
+
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [url]);
 
   return (
     <div
       className={`transition-all duration-700 ${
-        isActive ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        isActive
+          ? "opacity-100 scale-100 translate-y-0"
+          : "opacity-0 scale-[0.99] -translate-y-1"
       }`}
     >
       {/* Laptop Screen */}
-      <div className="relative">
+      <div className="relative w-full">
         {/* Screen bezel */}
-        <div className="bg-[#1c1c1e] rounded-t-2xl p-[8px] pb-0 shadow-2xl shadow-black/50">
+        <div className="bg-[#1c1c1e] rounded-t-[1.2rem] md:rounded-t-[1.5rem] p-[6px] md:p-[8px] pb-0 shadow-[0_24px_58px_-30px_rgba(2,6,23,0.82)] ring-1 ring-white/5">
           {/* Camera notch */}
           <div className="flex justify-center mb-[6px]">
             <div className="w-2 h-2 rounded-full bg-[#2a2a2e] ring-1 ring-[#3a3a3e]" />
           </div>
 
           {/* Browser chrome */}
-          <div className="bg-[#2a2a2e] rounded-t-[4px] px-3 py-1.5 flex items-center gap-2">
+          <div className="bg-[#2a2a2e] rounded-t-[6px] px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 md:gap-2">
             <div className="flex items-center gap-1.5">
               <div className="w-[10px] h-[10px] rounded-full bg-[#ff5f57]" />
               <div className="w-[10px] h-[10px] rounded-full bg-[#febc2e]" />
               <div className="w-[10px] h-[10px] rounded-full bg-[#28c840]" />
             </div>
-            <div className="flex-1 mx-2">
-              <div className="bg-[#1c1c1e] rounded-md px-3 py-1 text-[10px] text-slate-400 font-mono truncate text-center">
+            <div className="flex-1 mx-1.5 md:mx-2 min-w-0">
+              <div className="bg-[#1c1c1e] rounded-md px-2 md:px-3 py-1 text-[9px] md:text-[10px] text-slate-400 font-mono truncate text-center">
                 {url}
               </div>
             </div>
@@ -63,8 +93,8 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
 
           {/* Screen area with iframe */}
           <div
-            className="relative bg-white overflow-hidden"
-            style={{ width: "100%", aspectRatio: "16 / 10" }}
+            className="relative bg-white overflow-hidden rounded-b-[8px]"
+            style={{ width: "100%", aspectRatio: "16 / 7.5" }}
           >
             {/* Loading state */}
             {!isLoaded && (
@@ -79,8 +109,15 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
             <iframe
               src={url}
               title="Desktop preview"
-              className="w-full h-full border-0"
-              style={{ width: "100%", height: "100%" }}
+              className="border-0"
+              style={{
+                width: desktopZoomPercent,
+                height: desktopZoomPercent,
+                transform: `scale(${desktopZoom})`,
+                transformOrigin: "top left",
+                overflow: "hidden",
+                scrollbarWidth: "none",
+              }}
               onLoad={() => setIsLoaded(true)}
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
               loading="lazy"
@@ -94,20 +131,20 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
         {/* Laptop base / hinge */}
         <div className="relative">
           {/* Hinge */}
-          <div className="h-[6px] bg-gradient-to-b from-[#2a2a2e] to-[#3a3a3e]" />
+          <div className="h-[4px] md:h-[5px] bg-gradient-to-b from-[#2a2a2e] to-[#3a3a3e]" />
           {/* Base */}
           <div
-            className="bg-gradient-to-b from-[#c0c0c4] to-[#a8a8ac] mx-auto"
+            className="bg-gradient-to-b from-[#c8c8cc] to-[#a8a8ac] mx-auto shadow-[0_18px_28px_-25px_rgba(15,23,42,0.9)]"
             style={{
-              width: "110%",
-              marginLeft: "-5%",
-              height: "12px",
-              borderRadius: "0 0 12px 12px",
+              width: "104%",
+              marginLeft: "-2%",
+              height: "9px",
+              borderRadius: "0 0 9px 9px",
             }}
           >
             {/* Trackpad indent */}
             <div className="flex justify-center pt-[2px]">
-              <div className="w-16 h-[3px] bg-[#b0b0b4] rounded-full" />
+              <div className="w-12 md:w-16 h-[3px] bg-[#b0b0b4] rounded-full" />
             </div>
           </div>
         </div>

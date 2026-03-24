@@ -1,14 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PhoneMockupProps {
   url: string;
   isActive: boolean;
 }
 
+const PHONE_ZOOM_MOBILE = 0.45;
+const SCROLLBAR_MASK_PX = 18;
+
+
 export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const phoneZoom = PHONE_ZOOM_MOBILE;
+
+  const phoneZoomPercent = `${100 / phoneZoom}%`;
+  const phoneZoomMaskedPercent = `calc(${phoneZoomPercent} + ${SCROLLBAR_MASK_PX}px)`;
+
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [url]);
 
   return (
     <div
@@ -19,9 +31,9 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
       }`}
     >
       {/* Phone Frame */}
-      <div className="relative">
+      <div className="relative w-full">
         {/* Outer frame */}
-        <div className="bg-[#1c1c1e] rounded-[2.5rem] p-[6px] shadow-2xl shadow-black/60 ring-1 ring-[#3a3a3e]">
+        <div className="bg-[#1c1c1e] rounded-[2.5rem] p-[6px] shadow-[0_30px_60px_-34px_rgba(2,6,23,0.9)] ring-1 ring-[#3a3a3e]">
           {/* Inner frame */}
           <div className="bg-black rounded-[2.2rem] overflow-hidden relative">
             {/* Dynamic Island */}
@@ -33,8 +45,8 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
 
             {/* Screen content with iframe */}
             <div
-              className="relative overflow-hidden bg-white"
-              style={{ width: "300px", height: "600px" }}
+              className="relative overflow-hidden bg-white w-full max-w-[340px] mx-auto"
+              style={{ aspectRatio: "1 / 2" }}
             >
               {/* Loading state */}
               {!isLoaded && (
@@ -48,25 +60,24 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                 </div>
               )}
 
-              {/* Scale trick: render at 390px then scale to fit 300px width */}
-              <div
+              <iframe
+                src={url}
+                title="Mobile preview"
+                className="border-0"
                 style={{
-                  width: "390px",
-                  height: "780px",
-                  transform: "scale(0.769)",
+                  width: phoneZoomMaskedPercent,
+                  height: phoneZoomMaskedPercent,
+                  transform: `scale(${phoneZoom})`,
                   transformOrigin: "top left",
+                  overflow: "auto",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
                 }}
-              >
-                <iframe
-                  src={url}
-                  title="Mobile preview"
-                  className="border-0"
-                  style={{ width: "390px", height: "780px" }}
-                  onLoad={() => setIsLoaded(true)}
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                  loading="lazy"
-                />
-              </div>
+                onLoad={() => setIsLoaded(true)}
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                loading="lazy"
+                scrolling="yes"
+              />
 
               {/* Subtle screen reflection */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />

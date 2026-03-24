@@ -47,7 +47,7 @@ export default function FloatingSocial() {
 
   return (
     <div
-      className={`fixed left-0 top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ${
+      className={`hidden md:block fixed left-0 top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ${
         visible
           ? "opacity-100 translate-x-0"
           : "opacity-0 -translate-x-full pointer-events-none"
