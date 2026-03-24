@@ -102,8 +102,6 @@ export default function Hero() {
               </Link>
             </div>
         </div>
-
-
       </div>
     </div>
 
@@ -147,35 +145,6 @@ export default function Hero() {
           </svg>
         </Link>
 
-        {/* Secondary CTA - portfolio tab */}
-        <Link
-          href="#visual-examples"
-          className="group flex items-center gap-2.5 pl-5 pr-4 py-3 rounded-l-full bg-white/90 backdrop-blur-md border border-gray-200 text-[#1a2744] font-semibold text-sm shadow-lg shadow-gray-200/50 hover:shadow-xl hover:bg-white hover:border-purple-300 transition-all duration-300 hover:pl-7"
-        >
-          <svg
-            className="w-4 h-4 flex-shrink-0 text-purple-500 transition-transform duration-300 group-hover:scale-110"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            />
-          </svg>
-          <span className="whitespace-nowrap">{t.hero.stickyPortfolio}</span>
-          <svg className="w-4 h-4 flex-shrink-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </Link>
-
-        {/* Accepting badge */}
-        <div className="flex items-center gap-1.5 pr-4 pl-4 py-1.5 rounded-l-full bg-emerald-50/90 backdrop-blur-sm border border-emerald-200/50">
-          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-          <span className="text-[11px] font-medium text-emerald-700 whitespace-nowrap">{t.hero.accepting}</span>
-        </div>
       </div>
 
       {/* Mobile Sticky CTA (below md) - Bottom bar */}
