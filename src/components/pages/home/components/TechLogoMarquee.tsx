@@ -64,11 +64,13 @@ const logos: TechLogo[] = [
   { name: "Firebase", Icon: Firebase },
 ];
 
+const MARQUEE_DURATION = "60s";
+
 export default function TechLogoMarquee() {
   return (
     <div
       aria-hidden="true"
-      className="w-full overflow-hidden"
+      className="group w-full overflow-hidden py-2"
       style={{
         maskImage:
           "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -76,21 +78,24 @@ export default function TechLogoMarquee() {
           "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
       }}
     >
-      <div className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none">
+      <div
+        className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
+        style={{ animationDuration: MARQUEE_DURATION }}
+      >
         {[0, 1].map((copy) => (
           <div
             key={copy}
-            className="flex shrink-0 items-center gap-12 sm:gap-16 pr-12 sm:pr-16"
+            className="flex shrink-0 items-center gap-5 pr-5 sm:gap-6 sm:pr-6"
           >
             {logos.map((logo) => (
               <div
                 key={`${copy}-${logo.name}`}
-                className="flex flex-col items-center gap-4"
+                className="flex min-w-[110px] flex-col items-center gap-3 px-4 py-4 transition-transform duration-300 hover:-translate-y-1 sm:min-w-[124px]"
               >
                 <logo.Icon
-                  className="h-14 w-14 sm:h-16 sm:w-16 transition-transform duration-300 hover:scale-110"
+                  className="h-12 w-12 text-gray-800 transition-transform duration-300 hover:scale-105 sm:h-14 sm:w-14"
                 />
-                <span className="text-sm sm:text-base text-gray-500 font-medium whitespace-nowrap">
+                <span className="whitespace-nowrap text-sm font-semibold uppercase tracking-wide text-gray-700 sm:text-base">
                   {logo.name}
                 </span>
               </div>
