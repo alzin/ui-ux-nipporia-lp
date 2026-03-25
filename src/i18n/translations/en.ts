@@ -118,6 +118,26 @@ const en: Translations = {
           "Beautiful, user-friendly designs focused on converting visitors into customers.",
       },
       {
+        title: "AI Solutions",
+        description:
+          "Integrating practical AI features like smart automation and conversational assistants to boost efficiency.",
+      },
+      {
+        title: "Mobile Applications",
+        description:
+          "Designing and developing high-performance iOS and Android apps with seamless user experiences.",
+      },
+      {
+        title: "SaaS Applications",
+        description:
+          "Building scalable SaaS platforms with subscription workflows, dashboards, and secure multi-tenant architecture.",
+      },
+      {
+        title: "Digital Marketing",
+        description:
+          "Executing data-driven campaigns across search, social, and content channels to generate qualified leads.",
+      },
+      {
         title: "Maintenance & Improvement",
         description:
           "Ongoing support after launch — quickly responding to new features and improvement requests.",

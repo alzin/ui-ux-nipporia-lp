@@ -205,3 +205,92 @@ export function MaintenanceIcon({ className, ...props }: IconProps) {
     </svg>
   );
 }
+
+export function AiIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cx("w-full h-full", className)}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <rect x="24" y="24" width="32" height="32" rx="8" stroke="currentColor" strokeWidth="2" />
+      <circle cx="34" cy="36" r="3" fill="currentColor" />
+      <circle cx="46" cy="36" r="3" fill="currentColor" />
+      <path d="M32 46C34.5 49 37 50 40 50C43 50 45.5 49 48 46" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M40 16V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M40 58V64" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M16 40H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M58 40H64" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function MobileAppIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cx("w-full h-full", className)}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <rect x="26" y="14" width="28" height="52" rx="6" stroke="currentColor" strokeWidth="2" />
+      <rect x="30" y="20" width="20" height="34" rx="2" stroke="currentColor" strokeWidth="2" />
+      <circle cx="40" cy="60" r="2" fill="currentColor" />
+      <path d="M20 28L24 32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M20 52L24 48" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M60 32L56 28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M60 48L56 52" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function SaasIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cx("w-full h-full", className)}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <rect x="14" y="20" width="52" height="40" rx="6" stroke="currentColor" strokeWidth="2" />
+      <path d="M14 30H66" stroke="currentColor" strokeWidth="2" />
+      <circle cx="20" cy="25" r="1.5" fill="currentColor" />
+      <circle cx="25" cy="25" r="1.5" fill="currentColor" opacity="0.7" />
+      <circle cx="30" cy="25" r="1.5" fill="currentColor" opacity="0.5" />
+      <rect x="22" y="38" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="2" />
+      <rect x="38" y="38" width="20" height="4" rx="2" fill="currentColor" opacity="0.8" />
+      <rect x="38" y="46" width="14" height="4" rx="2" fill="currentColor" opacity="0.6" />
+    </svg>
+  );
+}
+
+export function DigitalMarketingIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 80 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={cx("w-full h-full", className)}
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <path d="M18 56H62" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <rect x="22" y="44" width="8" height="12" rx="1" fill="currentColor" opacity="0.7" />
+      <rect x="34" y="38" width="8" height="18" rx="1" fill="currentColor" opacity="0.8" />
+      <rect x="46" y="30" width="8" height="26" rx="1" fill="currentColor" />
+      <path d="M22 24L34 20L46 24L58 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M54 18H58V22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
