@@ -126,7 +126,7 @@ export default function Header() {
         <li className="py-3">
           <Link
             href="/#contact"
-            className="inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 text-sm"
+            className="inline-block w-full p-3 md:px-5 md:py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-lg md:rounded-full hover:shadow-lg transition-all duration-300 text-sm text-center"
             onClick={() => setIsMenuOpen(false)}
           >
             {t.nav.contact}
