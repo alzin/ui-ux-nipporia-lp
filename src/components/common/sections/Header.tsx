@@ -51,15 +51,21 @@ export default function Header() {
         </Link>
 
         {/* Nav links - center */}
-        <ul className="hidden lg:flex gap-8 items-center justify-center flex-1 mx-4">
+        <ul className="hidden lg:flex items-center justify-center flex-1 mx-4">
           {navLinks.map((link, _index) => (
-            <li key={_index}>
+            <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
                 className="text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.title}
               </Link>
+              {_index < navLinks.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="mx-4 h-5 w-px bg-gray-300/70"
+                ></span>
+              )}
             </li>
           ))}
         </ul>
@@ -113,7 +119,12 @@ export default function Header() {
         }`}
       >
         {navLinks.map((link, _index) => (
-          <li key={_index} className="py-3">
+          <li
+            key={link.href}
+            className={`py-3 ${
+              _index < navLinks.length - 1 ? "border-b border-purple-100" : ""
+            }`}
+          >
             <Link
               href={link.href}
               className="block text-gray-700 font-medium hover:text-purple-600 transition-colors duration-300"
