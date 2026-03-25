@@ -1,32 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import TechLogoMarquee from "../components/TechLogoMarquee";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-  const [mockupVisible, setMockupVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setShowStickyCTA(window.scrollY > 300);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const target = document.getElementById("visual-examples");
-    if (!target) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setMockupVisible(entry.isIntersecting),
-      { threshold: 0.15 }
-    );
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
+  const { isVisible: showStickyCTA } = useFixedActionsVisibility({
+    scrollThreshold: 300,
+    hideWhenSectionVisibleId: "visual-examples",
+    sectionThreshold: 0.15,
+  });
 
   return (
     <section
@@ -110,11 +95,11 @@ export default function Hero() {
       {/* Desktop Sticky CTA (md+) - Right side minimal tab */}
       <div
         className={`hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex-col items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          showStickyCTA && !mockupVisible
+          showStickyCTA
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA || mockupVisible}
+        aria-hidden={!showStickyCTA}
       >
         {/* Primary CTA - consultation tab */}
         <Link
@@ -150,11 +135,11 @@ export default function Hero() {
       {/* Mobile Sticky CTA (below md) - Bottom bar */}
       <div
         className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${
-          showStickyCTA && !mockupVisible
+          showStickyCTA
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA || mockupVisible}
+        aria-hidden={!showStickyCTA}
       >
         <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
           <div className="flex gap-2">
