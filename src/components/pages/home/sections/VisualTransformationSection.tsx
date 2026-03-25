@@ -114,11 +114,11 @@ export default function VisualTransformationSection() {
           </div>
 
           {/* Main Device Mockups */}
-          <div className="relative z-10 flex items-center justify-center w-full mx-auto px-2 sm:px-5 md:px-10 lg:px-12 xl:px-16 py-3 md:py-5">
+          <div className="relative z-10 flex items-center justify-center w-full mx-auto px-1 sm:px-4 md:px-10 lg:px-12 xl:px-16 py-3 md:py-5">
             {deviceMode === "laptop" ? (
               <div
                 className="w-full max-w-[1360px] transition-transform duration-500 group-hover:scale-[1.01]"
-                style={{ width: "min(100%, max(560px, calc((100vh - 290px) * 2.13)))" }}
+                style={{ width: "min(100%, max(620px, calc((100vh - 270px) * 2.13)))" }}
               >
                 <LaptopMockup
                   url={activeProject.desktopUrl}
@@ -127,8 +127,8 @@ export default function VisualTransformationSection() {
               </div>
             ) : (
               <div
-                className="w-full max-w-[320px] transition-transform duration-500 group-hover:scale-[1.01]"
-                style={{ width: "min(320px, 70vw, max(170px, calc((100vh - 300px) / 2)))" }}
+                className="w-full max-w-[420px] md:max-w-[380px] transition-transform duration-500 group-hover:scale-[1.01]"
+                style={{ width: "min(420px, 90vw, max(250px, calc((100vh - 230px) / 2)))" }}
               >
                 <PhoneMockup
                   url={activeProject.mobileUrl}

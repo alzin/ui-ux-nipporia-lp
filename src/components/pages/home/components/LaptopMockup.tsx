@@ -7,10 +7,12 @@ interface LaptopMockupProps {
   isActive: boolean;
 }
 
+const LOADER_VISIBLE_MS = 900;
+
 const DESKTOP_ZOOM_LG = 0.59;
 const DESKTOP_ZOOM_MD = 0.52;
 const DESKTOP_ZOOM_SM = 0.43;
-const DESKTOP_ZOOM_XS = 0.25;
+const DESKTOP_ZOOM_XS = 0.20;
 
 const getZoomByViewport = () => {
   if (typeof window === "undefined") return DESKTOP_ZOOM_LG;
@@ -23,6 +25,7 @@ const getZoomByViewport = () => {
 
 export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const [desktopZoom, setDesktopZoom] = useState(DESKTOP_ZOOM_LG);
 
   useEffect(() => {
@@ -36,6 +39,13 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
 
   useEffect(() => {
     setIsLoaded(false);
+    setShowLoader(true);
+
+    const timer = window.setTimeout(() => {
+      setShowLoader(false);
+    }, LOADER_VISIBLE_MS);
+
+    return () => window.clearTimeout(timer);
   }, [url]);
 
   return (
@@ -93,15 +103,15 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
 
           {/* Screen area with iframe */}
           <div
-            className="relative bg-white overflow-hidden rounded-b-[8px]"
-            style={{ width: "100%", aspectRatio: "16 / 7.5" }}
+            className="relative bg-white overflow-hidden rounded-b-[8px] aspect-[16/8.8] md:aspect-[16/7.5]"
+            style={{ width: "100%" }}
           >
             {/* Loading state */}
-            {!isLoaded && (
+            {!isLoaded && showLoader && (
               <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-8 h-8 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
-                  <span className="text-xs text-slate-400">Loading...</span>
+                  <div className="w-8 h-8 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
+                  <span className="text-xs text-slate-400">Loading preview...</span>
                 </div>
               </div>
             )}
@@ -109,7 +119,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
             <iframe
               src={url}
               title="Desktop preview"
-              className="border-0"
+              className="border-0 transition-opacity duration-300"
               style={{
                 width: desktopZoomPercent,
                 height: desktopZoomPercent,
@@ -117,10 +127,14 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
                 transformOrigin: "top left",
                 overflow: "hidden",
                 scrollbarWidth: "none",
+                opacity: isLoaded ? 1 : 0.96,
               }}
-              onLoad={() => setIsLoaded(true)}
+              onLoad={() => {
+                setIsLoaded(true);
+                setShowLoader(false);
+              }}
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              loading="lazy"
+              loading={isActive ? "eager" : "lazy"}
             />
 
             {/* Subtle screen reflection */}

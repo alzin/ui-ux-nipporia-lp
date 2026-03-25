@@ -7,12 +7,14 @@ interface PhoneMockupProps {
   isActive: boolean;
 }
 
-const PHONE_ZOOM_MOBILE = 0.45;
+const PHONE_ZOOM_MOBILE = 0.55;
 const SCROLLBAR_MASK_PX = 18;
+const LOADER_VISIBLE_MS = 900;
 
 
 export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const phoneZoom = PHONE_ZOOM_MOBILE;
 
   const phoneZoomPercent = `${100 / phoneZoom}%`;
@@ -20,6 +22,13 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
 
   useEffect(() => {
     setIsLoaded(false);
+    setShowLoader(true);
+
+    const timer = window.setTimeout(() => {
+      setShowLoader(false);
+    }, LOADER_VISIBLE_MS);
+
+    return () => window.clearTimeout(timer);
   }, [url]);
 
   return (
@@ -45,16 +54,16 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
 
             {/* Screen content with iframe */}
             <div
-              className="relative overflow-hidden bg-white w-full max-w-[340px] mx-auto"
+              className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
               style={{ aspectRatio: "1 / 2" }}
             >
               {/* Loading state */}
-              {!isLoaded && (
+              {!isLoaded && showLoader && (
                 <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                   <div className="flex flex-col items-center gap-3">
-                    <div className="w-6 h-6 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+                    <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
                     <span className="text-[10px] text-slate-400">
-                      Loading...
+                      Loading preview...
                     </span>
                   </div>
                 </div>
@@ -63,7 +72,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
               <iframe
                 src={url}
                 title="Mobile preview"
-                className="border-0"
+                className="border-0 transition-opacity duration-300"
                 style={{
                   width: phoneZoomMaskedPercent,
                   height: phoneZoomMaskedPercent,
@@ -72,10 +81,14 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                   overflow: "auto",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
+                  opacity: isLoaded ? 1 : 0.96,
                 }}
-                onLoad={() => setIsLoaded(true)}
+                onLoad={() => {
+                  setIsLoaded(true);
+                  setShowLoader(false);
+                }}
                 sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                loading="lazy"
+                loading={isActive ? "eager" : "lazy"}
                 scrolling="yes"
               />
 
