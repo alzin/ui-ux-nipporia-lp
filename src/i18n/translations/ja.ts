@@ -5,9 +5,9 @@ const ja: Translations = {
   nav: {
     problems: "課題",
     transformation: "実績",
-    visualExamples: "制作実績",
+    visualExamples: "サンプルプロジェクト",
     services: "サービス",
-    process: "プロセス",
+    process: "進め方",
     pricing: "料金プラン",
     contact: "お問い合わせ",
     blog: "ブログ",
@@ -19,9 +19,9 @@ const ja: Translations = {
     subtitle: "プロ品質のデザインで、集客を伸ばす。",
     cta: "無料相談（60分）・最短7日で改善案をご提案",
     primaryButton: "無料相談を申し込む",
-    secondaryButton: "制作実績",
+    secondaryButton: "サンプルプロジェクト",
     stickyConsultation: "無料相談",
-    stickyPortfolio: "制作実績",
+    stickyPortfolio: "サンプルプロジェクト",
     accepting: "受付中",
   },
 
@@ -63,7 +63,7 @@ const ja: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "制作実績",
+    sectionTitle: "サンプルプロジェクト",
     description: "クライアント様の実際のプロジェクトをご覧ください",
     prevProject: "前のプロジェクト",
     nextProject: "次のプロジェクト",
@@ -147,7 +147,7 @@ const ja: Translations = {
 
   // Process
   process: {
-    sectionTitle: "ご利用の流れ",
+    sectionTitle: "進め方",
     steps: [
       {
         title: "無料相談",

@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/#process", title: t.nav.process },
+    { href: "/#services", title: t.nav.services },
     { href: "/#pricing", title: t.nav.pricing },
     { href: "/blogs", title: t.nav.blog },
   ];
