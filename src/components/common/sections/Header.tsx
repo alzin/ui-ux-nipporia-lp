@@ -76,42 +76,35 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-3 lg:hidden ml-auto">
           <LanguageSwitcher />
-          <div
-            role="button"
-            aria-label="Toggle menu"
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
-            className={`flex flex-col gap-1.5 cursor-pointer p-2 ${
-              isMenuOpen ? "open" : ""
-            }`}
+            className="relative grid place-items-center w-11 h-11 rounded-xl border border-purple-200/70 bg-white/80 shadow-sm shadow-purple-300/30 transition-all duration-300 hover:border-purple-300 hover:shadow-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            tabIndex={0}
             onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
+              if (e.key === " ") {
+                e.preventDefault();
                 setIsMenuOpen(!isMenuOpen);
               }
             }}
           >
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={
-                isMenuOpen
-                  ? { transform: "rotate(45deg) translate(4px, 4px)" }
-                  : {}
-              }
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
+                isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
+              }`}
             ></span>
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={isMenuOpen ? { opacity: 0 } : {}}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${
+                isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+              }`}
             ></span>
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={
-                isMenuOpen
-                  ? { transform: "rotate(-45deg) translate(5px, -5px)" }
-                  : {}
-              }
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
+                isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
+              }`}
             ></span>
-          </div>
+          </button>
         </div>
       </div>
       <ul
