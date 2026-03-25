@@ -12,10 +12,10 @@ export default function ProcessSection() {
   const { t } = useLanguage();
 
   const processesMeta = [
-    { number: "01", icon: "", color: "from-purple-400 to-indigo-400" },
-    { number: "02", icon: "", color: "from-pink-400 to-rose-400" },
-    { number: "03", icon: "", color: "from-cyan-400 to-blue-400" },
-    { number: "04", icon: "", color: "from-green-400 to-emerald-400" },
+    { number: "01", color: "from-purple-400 to-indigo-400" },
+    { number: "02", color: "from-pink-400 to-rose-400" },
+    { number: "03", color: "from-cyan-400 to-blue-400" },
+    { number: "04", color: "from-green-400 to-emerald-400" },
   ];
 
   return (
@@ -45,10 +45,11 @@ export default function ProcessSection() {
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                     <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 border border-gray-100">
                       <div className={`inline-flex items-center gap-3 mb-4 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                        <span className={`w-12 h-12 flex items-center justify-center text-2xl bg-gradient-to-br ${meta.color} rounded-xl text-white shadow-lg`}>
-                          {meta.icon}
+                        <span
+                          className={`w-12 h-12 flex items-center justify-center text-xl font-bold bg-gradient-to-br ${meta.color} rounded-lg text-white shadow-lg`}
+                        >
+                          {meta.number}
                         </span>
-                        <span className="text-3xl font-bold text-gray-200">{meta.number}</span>
                       </div>
                       <h3 className="text-xl font-bold text-gray-800 mb-3">{step.title}</h3>
                       <p className="text-gray-600">{step.description}</p>
