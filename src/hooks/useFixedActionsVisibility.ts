@@ -31,20 +31,47 @@ export const useFixedActionsVisibility = (
   }, [scrollThreshold]);
 
   useEffect(() => {
-    const target = document.getElementById(hideWhenSectionVisibleId);
-    if (!target) {
-      setIsHiddenSectionVisible(false);
-      return;
-    }
+    let observedElement: HTMLElement | null = null;
+    let sectionObserver: IntersectionObserver | null = null;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsHiddenSectionVisible(entry.isIntersecting),
-      { threshold: sectionThreshold },
-    );
+    const disconnectSectionObserver = () => {
+      if (sectionObserver) {
+        sectionObserver.disconnect();
+        sectionObserver = null;
+      }
+      observedElement = null;
+    };
 
-    observer.observe(target);
+    const connectSectionObserver = () => {
+      const target = document.getElementById(hideWhenSectionVisibleId);
 
-    return () => observer.disconnect();
+      if (!target) {
+        disconnectSectionObserver();
+        setIsHiddenSectionVisible(false);
+        return;
+      }
+
+      if (observedElement === target && sectionObserver) return;
+
+      disconnectSectionObserver();
+
+      observedElement = target;
+      sectionObserver = new IntersectionObserver(
+        ([entry]) => setIsHiddenSectionVisible(entry.isIntersecting),
+        { threshold: sectionThreshold },
+      );
+      sectionObserver.observe(target);
+    };
+
+    connectSectionObserver();
+
+    const mutationObserver = new MutationObserver(connectSectionObserver);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      mutationObserver.disconnect();
+      disconnectSectionObserver();
+    };
   }, [hideWhenSectionVisibleId, sectionThreshold]);
 
   return {
