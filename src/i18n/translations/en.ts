@@ -5,9 +5,9 @@ const en: Translations = {
   nav: {
     problems: "Challenges",
     transformation: "Results",
-    visualExamples: "Portfolio",
+    visualExamples: "Sample Projects",
     services: "Services",
-    process: "Process",
+    process: "How We Work",
     pricing: "Pricing",
     contact: "Contact",
     blog: "Blog",
@@ -19,9 +19,9 @@ const en: Translations = {
     subtitle: "Professional design that attracts more customers.",
     cta: "Free consultation (60 min) - Improvement plan within 7 days",
     primaryButton: "Book Free Consultation",
-    secondaryButton: "View Portfolio",
+    secondaryButton: "Sample Projects",
     stickyConsultation: "Free Consultation",
-    stickyPortfolio: "Portfolio",
+    stickyPortfolio: "Sample Projects",
     accepting: "Available",
   },
 
@@ -63,7 +63,7 @@ const en: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "Portfolio",
+    sectionTitle: "Sample Projects",
     description: "See real projects we've delivered for our clients",
     prevProject: "Previous project",
     nextProject: "Next project",
@@ -118,6 +118,26 @@ const en: Translations = {
           "Beautiful, user-friendly designs focused on converting visitors into customers.",
       },
       {
+        title: "AI Solutions",
+        description:
+          "Integrating practical AI features like smart automation and conversational assistants to boost efficiency.",
+      },
+      {
+        title: "Mobile Applications",
+        description:
+          "Designing and developing high-performance iOS and Android apps with seamless user experiences.",
+      },
+      {
+        title: "SaaS Applications",
+        description:
+          "Building scalable SaaS platforms with subscription workflows, dashboards, and secure multi-tenant architecture.",
+      },
+      {
+        title: "Digital Marketing",
+        description:
+          "Executing data-driven campaigns across search, social, and content channels to generate qualified leads.",
+      },
+      {
         title: "Maintenance & Improvement",
         description:
           "Ongoing support after launch — quickly responding to new features and improvement requests.",
@@ -127,7 +147,7 @@ const en: Translations = {
 
   // Process
   process: {
-    sectionTitle: "How It Works",
+    sectionTitle: "How We Work",
     steps: [
       {
         title: "Free Consultation",

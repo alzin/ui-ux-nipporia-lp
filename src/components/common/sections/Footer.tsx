@@ -49,10 +49,10 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/#process"
+                  href="/#services"
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
-                  {t.nav.process}
+                  {t.footer.quickLinkItems.services}
                 </Link>
               </li>
               <li>

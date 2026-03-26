@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
 
 const socials = [
   {
@@ -35,23 +35,20 @@ const socials = [
 ];
 
 export default function FloatingSocial() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setVisible(window.scrollY > 300);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { isVisible } = useFixedActionsVisibility({
+    scrollThreshold: 300,
+    hideWhenSectionVisibleId: "visual-examples",
+    sectionThreshold: 0.15,
+  });
 
   return (
     <div
-      className={`fixed left-0 top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ${
-        visible
+      className={`fixed left-0 top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ease-out ${
+        isVisible
           ? "opacity-100 translate-x-0"
           : "opacity-0 -translate-x-full pointer-events-none"
       }`}
+      aria-hidden={!isVisible}
     >
       <div className="flex flex-col gap-0.5">
         {socials.map((social, i) => (

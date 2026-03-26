@@ -43,7 +43,7 @@ export default {
         lineExpand: 'lineExpand 2s ease infinite',
         titleGlow: 'titleGlow 4s ease infinite',
         problemPulse: 'problemPulse 3s ease infinite',
-        marquee: 'marquee 35s linear infinite',
+        marquee: 'marquee 44s linear infinite',
       },
       keyframes: {
         gradientShift: {

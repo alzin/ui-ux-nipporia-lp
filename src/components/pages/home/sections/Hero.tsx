@@ -1,32 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import TechLogoMarquee from "../components/TechLogoMarquee";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
 
 export default function Hero() {
   const { t } = useLanguage();
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-  const [mockupVisible, setMockupVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setShowStickyCTA(window.scrollY > 300);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const target = document.getElementById("visual-examples");
-    if (!target) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setMockupVisible(entry.isIntersecting),
-      { threshold: 0.15 }
-    );
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
+  const { isVisible: showStickyCTA } = useFixedActionsVisibility({
+    scrollThreshold: 300,
+    hideWhenSectionVisibleId: "visual-examples",
+    sectionThreshold: 0.15,
+  });
 
   return (
     <section
@@ -102,8 +87,6 @@ export default function Hero() {
               </Link>
             </div>
         </div>
-
-
       </div>
     </div>
 
@@ -112,11 +95,11 @@ export default function Hero() {
       {/* Desktop Sticky CTA (md+) - Right side minimal tab */}
       <div
         className={`hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex-col items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          showStickyCTA && !mockupVisible
+          showStickyCTA
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA || mockupVisible}
+        aria-hidden={!showStickyCTA}
       >
         {/* Primary CTA - consultation tab */}
         <Link
@@ -147,45 +130,16 @@ export default function Hero() {
           </svg>
         </Link>
 
-        {/* Secondary CTA - portfolio tab */}
-        <Link
-          href="#visual-examples"
-          className="group flex items-center gap-2.5 pl-5 pr-4 py-3 rounded-l-full bg-white/90 backdrop-blur-md border border-gray-200 text-[#1a2744] font-semibold text-sm shadow-lg shadow-gray-200/50 hover:shadow-xl hover:bg-white hover:border-purple-300 transition-all duration-300 hover:pl-7"
-        >
-          <svg
-            className="w-4 h-4 flex-shrink-0 text-purple-500 transition-transform duration-300 group-hover:scale-110"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-            />
-          </svg>
-          <span className="whitespace-nowrap">{t.hero.stickyPortfolio}</span>
-          <svg className="w-4 h-4 flex-shrink-0 opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </Link>
-
-        {/* Accepting badge */}
-        <div className="flex items-center gap-1.5 pr-4 pl-4 py-1.5 rounded-l-full bg-emerald-50/90 backdrop-blur-sm border border-emerald-200/50">
-          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-          <span className="text-[11px] font-medium text-emerald-700 whitespace-nowrap">{t.hero.accepting}</span>
-        </div>
       </div>
 
       {/* Mobile Sticky CTA (below md) - Bottom bar */}
       <div
         className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${
-          showStickyCTA && !mockupVisible
+          showStickyCTA
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!showStickyCTA || mockupVisible}
+        aria-hidden={!showStickyCTA}
       >
         <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
           <div className="flex gap-2">

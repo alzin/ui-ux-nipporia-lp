@@ -1,14 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PhoneMockupProps {
   url: string;
   isActive: boolean;
 }
 
+const PHONE_ZOOM_MOBILE = 0.55;
+const SCROLLBAR_MASK_PX = 18;
+const LOADER_VISIBLE_MS = 900;
+
+
 export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+  const phoneZoom = PHONE_ZOOM_MOBILE;
+
+  const phoneZoomPercent = `${100 / phoneZoom}%`;
+  const phoneZoomMaskedPercent = `calc(${phoneZoomPercent} + ${SCROLLBAR_MASK_PX}px)`;
+
+  useEffect(() => {
+    setIsLoaded(false);
+    setShowLoader(true);
+
+    const timer = window.setTimeout(() => {
+      setShowLoader(false);
+    }, LOADER_VISIBLE_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [url]);
 
   return (
     <div
@@ -19,9 +40,9 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
       }`}
     >
       {/* Phone Frame */}
-      <div className="relative">
+      <div className="relative w-full">
         {/* Outer frame */}
-        <div className="bg-[#1c1c1e] rounded-[2.5rem] p-[6px] shadow-2xl shadow-black/60 ring-1 ring-[#3a3a3e]">
+        <div className="bg-[#1c1c1e] rounded-[2.5rem] p-[6px] shadow-[0_30px_60px_-34px_rgba(2,6,23,0.9)] ring-1 ring-[#3a3a3e]">
           {/* Inner frame */}
           <div className="bg-black rounded-[2.2rem] overflow-hidden relative">
             {/* Dynamic Island */}
@@ -33,40 +54,43 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
 
             {/* Screen content with iframe */}
             <div
-              className="relative overflow-hidden bg-white"
-              style={{ width: "300px", height: "600px" }}
+              className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
+              style={{ aspectRatio: "1 / 2" }}
             >
               {/* Loading state */}
-              {!isLoaded && (
+              {!isLoaded && showLoader && (
                 <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                   <div className="flex flex-col items-center gap-3">
-                    <div className="w-6 h-6 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+                    <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
                     <span className="text-[10px] text-slate-400">
-                      Loading...
+                      Loading preview...
                     </span>
                   </div>
                 </div>
               )}
 
-              {/* Scale trick: render at 390px then scale to fit 300px width */}
-              <div
+              <iframe
+                src={url}
+                title="Mobile preview"
+                className="border-0 transition-opacity duration-300"
                 style={{
-                  width: "390px",
-                  height: "780px",
-                  transform: "scale(0.769)",
+                  width: phoneZoomMaskedPercent,
+                  height: phoneZoomMaskedPercent,
+                  transform: `scale(${phoneZoom})`,
                   transformOrigin: "top left",
+                  overflow: "auto",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  opacity: isLoaded ? 1 : 0.96,
                 }}
-              >
-                <iframe
-                  src={url}
-                  title="Mobile preview"
-                  className="border-0"
-                  style={{ width: "390px", height: "780px" }}
-                  onLoad={() => setIsLoaded(true)}
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                  loading="lazy"
-                />
-              </div>
+                onLoad={() => {
+                  setIsLoaded(true);
+                  setShowLoader(false);
+                }}
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                loading={isActive ? "eager" : "lazy"}
+                scrolling="yes"
+              />
 
               {/* Subtle screen reflection */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />

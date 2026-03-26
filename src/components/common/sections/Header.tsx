@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/#process", title: t.nav.process },
+    { href: "/#services", title: t.nav.services },
     { href: "/#pricing", title: t.nav.pricing },
     { href: "/blogs", title: t.nav.blog },
   ];
@@ -51,15 +51,21 @@ export default function Header() {
         </Link>
 
         {/* Nav links - center */}
-        <ul className="hidden lg:flex gap-8 items-center justify-center flex-1 mx-4">
+        <ul className="hidden lg:flex items-center justify-center flex-1 mx-4">
           {navLinks.map((link, _index) => (
-            <li key={_index}>
+            <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
                 className="text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.title}
               </Link>
+              {_index < navLinks.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="mx-4 h-5 w-px bg-gray-300/70"
+                ></span>
+              )}
             </li>
           ))}
         </ul>
@@ -76,42 +82,35 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-3 lg:hidden ml-auto">
           <LanguageSwitcher />
-          <div
-            role="button"
-            aria-label="Toggle menu"
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
-            className={`flex flex-col gap-1.5 cursor-pointer p-2 ${
-              isMenuOpen ? "open" : ""
-            }`}
+            className="relative grid place-items-center w-11 h-11 rounded-xl border border-purple-200/70 bg-white/80 shadow-sm shadow-purple-300/30 transition-all duration-300 hover:border-purple-300 hover:shadow-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            tabIndex={0}
             onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
+              if (e.key === " ") {
+                e.preventDefault();
                 setIsMenuOpen(!isMenuOpen);
               }
             }}
           >
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={
-                isMenuOpen
-                  ? { transform: "rotate(45deg) translate(4px, 4px)" }
-                  : {}
-              }
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
+                isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
+              }`}
             ></span>
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={isMenuOpen ? { opacity: 0 } : {}}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${
+                isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+              }`}
             ></span>
             <span
-              className="w-6 h-0.5 bg-purple-600 transition-all duration-300 ease-in-out rounded-full"
-              style={
-                isMenuOpen
-                  ? { transform: "rotate(-45deg) translate(5px, -5px)" }
-                  : {}
-              }
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
+                isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
+              }`}
             ></span>
-          </div>
+          </button>
         </div>
       </div>
       <ul
@@ -120,7 +119,12 @@ export default function Header() {
         }`}
       >
         {navLinks.map((link, _index) => (
-          <li key={_index} className="py-3">
+          <li
+            key={link.href}
+            className={`py-3 ${
+              _index < navLinks.length - 1 ? "border-b border-purple-100" : ""
+            }`}
+          >
             <Link
               href={link.href}
               className="block text-gray-700 font-medium hover:text-purple-600 transition-colors duration-300"
@@ -133,7 +137,7 @@ export default function Header() {
         <li className="py-3">
           <Link
             href="/#contact"
-            className="inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 text-sm"
+            className="inline-block w-full p-3 md:px-5 md:py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-lg md:rounded-full hover:shadow-lg transition-all duration-300 text-sm text-center"
             onClick={() => setIsMenuOpen(false)}
           >
             {t.nav.contact}
