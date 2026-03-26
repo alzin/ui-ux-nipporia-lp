@@ -8,7 +8,8 @@ import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +31,7 @@ export default function Header() {
         ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
         : "bg-white/70 backdrop-blur-md"
     }`}>
-      <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center">
+      <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center" dir={isRTL ? "rtl" : "ltr"}>
         {/* Logo - fixed left */}
         <Link
           href={"/"}
@@ -56,7 +57,9 @@ export default function Header() {
             <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
-                className="text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
+                className={`text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full ${
+                  isRTL ? "after:right-0" : "after:left-0"
+                }`}
               >
                 {link.title}
               </Link>
@@ -80,7 +83,7 @@ export default function Header() {
           </Link>
           <LanguageSwitcher />
         </div>
-        <div className="flex items-center gap-3 lg:hidden ml-auto">
+        <div className={`flex items-center gap-3 lg:hidden ${isRTL ? "mr-auto" : "ml-auto"}`}>
           <LanguageSwitcher />
           <button
             type="button"
@@ -116,7 +119,7 @@ export default function Header() {
       <ul
         className={`lg:hidden bg-white/95 backdrop-blur-xl p-6 transition-all duration-300 ease-in-out border-t border-purple-100 ${
           isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 hidden"
-        }`}
+        } ${isRTL ? "text-right" : "text-left"}`}
       >
         {navLinks.map((link, _index) => (
           <li

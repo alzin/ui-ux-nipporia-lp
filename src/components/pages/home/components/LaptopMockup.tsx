@@ -105,6 +105,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
           <div
             className="relative bg-white overflow-hidden rounded-b-[8px] aspect-[16/8.8] md:aspect-[16/7.5]"
             style={{ width: "100%" }}
+            dir="ltr"
           >
             {/* Loading state */}
             {!isLoaded && showLoader && (
@@ -119,7 +120,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
             <iframe
               src={url}
               title="Desktop preview"
-              className="border-0 transition-opacity duration-300"
+              className="block border-0 transition-opacity duration-300"
               style={{
                 width: desktopZoomPercent,
                 height: desktopZoomPercent,
@@ -127,6 +128,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
                 transformOrigin: "top left",
                 overflow: "hidden",
                 scrollbarWidth: "none",
+                direction: "ltr",
                 opacity: isLoaded ? 1 : 0.96,
               }}
               onLoad={() => {

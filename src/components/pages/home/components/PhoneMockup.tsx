@@ -56,6 +56,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
             <div
               className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
               style={{ aspectRatio: "1 / 2" }}
+              dir="ltr"
             >
               {/* Loading state */}
               {!isLoaded && showLoader && (
@@ -72,7 +73,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
               <iframe
                 src={url}
                 title="Mobile preview"
-                className="border-0 transition-opacity duration-300"
+                className="block border-0 transition-opacity duration-300"
                 style={{
                   width: phoneZoomMaskedPercent,
                   height: phoneZoomMaskedPercent,
@@ -81,6 +82,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                   overflow: "auto",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
+                  direction: "ltr",
                   opacity: isLoaded ? 1 : 0.96,
                 }}
                 onLoad={() => {

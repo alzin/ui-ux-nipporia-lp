@@ -22,7 +22,8 @@ export default function ServicesSection() {
     staggerDelay: 250,
   });
 
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
 
   const servicesMeta = [
     { number: "01", color: "from-purple-400 to-indigo-400", iconColor: "text-indigo-700", Icon: NextJsDevIcon },
@@ -49,8 +50,8 @@ export default function ServicesSection() {
       id="services"
     >
       {/* Decorative shapes */}
-      <div className="absolute top-40 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-40 right-10 w-80 h-80 bg-cyan-200/30 rounded-full blur-3xl" />
+      <div className={`absolute top-40 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl ${isRTL ? "right-10" : "left-10"}`} />
+      <div className={`absolute bottom-40 w-80 h-80 bg-cyan-200/30 rounded-full blur-3xl ${isRTL ? "left-10" : "right-10"}`} />
 
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle title={t.services.sectionTitle} />
@@ -62,10 +63,12 @@ export default function ServicesSection() {
             return (
               <div
                 key={index}
-                className="group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+                className={`group relative bg-white/90 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer ${
+                  isRTL ? "text-right" : "text-left"
+                }`}
               >
                 {/* Number badge */}
-                <span className="absolute top-4 right-4 text-4xl font-bold text-gray-100 group-hover:text-purple-100 transition-colors duration-300">
+                <span className={`absolute top-4 text-4xl font-bold text-gray-100 group-hover:text-purple-100 transition-colors duration-300 ${isRTL ? "left-4" : "right-4"}`}>
                   {number}
                 </span>
 
@@ -95,7 +98,7 @@ export default function ServicesSection() {
 
                 {/* Bottom accent line */}
                 <div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ${isRTL ? "origin-right" : "origin-left"}`}
                 />
               </div>
             );

@@ -91,7 +91,7 @@ export default function RootLayout({
         className="min-h-screen flex flex-col"
         style={{
           fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif',
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Arabic", sans-serif',
         }}
       >
         <LanguageProvider>

@@ -40,6 +40,9 @@ export interface Translations {
     description: string;
     prevProject: string;
     nextProject: string;
+    laptop: string;
+    phone: string;
+    viewLiveSite: string;
   };
   projects: { description: string; tags: string[] }[];
   services: {
