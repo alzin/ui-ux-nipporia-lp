@@ -6,12 +6,15 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
   const { isVisible: showStickyCTA } = useFixedActionsVisibility({
     scrollThreshold: 300,
     hideWhenSectionVisibleId: "visual-examples",
     sectionThreshold: 0.15,
   });
+
+  const stickyArrowPath = isRTL ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7";
 
   return (
     <section
@@ -45,7 +48,7 @@ export default function Hero() {
           </div>
           {/* CTA Buttons - Stronger hierarchy */}
           <div className="w-full max-w-md sm:max-w-xl">
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className={`flex flex-col gap-4 ${isRTL ? "sm:flex-row-reverse" : "sm:flex-row"}`}>
               <Link
                 href="#contact"
                 className="group sm:flex-[1.25] inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-4 text-[15px] sm:text-base font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:translate-y-0"
@@ -94,25 +97,35 @@ export default function Hero() {
 
       {/* Desktop Sticky CTA (md+) - Right side minimal tab */}
       <div
-        className={`hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex-col items-end gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+        className={`hidden md:flex fixed top-1/2 -translate-y-1/2 z-[9999] flex-col gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          isRTL ? "left-0 items-start" : "right-0 items-end"
+        } ${
           showStickyCTA
             ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0 pointer-events-none"
+            : isRTL
+              ? "-translate-x-full opacity-0 pointer-events-none"
+              : "translate-x-full opacity-0 pointer-events-none"
         }`}
         aria-hidden={!showStickyCTA}
       >
         {/* Primary CTA - consultation tab */}
         <Link
           href="#contact"
-          className="group relative flex items-center gap-3 pl-5 pr-4 py-3.5 rounded-l-full bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 hover:pl-7"
+          className={`group relative flex items-center gap-3 py-3.5 bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 ${
+            isRTL
+              ? "rounded-r-full pr-5 pl-4 hover:pr-7"
+              : "rounded-l-full pl-5 pr-4 hover:pl-7"
+          }`}
         >
           {/* Pulse ring */}
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 w-2 h-2">
+          <span className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 ${isRTL ? "right-3" : "left-3"}`}>
             <span className="absolute inset-0 bg-emerald-400 rounded-full animate-ping opacity-75" />
             <span className="relative block w-2 h-2 bg-emerald-400 rounded-full" />
           </span>
           <svg
-            className="w-4 h-4 flex-shrink-0 ml-2 transition-transform duration-300 group-hover:rotate-12"
+            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:rotate-12 ${
+              isRTL ? "mr-2" : "ml-2"
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -125,8 +138,15 @@ export default function Hero() {
             />
           </svg>
           <span className="whitespace-nowrap">{t.hero.stickyConsultation}</span>
-          <svg className="w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${
+              isRTL ? "group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5"
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stickyArrowPath} />
           </svg>
         </Link>
 

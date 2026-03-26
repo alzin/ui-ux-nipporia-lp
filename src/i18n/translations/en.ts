@@ -67,6 +67,9 @@ const en: Translations = {
     description: "See real projects we've delivered for our clients",
     prevProject: "Previous project",
     nextProject: "Next project",
+    laptop: "Laptop",
+    phone: "Phone",
+    viewLiveSite: "View live site",
   },
 
   // Projects

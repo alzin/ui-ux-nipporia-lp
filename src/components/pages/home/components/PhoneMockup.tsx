@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface PhoneMockupProps {
   url: string;
@@ -13,9 +14,27 @@ const LOADER_VISIBLE_MS = 900;
 
 
 export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
+  const { lang } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const phoneZoom = PHONE_ZOOM_MOBILE;
+
+  const localized = {
+    ja: {
+      loadingPreview: "プレビューを読み込み中...",
+      mobilePreview: "モバイルプレビュー",
+    },
+    en: {
+      loadingPreview: "Loading preview...",
+      mobilePreview: "Mobile preview",
+    },
+    ar: {
+      loadingPreview: "جارٍ تحميل المعاينة...",
+      mobilePreview: "معاينة الجوال",
+    },
+  } as const;
+
+  const localeText = localized[lang];
 
   const phoneZoomPercent = `${100 / phoneZoom}%`;
   const phoneZoomMaskedPercent = `calc(${phoneZoomPercent} + ${SCROLLBAR_MASK_PX}px)`;
@@ -56,6 +75,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
             <div
               className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
               style={{ aspectRatio: "1 / 2" }}
+              dir="ltr"
             >
               {/* Loading state */}
               {!isLoaded && showLoader && (
@@ -63,7 +83,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
                     <span className="text-[10px] text-slate-400">
-                      Loading preview...
+                      {localeText.loadingPreview}
                     </span>
                   </div>
                 </div>
@@ -71,8 +91,8 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
 
               <iframe
                 src={url}
-                title="Mobile preview"
-                className="border-0 transition-opacity duration-300"
+                title={localeText.mobilePreview}
+                className="block border-0 transition-opacity duration-300"
                 style={{
                   width: phoneZoomMaskedPercent,
                   height: phoneZoomMaskedPercent,
@@ -81,6 +101,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                   overflow: "auto",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
+                  direction: "ltr",
                   opacity: isLoaded ? 1 : 0.96,
                 }}
                 onLoad={() => {

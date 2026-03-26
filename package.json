@@ -19,6 +19,7 @@
     "prismjs": "^1.30.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "react-world-flags": "^1.6.0",
     "rehype-highlight": "^7.0.2",
     "rehype-raw": "^7.0.0",
     "rehype-stringify": "^10.0.1",

@@ -87,3 +87,16 @@ interface CategoryType {
         imageSrc: string;
     }[];
 }
+
+declare module "react-world-flags" {
+    import type { FC, ImgHTMLAttributes, ReactNode } from "react";
+
+    interface FlagProps extends ImgHTMLAttributes<HTMLImageElement> {
+        code: string;
+        fallback?: ReactNode;
+    }
+
+    const Flag: FC<FlagProps>;
+
+    export default Flag;
+}

@@ -67,6 +67,9 @@ const ja: Translations = {
     description: "クライアント様の実際のプロジェクトをご覧ください",
     prevProject: "前のプロジェクト",
     nextProject: "次のプロジェクト",
+    laptop: "ノートPC",
+    phone: "スマートフォン",
+    viewLiveSite: "サイトを見る",
   },
 
   // Projects

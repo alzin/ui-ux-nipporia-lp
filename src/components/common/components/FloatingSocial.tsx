@@ -1,5 +1,6 @@
 "use client";
 import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const socials = [
   {
@@ -41,13 +42,18 @@ export default function FloatingSocial() {
     sectionThreshold: 0.15,
   });
 
+  const { lang } = useLanguage();
+  const isRTL = lang === "ar";
+
+  const hiddenTranslateClass = isRTL ? "translate-x-full" : "-translate-x-full";
+
   return (
     <div
-      className={`fixed left-0 top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ease-out ${
+      className={`fixed top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ease-out ${
         isVisible
           ? "opacity-100 translate-x-0"
-          : "opacity-0 -translate-x-full pointer-events-none"
-      }`}
+          : `opacity-0 ${hiddenTranslateClass} pointer-events-none`
+      } ${isRTL ? "right-0" : "left-0"}`}
       aria-hidden={!isVisible}
     >
       <div className="flex flex-col gap-0.5">
@@ -59,8 +65,14 @@ export default function FloatingSocial() {
             rel="noopener noreferrer"
             aria-label={social.label}
             className={`group flex items-center justify-center w-10 h-10 bg-white/80 backdrop-blur-sm text-gray-600 hover:text-white ${social.color} shadow-md transition-all duration-300 hover:w-12 hover:shadow-lg hover:shadow-purple-500/20 ${
-              i === 0 ? "rounded-tr-lg" : ""
-            } ${i === socials.length - 1 ? "rounded-br-lg" : ""}`}
+              i === 0 ? (isRTL ? "rounded-tl-lg" : "rounded-tr-lg") : ""
+            } ${
+              i === socials.length - 1
+                ? isRTL
+                  ? "rounded-bl-lg"
+                  : "rounded-br-lg"
+                : ""
+            }`}
             style={{ transitionDelay: `${i * 50}ms` }}
           >
             <span className="transition-transform duration-300 group-hover:scale-110">

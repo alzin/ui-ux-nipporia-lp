@@ -16,10 +16,14 @@ export default function VisualTransformationSection() {
     staggerDelay: 230,
   });
 
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("laptop");
+
+  const prevArrowPath = isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7";
+  const nextArrowPath = isRTL ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7";
 
   const handleSelect = (index: number) => {
     if (index === activeIndex || isTransitioning) return;
@@ -63,8 +67,10 @@ export default function VisualTransformationSection() {
           <div className="absolute inset-0 pointer-events-none rounded-[2rem] bg-white/35 backdrop-blur-[1px]" />
 
           <div className="relative z-10 px-3 sm:px-5 md:px-8 pt-4 md:pt-5 lg:pt-6">
-            <div className="rounded-2xl border border-white/70 bg-white/70 backdrop-blur-md px-4 md:px-5 py-3 shadow-lg shadow-purple-900/5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 md:gap-4">
-              <div className="min-w-0">
+            <div className={`rounded-2xl border border-white/70 bg-white/70 backdrop-blur-md px-4 md:px-5 py-3 shadow-lg shadow-purple-900/5 flex flex-col lg:items-center lg:justify-between gap-3 md:gap-4 ${
+              isRTL ? "lg:flex-row-reverse" : "lg:flex-row"
+            }`}>
+              <div className={`min-w-0 ${isRTL ? "text-right" : "text-left"}`}>
                 <p className="text-sm md:text-base font-semibold text-slate-900 truncate">
                   {activeProject.title}
                 </p>
@@ -72,7 +78,7 @@ export default function VisualTransformationSection() {
                   {activeProject.siteUrl}
                 </p>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className={`flex flex-wrap items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <div className="inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200">
                   <button
                     onClick={() => setDeviceMode("laptop")}
@@ -83,7 +89,7 @@ export default function VisualTransformationSection() {
                     }`}
                     aria-pressed={deviceMode === "laptop"}
                   >
-                    Laptop
+                    {t.visualTransformation.laptop}
                   </button>
                   <button
                     onClick={() => setDeviceMode("phone")}
@@ -94,7 +100,7 @@ export default function VisualTransformationSection() {
                     }`}
                     aria-pressed={deviceMode === "phone"}
                   >
-                    Phone
+                    {t.visualTransformation.phone}
                   </button>
                 </div>
 
@@ -104,7 +110,7 @@ export default function VisualTransformationSection() {
                   rel="noopener noreferrer"
                   className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 text-white text-xs md:text-sm font-medium px-4 py-2 hover:bg-slate-800 transition-colors"
                 >
-                  View live site
+                  {t.visualTransformation.viewLiveSite}
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H8M17 7V16" />
                   </svg>
@@ -138,14 +144,14 @@ export default function VisualTransformationSection() {
             )}
           </div>
 
-          <div className="relative z-10 md:hidden flex items-center justify-center gap-3 px-4 pb-2">
+          <div className={`relative z-10 md:hidden flex items-center justify-center gap-3 px-4 pb-2 ${isRTL ? "flex-row-reverse" : ""}`}>
             <button
               onClick={handlePrev}
               className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-lg border border-white/90 text-purple-600 shadow-md hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
               aria-label={t.visualTransformation.prevProject}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={prevArrowPath} />
               </svg>
             </button>
 
@@ -159,7 +165,7 @@ export default function VisualTransformationSection() {
               aria-label={t.visualTransformation.nextProject}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={nextArrowPath} />
               </svg>
             </button>
           </div>
@@ -167,21 +173,25 @@ export default function VisualTransformationSection() {
           {/* Floating Navigation Controls */}
           <button
             onClick={handlePrev}
-            className="hidden md:inline-flex absolute left-1 sm:left-2 md:left-3 lg:left-4 top-[42%] md:top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/65 backdrop-blur-xl border border-white/80 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 hover:shadow-2xl md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className={`hidden md:inline-flex absolute top-[42%] md:top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/65 backdrop-blur-xl border border-white/80 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 hover:shadow-2xl md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500 ${
+              isRTL ? "right-1 sm:right-2 md:right-3 lg:right-4" : "left-1 sm:left-2 md:left-3 lg:left-4"
+            }`}
             aria-label={t.visualTransformation.prevProject}
           >
             <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={prevArrowPath} />
             </svg>
           </button>
 
           <button
             onClick={handleNext}
-            className="hidden md:inline-flex absolute right-1 sm:right-2 md:right-3 lg:right-4 top-[42%] md:top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/65 backdrop-blur-xl border border-white/80 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 hover:shadow-2xl md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className={`hidden md:inline-flex absolute top-[42%] md:top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-white/65 backdrop-blur-xl border border-white/80 text-purple-600 shadow-xl shadow-purple-900/10 hover:bg-white hover:text-purple-700 transition-all duration-500 hover:scale-110 hover:shadow-2xl md:opacity-0 md:group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-purple-500 ${
+              isRTL ? "left-1 sm:left-2 md:left-3 lg:left-4" : "right-1 sm:right-2 md:right-3 lg:right-4"
+            }`}
             aria-label={t.visualTransformation.nextProject}
           >
             <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={nextArrowPath} />
             </svg>
           </button>
 
@@ -194,7 +204,7 @@ export default function VisualTransformationSection() {
                   key={project.id}
                   onClick={() => handleSelect(index)}
                   disabled={isTransitioning}
-                  className={`text-left rounded-full border px-3.5 md:px-4 py-2 md:py-2.5 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-purple-500 ${
+                  className={`${isRTL ? "text-right" : "text-left"} rounded-full border px-3.5 md:px-4 py-2 md:py-2.5 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-purple-500 ${
                     isActiveProject
                       ? "bg-white/95 border-purple-200 shadow-lg shadow-purple-900/10"
                       : "bg-white/70 border-white/75 hover:bg-white/90 hover:border-purple-100 hover:shadow-md hover:shadow-purple-900/5"

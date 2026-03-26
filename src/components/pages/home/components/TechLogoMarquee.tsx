@@ -29,6 +29,7 @@ import {
   Firebase,
 } from "developer-icons";
 import { type ComponentType, type SVGProps } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface TechLogo {
   name: string;
@@ -67,10 +68,13 @@ const logos: TechLogo[] = [
 const MARQUEE_DURATION = "60s";
 
 export default function TechLogoMarquee() {
+  const { lang } = useLanguage();
+
   return (
     <div
       aria-hidden="true"
       className="group w-full overflow-hidden py-2"
+      dir="ltr"
       style={{
         maskImage:
           "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -79,7 +83,9 @@ export default function TechLogoMarquee() {
       }}
     >
       <div
-        className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
+        className={`flex w-max animate-marquee will-change-transform motion-reduce:animate-none lg:group-hover:[animation-play-state:paused] lg:group-focus-within:[animation-play-state:paused] ${
+          lang === "ar" ? "[animation-direction:reverse]" : ""
+        }`}
         style={{ animationDuration: MARQUEE_DURATION }}
       >
         {[0, 1].map((copy) => (

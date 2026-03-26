@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface LaptopMockupProps {
   url: string;
@@ -24,9 +25,30 @@ const getZoomByViewport = () => {
 };
 
 export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
+  const { lang } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const [desktopZoom, setDesktopZoom] = useState(DESKTOP_ZOOM_LG);
+
+  const localized = {
+    ja: {
+      viewSite: "サイトを見る",
+      loadingPreview: "プレビューを読み込み中...",
+      desktopPreview: "デスクトッププレビュー",
+    },
+    en: {
+      viewSite: "View site",
+      loadingPreview: "Loading preview...",
+      desktopPreview: "Desktop preview",
+    },
+    ar: {
+      viewSite: "عرض الموقع",
+      loadingPreview: "جارٍ تحميل المعاينة...",
+      desktopPreview: "معاينة سطح المكتب",
+    },
+  } as const;
+
+  const localeText = localized[lang];
 
   useEffect(() => {
     const updateZoom = () => setDesktopZoom(getZoomByViewport());
@@ -83,7 +105,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
-              title="サイトを見る"
+              title={localeText.viewSite}
             >
               <svg
                 className="w-3.5 h-3.5"
@@ -105,21 +127,22 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
           <div
             className="relative bg-white overflow-hidden rounded-b-[8px] aspect-[16/8.8] md:aspect-[16/7.5]"
             style={{ width: "100%" }}
+            dir="ltr"
           >
             {/* Loading state */}
             {!isLoaded && showLoader && (
               <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-8 h-8 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
-                  <span className="text-xs text-slate-400">Loading preview...</span>
+                  <span className="text-xs text-slate-400">{localeText.loadingPreview}</span>
                 </div>
               </div>
             )}
 
             <iframe
               src={url}
-              title="Desktop preview"
-              className="border-0 transition-opacity duration-300"
+              title={localeText.desktopPreview}
+              className="block border-0 transition-opacity duration-300"
               style={{
                 width: desktopZoomPercent,
                 height: desktopZoomPercent,
@@ -127,6 +150,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
                 transformOrigin: "top left",
                 overflow: "hidden",
                 scrollbarWidth: "none",
+                direction: "ltr",
                 opacity: isLoaded ? 1 : 0.96,
               }}
               onLoad={() => {

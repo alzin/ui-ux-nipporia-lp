@@ -12,7 +12,8 @@ export default function CTASection() {
 
   const { formData, isSubmitting, handleInputChange, handleSubmit, setClick } =
     useFormHandler();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isRTL = lang === "ar";
 
   return (
     <section
@@ -30,7 +31,7 @@ export default function CTASection() {
           description={t.contact.sectionDescription}
         />
         <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-white/90 backdrop-blur-sm py-8 px-6 md:p-12 rounded-3xl shadow-xl border border-purple-100">
-          <form onSubmit={handleSubmit} className="space-y-6 text-left">
+          <form onSubmit={handleSubmit} className={isRTL ? "space-y-6 text-right" : "space-y-6 text-left"}>
             <div className="mb-4 md:mb-6">
               <label htmlFor="company" className="block mb-2 text-gray-700 font-medium">
                 {t.contact.companyLabel}
