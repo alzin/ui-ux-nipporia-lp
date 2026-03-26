@@ -79,7 +79,7 @@ export default function TechLogoMarquee() {
       }}
     >
       <div
-        className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]"
+        className="flex w-max animate-marquee will-change-transform motion-reduce:animate-none lg:group-hover:[animation-play-state:paused] lg:group-focus-within:[animation-play-state:paused]"
         style={{ animationDuration: MARQUEE_DURATION }}
       >
         {[0, 1].map((copy) => (
