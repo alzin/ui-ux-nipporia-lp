@@ -1,16 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import { TProcessedBlogType } from "@/types/blog.type";
 import "@/styles/blog.css";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 interface IBlogPage {
   blog: TProcessedBlogType;
 }
 
 const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
+  const { lang } = useLanguage();
+
+  const localized = {
+    ja: {
+      blogPost: "ブログ記事",
+      noTags: "タグなし",
+      blogImage: "ブログ画像",
+    },
+    en: {
+      blogPost: "Blog post",
+      noTags: "No tags",
+      blogImage: "Blog Image",
+    },
+    ar: {
+      blogPost: "مقال مدونة",
+      noTags: "لا توجد وسوم",
+      blogImage: "صورة المقال",
+    },
+  } as const;
+
+  const localeText = localized[lang];
+
   return (
     <main
       className="container mx-auto px-4 py-8 max-w-4xl mt-[80px]"
-      aria-label={`Blog post: ${blog.metadata.title}`}
+      aria-label={`${localeText.blogPost}: ${blog.metadata.title}`}
     >
       <h1
         className="text-[clamp(2rem,4vw,3rem)] text-center font-bold mb-16 md:mb-24 relative text-gray-800 after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-[100px] after:h-1 after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:rounded"
@@ -30,7 +55,7 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
               </div>
             ))
           ) : (
-            <div className="text-gray-500 text-xs">No tags</div>
+            <div className="text-gray-500 text-xs">{localeText.noTags}</div>
           )}
         </div>
       </div>
@@ -38,7 +63,7 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
         <div className="mb-8 relative w-full rounded-2xl overflow-hidden">
           <Image
             src={blog.metadata.images[0]}
-            alt={blog.metadata.title || "Blog Image"}
+            alt={blog.metadata.title || localeText.blogImage}
             width={1200}
             height={600}
             sizes="(max-width: 768px) 100vw, 50vw"

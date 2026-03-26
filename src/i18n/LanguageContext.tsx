@@ -1,10 +1,10 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, useEffect } from "react";
-import ja from "./translations/ja";
-import en from "./translations/en";
-import ar from "./translations/ar";
-import type { Translations } from "./translations/types";
+import ja from "@/i18n/translations/ja";
+import en from "@/i18n/translations/en";
+import ar from "@/i18n/translations/ar";
+import type { Translations } from "@/i18n/translations/types";
 
 export type Language = "ja" | "en" | "ar";
 
@@ -34,11 +34,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("lang");
     if (saved && isLanguage(saved)) {
       setLangState(saved);
+      return;
+    }
+
+    const htmlLang = document.documentElement.lang;
+    if (htmlLang && isLanguage(htmlLang)) {
+      setLangState(htmlLang);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("lang", lang);
+    document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
     document.documentElement.lang = lang;
     document.documentElement.dir = rtlLanguages.has(lang) ? "rtl" : "ltr";
   }, [lang]);

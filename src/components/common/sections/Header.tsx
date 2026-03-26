@@ -11,6 +11,12 @@ export default function Header() {
   const { t, lang } = useLanguage();
   const isRTL = lang === "ar";
 
+  const menuLabelByLanguage = {
+    ja: { open: "メニューを開く", close: "メニューを閉じる" },
+    en: { open: "Open menu", close: "Close menu" },
+    ar: { open: "فتح القائمة", close: "إغلاق القائمة" },
+  } as const;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -87,7 +93,7 @@ export default function Header() {
           <LanguageSwitcher />
           <button
             type="button"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? menuLabelByLanguage[lang].close : menuLabelByLanguage[lang].open}
             aria-expanded={isMenuOpen}
             className="relative grid place-items-center w-11 h-11 rounded-xl border border-purple-200/70 bg-white/80 shadow-sm shadow-purple-300/30 transition-all duration-300 hover:border-purple-300 hover:shadow-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}

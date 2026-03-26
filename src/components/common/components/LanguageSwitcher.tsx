@@ -59,6 +59,26 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  const labelsByLanguage = {
+    ja: {
+      switcher: "言語切替",
+      selectLanguage: "言語を選択",
+      switchTo: "切り替え",
+    },
+    en: {
+      switcher: "Language switcher",
+      selectLanguage: "Select language",
+      switchTo: "Switch to",
+    },
+    ar: {
+      switcher: "مبدل اللغة",
+      selectLanguage: "اختر اللغة",
+      switchTo: "التبديل إلى",
+    },
+  } as const;
+
+  const localeText = labelsByLanguage[lang];
+
   const selectedOption =
     languageOptions.find((option) => option.value === lang) ?? languageOptions[0];
 
@@ -88,14 +108,14 @@ export default function LanguageSwitcher() {
     <div
       ref={containerRef}
       className="relative"
-      aria-label="Language switcher"
+      aria-label={localeText.switcher}
     >
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-3 py-1.5 text-sm font-medium text-gray-700 backdrop-blur-sm transition-all duration-300 hover:border-purple-400 hover:bg-purple-50"
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        aria-label="Select language"
+        aria-label={localeText.selectLanguage}
       >
         <LanguageFlag option={selectedOption} />
         <span className="hidden sm:inline">{selectedOption.title}</span>
@@ -133,11 +153,12 @@ export default function LanguageSwitcher() {
                 }}
                 role="menuitemradio"
                 aria-checked={isActive}
-                className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition-colors ${
+                aria-label={`${localeText.switchTo} ${option.title}`}
+                className={`flex w-full items-center gap-3 px-3 py-2 text-sm transition-colors ${
                   isActive
                     ? "bg-purple-50 text-purple-700"
                     : "text-gray-700 hover:bg-gray-50"
-                }`}
+                } ${isRtl ? "text-right" : "text-left"}`}
               >
                 <LanguageFlag option={option} />
                 <span>{option.title}</span>
