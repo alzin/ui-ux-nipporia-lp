@@ -100,7 +100,7 @@ export default function LanguageSwitcher() {
         aria-haspopup="menu"
         aria-label={localeText.selectLanguage}
       >
-        <LanguageFlag option={selectedOption} />
+        {/* <LanguageFlag option={selectedOption} /> */}
         <span className="hidden sm:inline">{selectedOption.title}</span>
         <span className="sm:hidden">{selectedOption.label}</span>
         <svg
@@ -143,7 +143,7 @@ export default function LanguageSwitcher() {
                     : "text-gray-700 hover:bg-gray-50"
                 } ${isRtl ? "text-right" : "text-left"}`}
               >
-                <LanguageFlag option={option} />
+                {/* <LanguageFlag option={option} /> */}
                 <span>{option.title}</span>
               </button>
             );
