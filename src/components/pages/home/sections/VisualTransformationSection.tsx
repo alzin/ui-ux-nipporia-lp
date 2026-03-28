@@ -150,7 +150,7 @@ export default function VisualTransformationSection() {
               className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-lg border border-white/90 text-purple-600 shadow-md hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
               aria-label={t.visualTransformation.prevProject}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 ${isRTL ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={prevArrowPath} />
               </svg>
             </button>
@@ -164,7 +164,7 @@ export default function VisualTransformationSection() {
               className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-lg border border-white/90 text-purple-600 shadow-md hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500"
               aria-label={t.visualTransformation.nextProject}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 ${isRTL ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d={nextArrowPath} />
               </svg>
             </button>
