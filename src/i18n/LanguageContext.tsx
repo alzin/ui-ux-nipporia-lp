@@ -1,61 +1,65 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useEffect } from "react";
+import { createContext, useContext, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import ja from "@/i18n/translations/ja";
 import en from "@/i18n/translations/en";
 import ar from "@/i18n/translations/ar";
 import type { Translations } from "@/i18n/translations/types";
+import type { SiteLanguage } from "@/i18n/languageConfig";
+import { localizePath, switchLanguageInPathname } from "@/i18n/localizedPath";
 
-export type Language = "ja" | "en" | "ar";
+export type Language = SiteLanguage;
 
 interface LanguageContextType {
   lang: Language;
   t: Translations;
   setLang: (lang: Language) => void;
+  localizePath: (pathOrUrl: string) => string;
 }
 
 const translations: Record<Language, Translations> = { ja, en, ar };
-
-const rtlLanguages = new Set<Language>(["ar"]);
-
-const isLanguage = (value: string): value is Language =>
-  value === "ja" || value === "en" || value === "ar";
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: "ja",
   t: ja,
   setLang: () => {},
+  localizePath: () => "/ja",
 });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>("ja");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("lang");
-    if (saved && isLanguage(saved)) {
-      setLangState(saved);
-      return;
-    }
-
-    const htmlLang = document.documentElement.lang;
-    if (htmlLang && isLanguage(htmlLang)) {
-      setLangState(htmlLang);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("lang", lang);
-    document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = rtlLanguages.has(lang) ? "rtl" : "ltr";
-  }, [lang]);
-
+export function LanguageProvider({
+  children,
+  currentLang,
+}: {
+  children: React.ReactNode;
+  currentLang: Language;
+}) {
+  const router = useRouter();
   const setLang = useCallback((newLang: Language) => {
-    setLangState(newLang);
-  }, []);
+    if (newLang === currentLang || typeof window === "undefined") return;
+
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    const newUrl = switchLanguageInPathname(currentUrl, newLang);
+
+    if (newUrl === currentUrl) return;
+
+    router.replace(newUrl);
+  }, [currentLang, router]);
+
+  const toLocalizedPath = useCallback(
+    (pathOrUrl: string) => localizePath(currentLang, pathOrUrl),
+    [currentLang],
+  );
 
   return (
-    <LanguageContext.Provider value={{ lang, t: translations[lang], setLang }}>
+    <LanguageContext.Provider
+      value={{
+        lang: currentLang,
+        t: translations[currentLang],
+        setLang,
+        localizePath: toLocalizedPath,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

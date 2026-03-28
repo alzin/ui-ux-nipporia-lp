@@ -54,30 +54,13 @@ function LanguageFlag({ option }: { option: (typeof languageOptions)[number] }) 
 }
 
 export default function LanguageSwitcher() {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
   const isRtl = lang === "ar";
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const labelsByLanguage = {
-    ja: {
-      switcher: "言語切替",
-      selectLanguage: "言語を選択",
-      switchTo: "切り替え",
-    },
-    en: {
-      switcher: "Language switcher",
-      selectLanguage: "Select language",
-      switchTo: "Switch to",
-    },
-    ar: {
-      switcher: "مبدل اللغة",
-      selectLanguage: "اختر اللغة",
-      switchTo: "التبديل إلى",
-    },
-  } as const;
-
-  const localeText = labelsByLanguage[lang];
+  const localeText = t.languageSwitcher;
+  // const getLanguageTitle = (language: Language) => localeText.options[language];
 
   const selectedOption =
     languageOptions.find((option) => option.value === lang) ?? languageOptions[0];
@@ -117,7 +100,7 @@ export default function LanguageSwitcher() {
         aria-haspopup="menu"
         aria-label={localeText.selectLanguage}
       >
-        <LanguageFlag option={selectedOption} />
+        {/* <LanguageFlag option={selectedOption} /> */}
         <span className="hidden sm:inline">{selectedOption.title}</span>
         <span className="sm:hidden">{selectedOption.label}</span>
         <svg
@@ -160,7 +143,7 @@ export default function LanguageSwitcher() {
                     : "text-gray-700 hover:bg-gray-50"
                 } ${isRtl ? "text-right" : "text-left"}`}
               >
-                <LanguageFlag option={option} />
+                {/* <LanguageFlag option={option} /> */}
                 <span>{option.title}</span>
               </button>
             );

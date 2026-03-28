@@ -1,19 +1,23 @@
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
+import {
+  DEFAULT_LANGUAGE,
+  isRTL,
+  isSiteLanguage,
+  resolveSiteLanguage,
+  type SiteLanguage,
+} from "@/i18n/languageConfig";
+import { getLanguageFromPathname } from "@/i18n/localizedPath";
 
-export type SiteLanguage = "ja" | "en" | "ar";
+export type { SiteLanguage } from "@/i18n/languageConfig";
+export { DEFAULT_LANGUAGE, isRTL, isSiteLanguage, resolveSiteLanguage };
 
-export const isSiteLanguage = (value: string): value is SiteLanguage =>
-  value === "ja" || value === "en" || value === "ar";
+export const getRequestLanguage = async (): Promise<SiteLanguage> => {
+  const requestHeaders = await headers();
+  const pathname =
+    requestHeaders.get("x-pathname") ??
+    requestHeaders.get("next-url") ??
+    requestHeaders.get("referer") ??
+    `/${DEFAULT_LANGUAGE}`;
 
-export const isRTL = (lang: SiteLanguage) => lang === "ar";
-
-export async function getRequestLanguage(defaultLang: SiteLanguage = "ja"): Promise<SiteLanguage> {
-  const cookieStore = await cookies();
-  const langCookie = cookieStore.get("lang")?.value;
-
-  if (langCookie && isSiteLanguage(langCookie)) {
-    return langCookie;
-  }
-
-  return defaultLang;
-}
+  return getLanguageFromPathname(pathname);
+};

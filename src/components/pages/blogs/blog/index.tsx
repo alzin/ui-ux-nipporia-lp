@@ -10,27 +10,8 @@ interface IBlogPage {
 }
 
 const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
-  const { lang } = useLanguage();
-
-  const localized = {
-    ja: {
-      blogPost: "ブログ記事",
-      noTags: "タグなし",
-      blogImage: "ブログ画像",
-    },
-    en: {
-      blogPost: "Blog post",
-      noTags: "No tags",
-      blogImage: "Blog Image",
-    },
-    ar: {
-      blogPost: "مقال مدونة",
-      noTags: "لا توجد وسوم",
-      blogImage: "صورة المقال",
-    },
-  } as const;
-
-  const localeText = localized[lang];
+  const { t } = useLanguage();
+  const localeText = t.blogUi;
 
   return (
     <main

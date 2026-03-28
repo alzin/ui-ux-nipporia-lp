@@ -1,43 +1,42 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import BlogPage from '@/components/pages/blogs/blog';
+import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogDataHtml } from '@/utils/getBlog';
 import { createProcessedBlogObject } from '@/utils/createBlog';
-import { getRequestLanguage, type SiteLanguage } from '@/i18n/serverLanguage';
+import {
+  DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
+  isSiteLanguage,
+  resolveSiteLanguage,
+} from '@/i18n/languageConfig';
 
 interface BlogPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }
-
-const missingPostMetadataByLanguage: Record<SiteLanguage, Metadata> = {
-  ja: {
-    title: '記事が見つかりません',
-    description: '指定されたブログ記事は存在しません。',
-  },
-  en: {
-    title: 'Not Found',
-    description: 'This blog post does not exist.',
-  },
-  ar: {
-    title: 'المقال غير موجود',
-    description: 'مقال المدونة المطلوب غير موجود.',
-  },
-};
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
-  return slugs.map(({ slug }) => ({ slug }));
+  return SUPPORTED_LANGUAGES.flatMap((lang) =>
+    slugs.map(({ slug }) => ({ lang, slug })),
+  );
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { slug, lang: routeLang } = await params;
+  const lang = resolveSiteLanguage(routeLang);
+
   try {
-    const { slug } = await params;
     const blogData = await getBlogDataHtml(slug);
     const blog = createProcessedBlogObject(slug, blogData);
+    const canonicalLang = isSiteLanguage(routeLang) ? routeLang : DEFAULT_LANGUAGE;
     
     return {
       title: blog.metadata.title,
       description: blog.metadata.description,
+      alternates: {
+        canonical: `/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
+      },
       openGraph: {
         title: blog.metadata.title,
         description: blog.metadata.description,
@@ -46,8 +45,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       },
     };
   } catch {
-    const lang = await getRequestLanguage();
-    return missingPostMetadataByLanguage[lang];
+    return getLocalizedPageContent(lang).missingBlog;
   }
 }
 

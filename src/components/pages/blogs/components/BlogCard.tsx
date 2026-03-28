@@ -11,33 +11,8 @@ interface IBlogCardProps {
 }
 
 const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
-  const { lang } = useLanguage();
-
-  const localized = {
-    ja: {
-      untitled: "無題",
-      noDescription: "説明はありません",
-      noDate: "日付なし",
-      noTags: "タグなし",
-      readPost: "ブログ記事を読む",
-    },
-    en: {
-      untitled: "Untitled",
-      noDescription: "No description available",
-      noDate: "No date",
-      noTags: "No tags",
-      readPost: "Read blog post",
-    },
-    ar: {
-      untitled: "بدون عنوان",
-      noDescription: "لا يوجد وصف",
-      noDate: "لا يوجد تاريخ",
-      noTags: "لا توجد وسوم",
-      readPost: "قراءة المقال",
-    },
-  } as const;
-
-  const localeText = localized[lang];
+  const { t, localizePath } = useLanguage();
+  const localeText = t.blogUi;
   const title = metadata.title || localeText.untitled;
   const description = metadata.description || localeText.noDescription;
   const date = metadata.date || localeText.noDate;
@@ -47,7 +22,7 @@ const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
   return (
     <Link
       key={slug}
-      href={`/blogs/${slug}`}
+      href={localizePath(`/blogs/${slug}`)}
       aria-label={`${localeText.readPost}: ${title}`}
     >
       <div

@@ -5,10 +5,10 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
+  const { t, localizePath } = useLanguage();
 
   return (
-    <footer className="bg-gradient-to-br from-[#f6effb] via-[#eddcf6] to-[#e7d2f1] text-slate-900 py-16 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#f6effb] via-[#eddcf6] to-[#e7d2f1] text-slate-900 py-16 pb-28 md:pb-16 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500" />
       <div className="absolute top-20 left-10 w-64 h-64 bg-purple-500/15 rounded-full blur-3xl" />
@@ -19,7 +19,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link
-              href="/"
+              href={localizePath("/")}
               className="inline-flex items-center gap-2"
             >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative shrink-0">
@@ -49,7 +49,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/#services"
+                  href={localizePath("/#services")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.quickLinkItems.services}
@@ -57,7 +57,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/#pricing"
+                  href={localizePath("/#pricing")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.quickLinkItems.pricing}
@@ -65,7 +65,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/blogs"
+                  href={localizePath("/blogs")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.quickLinkItems.blog}
@@ -80,7 +80,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/privacy-policy"
+                  href={localizePath("/privacy-policy")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.legalItems.privacy}
@@ -88,7 +88,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/terms-of-service"
+                  href={localizePath("/terms-of-service")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.legalItems.terms}
@@ -96,7 +96,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/commerce-disclosure"
+                  href={localizePath("/commerce-disclosure")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.legalItems.commerce}

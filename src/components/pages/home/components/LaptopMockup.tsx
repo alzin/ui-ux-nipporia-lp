@@ -25,30 +25,11 @@ const getZoomByViewport = () => {
 };
 
 export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
-  const { lang } = useLanguage();
+  const { t } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const [desktopZoom, setDesktopZoom] = useState(DESKTOP_ZOOM_LG);
-
-  const localized = {
-    ja: {
-      viewSite: "サイトを見る",
-      loadingPreview: "プレビューを読み込み中...",
-      desktopPreview: "デスクトッププレビュー",
-    },
-    en: {
-      viewSite: "View site",
-      loadingPreview: "Loading preview...",
-      desktopPreview: "Desktop preview",
-    },
-    ar: {
-      viewSite: "عرض الموقع",
-      loadingPreview: "جارٍ تحميل المعاينة...",
-      desktopPreview: "معاينة سطح المكتب",
-    },
-  } as const;
-
-  const localeText = localized[lang];
+  const localeText = t.visualTransformation;
 
   useEffect(() => {
     const updateZoom = () => setDesktopZoom(getZoomByViewport());
@@ -105,7 +86,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-colors"
-              title={localeText.viewSite}
+              title={localeText.viewLiveSite}
             >
               <svg
                 className="w-3.5 h-3.5"
