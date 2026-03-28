@@ -8,7 +8,7 @@ const Footer = () => {
   const { t, localizePath } = useLanguage();
 
   return (
-    <footer className="bg-gradient-to-br from-[#f6effb] via-[#eddcf6] to-[#e7d2f1] text-slate-900 py-16 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#f6effb] via-[#eddcf6] to-[#e7d2f1] text-slate-900 py-16 pb-28 md:pb-16 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500" />
       <div className="absolute top-20 left-10 w-64 h-64 bg-purple-500/15 rounded-full blur-3xl" />
