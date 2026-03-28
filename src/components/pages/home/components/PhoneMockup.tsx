@@ -14,27 +14,11 @@ const LOADER_VISIBLE_MS = 900;
 
 
 export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
-  const { lang } = useLanguage();
+  const { t } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
   const phoneZoom = PHONE_ZOOM_MOBILE;
-
-  const localized = {
-    ja: {
-      loadingPreview: "プレビューを読み込み中...",
-      mobilePreview: "モバイルプレビュー",
-    },
-    en: {
-      loadingPreview: "Loading preview...",
-      mobilePreview: "Mobile preview",
-    },
-    ar: {
-      loadingPreview: "جارٍ تحميل المعاينة...",
-      mobilePreview: "معاينة الجوال",
-    },
-  } as const;
-
-  const localeText = localized[lang];
+  const localeText = t.visualTransformation;
 
   const phoneZoomPercent = `${100 / phoneZoom}%`;
   const phoneZoomMaskedPercent = `calc(${phoneZoomPercent} + ${SCROLLBAR_MASK_PX}px)`;

@@ -8,6 +8,10 @@ export interface Translations {
     pricing: string;
     contact: string;
     blog: string;
+    menu: {
+      open: string;
+      close: string;
+    };
   };
   hero: {
     title: string;
@@ -43,6 +47,9 @@ export interface Translations {
     laptop: string;
     phone: string;
     viewLiveSite: string;
+    loadingPreview: string;
+    desktopPreview: string;
+    mobilePreview: string;
   };
   projects: { description: string; tags: string[] }[];
   services: {
@@ -113,4 +120,99 @@ export interface Translations {
       commerce: string;
     };
   };
-}
+  languageSwitcher: {
+    switcher: string;
+    selectLanguage: string;
+    switchTo: string;
+    options: {
+      ja: string;
+      en: string;
+      ar: string;
+    };
+  };
+  blogUi: {
+    allBlogsTitle: string;
+    allBlogsAria: string;
+    blogPost: string;
+    untitled: string;
+    noDescription: string;
+    noDate: string;
+    noTags: string;
+    blogImage: string;
+    readPost: string;
+  };
+  notFoundPage: {
+    message: string;
+    backHome: string;
+  };
+} 
+export type SeoMetadata = {
+  title: string;
+  description: string;
+};
+
+export type LayoutSeoContent = {
+  titleDefault: string;
+  titleTemplate: string;
+  description: string;
+  applicationName: string;
+  keywords: string[];
+  ogTitle: string;
+  ogDescription: string;
+  ogImageAlt: string;
+};
+
+export type PrivacySection = {
+  title: string;
+  paragraphs: string[];
+  listItems?: string[];
+};
+
+export type PrivacyContent = {
+  metadataTitle: string;
+  metadataDescription: string;
+  pageTitle: string;
+  sections: PrivacySection[];
+  establishedDate: string;
+  updatedDate: string;
+};
+
+export type TermsSection = {
+  title: string;
+  paragraphs: string[];
+  listItems?: string[];
+};
+
+export type TermsContent = {
+  metadataTitle: string;
+  metadataDescription: string;
+  pageTitle: string;
+  sections: TermsSection[];
+  establishedDate: string;
+  updatedDate: string;
+};
+
+export type DisclosureRow = {
+  label: string;
+  lines?: string[];
+  listItems?: string[];
+};
+
+export type CommerceContent = {
+  metadataTitle: string;
+  metadataDescription: string;
+  pageTitle: string;
+  rows: DisclosureRow[];
+  establishedDate: string;
+  updatedDate: string;
+};
+
+export type LocalizedPageContent = {
+  layout: LayoutSeoContent;
+  notFound: SeoMetadata;
+  blogs: SeoMetadata;
+  missingBlog: SeoMetadata;
+  privacyPolicy: PrivacyContent;
+  termsOfService: TermsContent;
+  commerceDisclosure: CommerceContent;
+};

@@ -1,7 +1,9 @@
 export function initHomeScript() {
+  const cleanupCallbacks = [];
+
   // Smooth scroll for navigation links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
+    const handleClick = function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
@@ -10,7 +12,10 @@ export function initHomeScript() {
           block: "start",
         });
       }
-    });
+    };
+
+    anchor.addEventListener("click", handleClick);
+    cleanupCallbacks.push(() => anchor.removeEventListener("click", handleClick));
   });
 
 
@@ -35,5 +40,12 @@ export function initHomeScript() {
     });
   }, observerOptions);
 
-  document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+  const fadeInElements = document.querySelectorAll(".fade-in");
+  fadeInElements.forEach((el) => observer.observe(el));
+
+  cleanupCallbacks.push(() => observer.disconnect());
+
+  return () => {
+    cleanupCallbacks.forEach((cleanup) => cleanup());
+  };
 }

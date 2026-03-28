@@ -1,34 +1,41 @@
 import { MetadataRoute } from 'next';
 import { baseUrl } from '@/utils/baseUrl';
 import { getAllBlogSlugs } from '@/utils/getBlog';
+import { SUPPORTED_LANGUAGES } from '@/i18n/languageConfig';
+import { localizePath } from '@/i18n/localizedPath';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const blogsData = getAllBlogSlugs()
+    const blogsData = getAllBlogSlugs();
+    const now = new Date().toISOString();
 
-    const staticUrls: MetadataRoute.Sitemap = [
-        {
-            url: baseUrl,
-            lastModified: new Date().toISOString(),
-            changeFrequency: "daily",
-            priority: 1.0,
-        },
-        {
-            url: `${baseUrl}/blogs`,
-            lastModified: new Date().toISOString(),
-            changeFrequency: "daily",
-            priority: 0.8,
-        },
+    const staticPaths = [
+        { path: '/', changeFrequency: 'daily' as const, priority: 1.0 },
+        { path: '/blogs', changeFrequency: 'daily' as const, priority: 0.8 },
+        { path: '/privacy-policy', changeFrequency: 'monthly' as const, priority: 0.4 },
+        { path: '/terms-of-service', changeFrequency: 'monthly' as const, priority: 0.4 },
+        { path: '/commerce-disclosure', changeFrequency: 'monthly' as const, priority: 0.4 },
     ];
 
-    const dynamicBlogUrls: MetadataRoute.Sitemap = blogsData.map((blog) => ({
-        url: `${baseUrl}/blogs/${encodeURIComponent(blog.slug)}`,
-        lastModified: new Date().toISOString(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-    }));
+    const localizedStaticUrls: MetadataRoute.Sitemap = SUPPORTED_LANGUAGES.flatMap((lang) =>
+        staticPaths.map(({ path, changeFrequency, priority }) => ({
+            url: `${baseUrl}${localizePath(lang, path)}`,
+            lastModified: now,
+            changeFrequency,
+            priority,
+        }))
+    );
+
+    const localizedBlogUrls: MetadataRoute.Sitemap = SUPPORTED_LANGUAGES.flatMap((lang) =>
+        blogsData.map((blog) => ({
+            url: `${baseUrl}${localizePath(lang, `/blogs/${encodeURIComponent(blog.slug)}`)}`,
+            lastModified: now,
+            changeFrequency: 'weekly' as const,
+            priority: 0.7,
+        }))
+    );
 
     return [
-        ...staticUrls,
-        ...dynamicBlogUrls,
+        ...localizedStaticUrls,
+        ...localizedBlogUrls,
     ];
 }

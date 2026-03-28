@@ -12,7 +12,8 @@ import { initHomeScript } from "@/lib/homeScript";
 
 const Index = () => {
   useEffect(() => {
-    initHomeScript();
+    const cleanup = initHomeScript();
+    return cleanup;
   }, []);
 
   return (

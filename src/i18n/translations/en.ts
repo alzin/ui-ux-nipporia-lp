@@ -1,4 +1,5 @@
 import type { Translations } from "./types";
+import type { LocalizedPageContent } from "@/i18n/translations/types";
 
 const en: Translations = {
   // Header nav
@@ -11,6 +12,10 @@ const en: Translations = {
     pricing: "Pricing",
     contact: "Contact",
     blog: "Blog",
+    menu: {
+      open: "Open menu",
+      close: "Close menu",
+    },
   },
 
   // Hero
@@ -70,6 +75,9 @@ const en: Translations = {
     laptop: "Laptop",
     phone: "Phone",
     viewLiveSite: "View live site",
+    loadingPreview: "Loading preview...",
+    desktopPreview: "Desktop preview",
+    mobilePreview: "Mobile preview",
   },
 
   // Projects
@@ -296,6 +304,293 @@ const en: Translations = {
       terms: "Terms of Service",
       commerce: "Commercial Disclosure",
     },
+  },
+  languageSwitcher: {
+    switcher: "Language switcher",
+    selectLanguage: "Select language",
+    switchTo: "Switch to",
+    options: {
+      ja: "Japanese",
+      en: "English",
+      ar: "Arabic",
+    },
+  },
+  blogUi: {
+    allBlogsTitle: "All Blogs",
+    allBlogsAria: "All blog posts",
+    blogPost: "Blog post",
+    untitled: "Untitled",
+    noDescription: "No description available",
+    noDate: "No date",
+    noTags: "No tags",
+    blogImage: "Blog image",
+    readPost: "Read blog post",
+  },
+  notFoundPage: {
+    message: "The page you are looking for could not be found.",
+    backHome: "Back to Home",
+  },
+};
+
+export const enPageContent: LocalizedPageContent = {
+  layout: {
+    titleDefault:
+      "Website Transformation Service | Turn low-performing websites into professional assets",
+    titleTemplate: "%s | Website Transformation Service",
+    description:
+      "We transform poorly designed, low-traffic websites into professional platforms using modern Next.js and SEO strategies.",
+    applicationName: "Website Transformation Service",
+    keywords: [
+      "website optimization",
+      "UI UX improvement",
+      "Next.js development",
+      "SEO",
+      "Google Ads",
+      "web design",
+      "site redesign",
+    ],
+    ogTitle:
+      "Website Transformation Service | Turn low-performing websites into professional assets",
+    ogDescription:
+      "Transform poorly designed, low-traffic websites into professional websites with modern technologies.",
+    ogImageAlt: "Website Transformation Service OG image",
+  },
+  notFound: {
+    title: "404 - Page Not Found",
+    description:
+      "Sorry, the page you are looking for could not be found. Visit our homepage for more information.",
+  },
+  blogs: {
+    title: "All Blogs",
+    description: "Browse all blog posts about our project.",
+  },
+  missingBlog: {
+    title: "Not Found",
+    description: "This blog post does not exist.",
+  },
+  privacyPolicy: {
+    metadataTitle: "Privacy Policy | Nipporia",
+    metadataDescription:
+      "Learn how Nipporia collects, uses, and protects your personal information.",
+    pageTitle: "Privacy Policy",
+    sections: [
+      {
+        title: "1. Collection of Personal Information",
+        paragraphs: [
+          "When you use our contact form, we may collect personal information such as your name, email address, and company name. We use this information to respond to inquiries and provide our services.",
+        ],
+      },
+      {
+        title: "2. Purpose of Use",
+        paragraphs: [
+          "We use collected personal information for the following purposes:",
+        ],
+        listItems: [
+          "Responding to inquiries",
+          "Providing and improving services",
+          "Sending updates about new services and announcements",
+          "Contacting you regarding contracts and billing",
+        ],
+      },
+      {
+        title: "3. Disclosure to Third Parties",
+        paragraphs: [
+          "We do not disclose personal information to third parties without your consent, except where required by law. We may share necessary information with trusted service providers for operational purposes.",
+        ],
+      },
+      {
+        title: "4. Information Management",
+        paragraphs: [
+          "We keep personal information accurate and up to date, and take appropriate security measures to prevent unauthorized access, loss, damage, falsification, or leakage.",
+        ],
+      },
+      {
+        title: "5. Use of Cookies",
+        paragraphs: [
+          "We use cookies to improve user experience and analyze website usage. You can disable cookies in your browser settings, but some features may not function properly.",
+        ],
+      },
+      {
+        title: "6. Contact",
+        paragraphs: [
+          "For inquiries about personal data handling, please contact us through the contact form on this website.",
+        ],
+      },
+      {
+        title: "7. Changes to This Policy",
+        paragraphs: [
+          "We may update this Privacy Policy when necessary. The revised policy becomes effective when published on this website.",
+        ],
+      },
+    ],
+    establishedDate: "Established: January 1, 2025",
+    updatedDate: "Last updated: February 1, 2025",
+  },
+  termsOfService: {
+    metadataTitle: "Terms of Service | Nipporia",
+    metadataDescription:
+      "Read the terms governing the use of Nipporia services.",
+    pageTitle: "Terms of Service",
+    sections: [
+      {
+        title: "Article 1 (Scope)",
+        paragraphs: [
+          'These Terms define the conditions for using all services provided by our company (the "Service"). Users agree to use the Service in accordance with these Terms.',
+        ],
+      },
+      {
+        title: "Article 2 (Service Details)",
+        paragraphs: ["We provide the following services:"],
+        listItems: [
+          "Website planning, design, and development",
+          "SEO and web marketing support",
+          "Website maintenance and operation support",
+          "Google Ads operation support",
+          "Other related services",
+        ],
+      },
+      {
+        title: "Article 3 (Contract Formation)",
+        paragraphs: [
+          "A service contract is established when we accept a customer's application. Contract details are governed by the applicable individual agreement or quotation.",
+        ],
+      },
+      {
+        title: "Article 4 (Fees and Payment)",
+        paragraphs: [
+          "Service fees are stated in the individual agreement or quotation. Payment terms are as follows:",
+        ],
+        listItems: [
+          "Initial production fee: 50% at contract signing, 50% upon delivery",
+          "Monthly support fee: billed monthly, payable by the end of the following month",
+          "Payment methods: bank transfer or credit card",
+        ],
+      },
+      {
+        title: "Article 5 (Prohibited Conduct)",
+        paragraphs: [
+          "Users must not engage in the following actions when using the Service:",
+        ],
+        listItems: [
+          "Violating laws or public order and morals",
+          "Infringing intellectual property rights of our company or third parties",
+          "Interfering with the operation of our services",
+          "Providing false information",
+          "Any other conduct deemed inappropriate by our company",
+        ],
+      },
+      {
+        title: "Article 6 (Intellectual Property)",
+        paragraphs: [
+          "Copyright of deliverables created through the Service transfers to the customer after full payment is completed. However, programs and libraries independently developed by our company remain our property.",
+        ],
+      },
+      {
+        title: "Article 7 (Disclaimer)",
+        paragraphs: [
+          "We make no guarantees regarding completeness, accuracy, reliability, or usefulness of the Service. We are not liable for damages resulting from use of the Service, except in cases of willful misconduct or gross negligence by our company.",
+        ],
+      },
+      {
+        title: "Article 8 (Termination)",
+        paragraphs: [
+          "We may terminate a contract without prior notice if a customer violates these Terms. In such cases, fees already paid are non-refundable.",
+        ],
+      },
+      {
+        title: "Article 9 (Changes to Terms)",
+        paragraphs: [
+          "We may revise these Terms without prior notice when deemed necessary. Revised Terms become effective when posted on this website.",
+        ],
+      },
+      {
+        title: "Article 10 (Governing Law and Jurisdiction)",
+        paragraphs: [
+          "These Terms are governed by the laws of Japan. Any dispute related to the Service shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance.",
+        ],
+      },
+    ],
+    establishedDate: "Established: January 1, 2025",
+    updatedDate: "Last updated: February 1, 2025",
+  },
+  commerceDisclosure: {
+    metadataTitle: "Commercial Disclosure | Nipporia",
+    metadataDescription:
+      "Information provided in accordance with Japan's Act on Specified Commercial Transactions.",
+    pageTitle: "Commercial Disclosure (Specified Commercial Transactions Act)",
+    rows: [
+      { label: "Business Name", lines: ["Nipporia"] },
+      { label: "Representative", lines: ["Arjin Muhammad Ghais"] },
+      {
+        label: "Address",
+        lines: ["1-9-4-902 Kukichuo, Kuki City, Saitama, Japan"],
+      },
+      { label: "Phone Number", lines: ["(+81) 070-8905-8857"] },
+      { label: "Email Address", lines: ["info@nipporia.com"] },
+      {
+        label: "Service Fees",
+        lines: [
+          "[Initial Production Fee]",
+          "JPY 1,000,000 - 3,000,000 (tax included)",
+          "[Monthly Support Fee]",
+          "Basic: JPY 250,000 / month (tax included)",
+          "Growth: JPY 350,000 / month (tax included)",
+          "Enterprise: JPY 500,000 / month (tax included)",
+        ],
+      },
+      {
+        label: "Additional Costs",
+        listItems: [
+          "Domain registration and renewal fees (actual cost)",
+          "Server usage fees (actual cost)",
+          "Third-party service fees (actual cost)",
+          "Bank transfer fees (borne by customer)",
+        ],
+      },
+      {
+        label: "Payment Methods",
+        listItems: ["Bank transfer", "Credit card (Stripe)"],
+      },
+      {
+        label: "Payment Timing",
+        lines: [
+          "[Initial Production Fee]",
+          "50% at contract signing, 50% upon delivery",
+          "[Monthly Support Fee]",
+          "Billed monthly, payable by the end of the following month",
+        ],
+      },
+      {
+        label: "Service Delivery Timing",
+        lines: [
+          "Services are provided after contract formation and by the separately agreed delivery date.",
+          "Initial production typically takes around 1 to 3 months.",
+        ],
+      },
+      {
+        label: "Returns and Cancellation",
+        lines: [
+          "[Before Production Starts]",
+          "Full refund is available within 7 days after contract signing.",
+          "[After Production Starts]",
+          "Fees will be charged according to actual production progress.",
+          "[Monthly Support]",
+          "Please submit cancellation by the end of the month before the intended cancellation month.",
+        ],
+      },
+      {
+        label: "System Requirements",
+        lines: ["[Recommended Browsers]"],
+        listItems: [
+          "Google Chrome (latest version)",
+          "Safari (latest version)",
+          "Firefox (latest version)",
+          "Microsoft Edge (latest version)",
+        ],
+      },
+    ],
+    establishedDate: "Established: January 1, 2025",
+    updatedDate: "Last updated: February 1, 2025",
   },
 };
 

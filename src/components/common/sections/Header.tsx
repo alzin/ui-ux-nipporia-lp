@@ -8,14 +8,8 @@ import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t, lang } = useLanguage();
+  const { t, lang, localizePath } = useLanguage();
   const isRTL = lang === "ar";
-
-  const menuLabelByLanguage = {
-    ja: { open: "メニューを開く", close: "メニューを閉じる" },
-    en: { open: "Open menu", close: "Close menu" },
-    ar: { open: "فتح القائمة", close: "إغلاق القائمة" },
-  } as const;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,9 +20,9 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/#services", title: t.nav.services },
-    { href: "/#pricing", title: t.nav.pricing },
-    { href: "/blogs", title: t.nav.blog },
+    { href: localizePath("/#services"), title: t.nav.services },
+    { href: localizePath("/#pricing"), title: t.nav.pricing },
+    { href: localizePath("/blogs"), title: t.nav.blog },
   ];
 
   return (
@@ -40,7 +34,7 @@ export default function Header() {
       <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center" dir={isRTL ? "rtl" : "ltr"}>
         {/* Logo - fixed left */}
         <Link
-          href={"/"}
+          href={localizePath("/")}
           className="shrink-0 hover:scale-105 transition-transform duration-300 flex items-center gap-2"
         >
           <div className="w-10 h-10 rounded-lg overflow-hidden relative">
@@ -82,7 +76,7 @@ export default function Header() {
         {/* Contact Button & Language - right */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <Link
-            href="/#contact"
+            href={localizePath("/#contact")}
             className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 text-sm whitespace-nowrap"
           >
             {t.nav.contact}
@@ -93,7 +87,7 @@ export default function Header() {
           <LanguageSwitcher />
           <button
             type="button"
-            aria-label={isMenuOpen ? menuLabelByLanguage[lang].close : menuLabelByLanguage[lang].open}
+            aria-label={isMenuOpen ? t.nav.menu.close : t.nav.menu.open}
             aria-expanded={isMenuOpen}
             className="relative grid place-items-center w-11 h-11 rounded-xl border border-purple-200/70 bg-white/80 shadow-sm shadow-purple-300/30 transition-all duration-300 hover:border-purple-300 hover:shadow-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -145,7 +139,7 @@ export default function Header() {
         ))}
         <li className="py-3">
           <Link
-            href="/#contact"
+            href={localizePath("/#contact")}
             className="inline-block w-full p-3 md:px-5 md:py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-medium rounded-lg md:rounded-full hover:shadow-lg transition-all duration-300 text-sm text-center"
             onClick={() => setIsMenuOpen(false)}
           >

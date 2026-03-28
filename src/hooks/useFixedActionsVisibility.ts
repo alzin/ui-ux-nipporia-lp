@@ -31,31 +31,32 @@ export const useFixedActionsVisibility = (
   }, [scrollThreshold]);
 
   useEffect(() => {
-    let observedElement: HTMLElement | null = null;
     let sectionObserver: IntersectionObserver | null = null;
+    let retryFrameId: number | null = null;
+    let retries = 0;
+    const maxRetries = 120;
 
-    const disconnectSectionObserver = () => {
+    const disconnectObserver = () => {
       if (sectionObserver) {
         sectionObserver.disconnect();
         sectionObserver = null;
       }
-      observedElement = null;
     };
 
-    const connectSectionObserver = () => {
+    const connectObserver = () => {
       const target = document.getElementById(hideWhenSectionVisibleId);
 
       if (!target) {
-        disconnectSectionObserver();
-        setIsHiddenSectionVisible(false);
+        if (retries < maxRetries) {
+          retries += 1;
+          retryFrameId = window.requestAnimationFrame(connectObserver);
+        } else {
+          setIsHiddenSectionVisible(false);
+        }
         return;
       }
 
-      if (observedElement === target && sectionObserver) return;
-
-      disconnectSectionObserver();
-
-      observedElement = target;
+      disconnectObserver();
       sectionObserver = new IntersectionObserver(
         ([entry]) => setIsHiddenSectionVisible(entry.isIntersecting),
         { threshold: sectionThreshold },
@@ -63,14 +64,13 @@ export const useFixedActionsVisibility = (
       sectionObserver.observe(target);
     };
 
-    connectSectionObserver();
-
-    const mutationObserver = new MutationObserver(connectSectionObserver);
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    connectObserver();
 
     return () => {
-      mutationObserver.disconnect();
-      disconnectSectionObserver();
+      if (retryFrameId !== null) {
+        window.cancelAnimationFrame(retryFrameId);
+      }
+      disconnectObserver();
     };
   }, [hideWhenSectionVisibleId, sectionThreshold]);
 
