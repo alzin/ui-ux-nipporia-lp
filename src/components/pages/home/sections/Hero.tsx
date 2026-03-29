@@ -24,7 +24,7 @@ export default function Hero() {
     >
       <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-32 sm:pt-40 lg:pt-48">
         <div className="flex flex-col items-center text-center">
-          {/* LCP Element: Removed Framer Motion, using pure CSS animation */}
+          {/* LCP Element: Pure CSS animation for instant mobile paint */}
           <h1 className="opacity-0 animate-fade-in-up text-gray-800 font-bold text-[clamp(2.5rem,7vw,4.5rem)] leading-[1.1] tracking-tight mb-6 max-w-4xl">
             <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
               {t.hero.title}
@@ -40,7 +40,7 @@ export default function Hero() {
             {t.hero.cta}
           </p>
 
-          {/* We can keep motion for secondary elements below the fold/LCP */}
+          {/* Secondary elements use Framer Motion */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,11 +59,45 @@ export default function Hero() {
             <div
               className={`flex flex-col gap-4 ${isRTL ? "sm:flex-row-reverse" : "sm:flex-row"}`}
             >
-              {/* Buttons remain the same */}
-              <Link href="#contact" className="...">
+              {/* Primary CTA */}
+              <Link
+                href="#contact"
+                className="group sm:flex-[1.25] inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-8 py-4 text-[15px] sm:text-base font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:translate-y-0"
+              >
+                <svg
+                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
                 {t.hero.primaryButton}
               </Link>
-              <Link href="#visual-examples" className="...">
+
+              {/* Secondary CTA */}
+              <Link
+                href="#visual-examples"
+                className="sm:flex-1 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-purple-500 bg-white/85 px-8 py-4 text-[15px] sm:text-base font-semibold text-purple-700 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  />
+                </svg>
                 {t.hero.secondaryButton}
               </Link>
             </div>
@@ -71,15 +105,30 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Sticky CTAs remain exactly the same */}
+      {/* ===================== Sticky CTAs (Responsive) ===================== */}
+
+      {/* Desktop Sticky CTA (md+) - Right side minimal tab */}
       <div
-        className={`hidden md:flex fixed top-1/2 -translate-y-1/2 z-[9999] flex-col gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isRTL ? "left-0 items-start" : "right-0 items-end"} ${showStickyCTA ? "translate-x-0 opacity-100" : isRTL ? "-translate-x-full opacity-0 pointer-events-none" : "translate-x-full opacity-0 pointer-events-none"}`}
+        className={`hidden md:flex fixed top-1/2 -translate-y-1/2 z-[9999] flex-col gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+          isRTL ? "left-0 items-start" : "right-0 items-end"
+        } ${
+          showStickyCTA
+            ? "translate-x-0 opacity-100"
+            : isRTL
+              ? "-translate-x-full opacity-0 pointer-events-none"
+              : "translate-x-full opacity-0 pointer-events-none"
+        }`}
         aria-hidden={!showStickyCTA}
       >
         <Link
           href="#contact"
-          className={`group relative flex items-center gap-3 py-3.5 bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 ${isRTL ? "rounded-r-full pr-5 pl-4 hover:pr-7" : "rounded-l-full pl-5 pr-4 hover:pl-7"}`}
+          className={`group relative flex items-center gap-3 py-3.5 bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 ${
+            isRTL
+              ? "rounded-r-full pr-5 pl-4 hover:pr-7"
+              : "rounded-l-full pl-5 pr-4 hover:pl-7"
+          }`}
         >
+          {/* Pulse ring */}
           <span
             className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 ${isRTL ? "right-3" : "left-3"}`}
           >
@@ -87,7 +136,9 @@ export default function Hero() {
             <span className="relative block w-2 h-2 bg-emerald-400 rounded-full" />
           </span>
           <svg
-            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:rotate-12 ${isRTL ? "mr-2" : "ml-2"}`}
+            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:rotate-12 ${
+              isRTL ? "mr-2" : "ml-2"
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -101,7 +152,11 @@ export default function Hero() {
           </svg>
           <span className="whitespace-nowrap">{t.hero.stickyConsultation}</span>
           <svg
-            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${isRTL ? "group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5"}`}
+            className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${
+              isRTL
+                ? "group-hover:-translate-x-0.5"
+                : "group-hover:translate-x-0.5"
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -116,8 +171,13 @@ export default function Hero() {
         </Link>
       </div>
 
+      {/* Mobile Sticky CTA (below md) - Bottom bar */}
       <div
-        className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${showStickyCTA ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0 pointer-events-none"}`}
+        className={`md:hidden fixed left-0 right-0 bottom-3 z-[9999] px-4 transition-all duration-500 ease-out ${
+          showStickyCTA
+            ? "translate-y-0 opacity-100"
+            : "translate-y-6 opacity-0 pointer-events-none"
+        }`}
         aria-hidden={!showStickyCTA}
       >
         <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
@@ -128,6 +188,7 @@ export default function Hero() {
             >
               {t.hero.stickyConsultation}
             </Link>
+
             <Link
               href="#visual-examples"
               className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
