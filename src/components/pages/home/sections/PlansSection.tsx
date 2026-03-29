@@ -1,13 +1,22 @@
+"use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } as const},
+};
 
 const PlansSection = () => {
-  const sectionRef = useScrollAnimation({
-    threshold: 0.1,
-    staggerDelay: 200,
-  });
-
   const { t } = useLanguage();
 
   const plansMeta = [
@@ -18,8 +27,7 @@ const PlansSection = () => {
 
   return (
     <section
-      ref={sectionRef}
-      className="relative py-24 bg-gradient-to-br from-lavender/30 via-white to-peach/30 overflow-hidden fade-in"
+      className="relative py-24 bg-gradient-to-br from-lavender/30 via-white to-peach/30 overflow-hidden"
       id="pricing"
     >
       {/* Decorative shapes */}
@@ -33,7 +41,13 @@ const PlansSection = () => {
         />
 
         {/* Initial Website Development Section */}
-        <div className="max-w-[1000px] mx-auto mb-16">
+        <motion.div 
+          className="max-w-[1000px] mx-auto mb-16 pt-8"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        >
           <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 border border-purple-200 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400"></div>
 
@@ -69,42 +83,46 @@ const PlansSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Monthly Support Plans */}
-        <div className="text-center mb-12">
+        {/* Monthly Support Plans Header */}
+        <motion.div 
+          className="text-center mb-12"
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        >
           <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-cyan-500 text-transparent bg-clip-text mb-2">{t.pricing.monthlyPlansTitle}</h3>
           <p className="text-gray-600">{t.pricing.monthlyPlansDescription}</p>
-        </div>
+        </motion.div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-[1200px] mx-auto">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-[1200px] mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        >
           {plansMeta.map((plan, index) => {
             const planTranslation = t.pricing.plans[index];
             return (
-              <div
+              <motion.div
                 key={plan.id}
+                variants={itemVariants}
                 className={`group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 h-fit border transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${
                   plan.featured
                     ? "border-purple-300 shadow-xl shadow-purple-500/20"
                     : "border-gray-100 hover:border-purple-200 hover:shadow-purple-500/10"
                 }`}
-                style={{
-                  animationDelay: `${index * 200}ms`,
-                }}
               >
-
-                {/* Plan Name */}
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-purple-600 transition-colors duration-300">
                   {plan.name}
                 </h3>
-
-                {/* Plan Description */}
                 <p className="text-gray-600 text-center mb-8 leading-relaxed min-h-[4rem]">
                   {planTranslation.description}
                 </p>
-
-                {/* Price */}
                 <div className="text-center mb-8">
                   <div className="flex items-baseline justify-center mb-2">
                     <span className="text-lg font-normal text-gray-500">¥</span>
@@ -116,8 +134,6 @@ const PlansSection = () => {
                     </span>
                   </div>
                 </div>
-
-                {/* Features */}
                 <ul className="space-y-3 mb-8">
                   {planTranslation.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3 text-sm">
@@ -126,18 +142,16 @@ const PlansSection = () => {
                     </li>
                   ))}
                 </ul>
-
-                {/* CTA Button */}
                 <a
                   href="#contact"
                   className={`w-full block text-center bg-gradient-to-r ${plan.color} text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
                 >
                   {planTranslation.ctaText}
                 </a>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

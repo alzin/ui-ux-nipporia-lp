@@ -1,17 +1,16 @@
 "use client";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useFormHandler } from "@/hooks/useFormHandler";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
+
+const formVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } as const },
+};
 
 export default function CTASection() {
-  const sectionRef = useScrollAnimation({
-    threshold: 0.1,
-    staggerDelay: 320,
-  });
-
-  const { formData, isSubmitting, handleInputChange, handleSubmit, setClick } =
-    useFormHandler();
+  const { formData, isSubmitting, handleInputChange, handleSubmit, setClick } = useFormHandler();
   const { t, lang } = useLanguage();
   const isRTL = lang === "ar";
 
@@ -19,7 +18,6 @@ export default function CTASection() {
     <section
       id="contact"
       className="py-24 bg-gradient-to-br from-purple-50 via-white to-cyan-50 text-center relative overflow-hidden"
-      ref={sectionRef}
     >
       {/* Decorative shapes */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl"></div>
@@ -30,7 +28,14 @@ export default function CTASection() {
           title={t.contact.sectionTitle}
           description={t.contact.sectionDescription}
         />
-        <div className="animate-slide max-w-[600px] mx-auto mt-12 bg-white/90 backdrop-blur-sm py-8 px-6 md:p-12 rounded-3xl shadow-xl border border-purple-100">
+        
+        <motion.div 
+          className="max-w-[600px] mx-auto mt-12 bg-white/90 backdrop-blur-sm py-8 px-6 md:p-12 rounded-3xl shadow-xl border border-purple-100"
+          variants={formVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        >
           <form onSubmit={handleSubmit} className={isRTL ? "space-y-6 text-right" : "space-y-6 text-left"}>
             <div className="mb-4 md:mb-6">
               <label htmlFor="company" className="block mb-2 text-gray-700 font-medium">
@@ -119,7 +124,7 @@ export default function CTASection() {
               {isSubmitting ? t.contact.submitting : t.contact.submitButton}
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
