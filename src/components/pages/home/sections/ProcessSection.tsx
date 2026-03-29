@@ -1,13 +1,19 @@
 "use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function ProcessSection() {
-  const sectionRef = useScrollAnimation({
-    threshold: 0.1,
-    staggerDelay: 200,
-  });
+
+  // Framer Motion variants for section and cards
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.12 } },
+  };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+  };
 
   const { t } = useLanguage();
 
@@ -19,15 +25,18 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section
+    <motion.section
       id="process"
       className="py-24 bg-gradient-to-br from-white via-purple-50/50 to-cyan-50/50 fade-in"
-      ref={sectionRef}
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
     >
       <div className="max-w-[1000px] mx-auto px-8">
         <SectionTitle title={t.process.sectionTitle} />
 
-        <div className="animate-slide relative mt-16">
+        <motion.div className="relative mt-16" variants={sectionVariants}>
           {/* Timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-400 via-pink-400 to-cyan-400 rounded-full hidden md:block"></div>
 
@@ -35,11 +44,12 @@ export default function ProcessSection() {
             {t.process.steps.map((step, index) => {
               const meta = processesMeta[index];
               return (
-                <div
+                <motion.div
                   key={index}
                   className={`relative flex items-center gap-8 ${
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   } flex-col md:flex-row`}
+                  variants={cardVariants}
                 >
                   {/* Content card */}
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
@@ -61,12 +71,12 @@ export default function ProcessSection() {
 
                   {/* Spacer */}
                   <div className="flex-1 hidden md:block"></div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

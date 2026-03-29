@@ -1,16 +1,21 @@
 "use client";
 import SectionTitle from "@/components/common/components/SectionTitle";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 import { OldDesignIcon, LowTrafficIcon, HardToMaintainIcon } from "./ProblemIcons";
 
 export default function ProblemSection() {
-  const sectionRef = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px",
-    staggerDelay: 150,
-  });
+
+  // Framer Motion variants for section and cards
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.08 } },
+  };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+  };
 
   const { t } = useLanguage();
 
@@ -22,10 +27,13 @@ export default function ProblemSection() {
   ];
 
   return (
-    <section
+    <motion.section
       id="problems"
       className="py-24 bg-gradient-to-br from-white via-purple-50/50 to-cyan-50/50 relative fade-in overflow-hidden"
-      ref={sectionRef}
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "0px 0px -50px 0px" }}
     >
       {/* Decorative shapes */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-purple-200/30 rounded-full blur-3xl" />
@@ -34,15 +42,15 @@ export default function ProblemSection() {
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle title={t.problems.sectionTitle} />
 
-        <div className="animate-slide grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={sectionVariants}>
           {t.problems.items.map((problem, index) => {
             const Icon = icons[index];
             const { color, iconColor } = colors[index];
-
             return (
-              <div
+              <motion.div
                 key={index}
                 className="group relative bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/20"
+                variants={cardVariants}
               >
                 {/* Gradient wash on hover */}
                 <div
@@ -77,11 +85,11 @@ export default function ProblemSection() {
                 <div
                   className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
                 />
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
