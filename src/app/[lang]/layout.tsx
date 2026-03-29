@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
+// import Script from "next/script";
 import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
@@ -8,10 +8,7 @@ import FloatingSocial from "@/components/common/components/FloatingSocial";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import {
-  isRTL,
-  resolveSiteLanguage,
-} from "@/i18n/serverLanguage";
+import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -92,21 +89,8 @@ export default async function RootLayout({
       dir={isRTL(lang) ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
-      <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XLXWCV0Q9V"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XLXWCV0Q9V');
-          `}
-        </Script>
-      </head>
-      <GoogleTagManager gtmId="G-your-gtm-id" />
+      <head></head>
+
       <body
         suppressHydrationWarning
         className="min-h-screen flex flex-col"
@@ -121,6 +105,7 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
+        <GoogleTagManager gtmId="G-XLXWCV0Q9V" />
       </body>
     </html>
   );

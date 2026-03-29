@@ -1,19 +1,31 @@
 "use client";
-import CTASection from "./sections/CTASection";
-import Hero from "./sections/Hero";
-import ProblemSection from "./sections/Problems";
-import ProcessSection from "./sections/ProcessSection";
-import ServicesSection from "./sections/ServicesSection";
-import TransformationSection from "./sections/Transformation";
-import VisualTransformationSection from "./sections/VisualTransformationSection";
-import PricingSection from "./sections/PlansSection";
 import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import { initHomeScript } from "@/lib/homeScript";
+import Hero from "./sections/Hero";
+
+// 1. Dynamically import everything below the fold
+// This splits the code, meaning mobile devices don't download this JS until it's needed.
+const ProblemSection = dynamic(() => import("./sections/Problems"), { ssr: true });
+const TransformationSection = dynamic(() => import("./sections/Transformation"), { ssr: true });
+const VisualTransformationSection = dynamic(() => import("./sections/VisualTransformationSection"), { ssr: true });
+const ServicesSection = dynamic(() => import("./sections/ServicesSection"), { ssr: true });
+const ProcessSection = dynamic(() => import("./sections/ProcessSection"), { ssr: true });
+const PricingSection = dynamic(() => import("./sections/PlansSection"), { ssr: true });
+const CTASection = dynamic(() => import("./sections/CTASection"), { ssr: true });
 
 const Index = () => {
   useEffect(() => {
-    const cleanup = initHomeScript();
-    return cleanup;
+    // 2. Defer this script slightly so it doesn't block the initial React hydration
+    let cleanup: (() => void) | undefined;
+    const timer = setTimeout(() => {
+      cleanup = initHomeScript();
+    }, 500); // 500ms delay to let LCP finish
+
+    return () => {
+      clearTimeout(timer);
+      if (cleanup) cleanup();
+    };
   }, []);
 
   return (

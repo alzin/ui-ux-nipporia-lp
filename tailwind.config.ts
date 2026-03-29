@@ -27,6 +27,8 @@ export default {
         gold: '#FFD93D',
       },
       animation: {
+        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+        'fade-in-up-delay': 'fadeInUp 0.6s ease-out 0.2s forwards',
         gradientShift: 'gradientShift 3s ease infinite',
         float: 'float 20s infinite ease-in-out',
         fadeInUp: 'fadeInUp 1s ease',
@@ -56,8 +58,8 @@ export default {
           '66%': { transform: 'translate(-20px,20px) scale(0.9)' },
         },
         fadeInUp: {
-          from: { opacity: '0', transform: 'translateY(30px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         ctaPulse: {
           '0%, 100%': { boxShadow: '0 10px 30px rgba(139,92,246,0.3)' },
