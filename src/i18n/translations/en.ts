@@ -520,7 +520,7 @@ export const enPageContent: LocalizedPageContent = {
     pageTitle: "Commercial Disclosure (Specified Commercial Transactions Act)",
     rows: [
       { label: "Business Name", lines: ["Nipporia"] },
-      { label: "Representative", lines: ["Arjin Muhammad Ghais"] },
+      { label: "Representative", lines: ["Mohamad Ghaith Alzin"] },
       {
         label: "Address",
         lines: ["1-9-4-902 Kukichuo, Kuki City, Saitama, Japan"],
