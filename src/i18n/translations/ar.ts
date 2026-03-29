@@ -500,7 +500,7 @@ export const arPageContent: LocalizedPageContent = {
     pageTitle: "الإفصاح التجاري (وفق قانون المعاملات التجارية المحددة)",
     rows: [
       { label: "اسم الجهة التجارية", lines: ["Nipporia"] },
-      { label: "الممثل", lines: ["Arjin Muhammad Ghais"] },
+      { label: "الممثل", lines: ["محمد غيث الزين"] },
       {
         label: "العنوان",
         lines: ["1-9-4-902 Kukichuo, Kuki City, Saitama, Japan"],
