@@ -58,7 +58,7 @@ export async function generateMetadata({
       siteName: localized.applicationName,
       images: [
         {
-          url: `${baseUrl}/images/og-image.jpg`,
+          url: `/images/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: localized.ogImageAlt,
@@ -69,7 +69,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: localized.ogTitle,
       description: localized.ogDescription,
-      images: [`${baseUrl}/images/og-image.jpg`],
+      images: [`/images/og-image.jpg`],
     },
     verification: {
       google: "your-google-verification-id",
