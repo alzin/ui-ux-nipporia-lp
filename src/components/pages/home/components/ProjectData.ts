@@ -39,4 +39,13 @@ export const projects: Project[] = [
     desktopUrl: "https://comy.jp",
     mobileUrl: "https://comy.jp",
   },
+  {
+    id: 4,
+    title:"Rio Design",
+    description:"",
+    tags:['UI/UX', 'AI'],
+    siteUrl:"https://rio-app.design/",
+    desktopUrl:"https://rio-app.design/",
+    mobileUrl:"https://rio-app.design/"
+  }
 ];
