@@ -1,8 +1,6 @@
-// src/app/[lang]/layout.tsx
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Noto_Sans_JP, JetBrains_Mono } from "next/font/google"; // Add this import
-
+// import Script from "next/script";
 import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
@@ -11,22 +9,6 @@ import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
-
-// Configure Noto Sans JP
-const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
-  variable: "--font-noto-sans-jp",
-  display: "swap",
-});
-
-// Configure JetBrains Mono
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -105,7 +87,7 @@ export default async function RootLayout({
     <html
       lang={lang}
       dir={isRTL(lang) ? "rtl" : "ltr"}
-      className={`scroll-smooth ${notoSansJP.variable} ${jetBrainsMono.variable}`}
+      className="scroll-smooth"
     >
       <head></head>
 
@@ -113,7 +95,8 @@ export default async function RootLayout({
         suppressHydrationWarning
         className="min-h-screen flex flex-col"
         style={{
-          fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", var(--font-noto-sans-jp), "Noto Sans Arabic", sans-serif`,
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Arabic", sans-serif',
         }}
       >
         <LanguageProvider currentLang={lang}>
