@@ -4,6 +4,8 @@ import BlogPage from '@/components/pages/blogs/blog';
 import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogDataHtml } from '@/utils/getBlog';
 import { createProcessedBlogObject } from '@/utils/createBlog';
+import 'highlight.js/styles/github-dark.css';
+
 import {
   DEFAULT_LANGUAGE,
   SUPPORTED_LANGUAGES,
