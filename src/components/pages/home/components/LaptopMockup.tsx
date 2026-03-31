@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 interface LaptopMockupProps {
-  url: string;
+  url?: string;
+  videoSrc?: string;
+  mediaType?: "url" | "video";
   isActive: boolean;
 }
 
@@ -24,7 +26,12 @@ const getZoomByViewport = () => {
   return DESKTOP_ZOOM_LG;
 };
 
-export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
+export default function LaptopMockup({ 
+  url, 
+  videoSrc, 
+  mediaType = "url", 
+  isActive 
+}: LaptopMockupProps) {
   const { t } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
@@ -49,7 +56,7 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
     }, LOADER_VISIBLE_MS);
 
     return () => window.clearTimeout(timer);
-  }, [url]);
+  }, [url, videoSrc]);
 
   return (
     <div
@@ -77,34 +84,36 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
             </div>
             <div className="flex-1 mx-1.5 md:mx-2 min-w-0">
               <div className="bg-[#1c1c1e] rounded-md px-2 md:px-3 py-1 text-[9px] md:text-[10px] text-slate-400 font-mono truncate text-center">
-                {url}
+                {url || "video-preview"}
               </div>
             </div>
             {/* External link icon */}
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-white transition-colors"
-              title={localeText.viewLiveSite}
-            >
-              <svg
-                className="w-3.5 h-3.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {url && (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors"
+                title={localeText.viewLiveSite}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
+                <svg
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            )}
           </div>
 
-          {/* Screen area with iframe */}
+          {/* Screen area with iframe or video */}
           <div
             className="relative bg-white overflow-hidden rounded-b-[8px] aspect-[16/8.8] md:aspect-[16/7.5]"
             style={{ width: "100%" }}
@@ -120,27 +129,43 @@ export default function LaptopMockup({ url, isActive }: LaptopMockupProps) {
               </div>
             )}
 
-            <iframe
-              src={url}
-              title={localeText.desktopPreview}
-              className="block border-0 transition-opacity duration-300"
-              style={{
-                width: desktopZoomPercent,
-                height: desktopZoomPercent,
-                transform: `scale(${desktopZoom})`,
-                transformOrigin: "top left",
-                overflow: "hidden",
-                scrollbarWidth: "none",
-                direction: "ltr",
-                opacity: isLoaded ? 1 : 0.96,
-              }}
-              onLoad={() => {
-                setIsLoaded(true);
-                setShowLoader(false);
-              }}
-              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              loading={isActive ? "eager" : "lazy"}
-            />
+            {mediaType === "video" && videoSrc ? (
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="block w-full h-full object-cover transition-opacity duration-300"
+                style={{ opacity: isLoaded ? 1 : 0.96 }}
+                onLoadedData={() => {
+                  setIsLoaded(true);
+                  setShowLoader(false);
+                }}
+              />
+            ) : (
+              <iframe
+                src={url}
+                title={localeText.desktopPreview}
+                className="block border-0 transition-opacity duration-300"
+                style={{
+                  width: desktopZoomPercent,
+                  height: desktopZoomPercent,
+                  transform: `scale(${desktopZoom})`,
+                  transformOrigin: "top left",
+                  overflow: "hidden",
+                  scrollbarWidth: "none",
+                  direction: "ltr",
+                  opacity: isLoaded ? 1 : 0.96,
+                }}
+                onLoad={() => {
+                  setIsLoaded(true);
+                  setShowLoader(false);
+                }}
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                loading={isActive ? "eager" : "lazy"}
+              />
+            )}
 
             {/* Subtle screen reflection */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />

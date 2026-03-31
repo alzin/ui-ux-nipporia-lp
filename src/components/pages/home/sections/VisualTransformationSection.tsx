@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import LaptopMockup from "../components/LaptopMockup";
 import PhoneMockup from "../components/PhoneMockup";
@@ -18,9 +18,19 @@ const sectionVariant = {
 export default function VisualTransformationSection() {
   const { t, lang } = useLanguage();
   const isRTL = lang === "ar";
+
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("laptop");
+  const activeProject = projects[activeIndex];
+
+  // If the current project is a video, always force phone mode
+  useEffect(() => {
+    if (activeProject.mediaType === "video" && deviceMode !== "phone") {
+      setDeviceMode("phone");
+    }
+  }, [activeProject.mediaType, deviceMode]);
 
   const prevArrowPath = isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7";
   const nextArrowPath = isRTL ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7";
@@ -32,7 +42,7 @@ export default function VisualTransformationSection() {
     setTimeout(() => setIsTransitioning(false), 700);
   };
 
-  const activeProject = projects[activeIndex];
+  // (keep only one activeProject)
 
   const handlePrev = () => {
     if (isTransitioning) return;
@@ -60,9 +70,10 @@ export default function VisualTransformationSection() {
           title={t.visualTransformation.sectionTitle}
           description={t.visualTransformation.description}
         />
-
+      </div>
+      <div className="max-w-[1480px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
         {/* Device Mockups and Navigation */}
-        <motion.div 
+        <motion.div
           className="relative group mt-6 md:mt-8 lg:mt-10"
           variants={sectionVariant}
           initial="hidden"
@@ -83,19 +94,24 @@ export default function VisualTransformationSection() {
               </div>
               <div className={`flex flex-wrap items-center gap-2 ${isRTL ? "flex-row-reverse" : ""}`}>
                 <div className="inline-flex items-center p-1 rounded-full bg-slate-100 border border-slate-200">
-                  <button onClick={() => setDeviceMode("laptop")} className={`px-3 py-1.5 text-xs md:text-sm rounded-full transition-colors ${deviceMode === "laptop" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-800"}`}>
-                    {t.visualTransformation.laptop}
-                  </button>
-                  <button onClick={() => setDeviceMode("phone")} className={`px-3 py-1.5 text-xs md:text-sm rounded-full transition-colors ${deviceMode === "phone" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-800"}`}>
-                    {t.visualTransformation.phone}
+                  {activeProject.mediaType !== "video" ? (
+                      <button onClick={() => setDeviceMode("laptop")} className={`px-3 py-1.5 text-xs md:text-sm rounded-full transition-colors ${deviceMode === "laptop" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-800"}`}>
+                        {t.visualTransformation.laptop}
+                      </button>
+                        ) : null}
+                      <button onClick={() => setDeviceMode("phone")} className={`px-3 py-1.5 text-xs md:text-sm rounded-full transition-colors ${deviceMode === "phone" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-800"}`}>
+                        {t.visualTransformation.phone}
                   </button>
                 </div>
-                <a href={activeProject.siteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 text-white text-xs md:text-sm font-medium px-4 py-2 hover:bg-slate-800 transition-colors">
-                  {t.visualTransformation.viewLiveSite}
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H8M17 7V16" />
-                  </svg>
-                </a>
+                {/* Only show the View Live Site button if not a video */}
+                {activeProject.mediaType !== "video" && activeProject.siteUrl && (
+                  <a href={activeProject.siteUrl} target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 rounded-full bg-slate-900 text-white text-xs md:text-sm font-medium px-4 py-2 hover:bg-slate-800 transition-colors">
+                    {t.visualTransformation.viewLiveSite}
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H8M17 7V16" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -104,11 +120,21 @@ export default function VisualTransformationSection() {
           <div className="relative z-10 flex items-center justify-center w-full mx-auto px-1 sm:px-4 md:px-10 lg:px-12 xl:px-16 py-3 md:py-5">
             {deviceMode === "laptop" ? (
               <div className="w-full max-w-[1360px] transition-transform duration-500 group-hover:scale-[1.01]" style={{ width: "min(100%, max(620px, calc((100vh - 270px) * 2.13)))" }}>
-                <LaptopMockup url={activeProject.desktopUrl} isActive={!isTransitioning} />
+                <LaptopMockup 
+                  url={activeProject.desktopUrl} 
+                  videoSrc={activeProject.desktopVideo}
+                  mediaType={activeProject.mediaType}
+                  isActive={!isTransitioning} 
+                />
               </div>
             ) : (
               <div className="w-full max-w-[420px] md:max-w-[380px] transition-transform duration-500 group-hover:scale-[1.01]" style={{ width: "min(420px, 90vw, max(250px, calc((100vh - 230px) / 2)))" }}>
-                <PhoneMockup url={activeProject.mobileUrl} isActive={!isTransitioning} />
+                <PhoneMockup 
+                  url={activeProject.mobileUrl} 
+                  videoSrc={activeProject.mobileVideo}
+                  mediaType={activeProject.mediaType}
+                  isActive={!isTransitioning} 
+                />
               </div>
             )}
           </div>
