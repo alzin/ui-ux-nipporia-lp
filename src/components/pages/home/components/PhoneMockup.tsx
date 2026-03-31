@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 interface PhoneMockupProps {
-  url: string;
+  url?: string;
+  videoSrc?: string;
+  mediaType?: "url" | "video";
   isActive: boolean;
 }
 
@@ -12,8 +14,12 @@ const PHONE_ZOOM_MOBILE = 0.55;
 const SCROLLBAR_MASK_PX = 18;
 const LOADER_VISIBLE_MS = 900;
 
-
-export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
+export default function PhoneMockup({ 
+  url, 
+  videoSrc, 
+  mediaType = "url", 
+  isActive 
+}: PhoneMockupProps) {
   const { t } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
@@ -32,7 +38,7 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
     }, LOADER_VISIBLE_MS);
 
     return () => window.clearTimeout(timer);
-  }, [url]);
+  }, [url, videoSrc]);
 
   return (
     <div
@@ -55,14 +61,14 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
               </div>
             </div>
 
-            {/* Screen content with iframe */}
+            {/* Screen content with iframe or video, or just phone markup if video only */}
             <div
               className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
               style={{ aspectRatio: "1 / 2" }}
               dir="ltr"
             >
               {/* Loading state */}
-              {!isLoaded && showLoader && (
+              {!isLoaded && showLoader && mediaType !== "video" && (
                 <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
@@ -73,29 +79,50 @@ export default function PhoneMockup({ url, isActive }: PhoneMockupProps) {
                 </div>
               )}
 
-              <iframe
-                src={url}
-                title={localeText.mobilePreview}
-                className="block border-0 transition-opacity duration-300"
-                style={{
-                  width: phoneZoomMaskedPercent,
-                  height: phoneZoomMaskedPercent,
-                  transform: `scale(${phoneZoom})`,
-                  transformOrigin: "top left",
-                  overflow: "auto",
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                  direction: "ltr",
-                  opacity: isLoaded ? 1 : 0.96,
-                }}
-                onLoad={() => {
-                  setIsLoaded(true);
-                  setShowLoader(false);
-                }}
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                loading={isActive ? "eager" : "lazy"}
-                scrolling="yes"
-              />
+              {mediaType === "video" && videoSrc ? (
+                <video
+                  src={videoSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="block w-full h-full object-cover transition-opacity duration-300"
+                  style={{ opacity: isLoaded ? 1 : 0.96 }}
+                  onLoadedData={() => {
+                    setIsLoaded(true);
+                    setShowLoader(false);
+                  }}
+                />
+              ) : mediaType === "video" && !videoSrc ? (
+                // Only phone markup, no content
+                <div className="w-full h-full flex items-center justify-center bg-black/80">
+                  {/* Optionally, show a fallback message or icon */}
+                </div>
+              ) : (
+                <iframe
+                  src={url}
+                  title={localeText.mobilePreview}
+                  className="block border-0 transition-opacity duration-300"
+                  style={{
+                    width: phoneZoomMaskedPercent,
+                    height: phoneZoomMaskedPercent,
+                    transform: `scale(${phoneZoom})`,
+                    transformOrigin: "top left",
+                    overflow: "auto",
+                    scrollbarWidth: "none",
+                    msOverflowStyle: "none",
+                    direction: "ltr",
+                    opacity: isLoaded ? 1 : 0.96,
+                  }}
+                  onLoad={() => {
+                    setIsLoaded(true);
+                    setShowLoader(false);
+                  }}
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  loading={isActive ? "eager" : "lazy"}
+                  scrolling="yes"
+                />
+              )}
 
               {/* Subtle screen reflection */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
