@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { GoogleTagManager } from "@next/third-parties/google";
-// import Script from "next/script";
+import Script from "next/script";
 import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
@@ -89,7 +88,19 @@ export default async function RootLayout({
       dir={isRTL(lang) ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
-      <head></head>
+      <head>
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQGV6M9D');`,
+          }}
+        />
+      </head>
 
       <body
         suppressHydrationWarning
@@ -99,14 +110,20 @@ export default async function RootLayout({
             '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Arabic", sans-serif',
         }}
       >
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NQGV6M9D"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <LanguageProvider currentLang={lang}>
           <Header />
           <FloatingSocial />
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
-        <GoogleTagManager gtmId="GTM-NQGV6M9D" />
-        {/* <GoogleAnalytics gaId="G-XLXWCV0Q9V" /> */}
       </body>
     </html>
   );
