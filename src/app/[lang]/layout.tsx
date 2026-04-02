@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 // import Script from "next/script";
 import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
@@ -106,7 +106,7 @@ export default async function RootLayout({
           <Footer />
         </LanguageProvider>
         <GoogleTagManager gtmId="GTM-NQGV6M9D" />
-        <GoogleAnalytics gaId="G-XLXWCV0Q9V" />
+        {/* <GoogleAnalytics gaId="G-XLXWCV0Q9V" /> */}
       </body>
     </html>
   );
