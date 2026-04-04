@@ -37,15 +37,14 @@ export default function Header() {
           href={localizePath("/")}
           className="shrink-0 hover:scale-105 transition-transform duration-300 flex items-center gap-2"
         >
-          <div className="w-10 h-10 rounded-lg overflow-hidden relative">
-            <Image
-              src="/images/og-image.jpg"
-              alt="Nipporia"
-              width={200}
-              height={200}
-              className="absolute scale-[2] top-[20%] left-[0%]"
-            />
-          </div>
+          <Image
+            src="/images/logo.svg"
+            alt="Nipporia Logo"
+            width={40}
+            height={40}
+            priority
+            className="w-10 h-10 object-contain rounded-lg"
+          />
           <span className="text-xl font-bold text-[#1a2744] uppercase tracking-[0.15em]">
             Nipporia
           </span>
