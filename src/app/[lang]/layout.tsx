@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Noto_Sans_JP, Noto_Sans_Arabic } from "next/font/google";
 import "@/styles/globals.css";
-
-const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-noto-sans-jp",
-});
-
-const notoSansArabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
-  display: "swap",
-  variable: "--font-noto-sans-arabic",
-});
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import FloatingSocial from "@/components/common/components/FloatingSocial";
@@ -21,6 +9,22 @@ import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-sans-jp",
+  preload: false,
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-sans-arabic",
+  preload: false,
+});
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -94,23 +98,24 @@ export default async function RootLayout({
 }: Readonly<LangLayoutProps>) {
   const resolvedParams = await params;
   const lang = resolveSiteLanguage(resolvedParams.lang);
+  const rtl = isRTL(lang);
+  const fontVariable = rtl ? notoSansArabic.variable : notoSansJP.variable;
+  const fontFamily = rtl
+    ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+    : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 
   return (
     <html
       lang={lang}
-      dir={isRTL(lang) ? "rtl" : "ltr"}
+      dir={rtl ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
       <GoogleTagManager gtmId="GTM-NQGV6M9D" />
 
       <body
         suppressHydrationWarning
-        className={`min-h-screen flex flex-col ${notoSansJP.variable} ${notoSansArabic.variable}`}
-        style={{
-          fontFamily: isRTL(lang)
-            ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-            : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-        }}
+        className={`min-h-screen flex flex-col ${fontVariable}`}
+        style={{ fontFamily }}
       >
         <LanguageProvider currentLang={lang}>
           <Header />
