@@ -12,11 +12,18 @@ export default function Header() {
   const isRTL = lang === "ar";
 
   useEffect(() => {
+    let rafId: number;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 50);
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const navLinks = [
@@ -26,26 +33,24 @@ export default function Header() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${
-      scrolled
+    <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${scrolled
         ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
         : "bg-white/70 backdrop-blur-md"
-    }`}>
+      }`}>
       <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center" dir={isRTL ? "rtl" : "ltr"}>
         {/* Logo - fixed left */}
         <Link
           href={localizePath("/")}
           className="shrink-0 hover:scale-105 transition-transform duration-300 flex items-center gap-2"
         >
-          <div className="w-10 h-10 rounded-lg overflow-hidden relative">
-            <Image
-              src="/images/og-image.jpg"
-              alt="Nipporia"
-              width={200}
-              height={200}
-              className="absolute scale-[2] top-[20%] left-[0%]"
-            />
-          </div>
+          <Image
+            src="/images/logo.svg"
+            alt="Nipporia Logo"
+            width={40}
+            height={40}
+            priority
+            className="w-10 h-10 object-contain rounded-lg"
+          />
           <span className="text-xl font-bold text-[#1a2744] uppercase tracking-[0.15em]">
             Nipporia
           </span>
@@ -57,9 +62,8 @@ export default function Header() {
             <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
-                className={`text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full ${
-                  isRTL ? "after:right-0" : "after:left-0"
-                }`}
+                className={`text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full ${isRTL ? "after:right-0" : "after:left-0"
+                  }`}
               >
                 {link.title}
               </Link>
@@ -99,34 +103,29 @@ export default function Header() {
             }}
           >
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
-                isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
+                }`}
             ></span>
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${
-                isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                }`}
             ></span>
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
-                isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
+                }`}
             ></span>
           </button>
         </div>
       </div>
       <ul
-        className={`lg:hidden bg-white/95 backdrop-blur-xl p-6 transition-all duration-300 ease-in-out border-t border-purple-100 ${
-          isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 hidden"
-        } ${isRTL ? "text-right" : "text-left"}`}
+        className={`lg:hidden overflow-hidden bg-white/95 backdrop-blur-xl transition-all duration-300 ease-in-out border-purple-100 ${isMenuOpen ? "max-h-[500px] opacity-100 p-6 border-t" : "max-h-0 opacity-0 pointer-events-none"
+          } ${isRTL ? "text-right" : "text-left"}`}
       >
         {navLinks.map((link, _index) => (
           <li
             key={link.href}
-            className={`py-3 ${
-              _index < navLinks.length - 1 ? "border-b border-purple-100" : ""
-            }`}
+            className={`py-3 ${_index < navLinks.length - 1 ? "border-b border-purple-100" : ""
+              }`}
           >
             <Link
               href={link.href}

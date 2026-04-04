@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { Noto_Sans_JP, Noto_Sans_Arabic } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
@@ -8,6 +9,22 @@ import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-sans-jp",
+  preload: false,
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-sans-arabic",
+  preload: false,
+});
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -68,7 +85,7 @@ export async function generateMetadata({
       images: [`/images/og-image.jpg`],
     },
     verification: {
-      google: "your-google-verification-id",
+      google: "YlRJy02oscYlTbYz8nzaNfv9e-a_bAHNPKfkC4iBZHg",
     },
     category: "Technology",
     classification: "Web Development Service",
@@ -81,43 +98,25 @@ export default async function RootLayout({
 }: Readonly<LangLayoutProps>) {
   const resolvedParams = await params;
   const lang = resolveSiteLanguage(resolvedParams.lang);
+  const rtl = isRTL(lang);
+  const fontVariable = rtl ? notoSansArabic.variable : notoSansJP.variable;
+  const fontFamily = rtl
+    ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+    : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 
   return (
     <html
       lang={lang}
-      dir={isRTL(lang) ? "rtl" : "ltr"}
+      dir={rtl ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
-      <head>
-        <Script
-          id="gtm-script"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NQGV6M9D');`,
-          }}
-        />
-      </head>
+      <GoogleTagManager gtmId="GTM-NQGV6M9D" />
 
       <body
         suppressHydrationWarning
-        className="min-h-screen flex flex-col"
-        style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Arabic", sans-serif',
-        }}
+        className={`min-h-screen flex flex-col ${fontVariable}`}
+        style={{ fontFamily }}
       >
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NQGV6M9D"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         <LanguageProvider currentLang={lang}>
           <Header />
           <FloatingSocial />
