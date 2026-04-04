@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
       title: blog.metadata.title,
       description: blog.metadata.description,
       alternates: {
-        canonical: `/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
+        canonical: `${baseUrl}/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
       },
       openGraph: {
         title: blog.metadata.title,
