@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import { GoogleTagManager } from '@next/third-parties/google';
+import { Noto_Sans_JP, Noto_Sans_Arabic } from "next/font/google";
 import "@/styles/globals.css";
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-sans-jp",
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  display: "swap",
+  variable: "--font-noto-sans-arabic",
+});
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import FloatingSocial from "@/components/common/components/FloatingSocial";
@@ -92,10 +105,11 @@ export default async function RootLayout({
 
       <body
         suppressHydrationWarning
-        className="min-h-screen flex flex-col"
+        className={`min-h-screen flex flex-col ${notoSansJP.variable} ${notoSansArabic.variable}`}
         style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans Arabic", sans-serif',
+          fontFamily: isRTL(lang)
+            ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+            : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
         }}
       >
         <LanguageProvider currentLang={lang}>
