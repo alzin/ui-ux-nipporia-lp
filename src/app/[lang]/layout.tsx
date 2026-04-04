@@ -85,7 +85,7 @@ export async function generateMetadata({
       images: [`/images/og-image.jpg`],
     },
     verification: {
-      google: "your-google-verification-id",
+      google: "YlRJy02oscYlTbYz8nzaNfv9e-a_bAHNPKfkC4iBZHg",
     },
     category: "Technology",
     classification: "Web Development Service",
