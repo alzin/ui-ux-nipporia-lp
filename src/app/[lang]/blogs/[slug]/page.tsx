@@ -46,6 +46,17 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
         description: blog.metadata.description,
         images: blog.metadata.images,
         type: 'article',
+        publishedTime: blog.metadata.date
+          ? new Date(blog.metadata.date).toISOString()
+          : undefined,
+        authors: [`${baseUrl}`],
+        tags: blog.metadata.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: blog.metadata.title,
+        description: blog.metadata.description,
+        images: blog.metadata.images,
       },
     };
   } catch {
