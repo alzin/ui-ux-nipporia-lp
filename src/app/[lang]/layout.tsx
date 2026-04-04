@@ -9,6 +9,7 @@ import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
+import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/jsonld";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin", "latin-ext"],
@@ -50,14 +51,14 @@ export async function generateMetadata({
     },
     description: localized.description,
     applicationName: localized.applicationName,
-    generator: "Next.js",
     keywords: localized.keywords,
-    referrer: "origin",
+    referrer: "strict-origin-when-cross-origin",
     creator: localized.applicationName,
     publisher: localized.applicationName,
     alternates: {
       canonical: localizedBaseUrl,
       languages: {
+        "x-default": `${baseUrl}/ja`,
         ja: `${baseUrl}/ja`,
         en: `${baseUrl}/en`,
         ar: `${baseUrl}/ar`,
@@ -104,12 +105,23 @@ export default async function RootLayout({
     ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
     : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
 
+  const orgSchema = buildOrganizationSchema();
+  const websiteSchema = buildWebSiteSchema();
+
   return (
     <html
       lang={lang}
       dir={rtl ? "rtl" : "ltr"}
       className="scroll-smooth"
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([orgSchema, websiteSchema]),
+          }}
+        />
+      </head>
       <GoogleTagManager gtmId="GTM-NQGV6M9D" />
 
       <body

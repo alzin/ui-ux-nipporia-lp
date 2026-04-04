@@ -5,6 +5,8 @@ import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogDataHtml } from '@/utils/getBlog';
 import { createProcessedBlogObject } from '@/utils/createBlog';
 import 'highlight.js/styles/github-dark.css';
+import { baseUrl } from '@/utils/baseUrl';
+import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/jsonld';
 
 import {
   DEFAULT_LANGUAGE,
@@ -32,18 +34,29 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     const blogData = await getBlogDataHtml(slug);
     const blog = createProcessedBlogObject(slug, blogData);
     const canonicalLang = isSiteLanguage(routeLang) ? routeLang : DEFAULT_LANGUAGE;
-    
+
     return {
       title: blog.metadata.title,
       description: blog.metadata.description,
       alternates: {
-        canonical: `/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
+        canonical: `${baseUrl}/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
       },
       openGraph: {
         title: blog.metadata.title,
         description: blog.metadata.description,
         images: blog.metadata.images,
         type: 'article',
+        publishedTime: blog.metadata.date
+          ? new Date(blog.metadata.date).toISOString()
+          : undefined,
+        authors: [`${baseUrl}`],
+        tags: blog.metadata.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: blog.metadata.title,
+        description: blog.metadata.description,
+        images: blog.metadata.images,
       },
     };
   } catch {
@@ -53,11 +66,41 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function Page({ params }: BlogPageProps) {
   try {
-    const { slug } = await params;
+    const { slug, lang: routeLang } = await params;
+    const lang = resolveSiteLanguage(routeLang);
     const blogData = await getBlogDataHtml(slug);
     const blog = createProcessedBlogObject(slug, blogData);
-    
-    return <BlogPage blog={blog} />;
+    const localized = getLocalizedPageContent(lang).blogs;
+
+    const schemas = [
+      buildArticleSchema({
+        lang,
+        slug,
+        title: blog.metadata.title,
+        description: blog.metadata.description,
+        date: blog.metadata.date,
+        images: blog.metadata.images,
+        tags: blog.metadata.tags,
+      }),
+      buildBreadcrumbSchema([
+        { name: 'Nipporia', url: `${baseUrl}/${lang}` },
+        { name: localized.title, url: `${baseUrl}/${lang}/blogs` },
+        {
+          name: blog.metadata.title ?? slug,
+          url: `${baseUrl}/${lang}/blogs/${encodeURIComponent(slug)}`,
+        },
+      ]),
+    ];
+
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+        />
+        <BlogPage blog={blog} />
+      </>
+    );
   } catch {
     notFound();
   }

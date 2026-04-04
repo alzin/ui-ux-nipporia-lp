@@ -4,6 +4,11 @@ import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogData } from '@/utils/getBlog';
 import { createBlogObject } from '@/utils/createBlog';
 import { resolveSiteLanguage } from '@/i18n/serverLanguage';
+import { baseUrl } from '@/utils/baseUrl';
+import {
+  buildBlogCollectionPageSchema,
+  buildBreadcrumbSchema,
+} from '@/lib/jsonld';
 
 interface BlogsRouteProps {
   params: Promise<{ lang: string }>;
@@ -15,7 +20,11 @@ export async function generateMetadata({ params }: BlogsRouteProps): Promise<Met
   return getLocalizedPageContent(lang).blogs;
 }
 
-export default async function Page() {
+export default async function Page({ params }: BlogsRouteProps) {
+  const { lang: routeLang } = await params;
+  const lang = resolveSiteLanguage(routeLang);
+  const localized = getLocalizedPageContent(lang).blogs;
+
   const slugs = await getAllBlogSlugs();
   const blogs = await Promise.all(
     slugs.map(async ({ slug }) => {
@@ -24,5 +33,31 @@ export default async function Page() {
     })
   );
 
-  return <BlogsPage blogs={blogs} />;
+  const schemas = [
+    buildBlogCollectionPageSchema({
+      lang,
+      title: localized.title,
+      description: localized.description,
+      blogs: blogs.map((b) => ({
+        slug: b.slug,
+        title: b.metadata.title,
+        description: b.metadata.description,
+        date: b.metadata.date,
+      })),
+    }),
+    buildBreadcrumbSchema([
+      { name: 'Nipporia', url: `${baseUrl}/${lang}` },
+      { name: localized.title, url: `${baseUrl}/${lang}/blogs` },
+    ]),
+  ];
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
+      <BlogsPage blogs={blogs} />
+    </>
+  );
 }
