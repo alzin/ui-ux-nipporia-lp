@@ -51,9 +51,8 @@ export async function generateMetadata({
     },
     description: localized.description,
     applicationName: localized.applicationName,
-    generator: "Next.js",
     keywords: localized.keywords,
-    referrer: "origin",
+    referrer: "strict-origin-when-cross-origin",
     creator: localized.applicationName,
     publisher: localized.applicationName,
     alternates: {

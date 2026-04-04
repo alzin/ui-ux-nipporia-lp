@@ -24,11 +24,11 @@ const Footer = () => {
             >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative shrink-0">
                 <Image
-                  src="/images/og-image.jpg"
+                  src="/images/logo.svg"
                   alt="Nipporia"
-                  width={200}
-                  height={200}
-                  className="absolute scale-[2] top-[20%] left-[0%]"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-3xl font-bold text-[#1a2744] uppercase tracking-[0.15em]">
