@@ -26,11 +26,10 @@ export default function Header() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${
-      scrolled
+    <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${scrolled
         ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
         : "bg-white/70 backdrop-blur-md"
-    }`}>
+      }`}>
       <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center" dir={isRTL ? "rtl" : "ltr"}>
         {/* Logo - fixed left */}
         <Link
@@ -56,9 +55,8 @@ export default function Header() {
             <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
-                className={`text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full ${
-                  isRTL ? "after:right-0" : "after:left-0"
-                }`}
+                className={`text-gray-700 text-base font-semibold whitespace-nowrap relative hover:text-purple-600 transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-purple-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full ${isRTL ? "after:right-0" : "after:left-0"
+                  }`}
               >
                 {link.title}
               </Link>
@@ -98,34 +96,29 @@ export default function Header() {
             }}
           >
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
-                isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? "translate-y-0 rotate-45" : "-translate-y-[7px]"
+                }`}
             ></span>
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${
-                isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-200 ease-in-out ${isMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"
+                }`}
             ></span>
             <span
-              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${
-                isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
-              }`}
+              className={`absolute w-6 h-[2.5px] bg-purple-600 rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? "translate-y-0 -rotate-45" : "translate-y-[7px]"
+                }`}
             ></span>
           </button>
         </div>
       </div>
       <ul
-        className={`lg:hidden bg-white/95 backdrop-blur-xl p-6 transition-all duration-300 ease-in-out border-t border-purple-100 ${
-          isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 hidden"
-        } ${isRTL ? "text-right" : "text-left"}`}
+        className={`lg:hidden overflow-hidden bg-white/95 backdrop-blur-xl transition-all duration-300 ease-in-out border-purple-100 ${isMenuOpen ? "max-h-[500px] opacity-100 p-6 border-t" : "max-h-0 opacity-0 pointer-events-none"
+          } ${isRTL ? "text-right" : "text-left"}`}
       >
         {navLinks.map((link, _index) => (
           <li
             key={link.href}
-            className={`py-3 ${
-              _index < navLinks.length - 1 ? "border-b border-purple-100" : ""
-            }`}
+            className={`py-3 ${_index < navLinks.length - 1 ? "border-b border-purple-100" : ""
+              }`}
           >
             <Link
               href={link.href}
