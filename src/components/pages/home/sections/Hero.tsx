@@ -27,11 +27,10 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
           {/* Text Column */}
-          <div className={`flex flex-col items-center lg:items-start text-center z-20 ${
-            isRTL
-              ? "lg:text-right lg:-mr-8 xl:-mr-12 lg:pl-8 xl:pl-12"
-              : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
-          }`}>
+          <div className={`flex flex-col items-center lg:items-start text-center z-20 ${isRTL
+            ? "lg:text-right lg:-mr-8 xl:-mr-12 lg:pl-8 xl:pl-12"
+            : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
+            }`}>
             {/* Title */}
             <h1 className="opacity-0 animate-fade-in-up text-gray-800 font-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.2] tracking-tight mb-8 mt-4">
               <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
@@ -98,11 +97,10 @@ export default function Hero() {
 
           {/* Mockups Column */}
           <div className={`w-full flex items-center justify-center lg:justify-end h-full`}>
-            <div className={`w-full max-w-[500px] sm:max-w-[600px] lg:max-w-none lg:w-[110%] xl:w-[120%] 2xl:w-[130%] ${
-              isRTL
-                ? "-ml-4 sm:-ml-8 lg:-ml-24 xl:-ml-32"
-                : "-mr-4 sm:-mr-8 lg:-mr-24 xl:-mr-32"
-            }`}>
+            <div className={`w-full max-w-[500px] sm:max-w-[600px] lg:max-w-none lg:w-[110%] xl:w-[120%] 2xl:w-[130%] ${isRTL
+              ? "-ml-4 sm:-ml-8 lg:-ml-24 xl:-ml-32"
+              : "-mr-4 sm:-mr-8 lg:-mr-24 xl:-mr-32"
+              }`}>
               <HeroMockups />
             </div>
           </div>
@@ -190,7 +188,7 @@ export default function Hero() {
 
             <Link
               href="#visual-examples"
-              className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-sm"
+              className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-[13px]"
             >
               {t.hero.stickyPortfolio}
             </Link>
