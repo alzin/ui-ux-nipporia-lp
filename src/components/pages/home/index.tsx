@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { initHomeScript } from "@/lib/homeScript";
 import Hero from "./sections/Hero";
+import TechLogoMarquee from "./components/TechLogoMarquee";
 
 // 1. Dynamically import everything below the fold
 // This splits the code, meaning mobile devices don't download this JS until it's needed.
@@ -31,6 +32,9 @@ const Index = () => {
   return (
     <>
       <Hero />
+      <div className="bg-gradient-to-b from-lavender/30 to-transparent py-14">
+        <TechLogoMarquee />
+      </div>
       <ProblemSection />
       <TransformationSection />
       <VisualTransformationSection />

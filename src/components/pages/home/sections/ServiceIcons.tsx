@@ -155,12 +155,25 @@ export function UiUxIcon({ className, ...props }: IconProps) {
       focusable="false"
       {...props}
     >
-      <rect x="20" y="25" width="25" height="30" rx="3" stroke="currentColor" strokeWidth="2" />
-      <rect x="50" y="25" width="10" height="10" rx="2" fill="currentColor" />
-      <rect x="50" y="40" width="10" height="15" rx="2" fill="currentColor" opacity="0.7" />
-      <circle cx="32.5" cy="40" r="7" stroke="currentColor" strokeWidth="2" />
-      <path d="M15 60L65 60" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="40" cy="15" r="3" fill="currentColor" opacity="0.6" />
+      {/* Artboard */}
+      <rect x="16" y="16" width="48" height="48" rx="4" stroke="currentColor" strokeWidth="2" />
+      {/* Layout guides */}
+      <path d="M16 32H64" stroke="currentColor" strokeWidth="1" opacity="0.3" />
+      <path d="M36 16V64" stroke="currentColor" strokeWidth="1" opacity="0.3" />
+      {/* Content block */}
+      <rect x="22" y="38" width="10" height="20" rx="2" fill="currentColor" opacity="0.15" />
+      <rect x="42" y="22" width="16" height="6" rx="2" fill="currentColor" opacity="0.2" />
+      <rect x="42" y="32" width="12" height="4" rx="1" fill="currentColor" opacity="0.15" />
+      {/* Pen tool cursor */}
+      <path
+        d="M28 18L22 34L26 34L28 40L30 34L34 34L28 18Z"
+        fill="currentColor"
+        opacity="0.85"
+      />
+      {/* Bezier handle dots */}
+      <circle cx="56" cy="52" r="2.5" fill="currentColor" opacity="0.5" />
+      <circle cx="48" cy="58" r="2.5" fill="currentColor" opacity="0.5" />
+      <path d="M56 52L48 58" stroke="currentColor" strokeWidth="1.5" opacity="0.35" strokeLinecap="round" />
     </svg>
   );
 }

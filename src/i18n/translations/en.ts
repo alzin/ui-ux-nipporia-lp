@@ -20,14 +20,28 @@ const en: Translations = {
 
   // Hero
   hero: {
-    title: "Transform your website to drive business growth.",
-    subtitle: "Professional design that attracts more customers.",
-    cta: "Free consultation (60 min) - Improvement plan within 7 days",
+    title: "Super-fast, high-quality software solutions to bring you profit.",
+    subtitle: "Maximize traffic and sales with Mobile Apps, Websites, SaaS, UI/UX Design, SEO, and Digital Marketing. Free consultation (60 min) - Improvement plan within 7 days.",
+    cta: "",
     primaryButton: "Book Free Consultation",
     secondaryButton: "Sample Projects",
     stickyConsultation: "Free Consultation",
     stickyPortfolio: "Sample Projects",
     accepting: "Available",
+    services: ["Mobile Apps", "Websites", "AI Solutions", "UI/UX Design"],
+  },
+
+  heroWorkflow: {
+    steps: [
+      { label: "Online Meeting", notification: "Meeting started!", detail: "4 members joined" },
+      { label: "Requirements", notification: "Specs defined!", detail: "Priority: High" },
+      { label: "UI/UX Design", notification: "Designs ready!", detail: "Mobile + Desktop" },
+      { label: "Client Feedback", notification: "Feedback received!", detail: "3 comments" },
+      { label: "Development", notification: "Building product...", detail: "Progress: 67%" },
+      { label: "Client Review", notification: "Approved!", detail: "Rating: ★★★★★" },
+      { label: "QA Testing", notification: "All tests passed!", detail: "Coverage: 94%" },
+      { label: "Deployment", notification: "Launched!", detail: "Status: Live" },
+    ],
   },
 
   // Problems

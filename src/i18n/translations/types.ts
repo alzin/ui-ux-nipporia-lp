@@ -22,6 +22,10 @@ export interface Translations {
     stickyConsultation: string;
     stickyPortfolio: string;
     accepting: string;
+    services: string[];
+  };
+  heroWorkflow: {
+    steps: { label: string; notification: string; detail: string }[];
   };
   problems: {
     sectionTitle: string;
