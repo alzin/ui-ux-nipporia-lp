@@ -57,7 +57,7 @@ const itemFade = {
 
 const itemPop = {
   initial: { opacity: 0, scale: 0.8 },
-  animate: { opacity: 1, scale: 1, transition: { duration: 0.35, type: "spring" } },
+  animate: { opacity: 1, scale: 1, transition: { duration: 0.35, type: "spring" as const } },
 };
 
 const itemSlideRight = {
