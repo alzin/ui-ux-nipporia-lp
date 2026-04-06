@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   tags: string[];
   siteUrl?: string; // Keep for the "View Live Site" button
-  mediaType: "url" | "video"; // NEW: Identify if it's a website or local video
+  mediaType: "url" | "video" | "mixed"; // NEW: Identify if it's a website, local video, or mixed (laptop=URL, phone=video)
   desktopUrl?: string;
   mobileUrl?: string;
   desktopVideo?: string; // NEW: Path to desktop video (e.g., "/videos/project1-desktop.mp4")
@@ -34,17 +34,6 @@ export const projects: Project[] = [
     mobileUrl: "https://thriveinjapan.com",
   },
   {
-    id: 3,
-    title: "Comy",
-    description:
-      "モダンなインターフェースを持つ革新的な日本語プラットフォーム。すべてのデバイスでシームレスな体験を提供。",
-    tags: ["UI/UXデザイン", "イノベーション", "SEO"],
-    mediaType: "url",
-    siteUrl: "https://comy.jp",
-    desktopUrl: "https://comy.jp",
-    mobileUrl: "https://comy.jp",
-  },
-  {
     id: 4,
     title: "Rio Design",
     description: "",
@@ -59,9 +48,9 @@ export const projects: Project[] = [
     title: "Yum Gott",
     description: "",
     tags: ["Flutter", "Application"],
-    // siteUrl: "https://rio-app.design/",
-    mediaType: "video",
-    desktopVideo: "/videos/yum-gott.mp4",
+    siteUrl: "https://play.google.com/store/apps/details?id=com.yummgott&pcampaignid=web_share",
+    mediaType: "mixed",
+    desktopUrl: "/api/proxy?url=https://play.google.com/store/apps/details?id=com.yummgott%26pcampaignid=web_share",
     mobileVideo: "/videos/yum-gott.mp4",
   },
 ];

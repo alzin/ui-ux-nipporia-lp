@@ -25,7 +25,15 @@ export default function VisualTransformationSection() {
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("laptop");
   const activeProject = projects[activeIndex];
 
-  // If the current project is a video, always force phone mode
+  // Set initial device mode based on user's device type
+  useEffect(() => {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    if (isMobile) setDeviceMode("phone");
+  }, []);
+
+  // If the current project is video-only, always force phone mode
   useEffect(() => {
     if (activeProject.mediaType === "video" && deviceMode !== "phone") {
       setDeviceMode("phone");
