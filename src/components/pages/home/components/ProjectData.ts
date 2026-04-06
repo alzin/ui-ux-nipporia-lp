@@ -34,17 +34,6 @@ export const projects: Project[] = [
     mobileUrl: "https://thriveinjapan.com",
   },
   {
-    id: 3,
-    title: "Comy",
-    description:
-      "モダンなインターフェースを持つ革新的な日本語プラットフォーム。すべてのデバイスでシームレスな体験を提供。",
-    tags: ["UI/UXデザイン", "イノベーション", "SEO"],
-    mediaType: "url",
-    siteUrl: "https://comy.jp",
-    desktopUrl: "https://comy.jp",
-    mobileUrl: "https://comy.jp",
-  },
-  {
     id: 4,
     title: "Rio Design",
     description: "",
