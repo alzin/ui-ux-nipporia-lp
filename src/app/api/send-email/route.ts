@@ -4,6 +4,7 @@ import { IMailService } from "./interfaces/IMailService";
 import { GmailSender } from "./mailService/GmailSender";
 import { SystemEmailTemplate } from "./mailTemplate/SystemEmailTemplate";
 import { ClientEmailTemplate } from "./mailTemplate/ClientEmailTemplate";
+import { getEmailTranslations } from "./emailTranslations";
 import { TFormData } from "@/types/formData.type";
 
 export async function POST(req: Request) {
@@ -14,6 +15,7 @@ export async function POST(req: Request) {
   const clientName = body.name
 
   const adminEmail = process.env.SMTP_USER
+  const tr = getEmailTranslations(body.locale)
 
 
   try {
@@ -30,14 +32,14 @@ export async function POST(req: Request) {
     const adminGmailInfo = {
       from: `"Website Form" <${adminEmail}>`,
       to: `${adminEmail}`,
-      subject: `新しいお問い合わせ: ${clientName}`,
+      subject: tr.adminSubject(clientName),
       template: systemEmailTemplate,
     }
 
     const clientGmailInfo = {
       from: `"Nipporia" <${adminEmail}>`,
       to: clientEmail,
-      subject: "お問い合わせありがとうございます",
+      subject: tr.clientSubject,
       template: clientEmailTemplate,
     }
 

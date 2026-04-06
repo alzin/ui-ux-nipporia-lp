@@ -3,5 +3,6 @@ export type TFormData = {
   name: string,
   email: string,
   website: string,
-  message: string
+  message: string,
+  locale: string,
 };
