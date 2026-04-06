@@ -21,10 +21,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] overflow-hidden bg-gradient-to-br from-cream via-peach/50 to-lavender px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32"
+      className="relative min-h-[100dvh] overflow-hidden bg-gradient-to-br from-cream via-peach/50 to-lavender px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32 [@media(min-width:1024px)_and_(max-height:800px)]:pb-16"
     >
-      <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-28 sm:pt-36 lg:pt-40">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-28 sm:pt-36 lg:pt-40 [@media(min-width:1024px)_and_(max-height:800px)]:pt-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 [@media(min-width:1024px)_and_(max-height:800px)]:gap-4 items-center">
 
           {/* Text Column */}
           <div className={`flex flex-col items-center lg:items-start text-center z-20 ${isRTL
@@ -32,7 +32,7 @@ export default function Hero() {
             : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
             }`}>
             {/* Title */}
-            <h1 className="opacity-0 animate-fade-in-up text-gray-800 font-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.2] tracking-tight mb-8 mt-4">
+            <h1 className="opacity-0 animate-fade-in-up text-gray-800 font-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.2] tracking-tight mb-8 mt-4 [@media(min-width:1024px)_and_(max-height:800px)]:mb-4 [@media(min-width:1024px)_and_(max-height:800px)]:mt-2">
               <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
                 {t.hero.title}
               </span>
@@ -43,7 +43,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex w-full justify-center lg:justify-start flex-nowrap gap-4 sm:gap-4 lg:gap-5 mb-10 overflow-x-auto pb-4 hide-scrollbar"
+              className="flex w-full justify-center lg:justify-start flex-nowrap gap-4 sm:gap-4 lg:gap-5 mb-10 [@media(min-width:1024px)_and_(max-height:800px)]:mb-6 overflow-x-auto pb-4 hide-scrollbar"
             >
               {[
                 { name: t.hero.services[3], Icon: UiUxIcon },
@@ -51,8 +51,8 @@ export default function Hero() {
                 { name: t.hero.services[1], Icon: NextJsDevIcon },
                 { name: t.hero.services[2], Icon: AiIcon },
               ].map((item, i) => (
-                <div key={i} className="flex flex-col items-center gap-2 flex-shrink-0 group cursor-pointer w-[104px] sm:w-[128px] lg:min-w-[128px]">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 transform transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-110 group-hover:drop-shadow-xl drop-shadow-md lg:mx-auto text-purple-600">
+                <div key={i} className="flex flex-col items-center gap-2 flex-shrink-0 group cursor-pointer w-[104px] sm:w-[128px] lg:min-w-[128px] [@media(min-width:1024px)_and_(max-height:800px)]:min-w-[100px]">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 [@media(min-width:1024px)_and_(max-height:800px)]:w-16 [@media(min-width:1024px)_and_(max-height:800px)]:h-16 transform transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-110 group-hover:drop-shadow-xl drop-shadow-md lg:mx-auto text-purple-600">
                     <item.Icon className="w-full h-full" />
                   </div>
                   <span className="text-xs sm:text-sm lg:text-[15px] font-semibold text-gray-700 text-center leading-tight whitespace-nowrap mt-1 w-full">{item.name}</span>
