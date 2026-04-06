@@ -3,7 +3,7 @@ import SectionTitle from "@/components/common/components/SectionTitle";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-import { OldDesignIcon, LowTrafficIcon, HardToMaintainIcon } from "./ProblemIcons";
+import { FragmentedStrategyIcon, DigitalLagIcon, PoorROIIcon } from "./ProblemIcons";
 
 export default function ProblemSection() {
 
@@ -19,7 +19,7 @@ export default function ProblemSection() {
 
   const { t } = useLanguage();
 
-  const icons = [OldDesignIcon, LowTrafficIcon, HardToMaintainIcon];
+  const icons = [FragmentedStrategyIcon, DigitalLagIcon, PoorROIIcon];
   const colors = [
     { color: "from-red-400 to-orange-400", iconColor: "text-red-500" },
     { color: "from-orange-400 to-yellow-400", iconColor: "text-orange-500" },

@@ -42,11 +42,11 @@ export default function TransformationSection() {
             </div>
             <div className="p-8 space-y-4">
               {[
-                { label: m.monthlyVisitors, value: "320", icon: "" },
-                { label: m.bounceRate, value: "85%", icon: "" },
-                { label: m.avgDuration, value: "32s", icon: "" },
-                { label: m.mobileReady, value: "×", icon: "" },
-                { label: m.pageSpeed, value: "8.2s", icon: "" },
+                { label: m.monthlyLeads, value: "12" },
+                { label: m.acquisitionCost, value: "¥50,000" },
+                { label: m.conversionRate, value: "0.8%" },
+                { label: m.digitalChannels, value: "1" },
+                { label: m.automationRate, value: "0%" },
               ].map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">
@@ -65,11 +65,11 @@ export default function TransformationSection() {
             </div>
             <div className="p-8 space-y-4">
               {[
-                { label: m.monthlyVisitors, value: "15,800", icon: "" },
-                { label: m.bounceRate, value: "35%", icon: "" },
-                { label: m.avgDuration, value: "3m 45s", icon: "" },
-                { label: m.mobileReady, value: "✓", icon: "" },
-                { label: m.pageSpeed, value: "1.8s", icon: "" },
+                { label: m.monthlyLeads, value: "280" },
+                { label: m.acquisitionCost, value: "¥8,500" },
+                { label: m.conversionRate, value: "5.2%" },
+                { label: m.digitalChannels, value: "6" },
+                { label: m.automationRate, value: "65%" },
               ].map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">

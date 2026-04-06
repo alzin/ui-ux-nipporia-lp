@@ -49,34 +49,34 @@ const en: Translations = {
     sectionTitle: "Are you facing these challenges?",
     items: [
       {
-        title: "Outdated Design",
+        title: "Fragmented Digital Efforts",
         description:
-          "Your website looks a decade old, falling behind competitors. No mobile responsiveness either.",
+          "Website, ads, apps, and SEO handled by different vendors — no coordination, rising costs, and no clear results.",
       },
       {
-        title: "Low Traffic",
+        title: "Falling Behind Digitally",
         description:
-          "Barely any search engine traffic, with monthly visitors stagnating at just a few hundred.",
+          "Competitors are growing with AI and apps while your business is stuck with outdated methods.",
       },
       {
-        title: "Hard to Maintain",
+        title: "Investment Without Results",
         description:
-          "Built with legacy code — even small changes require significant time and cost.",
+          "Spending on websites and ads but not generating leads or revenue. Unclear what to fix.",
       },
     ],
   },
 
   // Transformation
   transformation: {
-    sectionTitle: "Real Transformation Results",
+    sectionTitle: "Client Results",
     before: "Before",
     after: "After",
     metrics: {
-      monthlyVisitors: "Monthly Visitors",
-      bounceRate: "Bounce Rate",
-      avgDuration: "Avg. Session Duration",
-      mobileReady: "Mobile Ready",
-      pageSpeed: "Page Load Speed",
+      monthlyLeads: "Monthly Leads",
+      acquisitionCost: "Customer Acquisition Cost",
+      conversionRate: "Conversion Rate",
+      digitalChannels: "Digital Channels",
+      automationRate: "Process Automation",
     },
   },
 
@@ -177,22 +177,22 @@ const en: Translations = {
       {
         title: "Free Consultation",
         description:
-          "We listen to your current website challenges and propose improvement directions.",
+          "We listen to your business challenges and goals, and propose the optimal digital strategy.",
       },
       {
         title: "Analysis & Proposal",
         description:
-          "We conduct a detailed analysis and present a concrete improvement plan with estimates.",
+          "We analyze your challenges in detail and present a concrete plan combining the right services, with estimates.",
       },
       {
         title: "Design & Development",
         description:
-          "We build a high-quality website leveraging the latest technologies.",
+          "We build the optimal solution — web, app, AI, or more — leveraging the latest technologies.",
       },
       {
-        title: "Launch & Operations",
+        title: "Delivery & Operations",
         description:
-          "Ongoing support to drive growth even after your site goes live.",
+          "Ongoing support and improvement proposals to drive business growth after delivery.",
       },
     ],
   },
@@ -201,11 +201,11 @@ const en: Translations = {
   pricing: {
     sectionTitle: "Services & Pricing",
     sectionDescription:
-      "End-to-end services from website creation to operations — supporting your business growth",
+      "From development projects to ongoing operations — one-stop support for your digital growth",
     websiteDev: {
-      title: "Website Development",
+      title: "Project Development",
       description:
-        "End-to-end service from UI/UX design to implementation and deployment",
+        "End-to-end delivery for websites, apps, SaaS, and AI solutions — from planning to deployment",
       priceLabel: "Price",
       priceNote: "Varies based on project complexity",
       durationLabel: "Timeline",
@@ -214,9 +214,9 @@ const en: Translations = {
       includedLabel: "Included Services",
       includedItems: [
         "UI/UX Design",
-        "Frontend Development",
-        "Backend Development",
-        "Deployment",
+        "Frontend & Backend Development",
+        "Testing & QA",
+        "Deployment & Handover",
       ],
     },
     monthlyPlansTitle: "Monthly Support Plans",
@@ -225,16 +225,16 @@ const en: Translations = {
     plans: [
       {
         description:
-          "Essential maintenance and operational support after website completion. Ensuring stable operations",
+          "Essential maintenance and operational support after project delivery. Ensuring stable operations",
         features: [
           "Bug fix support",
           "Uptime monitoring",
           "Google Ads support (basic)",
-          "2 new product pages/month",
+          "2 content & feature additions/month",
           "2 blog articles/month",
           "Basic SEO support",
           "Up to 4 change requests",
-          "Mobile speed optimization",
+          "Performance optimization",
           "SLA/Response time: 48 hours",
         ],
         ctaText: "Get Started",
@@ -245,7 +245,7 @@ const en: Translations = {
         features: [
           "All Basic plan features",
           "Google Ads support (intermediate)",
-          "4 new product pages/month",
+          "4 content & feature additions/month",
           "4 blog articles/month",
           "Intermediate SEO support",
           "Up to 6 change requests",
@@ -276,14 +276,14 @@ const en: Translations = {
 
   // CTA / Contact
   contact: {
-    sectionTitle: "Transform Your Website Today",
+    sectionTitle: "Start Your Digital Transformation Today",
     sectionDescription:
-      "Let us show you your website's potential with a free consultation",
+      "Let us propose the best digital strategy for your business — with a free consultation",
     companyLabel: "Company Name",
     nameLabel: "Your Name",
     emailLabel: "Email Address",
-    websiteLabel: "Current Website URL (optional)",
-    messageLabel: "Your Challenges & Requirements",
+    websiteLabel: "Company Website URL (optional)",
+    messageLabel: "What can we help you with?",
     submitButton: "Book Free Consultation",
     submitting: "Sending...",
   },
