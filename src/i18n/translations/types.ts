@@ -36,11 +36,11 @@ export interface Translations {
     before: string;
     after: string;
     metrics: {
-      monthlyVisitors: string;
-      bounceRate: string;
-      avgDuration: string;
-      mobileReady: string;
-      pageSpeed: string;
+      monthlyLeads: string;
+      acquisitionCost: string;
+      conversionRate: string;
+      digitalChannels: string;
+      automationRate: string;
     };
   };
   visualTransformation: {

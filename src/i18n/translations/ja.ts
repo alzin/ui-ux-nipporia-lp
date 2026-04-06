@@ -46,37 +46,37 @@ const ja: Translations = {
 
   // Problems
   problems: {
-    sectionTitle: "こんな問題で悩んでいませんか？",
+    sectionTitle: "こんな課題を抱えていませんか？",
     items: [
       {
-        title: "古いデザイン",
+        title: "バラバラなデジタル施策",
         description:
-          "10年前のようなデザインで、競合他社に比べて見劣りする。モバイル対応もできていない。",
+          "ウェブサイト、広告、アプリ、SEOをそれぞれ別の会社に依頼。連携が取れず、コストばかりかさんで成果が見えない。",
       },
       {
-        title: "低いトラフィック",
+        title: "デジタル化の遅れ",
         description:
-          "検索エンジンからの流入がほとんどなく、月間訪問者数が数百人程度で停滞している。",
+          "競合他社がAIやアプリを活用して成長する中、自社は旧来の方法から抜け出せていない。",
       },
       {
-        title: "メンテナンスが困難",
+        title: "投資に見合わない成果",
         description:
-          "古いコードで構築されており、小さな変更にも多大な時間とコストがかかる。",
+          "ウェブサイトや広告に費用をかけているが、問い合わせや売上につながらない。何を改善すべきかもわからない。",
       },
     ],
   },
 
   // Transformation
   transformation: {
-    sectionTitle: "実際の変革事例",
-    before: "変革前",
-    after: "変革後",
+    sectionTitle: "導入企業の実績",
+    before: "導入前",
+    after: "導入後",
     metrics: {
-      monthlyVisitors: "月間訪問者数",
-      bounceRate: "直帰率",
-      avgDuration: "平均滞在時間",
-      mobileReady: "モバイル対応",
-      pageSpeed: "ページ読み込み速度",
+      monthlyLeads: "月間リード数",
+      acquisitionCost: "顧客獲得コスト",
+      conversionRate: "コンバージョン率",
+      digitalChannels: "デジタルチャネル数",
+      automationRate: "業務自動化率",
     },
   },
 
@@ -177,21 +177,21 @@ const ja: Translations = {
       {
         title: "無料相談",
         description:
-          "現状のWebサイトの課題をヒアリングし、改善の方向性をご提案します。",
+          "ビジネスの課題やゴールをヒアリングし、最適なデジタル戦略の方向性をご提案します。",
       },
       {
         title: "分析・提案",
         description:
-          "詳細な分析を行い、具体的な改善プランと見積もりをご提示します。",
+          "課題を詳細に分析し、必要なサービスを組み合わせた具体的なプランと見積もりをご提示します。",
       },
       {
         title: "デザイン・開発",
-        description: "最新技術を活用し、高品質なWebサイトを構築します。",
+        description: "最新技術を活用し、ウェブ・アプリ・AIなど最適なソリューションを構築します。",
       },
       {
-        title: "公開・運用",
+        title: "納品・運用",
         description:
-          "サイト公開後も継続的なサポートで成長を支援します。",
+          "納品後も継続的なサポートと改善提案で、ビジネスの成長を支援します。",
       },
     ],
   },
@@ -200,11 +200,11 @@ const ja: Translations = {
   pricing: {
     sectionTitle: "サービス & 料金プラン",
     sectionDescription:
-      "ウェブサイト制作から運用まで、一貫したサービスでお客様のビジネスをサポートします",
+      "開発プロジェクトから継続的な運用まで、ワンストップでお客様のデジタル成長をサポートします",
     websiteDev: {
-      title: "ウェブサイト制作",
+      title: "プロジェクト開発",
       description:
-        "UI/UXデザインから実装、デプロイメントまで一貫したサービスを提供",
+        "ウェブサイト・アプリ・SaaS・AIソリューションの企画から実装・デプロイまで一貫対応",
       priceLabel: "料金",
       priceNote: "プロジェクトの複雑さにより変動",
       durationLabel: "制作期間",
@@ -213,9 +213,9 @@ const ja: Translations = {
       includedLabel: "含まれるサービス",
       includedItems: [
         "UI/UXデザイン",
-        "フロントエンド開発",
-        "バックエンド開発",
-        "デプロイメント",
+        "フロントエンド・バックエンド開発",
+        "テスト・品質保証",
+        "デプロイメント・運用引き継ぎ",
       ],
     },
     monthlyPlansTitle: "月額サポートプラン",
@@ -224,16 +224,16 @@ const ja: Translations = {
     plans: [
       {
         description:
-          "ウェブサイト完成後の基本的な保守・運用サポート。安定した運営を実現",
+          "プロジェクト納品後の基本的な保守・運用サポート。安定した運営を実現",
         features: [
           "バグ修正対応",
           "アップタイムモニタリング",
           "Google広告サポート（基本）",
-          "月2件の新規プロダクトページ作成",
+          "月2件のコンテンツ・機能追加",
           "月2件のブログ記事作成",
           "SEO基本サポート",
           "最大4件の変更リクエスト対応",
-          "モバイルスピード改善",
+          "パフォーマンス改善",
           "SLA/レスポンスタイム: 48時間",
         ],
         ctaText: "お申し込み",
@@ -244,7 +244,7 @@ const ja: Translations = {
         features: [
           "Basicプランの全機能",
           "Google広告サポート（中級）",
-          "月4件の新規プロダクトページ作成",
+          "月4件のコンテンツ・機能追加",
           "月4件のブログ記事作成",
           "SEO中級サポート",
           "最大6件の変更リクエスト対応",
@@ -275,14 +275,14 @@ const ja: Translations = {
 
   // CTA / Contact
   contact: {
-    sectionTitle: "今すぐWebサイトを変革しましょう",
+    sectionTitle: "今すぐデジタル戦略を始めましょう",
     sectionDescription:
-      "無料相談で、あなたのWebサイトの可能性をお見せします",
+      "無料相談で、ビジネスに最適なデジタル施策をご提案します",
     companyLabel: "会社名",
     nameLabel: "お名前",
     emailLabel: "メールアドレス",
-    websiteLabel: "現在のWebサイトURL（任意）",
-    messageLabel: "お悩み・ご要望",
+    websiteLabel: "会社サイトURL（任意）",
+    messageLabel: "ご相談内容",
     submitButton: "無料相談を申し込む",
     submitting: "送信中...",
   },
@@ -302,7 +302,7 @@ const ja: Translations = {
   // Footer
   footer: {
     tagline:
-      "ビジネス成長を生むウェブサイトへ変革します。プロ品質のデザインで、集客を伸ばす。",
+      "スピードと品質を両立したソフトウェア開発で、事業成長を支えます。",
     quickLinks: "クイックリンク",
     quickLinkItems: {
       services: "サービス",
@@ -348,24 +348,26 @@ const ja: Translations = {
 export const jaPageContent: LocalizedPageContent = {
   layout: {
     titleDefault:
-      "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに変える専門家",
-    titleTemplate: "%s | Webサイト変革サービス",
+      "Nipporia | ソフトウェア開発・アプリ・SaaS・AI・デジタルマーケティング",
+    titleTemplate: "%s | Nipporia",
     description:
-      "私たちは、デザインが悪く、トラフィックが少ないウェブサイトを、最新のNext.jsとSEO技術を使ってプロフェッショナルなサイトに変革します。実績豊富なWebサイト改善サービス。",
-    applicationName: "Webサイト変革サービス",
+      "ウェブサイト・モバイルアプリ・SaaS・AIソリューション・SEO・デジタルマーケティングをワンストップで提供。スピードと品質を両立した開発で事業成長を支えます。",
+    applicationName: "Nipporia",
     keywords: [
-      "ウェブサイト改善",
+      "ソフトウェア開発",
       "UI/UX改善",
       "Next.js開発",
       "SEO対策",
       "Google広告",
-      "ウェブデザイン",
-      "サイトリニューアル",
+      "SaaS開発",
+      "AIソリューション",
+      "デジタルマーケティング",
+      "モバイルアプリ開発",
     ],
-    ogTitle: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
+    ogTitle: "Nipporia | ソフトウェア開発・アプリ・SaaS・AI・マーケティング",
     ogDescription:
-      "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
-    ogImageAlt: "Webサイト変革サービスのOG画像",
+      "ウェブ・アプリ・SaaS・AIをワンストップで。スピードと品質を両立した開発で事業成長を支えます",
+    ogImageAlt: "NipporiaのOG画像",
   },
   notFound: {
     title: "404 - ページが見つかりません",
