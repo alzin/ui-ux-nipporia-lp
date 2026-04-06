@@ -303,7 +303,7 @@ const en: Translations = {
   // Footer
   footer: {
     tagline:
-      "Transform your website to drive business growth. Professional design that attracts more customers.",
+      "Super-fast, high-quality software solutions to bring you profit.",
     quickLinks: "Quick Links",
     quickLinkItems: {
       services: "Services",
@@ -349,25 +349,27 @@ const en: Translations = {
 export const enPageContent: LocalizedPageContent = {
   layout: {
     titleDefault:
-      "Website Transformation Service | Turn low-performing websites into professional assets",
-    titleTemplate: "%s | Website Transformation Service",
+      "Nipporia | Software Development, Apps, SaaS, AI & Digital Marketing",
+    titleTemplate: "%s | Nipporia",
     description:
-      "We transform poorly designed, low-traffic websites into professional platforms using modern Next.js and SEO strategies.",
-    applicationName: "Website Transformation Service",
+      "Websites, mobile apps, SaaS, AI solutions, SEO, and digital marketing — all in one place. Fast, high-quality development to grow your business.",
+    applicationName: "Nipporia",
     keywords: [
-      "website optimization",
+      "software development",
       "UI UX improvement",
       "Next.js development",
       "SEO",
       "Google Ads",
-      "web design",
-      "site redesign",
+      "SaaS development",
+      "AI solutions",
+      "digital marketing",
+      "mobile app development",
     ],
     ogTitle:
-      "Website Transformation Service | Turn low-performing websites into professional assets",
+      "Nipporia | Software Development, Apps, SaaS, AI & Digital Marketing",
     ogDescription:
-      "Transform poorly designed, low-traffic websites into professional websites with modern technologies.",
-    ogImageAlt: "Website Transformation Service OG image",
+      "Websites, apps, SaaS, and AI solutions — all in one place. Fast, quality development for business growth.",
+    ogImageAlt: "Nipporia OG image",
   },
   notFound: {
     title: "404 - Page Not Found",

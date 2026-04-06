@@ -302,7 +302,7 @@ const ja: Translations = {
   // Footer
   footer: {
     tagline:
-      "ビジネス成長を生むウェブサイトへ変革します。プロ品質のデザインで、集客を伸ばす。",
+      "スピードと品質を両立したソフトウェア開発で、事業成長を支えます。",
     quickLinks: "クイックリンク",
     quickLinkItems: {
       services: "サービス",
@@ -348,24 +348,26 @@ const ja: Translations = {
 export const jaPageContent: LocalizedPageContent = {
   layout: {
     titleDefault:
-      "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに変える専門家",
-    titleTemplate: "%s | Webサイト変革サービス",
+      "Nipporia | ソフトウェア開発・アプリ・SaaS・AI・デジタルマーケティング",
+    titleTemplate: "%s | Nipporia",
     description:
-      "私たちは、デザインが悪く、トラフィックが少ないウェブサイトを、最新のNext.jsとSEO技術を使ってプロフェッショナルなサイトに変革します。実績豊富なWebサイト改善サービス。",
-    applicationName: "Webサイト変革サービス",
+      "ウェブサイト・モバイルアプリ・SaaS・AIソリューション・SEO・デジタルマーケティングをワンストップで提供。スピードと品質を両立した開発で事業成長を支えます。",
+    applicationName: "Nipporia",
     keywords: [
-      "ウェブサイト改善",
+      "ソフトウェア開発",
       "UI/UX改善",
       "Next.js開発",
       "SEO対策",
       "Google広告",
-      "ウェブデザイン",
-      "サイトリニューアル",
+      "SaaS開発",
+      "AIソリューション",
+      "デジタルマーケティング",
+      "モバイルアプリ開発",
     ],
-    ogTitle: "Webサイト変革サービス | 低品質なサイトをプロフェッショナルに",
+    ogTitle: "Nipporia | ソフトウェア開発・アプリ・SaaS・AI・マーケティング",
     ogDescription:
-      "デザインが悪く、トラフィックが少ないウェブサイトを、最新技術でプロフェッショナルなサイトに変革します",
-    ogImageAlt: "Webサイト変革サービスのOG画像",
+      "ウェブ・アプリ・SaaS・AIをワンストップで。スピードと品質を両立した開発で事業成長を支えます",
+    ogImageAlt: "NipporiaのOG画像",
   },
   notFound: {
     title: "404 - ページが見つかりません",
