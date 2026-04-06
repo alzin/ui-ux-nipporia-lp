@@ -6,7 +6,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 interface LaptopMockupProps {
   url?: string;
   videoSrc?: string;
-  mediaType?: "url" | "video";
+  mediaType?: "url" | "video" | "mixed";
   isActive: boolean;
 }
 

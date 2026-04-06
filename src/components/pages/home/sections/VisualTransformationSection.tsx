@@ -25,7 +25,7 @@ export default function VisualTransformationSection() {
   const [deviceMode, setDeviceMode] = useState<DeviceMode>("laptop");
   const activeProject = projects[activeIndex];
 
-  // If the current project is a video, always force phone mode
+  // If the current project is video-only, always force phone mode
   useEffect(() => {
     if (activeProject.mediaType === "video" && deviceMode !== "phone") {
       setDeviceMode("phone");

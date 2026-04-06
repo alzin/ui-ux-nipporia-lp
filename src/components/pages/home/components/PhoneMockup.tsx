@@ -6,7 +6,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 interface PhoneMockupProps {
   url?: string;
   videoSrc?: string;
-  mediaType?: "url" | "video";
+  mediaType?: "url" | "video" | "mixed";
   isActive: boolean;
 }
 
@@ -68,7 +68,7 @@ export default function PhoneMockup({
               dir="ltr"
             >
               {/* Loading state */}
-              {!isLoaded && showLoader && mediaType !== "video" && (
+              {!isLoaded && showLoader && mediaType !== "video" && mediaType !== "mixed" && (
                 <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
@@ -79,7 +79,7 @@ export default function PhoneMockup({
                 </div>
               )}
 
-              {mediaType === "video" && videoSrc ? (
+              {(mediaType === "video" || mediaType === "mixed") && videoSrc ? (
                 <video
                   src={videoSrc}
                   autoPlay
@@ -93,7 +93,7 @@ export default function PhoneMockup({
                     setShowLoader(false);
                   }}
                 />
-              ) : mediaType === "video" && !videoSrc ? (
+              ) : (mediaType === "video" || mediaType === "mixed") && !videoSrc ? (
                 // Only phone markup, no content
                 <div className="w-full h-full flex items-center justify-center bg-black/80">
                   {/* Optionally, show a fallback message or icon */}
