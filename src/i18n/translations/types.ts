@@ -8,10 +8,23 @@ export interface Translations {
     pricing: string;
     contact: string;
     blog: string;
+    templates: string;
     menu: {
       open: string;
       close: string;
     };
+  };
+  templatesPage: {
+    title: string;
+    subtitle: string;
+    viewLive: string;
+    category: string;
+    items: {
+      title: string;
+      description: string;
+      category: string;
+      tags: string[];
+    }[];
   };
   hero: {
     title: string;
@@ -216,6 +229,7 @@ export type LocalizedPageContent = {
   notFound: SeoMetadata;
   blogs: SeoMetadata;
   missingBlog: SeoMetadata;
+  templates: SeoMetadata;
   privacyPolicy: PrivacyContent;
   termsOfService: TermsContent;
   commerceDisclosure: CommerceContent;

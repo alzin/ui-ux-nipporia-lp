@@ -12,10 +12,32 @@ const ja: Translations = {
     pricing: "料金プラン",
     contact: "お問い合わせ",
     blog: "ブログ",
+    templates: "テンプレート",
     menu: {
       open: "メニューを開く",
       close: "メニューを閉じる",
     },
+  },
+
+  templatesPage: {
+    title: "テンプレート一覧",
+    subtitle: "Nipporiaが手がけたプレミアムWebサイトテンプレートをご覧ください。モダンなデザインと最新技術で制作しています。",
+    viewLive: "ライブで見る",
+    category: "カテゴリ",
+    items: [
+      {
+        title: "LuxEstate — 不動産サイト",
+        description: "ダークでプレミアムな高級不動産プラットフォーム。物件検索フィルター、エレガントなタイポグラフィ、深いチャコールにゴールド/ベージュのアクセントが特徴です。",
+        category: "不動産",
+        tags: ["HTML/CSS/JS", "ダークテーマ", "レスポンシブ", "ラグジュアリー"],
+      },
+      {
+        title: "JSOMS — 医療ポータル リデザイン",
+        description: "日本口腔外科学会の医療ポータルをプロフェッショナルにリニューアル。モダンなナビゲーションとヒーロー画像スライダーを備えたクリーンな制度的レイアウト。",
+        category: "医療 / ヘルスケア",
+        tags: ["HTML/CSS/JS", "ライトテーマ", "制度的", "リデザイン"],
+      },
+    ],
   },
 
   // Hero
@@ -381,6 +403,10 @@ export const jaPageContent: LocalizedPageContent = {
   missingBlog: {
     title: "記事が見つかりません",
     description: "指定されたブログ記事は存在しません。",
+  },
+  templates: {
+    title: "テンプレート | Nipporia",
+    description: "Nipporiaが制作したプレミアムWebサイトテンプレートをご覧ください。モダンなデザインと最新技術。",
   },
   privacyPolicy: {
     metadataTitle: "プライバシーポリシー | Nipporia",

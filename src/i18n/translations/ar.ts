@@ -11,10 +11,32 @@ const ar: Translations = {
     pricing: "الأسعار",
     contact: "اتصل بنا",
     blog: "المدونة",
+    templates: "القوالب",
     menu: {
       open: "فتح القائمة",
       close: "إغلاق القائمة",
     },
+  },
+
+  templatesPage: {
+    title: "قوالبنا",
+    subtitle: "استعرض قوالب المواقع الاحترافية التي صممها فريق Nipporia. كل قالب مبني بأحدث مبادئ التصميم والتقنيات المتقدمة.",
+    viewLive: "عرض مباشر",
+    category: "الفئة",
+    items: [
+      {
+        title: "LuxEstate — موقع عقارات",
+        description: "منصة عقارات فاخرة بتصميم داكن وأنيق. تتميز بفلاتر بحث عن العقارات، وطباعة أنيقة، ولمسات ذهبية/بيج على خلفية فحمية عميقة.",
+        category: "عقارات",
+        tags: ["HTML/CSS/JS", "مظهر داكن", "متجاوب", "فاخر"],
+      },
+      {
+        title: "JSOMS — إعادة تصميم بوابة طبية",
+        description: "إعادة تصميم احترافية للبوابة الطبية للجمعية اليابانية لجراحة الفم والوجه والفكين. تخطيط مؤسسي نظيف مع تنقل حديث وشريط صور متحرك.",
+        category: "طبي / رعاية صحية",
+        tags: ["HTML/CSS/JS", "مظهر فاتح", "مؤسسي", "إعادة تصميم"],
+      },
+    ],
   },
 
   hero: {
@@ -369,6 +391,10 @@ export const arPageContent: LocalizedPageContent = {
   missingBlog: {
     title: "المقال غير موجود",
     description: "مقال المدونة المطلوب غير موجود.",
+  },
+  templates: {
+    title: "القوالب | Nipporia",
+    description: "استعرض قوالب المواقع الاحترافية من Nipporia. تصميم عصري وتقنيات متقدمة.",
   },
   privacyPolicy: {
     metadataTitle: "سياسة الخصوصية | Nipporia",
