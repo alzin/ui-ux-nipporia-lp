@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import FloatingSocial from "@/components/common/components/FloatingSocial";
+import TawkChat from "@/components/common/components/TawkChat";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
@@ -135,6 +136,7 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
+        <TawkChat lang={lang} />
       </body>
     </html>
   );

@@ -9,13 +9,14 @@ const initialFormData: TFormData = {
   email: "",
   website: "",
   message: "",
+  locale: "",
 };
 
 export const useFormHandler = () => {
   const [formData, setFormData] = useState<TFormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [click, setClick] = useState(false);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -44,7 +45,7 @@ export const useFormHandler = () => {
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, locale: lang }),
       });
 
       if (!response.ok) {
