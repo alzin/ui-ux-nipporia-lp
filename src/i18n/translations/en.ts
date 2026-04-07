@@ -12,10 +12,32 @@ const en: Translations = {
     pricing: "Pricing",
     contact: "Contact",
     blog: "Blog",
+    templates: "Templates",
     menu: {
       open: "Open menu",
       close: "Close menu",
     },
+  },
+
+  templatesPage: {
+    title: "Our Templates",
+    subtitle: "Explore premium website templates crafted by Nipporia. Each template is built with modern design principles and cutting-edge technology.",
+    viewLive: "View Live",
+    category: "Category",
+    items: [
+      {
+        title: "LuxEstate — Real Estate",
+        description: "A luxury real estate platform with dark, premium aesthetics. Features property search with filters, elegant typography, and gold/beige accents on a deep charcoal background.",
+        category: "Real Estate",
+        tags: ["HTML/CSS/JS", "Dark Theme", "Responsive", "Luxury"],
+      },
+      {
+        title: "JSOMS — Medical Portal Redesign",
+        description: "A professional medical portal redesign for the Japanese Society of Oral and Maxillofacial Surgeons. Clean institutional layout with modern navigation and hero image slider.",
+        category: "Medical / Healthcare",
+        tags: ["HTML/CSS/JS", "Light Theme", "Institutional", "Redesign"],
+      },
+    ],
   },
 
   // Hero
@@ -383,6 +405,10 @@ export const enPageContent: LocalizedPageContent = {
   missingBlog: {
     title: "Not Found",
     description: "This blog post does not exist.",
+  },
+  templates: {
+    title: "Templates | Nipporia",
+    description: "Explore premium website templates crafted by Nipporia. Modern design, cutting-edge technology.",
   },
   privacyPolicy: {
     metadataTitle: "Privacy Policy | Nipporia",
