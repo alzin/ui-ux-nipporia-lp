@@ -10,6 +10,8 @@ const TAWK_LOCALE_MAP: Record<string, string> = {
 
 interface Props {
   lang: string;
+  propertyId: string;
+  widgetId: string;
 }
 
 declare global {
@@ -27,12 +29,9 @@ declare global {
   }
 }
 
-export default function TawkChat({ lang }: Props) {
+export default function TawkChat({ lang, propertyId, widgetId }: Props) {
   const locale = TAWK_LOCALE_MAP[lang] ?? "en";
-  const propertyId = process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID;
-  const widgetId = process.env.NEXT_PUBLIC_TAWK_WIDGET_ID;
-  console.log("TawkChat rendered with widgetId:", widgetId);
-
+  console.log("TawkChat rendered with propertyId:", propertyId);
   useEffect(() => {
     if (!propertyId || !widgetId) return;
     if (document.getElementById("tawk-script")) return;

@@ -136,7 +136,11 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
-        <TawkChat lang={lang} />
+        <TawkChat
+          lang={lang}
+          propertyId={process.env.TAWK_PROPERTY_ID ?? ""}
+          widgetId={process.env.TAWK_WIDGET_ID ?? ""}
+        />
       </body>
     </html>
   );
