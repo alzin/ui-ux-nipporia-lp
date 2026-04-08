@@ -7,6 +7,7 @@ import { createProcessedBlogObject } from '@/utils/createBlog';
 import 'highlight.js/styles/github-dark.css';
 import { baseUrl } from '@/utils/baseUrl';
 import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/jsonld';
+import { SchemaInjector } from '@/components/common/components/SchemaInjector';
 
 import {
   DEFAULT_LANGUAGE,
@@ -94,10 +95,7 @@ export default async function Page({ params }: BlogPageProps) {
 
     return (
       <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-        />
+        <SchemaInjector schemas={schemas} />
         <BlogPage blog={blog} />
       </>
     );

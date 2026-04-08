@@ -9,6 +9,7 @@ import {
   buildBlogCollectionPageSchema,
   buildBreadcrumbSchema,
 } from '@/lib/jsonld';
+import { SchemaInjector } from '@/components/common/components/SchemaInjector';
 
 interface BlogsRouteProps {
   params: Promise<{ lang: string }>;
@@ -53,10 +54,7 @@ export default async function Page({ params }: BlogsRouteProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
+      <SchemaInjector schemas={schemas} />
       <BlogsPage blogs={blogs} />
     </>
   );

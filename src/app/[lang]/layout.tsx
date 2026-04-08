@@ -11,6 +11,7 @@ import { baseUrl } from "@/utils/baseUrl";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/jsonld";
+import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin", "latin-ext"],
@@ -116,12 +117,7 @@ export default async function RootLayout({
       className="scroll-smooth"
     >
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([orgSchema, websiteSchema]),
-          }}
-        />
+        <SchemaInjector schemas={[orgSchema, websiteSchema]} />
       </head>
       <GoogleTagManager gtmId="GTM-NQGV6M9D" />
 
