@@ -8,7 +8,7 @@ import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/jsonld";
-import { notoSansJP, notoSansArabic } from "@/lib/fonts";
+import { resolveFontConfig } from "@/lib/fonts";
 import { generateLayoutMetadata } from "@/lib/metadata/layoutMetadata";
 
 export { generateLayoutMetadata as generateMetadata };
@@ -24,10 +24,7 @@ export default async function RootLayout({
 }: Readonly<LangLayoutProps>) {
   const lang = resolveSiteLanguage((await params).lang);
   const rtl = isRTL(lang);
-  const fontVariable = rtl ? notoSansArabic.variable : notoSansJP.variable;
-  const fontFamily = rtl
-    ? 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-    : 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+  const { fontVariable, fontFamily } = resolveFontConfig(rtl);
 
   return (
     <html lang={lang} dir={rtl ? "rtl" : "ltr"} className="scroll-smooth">

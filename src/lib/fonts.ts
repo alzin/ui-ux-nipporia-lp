@@ -15,3 +15,18 @@ export const notoSansArabic = Noto_Sans_Arabic({
   variable: "--font-noto-sans-arabic",
   preload: false,
 });
+
+export function resolveFontConfig(rtl: boolean): {
+  fontVariable: string;
+  fontFamily: string;
+} {
+  return rtl
+    ? {
+        fontVariable: notoSansArabic.variable,
+        fontFamily: 'var(--font-noto-sans-arabic), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      }
+    : {
+        fontVariable: notoSansJP.variable,
+        fontFamily: 'var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      };
+}
