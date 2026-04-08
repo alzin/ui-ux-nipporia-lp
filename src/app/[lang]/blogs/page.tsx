@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import BlogsPage from '@/components/pages/blogs';
 import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogData } from '@/utils/getBlog';
@@ -6,16 +5,13 @@ import { createBlogObject } from '@/utils/createBlog';
 import { resolveSiteLanguage } from '@/i18n/serverLanguage';
 import { buildBlogsPageSchemas } from '@/lib/schemas/blogsPageSchemas';
 import { SchemaInjector } from '@/components/common/components/SchemaInjector';
+import { generateBlogsMetadata } from '@/lib/metadata/blogsMetadata';
 
 interface BlogsRouteProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({ params }: BlogsRouteProps): Promise<Metadata> {
-  const { lang: routeLang } = await params;
-  const lang = resolveSiteLanguage(routeLang);
-  return getLocalizedPageContent(lang).blogs;
-}
+export { generateBlogsMetadata as generateMetadata };
 
 export default async function Page({ params }: BlogsRouteProps) {
   const { lang: routeLang } = await params;

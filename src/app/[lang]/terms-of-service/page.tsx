@@ -1,22 +1,15 @@
-import type { Metadata } from "next";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { LegalPageLayout } from "@/components/pages/legal/LegalPageLayout";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { buildTermsOfServiceSchemas } from "@/lib/schemas/termsOfServiceSchemas";
+import { generateTermsOfServiceMetadata } from "@/lib/metadata/termsOfServiceMetadata";
 
 interface TermsOfServicePageProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({
-  params,
-}: TermsOfServicePageProps): Promise<Metadata> {
-  const lang = resolveSiteLanguage((await params).lang);
-  const { metadataTitle: title, metadataDescription: description } =
-    getLocalizedPageContent(lang).termsOfService;
-  return { title, description };
-}
+export { generateTermsOfServiceMetadata as generateMetadata };
 
 export default async function TermsOfServicePage({
   params,

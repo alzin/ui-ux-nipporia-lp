@@ -1,21 +1,15 @@
-import { Metadata } from "next";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { resolveSiteLanguage } from "@/i18n/serverLanguage";
 import TemplatesPage from "@/components/pages/templates";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { buildTemplatesPageSchemas } from "@/lib/schemas/templatesPageSchemas";
+import { generateTemplatesMetadata } from "@/lib/metadata/templatesMetadata";
 
 interface TemplatesRouteProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateMetadata({
-  params,
-}: TemplatesRouteProps): Promise<Metadata> {
-  const { lang: routeLang } = await params;
-  const lang = resolveSiteLanguage(routeLang);
-  return getLocalizedPageContent(lang).templates;
-}
+export { generateTemplatesMetadata as generateMetadata };
 
 export default async function Page({ params }: TemplatesRouteProps) {
   const { lang: routeLang } = await params;
