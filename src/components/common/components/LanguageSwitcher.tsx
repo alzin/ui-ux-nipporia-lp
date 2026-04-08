@@ -1,20 +1,10 @@
 "use client";
 
-import { useLanguage, Language } from "@/i18n/LanguageContext";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import Flag from "react-world-flags";
 import { useClickOutside } from "@/hooks/useClickOutside";
-
-const languageOptions: Array<{
-  value: Language;
-  label: string;
-  title: string;
-  countryCode?: string;
-}> = [
-  { value: "ja", label: "JP", title: "日本語", countryCode: "JP" },
-  { value: "en", label: "EN", title: "English", countryCode: "US" },
-  { value: "ar", label: "AR", title: "العربية" },
-];
+import { languageOptions, TLanguageOption } from "@/content/header/languageOptions";
 
 function SyriaThreeStarsFlag({ className, label }: { className?: string; label: string }) {
   return (
@@ -35,7 +25,7 @@ function SyriaThreeStarsFlag({ className, label }: { className?: string; label: 
   );
 }
 
-function LanguageFlag({ option }: { option: (typeof languageOptions)[number] }) {
+function LanguageFlag({ option }: { option: TLanguageOption }) {
   if (option.value === "ar") {
     return (
       <SyriaThreeStarsFlag

@@ -2,6 +2,7 @@
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
+import { plansMeta } from "@/content/home/pricing";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,12 +19,6 @@ const itemVariants = {
 
 const PlansSection = () => {
   const { t } = useLanguage();
-
-  const plansMeta = [
-    { id: "basic", name: "Basic", price: "250,000", priceSuffix: "/mo", featured: false, color: "from-purple-400 to-indigo-400" },
-    { id: "growth", name: "Growth", price: "350,000", priceSuffix: "/mo", featured: true, color: "from-pink-400 to-rose-400" },
-    { id: "enterprise", name: "Enterprise", price: "500,000", priceSuffix: "/mo", featured: false, color: "from-cyan-400 to-blue-400" },
-  ];
 
   return (
     <section
