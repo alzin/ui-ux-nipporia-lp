@@ -29,7 +29,7 @@ export default function Header() {
   const navLinks = [
     { href: localizePath("/#services"), title: t.nav.services },
     { href: localizePath("/#pricing"), title: t.nav.pricing },
-    { href: localizePath("/templates"), title: t.nav.templates },
+    // { href: localizePath("/templates"), title: t.nav.templates },
     { href: localizePath("/blogs"), title: t.nav.blog },
   ];
 
