@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { LegalPageLayout } from "@/components/pages/legal/LegalPageLayout";
+import { SchemaInjector } from "@/components/common/components/SchemaInjector";
+import { buildTermsOfServiceSchemas } from "@/lib/schemas/termsOfServiceSchemas";
 
 interface TermsOfServicePageProps {
   params: Promise<{ lang: string }>;
@@ -21,5 +23,11 @@ export default async function TermsOfServicePage({
 }: TermsOfServicePageProps) {
   const lang = resolveSiteLanguage((await params).lang);
   const content = getLocalizedPageContent(lang).termsOfService;
-  return <LegalPageLayout content={content} lang={lang} />;
+  const schemas = buildTermsOfServiceSchemas(lang, content);
+  return (
+    <>
+      <SchemaInjector schemas={schemas} />
+      <LegalPageLayout content={content} lang={lang} />
+    </>
+  );
 }

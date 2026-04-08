@@ -4,11 +4,7 @@ import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs, getBlogData } from '@/utils/getBlog';
 import { createBlogObject } from '@/utils/createBlog';
 import { resolveSiteLanguage } from '@/i18n/serverLanguage';
-import { baseUrl } from '@/utils/baseUrl';
-import {
-  buildBlogCollectionPageSchema,
-  buildBreadcrumbSchema,
-} from '@/lib/jsonld';
+import { buildBlogsPageSchemas } from '@/lib/schemas/blogsPageSchemas';
 import { SchemaInjector } from '@/components/common/components/SchemaInjector';
 
 interface BlogsRouteProps {
@@ -34,23 +30,16 @@ export default async function Page({ params }: BlogsRouteProps) {
     })
   );
 
-  const schemas = [
-    buildBlogCollectionPageSchema({
-      lang,
-      title: localized.title,
-      description: localized.description,
-      blogs: blogs.map((b) => ({
-        slug: b.slug,
-        title: b.metadata.title,
-        description: b.metadata.description,
-        date: b.metadata.date,
-      })),
-    }),
-    buildBreadcrumbSchema([
-      { name: 'Nipporia', url: `${baseUrl}/${lang}` },
-      { name: localized.title, url: `${baseUrl}/${lang}/blogs` },
-    ]),
-  ];
+  const schemas = buildBlogsPageSchemas(
+    lang,
+    localized,
+    blogs.map((b) => ({
+      slug: b.slug,
+      title: b.metadata.title,
+      description: b.metadata.description,
+      date: b.metadata.date,
+    }))
+  );
 
   return (
     <>

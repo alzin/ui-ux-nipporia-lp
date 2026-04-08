@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { LegalPageLayout } from "@/components/pages/legal/LegalPageLayout";
+import { SchemaInjector } from "@/components/common/components/SchemaInjector";
+import { buildPrivacyPolicySchemas } from "@/lib/schemas/privacyPolicySchemas";
 
 interface PrivacyPolicyPageProps {
   params: Promise<{ lang: string }>;
@@ -21,5 +23,11 @@ export default async function PrivacyPolicyPage({
 }: PrivacyPolicyPageProps) {
   const lang = resolveSiteLanguage((await params).lang);
   const content = getLocalizedPageContent(lang).privacyPolicy;
-  return <LegalPageLayout content={content} lang={lang} />;
+  const schemas = buildPrivacyPolicySchemas(lang, content);
+  return (
+    <>
+      <SchemaInjector schemas={schemas} />
+      <LegalPageLayout content={content} lang={lang} />
+    </>
+  );
 }
