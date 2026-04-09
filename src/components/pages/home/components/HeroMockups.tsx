@@ -194,9 +194,8 @@ export default function HeroMockups() {
             scale: { duration: 0.4, delay: 0.5, type: "spring" },
             y: { duration: 3.5, repeat: Infinity, ease: "easeInOut" },
           }}
-          className={`absolute z-30 top-[14%] sm:top-[18%] ${
-            isRTL ? "left-[3%] sm:left-[8%]" : "right-[3%] sm:right-[12%]"
-          } bg-white/80 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-lg border border-white/50 flex items-center gap-2.5`}
+          className={`absolute z-30 top-[14%] sm:top-[18%] ${isRTL ? "left-[3%] sm:left-[8%]" : "right-[3%] sm:right-[12%]"
+            } bg-white/80 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-lg border border-white/50 flex items-center gap-2.5`}
         >
           <div
             className={`w-7 h-7 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center shadow-md`}
@@ -221,9 +220,8 @@ export default function HeroMockups() {
             x: { duration: 0.4, delay: 0.9 },
             y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           }}
-          className={`absolute z-30 bottom-[18%] sm:bottom-[28%] ${
-            isRTL ? "left-0 sm:-left-2" : "right-0 sm:-right-2"
-          } bg-gradient-to-r ${step.gradient} px-5 py-3 rounded-xl shadow-2xl border border-white/20 flex items-center gap-2`}
+          className={`absolute z-30 bottom-[18%] sm:bottom-[28%] ${isRTL ? "left-0 sm:-left-2" : "right-0 sm:-right-2"
+            } bg-gradient-to-r ${step.gradient} px-5 py-3 rounded-xl shadow-2xl border border-white/20 flex items-center gap-2`}
         >
           <div className="absolute -inset-0.5 bg-gradient-to-r from-white/20 to-transparent rounded-xl blur opacity-50" />
           <div className="relative flex items-center gap-2">
@@ -240,9 +238,8 @@ export default function HeroMockups() {
         {steps.map((s, i) => (
           <div
             key={s.id}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === currentStep ? `w-6 bg-gradient-to-r ${s.gradient}` : "w-1.5 bg-white/30"
-            }`}
+            className={`h-1.5 rounded-full transition-all duration-500 ${i === currentStep ? `w-6 bg-gradient-to-r ${s.gradient}` : "w-1.5 bg-white/30"
+              }`}
           />
         ))}
       </div>
@@ -302,7 +299,7 @@ function HeaderBar({ title }: { title: string }) {
         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#febc2e]" />
         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#28c840]" />
       </div>
-      <span className="text-[9px] sm:text-[10px] font-medium ml-1.5 text-gray-400">{title}</span>
+      <span className="text-[9px] sm:text-[10px] font-medium ml-1.5 text-white">{title}</span>
     </motion.div>
   );
 }
@@ -379,9 +376,8 @@ function LaptopScene({ step }: { step: Step }) {
             ].map((item, i) => (
               <motion.div key={i} variants={itemFade} className="flex items-center gap-2 sm:gap-2.5">
                 <div
-                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded flex items-center justify-center border ${
-                    item.checked ? "bg-amber-500 border-amber-400" : "bg-transparent border-gray-600"
-                  }`}
+                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded flex items-center justify-center border ${item.checked ? "bg-amber-500 border-amber-400" : "bg-transparent border-gray-600"
+                    }`}
                 >
                   {item.checked && <Check size={8} className="text-white" />}
                 </div>
@@ -525,7 +521,7 @@ function LaptopScene({ step }: { step: Step }) {
             <div className="h-full px-2.5 bg-[#111827] text-[8px] sm:text-[9px] text-purple-300 flex items-center border-t border-purple-500/50">
               index.tsx
             </div>
-            <div className="h-full px-2.5 text-[8px] sm:text-[9px] text-gray-500 flex items-center">
+            <div className="h-full px-2.5 text-[8px] sm:text-[9px] text-white flex items-center">
               app.tsx
             </div>
           </motion.div>
@@ -813,9 +809,8 @@ function PhoneScene({ step }: { step: Step }) {
           ].map((item, i) => (
             <motion.div key={i} variants={itemFade} className="flex items-center gap-1.5">
               <div
-                className={`w-2.5 h-2.5 rounded-sm flex items-center justify-center ${
-                  item.checked ? "bg-amber-500" : "border border-gray-600"
-                }`}
+                className={`w-2.5 h-2.5 rounded-sm flex items-center justify-center ${item.checked ? "bg-amber-500" : "border border-gray-600"
+                  }`}
               >
                 {item.checked && <Check size={6} className="text-white" />}
               </div>

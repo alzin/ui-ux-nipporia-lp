@@ -1,7 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useMockupLoader } from "./hooks/useMockupLoader";
+import MockupLoader from "./MockupLoader";
+
+const PHONE_ZOOM = 0.55;
+const SCROLLBAR_MASK_PX = 18;
 
 interface PhoneMockupProps {
   url?: string;
@@ -10,45 +14,20 @@ interface PhoneMockupProps {
   isActive: boolean;
 }
 
-const PHONE_ZOOM_MOBILE = 0.55;
-const SCROLLBAR_MASK_PX = 18;
-const LOADER_VISIBLE_MS = 900;
-
-export default function PhoneMockup({ 
-  url, 
-  videoSrc, 
-  mediaType = "url", 
-  isActive 
-}: PhoneMockupProps) {
+export default function PhoneMockup({ url, videoSrc, mediaType = "url", isActive }: PhoneMockupProps) {
   const { t } = useLanguage();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showLoader, setShowLoader] = useState(true);
-  const phoneZoom = PHONE_ZOOM_MOBILE;
   const localeText = t.visualTransformation;
+  const { isLoaded, showLoader, onMediaLoaded } = useMockupLoader(url, videoSrc);
 
-  const phoneZoomPercent = `${100 / phoneZoom}%`;
-  const phoneZoomMaskedPercent = `calc(${phoneZoomPercent} + ${SCROLLBAR_MASK_PX}px)`;
-
-  useEffect(() => {
-    setIsLoaded(false);
-    setShowLoader(true);
-
-    const timer = window.setTimeout(() => {
-      setShowLoader(false);
-    }, LOADER_VISIBLE_MS);
-
-    return () => window.clearTimeout(timer);
-  }, [url, videoSrc]);
+  const zoomPercent = `${100 / PHONE_ZOOM}%`;
+  const maskedZoomPercent = `calc(${zoomPercent} + ${SCROLLBAR_MASK_PX}px)`;
 
   return (
     <div
       className={`transition-all duration-700 ${
-        isActive
-          ? "opacity-100 scale-100 translate-y-0"
-          : "opacity-0 scale-90 translate-y-8"
+        isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 translate-y-8"
       }`}
     >
-      {/* Phone Frame */}
       <div className="relative w-full">
         {/* Outer frame */}
         <div className="bg-[#1c1c1e] rounded-[2.5rem] p-[6px] shadow-[0_30px_60px_-34px_rgba(2,6,23,0.9)] ring-1 ring-[#3a3a3e]">
@@ -61,22 +40,14 @@ export default function PhoneMockup({
               </div>
             </div>
 
-            {/* Screen content with iframe or video, or just phone markup if video only */}
+            {/* Screen */}
             <div
               className="relative overflow-hidden bg-white w-full max-w-[420px] md:max-w-[380px] mx-auto"
               style={{ aspectRatio: "1 / 2" }}
               dir="ltr"
             >
-              {/* Loading state */}
               {!isLoaded && showLoader && mediaType !== "video" && mediaType !== "mixed" && (
-                <div className="absolute inset-0 bg-[#1c1c1e] flex items-center justify-center z-10">
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-6 h-6 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
-                    <span className="text-[10px] text-slate-400">
-                      {localeText.loadingPreview}
-                    </span>
-                  </div>
-                </div>
+                <MockupLoader text={localeText.loadingPreview} size="sm" />
               )}
 
               {(mediaType === "video" || mediaType === "mixed") && videoSrc ? (
@@ -88,25 +59,19 @@ export default function PhoneMockup({
                   playsInline
                   className="block w-full h-full object-cover transition-opacity duration-300"
                   style={{ opacity: isLoaded ? 1 : 0.96 }}
-                  onLoadedData={() => {
-                    setIsLoaded(true);
-                    setShowLoader(false);
-                  }}
+                  onLoadedData={onMediaLoaded}
                 />
               ) : (mediaType === "video" || mediaType === "mixed") && !videoSrc ? (
-                // Only phone markup, no content
-                <div className="w-full h-full flex items-center justify-center bg-black/80">
-                  {/* Optionally, show a fallback message or icon */}
-                </div>
+                <div className="w-full h-full flex items-center justify-center bg-black/80" />
               ) : (
                 <iframe
                   src={url}
                   title={localeText.mobilePreview}
                   className="block border-0 transition-opacity duration-300"
                   style={{
-                    width: phoneZoomMaskedPercent,
-                    height: phoneZoomMaskedPercent,
-                    transform: `scale(${phoneZoom})`,
+                    width: maskedZoomPercent,
+                    height: maskedZoomPercent,
+                    transform: `scale(${PHONE_ZOOM})`,
                     transformOrigin: "top left",
                     overflow: "auto",
                     scrollbarWidth: "none",
@@ -114,17 +79,14 @@ export default function PhoneMockup({
                     direction: "ltr",
                     opacity: isLoaded ? 1 : 0.96,
                   }}
-                  onLoad={() => {
-                    setIsLoaded(true);
-                    setShowLoader(false);
-                  }}
+                  onLoad={onMediaLoaded}
                   sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                   loading={isActive ? "eager" : "lazy"}
                   scrolling="yes"
                 />
               )}
 
-              {/* Subtle screen reflection */}
+              {/* Screen reflection */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
             </div>
 
