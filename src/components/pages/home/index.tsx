@@ -1,7 +1,6 @@
 "use client";
-import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { initHomeScript } from "@/lib/homeScript";
+import { useMultipleScrollAnimation } from "@/hooks/useScrollAnimation";
 import Hero from "./sections/Hero";
 import TechLogoMarquee from "./components/TechLogoMarquee";
 
@@ -16,18 +15,7 @@ const PricingSection = dynamic(() => import("./sections/PlansSection"), { ssr: t
 const CTASection = dynamic(() => import("./sections/CTASection"), { ssr: true });
 
 const Index = () => {
-  useEffect(() => {
-    // 2. Defer this script slightly so it doesn't block the initial React hydration
-    let cleanup: (() => void) | undefined;
-    const timer = setTimeout(() => {
-      cleanup = initHomeScript();
-    }, 500); // 500ms delay to let LCP finish
-
-    return () => {
-      clearTimeout(timer);
-      if (cleanup) cleanup();
-    };
-  }, []);
+  useMultipleScrollAnimation();
 
   return (
     <>

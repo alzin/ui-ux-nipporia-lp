@@ -68,26 +68,31 @@ export const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
 // ─── Global selector hook ─────────────────────────────────────────────────────
 
 /**
- * Observes every `.fade-in` element in the document and staggers them
- * as they scroll into view.
+ * Observes every `.fade-in` element in the document. When each enters the
+ * viewport, adds "visible" to it and staggers `.animate-slide` children with
+ * the slideInUp animation — matching the original homeScript behaviour.
  */
 export const useMultipleScrollAnimation = (options: ScrollAnimationOptions = {}) => {
   const {
     threshold = 0.1,
     rootMargin = "0px 0px -100px 0px",
-    staggerDelay = 200,
+    staggerDelay = 100,
+    animationClass = "animate-slide",
   } = options;
 
   useEffect(() => {
-    const observer = createStaggerObserver(
-      (entry, idx) => {
-        setTimeout(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
           entry.target.classList.add("visible");
-          (entry.target as HTMLElement).style.animation =
-            "fadeInUp 0.6s ease forwards";
-        }, idx * staggerDelay);
-
-        observer.unobserve(entry.target);
+          entry.target.querySelectorAll(`.${animationClass}`).forEach((child, i) => {
+            setTimeout(() => {
+              (child as HTMLElement).style.animation = "slideInUp 0.5s ease forwards";
+            }, i * staggerDelay);
+          });
+          observer.unobserve(entry.target);
+        });
       },
       { threshold, rootMargin }
     );
@@ -96,5 +101,5 @@ export const useMultipleScrollAnimation = (options: ScrollAnimationOptions = {})
     elements.forEach((el) => observer.observe(el));
 
     return () => elements.forEach((el) => observer.unobserve(el));
-  }, [threshold, rootMargin, staggerDelay]);
+  }, [threshold, rootMargin, staggerDelay, animationClass]);
 };
