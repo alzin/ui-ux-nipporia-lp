@@ -1,47 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import {
-  Video,
-  ClipboardList,
-  Palette,
-  MessageCircle,
-  Code2,
-  ThumbsUp,
-  ShieldCheck,
-  Rocket,
-  Check,
-  Mic,
-  Camera,
-  Phone,
-  Send,
-  Star,
-} from "lucide-react";
+import { Check, Mic, Camera, Phone, Send, Star, Video, ThumbsUp, Code2, Rocket } from "lucide-react";
+import { useWorkflowAnimation, STEP_DURATION, type WorkflowStep } from "./hooks/useWorkflowAnimation";
 
-// ─── Constants ──────────────────────────────────────────
-const STEP_DURATION = 4000;
-
-interface Step {
-  id: string;
-  label: string;
-  icon: typeof Video;
-  gradient: string;
-  notification: string;
-  detail: string;
-}
-
-const STEP_CONFIGS = [
-  { id: "meeting", icon: Video, gradient: "from-blue-500 to-cyan-400" },
-  { id: "requirements", icon: ClipboardList, gradient: "from-amber-500 to-orange-400" },
-  { id: "design", icon: Palette, gradient: "from-pink-500 to-rose-400" },
-  { id: "feedback1", icon: MessageCircle, gradient: "from-green-500 to-emerald-400" },
-  { id: "implementation", icon: Code2, gradient: "from-purple-500 to-violet-400" },
-  { id: "feedback2", icon: ThumbsUp, gradient: "from-teal-500 to-cyan-400" },
-  { id: "qa", icon: ShieldCheck, gradient: "from-indigo-500 to-blue-400" },
-  { id: "deployment", icon: Rocket, gradient: "from-fuchsia-500 to-pink-400" },
-];
 
 // ─── Animation Variants ─────────────────────────────────
 const sceneVariants = {
@@ -72,25 +35,9 @@ const itemSlideLeft = {
 
 // ─── Main Component ─────────────────────────────────────
 export default function HeroMockups() {
-  const { t, lang } = useLanguage();
+  const { lang } = useLanguage();
   const isRTL = lang === "ar";
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const steps: Step[] = STEP_CONFIGS.map((config, i) => ({
-    ...config,
-    label: t.heroWorkflow.steps[i].label,
-    notification: t.heroWorkflow.steps[i].notification,
-    detail: t.heroWorkflow.steps[i].detail,
-  }));
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentStep((prev) => (prev + 1) % steps.length);
-    }, STEP_DURATION);
-    return () => clearInterval(timer);
-  }, [steps.length]);
-
-  const step = steps[currentStep];
+  const { currentStep, steps, step } = useWorkflowAnimation();
   const StepIcon = step.icon;
 
   return (
@@ -304,7 +251,7 @@ function HeaderBar({ title }: { title: string }) {
   );
 }
 
-function LaptopScene({ step }: { step: Step }) {
+function LaptopScene({ step }: { step: WorkflowStep }) {
   return (
     <motion.div
       className="absolute inset-0 flex flex-col"
@@ -736,7 +683,7 @@ function PhoneStatusBar() {
   );
 }
 
-function PhoneHeader({ step }: { step: Step }) {
+function PhoneHeader({ step }: { step: WorkflowStep }) {
   const StepIcon = step.icon;
   return (
     <motion.div
@@ -749,7 +696,7 @@ function PhoneHeader({ step }: { step: Step }) {
   );
 }
 
-function PhoneScene({ step }: { step: Step }) {
+function PhoneScene({ step }: { step: WorkflowStep }) {
   return (
     <motion.div
       className="absolute inset-0 flex flex-col"
