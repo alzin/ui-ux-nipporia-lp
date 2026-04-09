@@ -9,7 +9,7 @@ import TechLogoMarquee from "./components/TechLogoMarquee";
 // This splits the code, meaning mobile devices don't download this JS until it's needed.
 const ProblemSection = dynamic(() => import("./sections/Problems"), { ssr: true });
 const TransformationSection = dynamic(() => import("./sections/Transformation"), { ssr: true });
-const VisualTransformationSection = dynamic(() => import("./sections/VisualTransformationSection"), { ssr: true });
+const VisualTransformationSection = dynamic(() => import("./sections/VisualTransformation"), { ssr: true });
 const ServicesSection = dynamic(() => import("./sections/ServicesSection"), { ssr: true });
 const ProcessSection = dynamic(() => import("./sections/ProcessSection"), { ssr: true });
 const PricingSection = dynamic(() => import("./sections/PlansSection"), { ssr: true });
