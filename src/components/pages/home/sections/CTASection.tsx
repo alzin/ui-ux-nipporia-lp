@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useFormHandler } from "@/hooks/useFormHandler";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SectionTitle from "@/components/common/components/SectionTitle";
-import ContactFormFields from "./ContactFormFields";
+import ContactFormFields from "../components/ContactFormFields";
 
 const formVariant = {
   hidden: { opacity: 0, y: 30 },

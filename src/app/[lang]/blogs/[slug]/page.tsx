@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import BlogPage from '@/components/pages/blogs/blog';
+import BlogPage from '@/components/pages/blog';
 import { SchemaInjector } from '@/components/common/components/SchemaInjector';
 import { getLocalizedPageContent } from '@/content/localizedPages';
 import { getAllBlogSlugs } from '@/utils/getBlog';

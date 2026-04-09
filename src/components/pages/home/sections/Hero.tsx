@@ -3,9 +3,9 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
 import HeroMockups from "../components/HeroMockups";
-import HeroContent from "./HeroContent";
-import StickyDesktopCTA from "./StickyDesktopCTA";
-import StickyMobileCTA from "./StickyMobileCTA";
+import HeroContent from "../components/HeroContent";
+import StickyDesktopCTA from "../components/StickyDesktopCTA";
+import StickyMobileCTA from "../components/StickyMobileCTA";
 
 export default function Hero() {
   const { lang } = useLanguage();

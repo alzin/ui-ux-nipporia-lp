@@ -1,7 +1,7 @@
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
-import { LegalPageLayout } from "@/components/pages/legal/LegalPageLayout";
-import { CommerceTable } from "@/components/pages/legal/CommerceTable";
+import { LegalPageLayout } from "@/components/pages/legal/sections/LegalPageLayout";
+import { CommerceTable } from "@/components/pages/legal/components/CommerceTable";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { buildCommerceDisclosureSchemas } from "@/lib/schemas/commerceDisclosureSchemas";
 import { generateCommerceDisclosureMetadata } from "@/lib/metadata/commerceDisclosureMetadata";

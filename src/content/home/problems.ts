@@ -2,7 +2,7 @@ import {
   FragmentedStrategyIcon,
   DigitalLagIcon,
   PoorROIIcon,
-} from "@/components/pages/home/sections/ProblemIcons";
+} from "@/components/common/components/icons/ProblemIcons";
 
 export type TProblemMeta = {
   color: string;

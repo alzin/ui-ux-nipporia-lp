@@ -1,7 +1,7 @@
 "use client";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SectionTitle from "@/components/common/components/SectionTitle";
-import TemplateCard, { type TemplateItem } from "./TemplateCard";
+import TemplateCard, { type TemplateItem } from "./components/TemplateCard";
 
 /** Static config per template (not translated) */
 const templateMeta = [

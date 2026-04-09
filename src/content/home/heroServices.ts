@@ -3,7 +3,7 @@ import {
   MobileAppIcon,
   NextJsDevIcon,
   AiIcon,
-} from "@/components/pages/home/sections/ServiceIcons";
+} from "@/components/common/components/icons/ServiceIcons";
 
 export type THeroService = {
   /** Index into `t.hero.services` translation array */

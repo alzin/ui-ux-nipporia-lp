@@ -9,7 +9,7 @@ import {
   SaasIcon,
   DigitalMarketingIcon,
   MaintenanceIcon,
-} from "@/components/pages/home/sections/ServiceIcons";
+} from "@/components/common/components/icons/ServiceIcons";
 
 export type TServiceMeta = {
   number: string;

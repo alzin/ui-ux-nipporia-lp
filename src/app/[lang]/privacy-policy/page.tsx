@@ -1,6 +1,6 @@
 import { getLocalizedPageContent } from "@/content/localizedPages";
 import { resolveSiteLanguage } from "@/i18n/serverLanguage";
-import { LegalPageLayout } from "@/components/pages/legal/LegalPageLayout";
+import { LegalPageLayout } from "@/components/pages/legal/sections/LegalPageLayout";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { buildPrivacyPolicySchemas } from "@/lib/schemas/privacyPolicySchemas";
 import { generatePrivacyPolicyMetadata } from "@/lib/metadata/privacyPolicyMetadata";

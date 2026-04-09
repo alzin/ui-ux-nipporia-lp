@@ -4,8 +4,8 @@ import SectionTitle from "@/components/common/components/SectionTitle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { plansMeta } from "@/content/home/pricing";
-import WebsitePricingCard from "./WebsitePricingCard";
-import MonthlyPlanCard from "./MonthlyPlanCard";
+import WebsitePricingCard from "../components/WebsitePricingCard";
+import MonthlyPlanCard from "../components/MonthlyPlanCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },

@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useMockupLoader } from "./hooks/useMockupLoader";
-import MockupLoader from "./MockupLoader";
+import MockupLoader from "./HeroMockups/MockupLoader";
 
 const PHONE_ZOOM = 0.55;
 const SCROLLBAR_MASK_PX = 18;
