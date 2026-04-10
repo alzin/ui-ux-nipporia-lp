@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useMultipleScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useMultipleScrollAnimation } from "@/hooks/scroll/useScrollAnimation";
 import Hero from "./sections/Hero";
 import TechLogoMarquee from "./components/TechLogoMarquee";
 

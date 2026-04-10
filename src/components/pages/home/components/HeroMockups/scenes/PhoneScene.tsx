@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, Phone, ThumbsUp, Code2, Rocket, Star, Video } from "lucide-react";
-import type { WorkflowStep } from "../../hooks/useWorkflowAnimation";
-import { sceneVariants, itemFade, itemPop, itemSlideRight, itemSlideLeft } from "./variants";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
+import { sceneVariants, itemFade, itemPop, itemSlideRight, itemSlideLeft } from "@/content/home/variants";
 import PhoneStatusBar from "./PhoneStatusBar";
 import PhoneHeader from "./PhoneHeader";
 

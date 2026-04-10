@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useMockupLoader } from "./hooks/useMockupLoader";
+import { useMockupLoader } from "@/hooks/animation/useMockupLoader";
 import MockupLoader from "./HeroMockups/MockupLoader";
 
 const PHONE_ZOOM = 0.55;

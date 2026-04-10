@@ -3,7 +3,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import Flag from "react-world-flags";
-import { useClickOutside } from "@/hooks/useClickOutside";
+import { useClickOutside } from "@/hooks/ui/useClickOutside";
 import { languageOptions, TLanguageOption } from "@/content/header/languageOptions";
 
 function SyriaThreeStarsFlag({ className, label }: { className?: string; label: string }) {

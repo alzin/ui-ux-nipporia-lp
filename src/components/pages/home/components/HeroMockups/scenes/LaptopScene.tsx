@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, Mic, Camera, Phone, Send, Star, ThumbsUp } from "lucide-react";
-import type { WorkflowStep } from "../../hooks/useWorkflowAnimation";
-import { sceneVariants, itemFade, itemPop, itemSlideRight, itemSlideLeft } from "./variants";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
+import { sceneVariants, itemFade, itemPop, itemSlideRight, itemSlideLeft } from "@/content/home/variants";
 import HeaderBar from "./HeaderBar";
 
 export default function LaptopScene({ step }: { step: WorkflowStep }) {

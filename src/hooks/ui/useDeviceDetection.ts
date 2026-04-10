@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { Project } from "../../../components/ProjectData";
+import type { Project } from "@/content/home/projectData";
 
 export type DeviceMode = "laptop" | "phone";
 

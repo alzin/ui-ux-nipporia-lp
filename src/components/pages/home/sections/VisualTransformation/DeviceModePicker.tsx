@@ -1,5 +1,5 @@
-import type { Project } from "../../components/ProjectData";
-import type { DeviceMode } from "./hooks/useDeviceDetection";
+import type { Project } from "@/content/home/projectData";
+import type { DeviceMode } from "@/hooks/ui/useDeviceDetection";
 
 interface Props {
   activeProject: Project;

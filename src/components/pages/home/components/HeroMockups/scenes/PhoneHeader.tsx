@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import type { WorkflowStep } from "../../hooks/useWorkflowAnimation";
-import { itemFade } from "./variants";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
+import { itemFade } from "@/content/home/variants";
 
 export default function PhoneHeader({ step }: { step: WorkflowStep }) {
   const StepIcon = step.icon;

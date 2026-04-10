@@ -1,8 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useMockupLoader } from "./hooks/useMockupLoader";
-import { useLaptopZoom } from "./hooks/useLaptopZoom";
+import { useMockupLoader } from "@/hooks/animation/useMockupLoader";
+import { useLaptopZoom } from "@/hooks/animation/useLaptopZoom";
 import MockupLoader from "./HeroMockups/MockupLoader";
 
 interface LaptopMockupProps {

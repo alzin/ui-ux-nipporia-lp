@@ -1,4 +1,4 @@
-import type { WorkflowStep } from "../hooks/useWorkflowAnimation";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
 
 interface Props {
   steps: WorkflowStep[];

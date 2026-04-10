@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useWorkflowAnimation } from "../hooks/useWorkflowAnimation";
+import { useWorkflowAnimation } from "@/hooks/animation/useWorkflowAnimation";
 import StepIndicator from "./StepIndicator";
 import LaptopMockupFrame from "./LaptopMockupFrame";
 import PhoneMockupFrame from "./PhoneMockupFrame";

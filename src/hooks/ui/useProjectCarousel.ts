@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { projects, type Project } from "../../../components/ProjectData";
+import { projects, type Project } from "@/content/home/projectData";
 
 interface UseProjectCarouselReturn {
   activeIndex: number;

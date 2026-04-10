@@ -1,5 +1,5 @@
 import SectionTitle from "@/components/common/components/SectionTitle";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation } from "@/hooks/scroll/useScrollAnimation";
 import Image from "next/image";
 import { teamMembers } from "@/content/home/team";
 

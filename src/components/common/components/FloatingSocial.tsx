@@ -1,5 +1,5 @@
 "use client";
-import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
+import { useFixedActionsVisibility } from "@/hooks/scroll/useFixedActionsVisibility";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { socialLinks } from "@/content/social";
 

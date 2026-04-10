@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useFormHandler } from "@/hooks/useFormHandler";
+import { useFormHandler } from "@/hooks/form/useFormHandler";
 import { useLanguage } from "@/i18n/LanguageContext";
 import SectionTitle from "@/components/common/components/SectionTitle";
 import ContactFormFields from "../components/ContactFormFields";

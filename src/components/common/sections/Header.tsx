@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
-import { useScrollDetection } from "@/hooks/useScrollDetection";
+import { useScrollDetection } from "@/hooks/scroll/useScrollDetection";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

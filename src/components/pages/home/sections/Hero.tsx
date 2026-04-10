@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useFixedActionsVisibility } from "@/hooks/useFixedActionsVisibility";
+import { useFixedActionsVisibility } from "@/hooks/scroll/useFixedActionsVisibility";
 import HeroMockups from "../components/HeroMockups";
 import HeroContent from "../components/HeroContent";
 import StickyDesktopCTA from "../components/StickyDesktopCTA";

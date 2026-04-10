@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { itemFade } from "./variants";
+import { itemFade } from "@/content/home/variants";
 
 export default function HeaderBar({ title }: { title: string }) {
   return (

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import type { WorkflowStep } from "../hooks/useWorkflowAnimation";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
 
 interface Props {
   step: WorkflowStep;

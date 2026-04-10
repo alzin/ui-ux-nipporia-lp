@@ -1,4 +1,4 @@
-import type { Project } from "../../components/ProjectData";
+import type { Project } from "@/content/home/projectData";
 
 interface Props {
   projects: Project[];

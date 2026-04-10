@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { STEP_DURATION, type WorkflowStep } from "../hooks/useWorkflowAnimation";
+import { STEP_DURATION, type WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
 
 interface Props {
   step: WorkflowStep;

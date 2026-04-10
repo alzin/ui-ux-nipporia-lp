@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import type { WorkflowStep } from "../hooks/useWorkflowAnimation";
+import type { WorkflowStep } from "@/hooks/animation/useWorkflowAnimation";
 import LaptopScene from "./scenes/LaptopScene";
 
 interface Props {
