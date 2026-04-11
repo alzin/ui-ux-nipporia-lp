@@ -1,0 +1,37 @@
+steps:
+  # Build the Docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - "--no-cache"
+      - "-t"
+      - "$_IMAGE_NAME:$COMMIT_SHA"
+      - "-t"
+      - "$_IMAGE_NAME:latest"
+      - "."
+
+  # Push both tags to Artifact Registry / Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "$_IMAGE_NAME:$COMMIT_SHA"]
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "$_IMAGE_NAME:latest"]
+
+  # Deploy to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - run
+      - deploy
+      - "$_SERVICE_NAME"
+      - "--image=$_IMAGE_NAME:$COMMIT_SHA"
+      - "--region=$_REGION"
+      - "--platform=managed"
+      - "--allow-unauthenticated"
+
+substitutions:
+  _SERVICE_NAME: uiuxnipporia
+  _REGION: asia-northeast1
+  _IMAGE_NAME: gcr.io/$PROJECT_ID/uiuxnipporia
+
+options:
+  logging: CLOUD_LOGGING_ONLY
