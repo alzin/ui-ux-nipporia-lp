@@ -11,7 +11,6 @@ const PUBLIC_FILE = /\.[^/]+$/;
 
 function detectBrowserLanguage(request: NextRequest): SiteLanguage {
   const acceptLanguage = request.headers.get("accept-language");
-  console.log("Accept-Language header:", acceptLanguage);
   if (!acceptLanguage) return DEFAULT_LANGUAGE;
 
   // Parse "en-US,en;q=0.9,ja;q=0.8" → sorted list of base language codes

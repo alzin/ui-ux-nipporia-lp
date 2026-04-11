@@ -3,7 +3,7 @@ import SectionTitle from "@/components/common/components/SectionTitle";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-import { FragmentedStrategyIcon, DigitalLagIcon, PoorROIIcon } from "./ProblemIcons";
+import { problemsMeta } from "@/content/home/problems";
 
 export default function ProblemSection() {
 
@@ -18,13 +18,6 @@ export default function ProblemSection() {
   };
 
   const { t } = useLanguage();
-
-  const icons = [FragmentedStrategyIcon, DigitalLagIcon, PoorROIIcon];
-  const colors = [
-    { color: "from-red-400 to-orange-400", iconColor: "text-red-500" },
-    { color: "from-orange-400 to-yellow-400", iconColor: "text-orange-500" },
-    { color: "from-yellow-400 to-green-400", iconColor: "text-amber-600" },
-  ];
 
   return (
     <motion.section
@@ -44,8 +37,7 @@ export default function ProblemSection() {
 
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={sectionVariants}>
           {t.problems.items.map((problem, index) => {
-            const Icon = icons[index];
-            const { color, iconColor } = colors[index];
+            const { Icon, color, iconColor } = problemsMeta[index];
             return (
               <motion.div
                 key={index}

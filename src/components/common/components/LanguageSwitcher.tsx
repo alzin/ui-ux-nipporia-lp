@@ -1,19 +1,10 @@
 "use client";
 
-import { useLanguage, Language } from "@/i18n/LanguageContext";
-import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { useState } from "react";
 import Flag from "react-world-flags";
-
-const languageOptions: Array<{
-  value: Language;
-  label: string;
-  title: string;
-  countryCode?: string;
-}> = [
-  { value: "ja", label: "JP", title: "日本語", countryCode: "JP" },
-  { value: "en", label: "EN", title: "English", countryCode: "US" },
-  { value: "ar", label: "AR", title: "العربية" },
-];
+import { useClickOutside } from "@/hooks/ui/useClickOutside";
+import { languageOptions, TLanguageOption } from "@/content/header/languageOptions";
 
 function SyriaThreeStarsFlag({ className, label }: { className?: string; label: string }) {
   return (
@@ -34,7 +25,7 @@ function SyriaThreeStarsFlag({ className, label }: { className?: string; label: 
   );
 }
 
-function LanguageFlag({ option }: { option: (typeof languageOptions)[number] }) {
+function LanguageFlag({ option }: { option: TLanguageOption }) {
   if (option.value === "ar") {
     return (
       <SyriaThreeStarsFlag
@@ -57,35 +48,12 @@ export default function LanguageSwitcher() {
   const { lang, setLang, t } = useLanguage();
   const isRtl = lang === "ar";
   const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
 
   const localeText = t.languageSwitcher;
-  // const getLanguageTitle = (language: Language) => localeText.options[language];
 
   const selectedOption =
     languageOptions.find((option) => option.value === lang) ?? languageOptions[0];
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!containerRef.current) return;
-      if (containerRef.current.contains(event.target as Node)) return;
-      setIsOpen(false);
-    };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, []);
 
   return (
     <div

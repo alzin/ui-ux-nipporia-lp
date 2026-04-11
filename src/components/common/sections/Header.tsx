@@ -1,30 +1,16 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
+import { useScrollDetection } from "@/hooks/scroll/useScrollDetection";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const scrolled = useScrollDetection(50);
   const { t, lang, localizePath } = useLanguage();
   const isRTL = lang === "ar";
-
-  useEffect(() => {
-    let rafId: number;
-    const handleScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 50);
-      });
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
-    };
-  }, []);
 
   const navLinks = [
     { href: localizePath("/#services"), title: t.nav.services },

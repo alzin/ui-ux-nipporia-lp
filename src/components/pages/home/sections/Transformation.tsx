@@ -2,6 +2,7 @@
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
+import { transformationMetrics } from "@/content/home/transformation";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -41,18 +42,12 @@ export default function TransformationSection() {
               {t.transformation.before}
             </div>
             <div className="p-8 space-y-4">
-              {[
-                { label: m.monthlyLeads, value: "12" },
-                { label: m.acquisitionCost, value: "¥50,000" },
-                { label: m.conversionRate, value: "0.8%" },
-                { label: m.digitalChannels, value: "1" },
-                { label: m.automationRate, value: "0%" },
-              ].map((item, index) => (
+              {transformationMetrics.map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">
-                    {item.label}
+                    {m[item.metricKey as keyof typeof m]}
                   </span>
-                  <span className="text-lg font-bold text-red-500">{item.value}</span>
+                  <span className="text-lg font-bold text-red-500">{item.before}</span>
                 </div>
               ))}
             </div>
@@ -64,18 +59,12 @@ export default function TransformationSection() {
               {t.transformation.after}
             </div>
             <div className="p-8 space-y-4">
-              {[
-                { label: m.monthlyLeads, value: "280" },
-                { label: m.acquisitionCost, value: "¥8,500" },
-                { label: m.conversionRate, value: "5.2%" },
-                { label: m.digitalChannels, value: "6" },
-                { label: m.automationRate, value: "65%" },
-              ].map((item, index) => (
+              {transformationMetrics.map((item, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
                   <span className="text-gray-600 flex items-center gap-2">
-                    {item.label}
+                    {m[item.metricKey as keyof typeof m]}
                   </span>
-                  <span className="text-lg font-bold text-green-500">{item.value}</span>
+                  <span className="text-lg font-bold text-green-500">{item.after}</span>
                 </div>
               ))}
             </div>

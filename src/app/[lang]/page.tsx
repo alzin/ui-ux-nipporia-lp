@@ -4,7 +4,8 @@ import en from "@/i18n/translations/en";
 import ar from "@/i18n/translations/ar";
 import type { SiteLanguage } from "@/i18n/languageConfig";
 import { getLocalizedPageContent } from "@/content/localizedPages";
-import { buildWebPageSchema, buildServiceListSchema } from "@/lib/jsonld";
+import { buildHomePageSchemas } from "@/lib/schemas/homePageSchemas";
+import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import HomePage from "../../components/pages/home/index";
 
 const translationMap = { ja, en, ar } as const;
@@ -18,25 +19,11 @@ export default async function Home({ params }: HomePageProps) {
   const lang = resolveSiteLanguage(routeLang);
   const t = translationMap[lang as SiteLanguage];
   const localized = getLocalizedPageContent(lang).layout;
-
-  const schemas = [
-    buildWebPageSchema({
-      lang,
-      title: localized.titleDefault,
-      description: localized.description,
-    }),
-    buildServiceListSchema({
-      lang,
-      services: t.services.items,
-    }),
-  ];
+  const schemas = buildHomePageSchemas(lang, localized, t.services.items);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
+      <SchemaInjector schemas={schemas} />
       <HomePage />
     </>
   );

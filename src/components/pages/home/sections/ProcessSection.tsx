@@ -2,6 +2,7 @@
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { processesMeta } from "@/content/home/process";
 
 export default function ProcessSection() {
 
@@ -16,13 +17,6 @@ export default function ProcessSection() {
   };
 
   const { t } = useLanguage();
-
-  const processesMeta = [
-    { number: "01", color: "from-purple-400 to-indigo-400" },
-    { number: "02", color: "from-pink-400 to-rose-400" },
-    { number: "03", color: "from-cyan-400 to-blue-400" },
-    { number: "04", color: "from-green-400 to-emerald-400" },
-  ];
 
   return (
     <motion.section

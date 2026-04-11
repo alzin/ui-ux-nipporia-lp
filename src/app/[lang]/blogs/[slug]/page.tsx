@@ -1,19 +1,13 @@
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import BlogPage from '@/components/pages/blogs/blog';
+import BlogPage from '@/components/pages/blog';
+import { SchemaInjector } from '@/components/common/components/SchemaInjector';
 import { getLocalizedPageContent } from '@/content/localizedPages';
-import { getAllBlogSlugs, getBlogDataHtml } from '@/utils/getBlog';
-import { createProcessedBlogObject } from '@/utils/createBlog';
+import { getAllBlogSlugs } from '@/utils/getBlog';
+import { buildBlogSlugSchemas } from '@/lib/schemas/blogSlugSchemas';
+import { fetchBlogForPage } from '@/lib/data/getBlogPageData';
+import { generateBlogMetadata } from '@/lib/metadata/blogMetadata';
+import { SUPPORTED_LANGUAGES, resolveSiteLanguage } from '@/i18n/languageConfig';
 import 'highlight.js/styles/github-dark.css';
-import { baseUrl } from '@/utils/baseUrl';
-import { buildArticleSchema, buildBreadcrumbSchema } from '@/lib/jsonld';
-
-import {
-  DEFAULT_LANGUAGE,
-  SUPPORTED_LANGUAGES,
-  isSiteLanguage,
-  resolveSiteLanguage,
-} from '@/i18n/languageConfig';
 
 interface BlogPageProps {
   params: Promise<{ lang: string; slug: string }>;
@@ -26,82 +20,21 @@ export async function generateStaticParams() {
   );
 }
 
-export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { slug, lang: routeLang } = await params;
-  const lang = resolveSiteLanguage(routeLang);
-
-  try {
-    const blogData = await getBlogDataHtml(slug);
-    const blog = createProcessedBlogObject(slug, blogData);
-    const canonicalLang = isSiteLanguage(routeLang) ? routeLang : DEFAULT_LANGUAGE;
-
-    return {
-      title: blog.metadata.title,
-      description: blog.metadata.description,
-      alternates: {
-        canonical: `${baseUrl}/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
-      },
-      openGraph: {
-        title: blog.metadata.title,
-        description: blog.metadata.description,
-        images: blog.metadata.images,
-        type: 'article',
-        publishedTime: blog.metadata.date
-          ? new Date(blog.metadata.date).toISOString()
-          : undefined,
-        authors: [`${baseUrl}`],
-        tags: blog.metadata.tags,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: blog.metadata.title,
-        description: blog.metadata.description,
-        images: blog.metadata.images,
-      },
-    };
-  } catch {
-    return getLocalizedPageContent(lang).missingBlog;
-  }
-}
+export { generateBlogMetadata as generateMetadata };
 
 export default async function Page({ params }: BlogPageProps) {
-  try {
-    const { slug, lang: routeLang } = await params;
-    const lang = resolveSiteLanguage(routeLang);
-    const blogData = await getBlogDataHtml(slug);
-    const blog = createProcessedBlogObject(slug, blogData);
-    const localized = getLocalizedPageContent(lang).blogs;
+  const { slug, lang: routeLang } = await params;
+  const lang = resolveSiteLanguage(routeLang);
+  const blog = await fetchBlogForPage(slug);
+  if (!blog) notFound();
 
-    const schemas = [
-      buildArticleSchema({
-        lang,
-        slug,
-        title: blog.metadata.title,
-        description: blog.metadata.description,
-        date: blog.metadata.date,
-        images: blog.metadata.images,
-        tags: blog.metadata.tags,
-      }),
-      buildBreadcrumbSchema([
-        { name: 'Nipporia', url: `${baseUrl}/${lang}` },
-        { name: localized.title, url: `${baseUrl}/${lang}/blogs` },
-        {
-          name: blog.metadata.title ?? slug,
-          url: `${baseUrl}/${lang}/blogs/${encodeURIComponent(slug)}`,
-        },
-      ]),
-    ];
+  const localized = getLocalizedPageContent(lang).blogs;
+  const schemas = buildBlogSlugSchemas(lang, slug, blog.metadata, localized.title);
 
-    return (
-      <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-        />
-        <BlogPage blog={blog} />
-      </>
-    );
-  } catch {
-    notFound();
-  }
+  return (
+    <>
+      <SchemaInjector schemas={schemas} />
+      <BlogPage blog={blog} />
+    </>
+  );
 }
