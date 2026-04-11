@@ -5,17 +5,17 @@ steps:
       - build
       - "--no-cache"
       - "-t"
-      - "$_IMAGE_NAME:$COMMIT_SHA"
+      - "gcr.io/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"
       - "-t"
-      - "$_IMAGE_NAME:latest"
+      - "gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest"
       - "."
 
-  # Push both tags to Artifact Registry / Container Registry
+  # Push both tags to Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "$_IMAGE_NAME:$COMMIT_SHA"]
+    args: ["push", "gcr.io/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"]
 
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "$_IMAGE_NAME:latest"]
+    args: ["push", "gcr.io/$PROJECT_ID/$_SERVICE_NAME:latest"]
 
   # Deploy to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -23,7 +23,7 @@ steps:
       - run
       - deploy
       - "$_SERVICE_NAME"
-      - "--image=$_IMAGE_NAME:$COMMIT_SHA"
+      - "--image=gcr.io/$PROJECT_ID/$_SERVICE_NAME:$COMMIT_SHA"
       - "--region=$_REGION"
       - "--platform=managed"
       - "--allow-unauthenticated"
@@ -31,7 +31,6 @@ steps:
 substitutions:
   _SERVICE_NAME: uiuxnipporia
   _REGION: asia-northeast1
-  _IMAGE_NAME: gcr.io/$PROJECT_ID/uiuxnipporia
 
 options:
   logging: CLOUD_LOGGING_ONLY
