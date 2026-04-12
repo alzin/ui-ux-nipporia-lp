@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "@/components/common/components/LanguageSwitcher";
 import { useScrollDetection } from "@/hooks/scroll/useScrollDetection";
+import { socialLinks } from "@/content/social";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -132,6 +133,22 @@ export default function Header() {
           >
             {t.nav.contact}
           </Link>
+        </li>
+        <li className="pt-3 flex items-center justify-center gap-3">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className={`flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:text-white ${social.hoverColor} transition-all duration-300`}
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d={social.pathD} />
+              </svg>
+            </a>
+          ))}
         </li>
       </ul>
     </nav>
