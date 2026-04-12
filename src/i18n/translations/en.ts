@@ -43,11 +43,12 @@ const en: Translations = {
 
   // Hero
   hero: {
-    title: "Super-fast, high-quality software solutions to bring you profit.",
+    title: "high quality software solutions to bring you profit.",
+    titleTagline: "Exclusive opportunities for your business, designed with precision, and long-term value",
     subtitle: "Maximize traffic and sales with Mobile Apps, Websites, SaaS, UI/UX Design, SEO, and Digital Marketing. Free consultation (60 min) - Improvement plan within 7 days.",
     cta: "",
-    primaryButton: "Book Free Consultation",
-    secondaryButton: "Sample Projects",
+    primaryButton: "Free Consultation",
+    secondaryButton: "Explore Projects",
     stickyConsultation: "Free Consultation",
     stickyPortfolio: "Sample Projects",
     accepting: "Available",
@@ -105,7 +106,7 @@ const en: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "Sample Projects",
+    sectionTitle: "Our Projects",
     description: "See real projects we've delivered for our clients",
     prevProject: "Previous project",
     nextProject: "Next project",
@@ -325,8 +326,7 @@ const en: Translations = {
 
   // Footer
   footer: {
-    tagline:
-      "Super-fast, high-quality software solutions to bring you profit.",
+    tagline: "high quality software solutions to bring you profit.",
     quickLinks: "Quick Links",
     quickLinkItems: {
       services: "Services",

@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, #FEF7E7 0%, #FFECD2 50%, #E8D5F2 100%);
+  background: linear-gradient(135deg, #F3E8FF 0%, rgba(232, 213, 242, 0) 50%, #E8D5F2 100%);
   color: #1a1a2e;
   overflow-x: hidden;
   line-height: 1.6;
@@ -29,6 +29,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -40,6 +41,7 @@ body {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -48,9 +50,15 @@ body {
 
 /* Marquee animation */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
+
 .animate-marquee {
   animation: marquee 60s linear infinite;
 }

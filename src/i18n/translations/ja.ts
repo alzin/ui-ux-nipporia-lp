@@ -44,10 +44,11 @@ const ja: Translations = {
   // Hero
   hero: {
     title: "スピードと品質を両立したソフトウェア開発で、事業成長を支えます。",
+    titleTagline: "ビジネスに特化した独自のチャンス、精密に設計された長期的な価値",
     subtitle: "モバイルアプリ・ウェブサイト・SaaS・UI/UXデザイン・SEO・デジタルマーケティングで集客と売上を最大化。 無料相談（60分）・最短7日で改善案をご提案",
     cta: "",
-    primaryButton: "無料相談を申し込む",
-    secondaryButton: "サンプルプロジェクト",
+    primaryButton: "無料相談",
+    secondaryButton: "プロジェクトを探す",
     stickyConsultation: "無料相談",
     stickyPortfolio: "サンプルプロジェクト",
     accepting: "受付中",

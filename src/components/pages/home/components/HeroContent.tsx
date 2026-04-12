@@ -11,20 +11,33 @@ export default function HeroContent() {
 
   return (
     <div
-      className={`flex flex-col items-center lg:items-start text-center z-20 ${
-        isRTL
-          ? "lg:text-right lg:-mr-8 xl:-mr-12 lg:pl-8 xl:pl-12"
-          : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
-      }`}
+      className={`flex flex-col items-center lg:items-start text-center z-20 ${isRTL
+        ? "lg:text-right lg:-mr-8 xl:-mr-12 lg:pl-8 xl:pl-12"
+        : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
+        }`}
     >
       {/* Title */}
-      <h1 className="opacity-0 animate-fade-in-up text-gray-800 font-bold text-[clamp(2rem,3.5vw,3rem)] leading-[1.2] tracking-tight mb-8 mt-4 [@media(min-width:1024px)_and_(max-height:800px)]:mb-4 [@media(min-width:1024px)_and_(max-height:800px)]:mt-2">
-        <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 text-transparent bg-clip-text">
+      <h1 className="opacity-0 animate-fade-in-up font-bold text-[32px] sm:text-[40px] leading-[45px] tracking-[-0.02em] mb-3 mt-4 capitalize [@media(min-width:1024px)_and_(max-height:800px)]:mb-2 [@media(min-width:1024px)_and_(max-height:800px)]:mt-2">
+        <span
+          className="text-transparent bg-clip-text"
+          style={{ backgroundImage: "linear-gradient(90deg, #9333EA 0%, #EC4899 50%, #06B6D4 100%)" }}
+        >
           {t.hero.title}
         </span>
       </h1>
 
-      <HeroServiceIcons />
+      {/* Title tagline */}
+      <p
+        className="opacity-0 animate-fade-in-up text-[18px] font-normal leading-[26px] tracking-normal mb-8 [@media(min-width:1024px)_and_(max-height:800px)]:mb-4"
+        style={{ backgroundImage: "linear-gradient(90deg, #9333EA 0%, #EC4899 50%, #06B6D4 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+      >
+        {t.hero.titleTagline}
+      </p>
+
+      {/* Desktop only: icons before CTAs */}
+      <div className="hidden lg:block w-full">
+        <HeroServiceIcons />
+      </div>
 
       {/* CTAs */}
       <motion.div
@@ -34,9 +47,8 @@ export default function HeroContent() {
         className="w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 flex justify-center lg:justify-start"
       >
         <div
-          className={`flex flex-col gap-4 ${
-            isRTL ? "sm:flex-row-reverse lg:justify-start" : "sm:flex-row lg:justify-start"
-          } w-full sm:w-auto`}
+          className={`flex flex-col gap-4 ${isRTL ? "sm:flex-row-reverse lg:justify-start" : "sm:flex-row lg:justify-start"
+            } w-full sm:w-auto`}
         >
           {/* Primary CTA */}
           <Link
@@ -81,6 +93,11 @@ export default function HeroContent() {
           </Link>
         </div>
       </motion.div>
+
+      {/* Mobile only: icons after CTAs */}
+      <div className="lg:hidden w-full mt-10">
+        <HeroServiceIcons />
+      </div>
     </div>
   );
 }

@@ -29,6 +29,7 @@ export interface Translations {
   };
   hero: {
     title: string;
+    titleTagline: string;
     subtitle: string;
     cta: string;
     primaryButton: string;
