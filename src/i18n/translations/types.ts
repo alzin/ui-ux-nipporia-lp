@@ -1,5 +1,6 @@
 export interface Translations {
   nav: {
+    home: string;
     problems: string;
     transformation: string;
     visualExamples: string;

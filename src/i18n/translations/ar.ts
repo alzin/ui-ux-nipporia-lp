@@ -3,11 +3,12 @@ import type { LocalizedPageContent } from "@/i18n/translations/types";
 
 const ar: Translations = {
   nav: {
+    home: "الرئيسية",
     problems: "التحديات",
     transformation: "النتائج",
-    visualExamples: "نماذج المشاريع",
+    visualExamples: "المشاريع",
     services: "الخدمات",
-    process: "آلية العمل",
+    process: "آلية العمل؟",
     pricing: "الأسعار",
     contact: "اتصل بنا",
     blog: "المدونة",

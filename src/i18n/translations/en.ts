@@ -4,11 +4,12 @@ import type { LocalizedPageContent } from "@/i18n/translations/types";
 const en: Translations = {
   // Header nav
   nav: {
+    home: "Home",
     problems: "Challenges",
     transformation: "Results",
-    visualExamples: "Sample Projects",
+    visualExamples: "Projects",
     services: "Services",
-    process: "How We Work",
+    process: "How We Work?",
     pricing: "Pricing",
     contact: "Contact",
     blog: "Blog",
