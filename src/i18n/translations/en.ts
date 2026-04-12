@@ -73,19 +73,19 @@ const en: Translations = {
     sectionTitle: "Are you facing these challenges?",
     items: [
       {
-        title: "Fragmented Digital Efforts",
+        title: "Disconnected Efforts, Wasted Budget",
         description:
-          "Website, ads, apps, and SEO handled by different vendors — no coordination, rising costs, and no clear results.",
+          "Your website, ads, apps, and SEO are handled separately — leading to misalignment, higher costs, and little to no measurable impact.",
       },
       {
-        title: "Falling Behind Digitally",
+        title: "Falling Behind in a Fast-Moving Digital World",
         description:
-          "Competitors are growing with AI and apps while your business is stuck with outdated methods.",
+          "While competitors leverage AI and modern tools, your business is stuck using outdated systems that limit growth.",
       },
       {
-        title: "Investment Without Results",
+        title: "Investing More, Seeing Less Return",
         description:
-          "Spending on websites and ads but not generating leads or revenue. Unclear what to fix.",
+          "You're putting money into websites and ads — but not generating leads, revenue, or clear insights on what's going wrong.",
       },
     ],
   },
@@ -142,9 +142,9 @@ const en: Translations = {
     sectionTitle: "Our Services",
     items: [
       {
-        title: "Next.js Development",
+        title: "Maintenance & Improvement",
         description:
-          "Building fast, maintainable websites using the latest React framework.",
+          "Ongoing support after launch — quickly responding to new features and improvement requests.",
       },
       {
         title: "SEO Optimization",
@@ -185,11 +185,6 @@ const en: Translations = {
         title: "Digital Marketing",
         description:
           "Executing data-driven campaigns across search, social, and content channels to generate qualified leads.",
-      },
-      {
-        title: "Maintenance & Improvement",
-        description:
-          "Ongoing support after launch — quickly responding to new features and improvement requests.",
       },
     ],
   },

@@ -53,7 +53,7 @@ export default function HeroContent() {
           {/* Primary CTA */}
           <Link
             href="#contact"
-            className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 sm:px-8 py-3.5 sm:py-4 text-[15px] sm:text-base font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:translate-y-0"
+            className="group inline-flex w-full sm:w-[220px] h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 sm:px-8 text-[15px] sm:text-base font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 active:translate-y-0 whitespace-nowrap"
           >
             <svg
               className="h-5 w-5 flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
@@ -74,7 +74,7 @@ export default function HeroContent() {
           {/* Secondary CTA */}
           <Link
             href="#visual-examples"
-            className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-purple-500 bg-white/85 px-6 sm:px-8 py-3.5 sm:py-4 text-[15px] sm:text-base font-semibold text-purple-700 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+            className="group inline-flex w-full sm:w-[220px] h-14 items-center justify-center gap-2 rounded-full border-2 border-purple-500 bg-white/85 px-6 sm:px-8 text-[15px] sm:text-base font-semibold text-purple-700 backdrop-blur-sm transition-all duration-300 hover:bg-purple-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 whitespace-nowrap"
           >
             <svg
               className="h-4 w-4 flex-shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

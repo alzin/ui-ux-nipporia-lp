@@ -1,17 +1,23 @@
-import {
-  FragmentedStrategyIcon,
-  DigitalLagIcon,
-  PoorROIIcon,
-} from "@/components/common/components/icons/ProblemIcons";
-
 export type TProblemMeta = {
-  color: string;
-  iconColor: string;
-  Icon: React.ComponentType<{ className?: string }>;
+  badgeGradient: string;
+  iconGradient: string;
+  iconSrc: string;
 };
 
 export const problemsMeta: TProblemMeta[] = [
-  { color: "from-red-400 to-orange-400",    iconColor: "text-red-500",    Icon: FragmentedStrategyIcon },
-  { color: "from-orange-400 to-yellow-400", iconColor: "text-orange-500", Icon: DigitalLagIcon },
-  { color: "from-yellow-400 to-green-400",  iconColor: "text-amber-600",  Icon: PoorROIIcon },
+  {
+    badgeGradient: "from-[#f79b9b] to-[#ea6a6a]",
+    iconGradient: "from-[#fb7185] to-[#d33929]",
+    iconSrc: "/images/icons/puzzle-alt.svg",
+  },
+  {
+    badgeGradient: "from-[#f9781f] to-[#fcb580]",
+    iconGradient: "from-[#fb923c] to-[#facc15]",
+    iconSrc: "/images/icons/time-fast.svg",
+  },
+  {
+    badgeGradient: "from-[#df9134] to-[#bde6ad]",
+    iconGradient: "from-[#facc15] to-[#4ade80]",
+    iconSrc: "/images/icons/invisting.svg",
+  },
 ];

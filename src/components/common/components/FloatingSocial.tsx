@@ -17,7 +17,7 @@ export default function FloatingSocial() {
 
   return (
     <div
-      className={`fixed top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ease-out ${
+      className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-[999] transition-all duration-500 ease-out ${
         isVisible
           ? "opacity-100 translate-x-0"
           : `opacity-0 ${hiddenTranslateClass} pointer-events-none`

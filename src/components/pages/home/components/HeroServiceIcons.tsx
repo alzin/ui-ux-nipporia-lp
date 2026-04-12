@@ -28,7 +28,7 @@ export default function HeroServiceIcons() {
               className="object-contain"
             />
           </div>
-          <span className="text-xs sm:text-sm lg:text-[15px] font-semibold text-gray-700 text-center leading-tight whitespace-nowrap mt-1 w-full">
+          <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-gray-700 text-center leading-tight mt-1 w-full break-words hyphens-auto">
             {t.hero.services[item.translationIndex]}
           </span>
         </div>
