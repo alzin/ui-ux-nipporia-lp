@@ -20,11 +20,11 @@ const Index = () => {
   return (
     <>
       <Hero />
-      <div className="bg-gradient-to-b from-lavender/30 to-transparent py-14">
+      <div className="py-14" style={{ background: "linear-gradient(180deg, rgba(232, 213, 242, 0.3) 0%, rgba(232, 213, 242, 0) 100%)" }}>
         <TechLogoMarquee />
       </div>
       <ProblemSection />
-      <TransformationSection />
+      {/* <TransformationSection /> */}
       <VisualTransformationSection />
       <ServicesSection />
       <ProcessSection />

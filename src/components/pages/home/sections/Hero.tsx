@@ -20,7 +20,8 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] overflow-hidden bg-gradient-to-br from-cream via-peach/50 to-lavender px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32 [@media(min-width:1024px)_and_(max-height:800px)]:pb-16"
+      className="relative min-h-[100dvh] overflow-hidden px-4 sm:px-6 lg:px-10 pb-32 sm:pb-32 [@media(min-width:1024px)_and_(max-height:800px)]:pb-16"
+      style={{ background: "linear-gradient(135deg, #F3E8FF 0%, rgba(232, 213, 242, 0) 50%, #E8D5F2 100%)" }}
     >
       <div className="relative z-20 mx-auto w-full max-w-screen-xl pt-28 sm:pt-36 lg:pt-40 [@media(min-width:1024px)_and_(max-height:800px)]:pt-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 [@media(min-width:1024px)_and_(max-height:800px)]:gap-4 items-center">

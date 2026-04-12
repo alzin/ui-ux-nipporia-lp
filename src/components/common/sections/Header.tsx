@@ -13,10 +13,11 @@ export default function Header() {
   const isRTL = lang === "ar";
 
   const navLinks = [
+    { href: localizePath("/#home"), title: t.nav.home },
+    { href: localizePath("/#process"), title: t.nav.process },
+    { href: localizePath("/#visual-examples"), title: t.nav.visualExamples },
     { href: localizePath("/#services"), title: t.nav.services },
     { href: localizePath("/#pricing"), title: t.nav.pricing },
-    // { href: localizePath("/templates"), title: t.nav.templates },
-    { href: localizePath("/blogs"), title: t.nav.blog },
   ];
 
   return (

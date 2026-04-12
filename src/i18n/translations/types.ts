@@ -1,5 +1,6 @@
 export interface Translations {
   nav: {
+    home: string;
     problems: string;
     transformation: string;
     visualExamples: string;
@@ -28,6 +29,7 @@ export interface Translations {
   };
   hero: {
     title: string;
+    titleTagline: string;
     subtitle: string;
     cta: string;
     primaryButton: string;

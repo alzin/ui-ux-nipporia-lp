@@ -3,11 +3,12 @@ import type { LocalizedPageContent } from "@/i18n/translations/types";
 
 const ar: Translations = {
   nav: {
+    home: "الرئيسية",
     problems: "التحديات",
     transformation: "النتائج",
-    visualExamples: "نماذج المشاريع",
+    visualExamples: "المشاريع",
     services: "الخدمات",
-    process: "آلية العمل",
+    process: "آلية العمل؟",
     pricing: "الأسعار",
     contact: "اتصل بنا",
     blog: "المدونة",
@@ -41,10 +42,11 @@ const ar: Translations = {
 
   hero: {
     title: "حلول برمجية فائقة السرعة وعالية الجودة تحقق لك الأرباح.",
+    titleTagline: "فرص حصرية لأعمالك، مصممة بدقة وذات قيمة طويلة الأمد",
     subtitle: "عزز الزيارات والمبيعات عبر تطبيقات الجوال، المواقع، SaaS، تصميم UI/UX، SEO، والتسويق الرقمي. استشارة مجانية (60 دقيقة) وخطة تحسين خلال 7 أيام.",
     cta: "",
-    primaryButton: "احجز استشارة مجانية",
-    secondaryButton: "نماذج المشاريع",
+    primaryButton: "استشارة مجانية",
+    secondaryButton: "استعرض المشاريع",
     stickyConsultation: "استشارة مجانية",
     stickyPortfolio: "نماذج المشاريع",
     accepting: "متاح",
