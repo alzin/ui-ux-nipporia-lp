@@ -142,9 +142,9 @@ const ja: Translations = {
     sectionTitle: "提供サービス",
     items: [
       {
-        title: "Next.js開発",
+        title: "保守・改善",
         description:
-          "最新のReactフレームワークを使用し、高速で保守性の高いWebサイトを構築します。",
+          "納品後も継続的なサポートで、新機能追加や改善要望に迅速に対応します。",
       },
       {
         title: "SEO最適化",
@@ -185,11 +185,6 @@ const ja: Translations = {
         title: "デジタルマーケティング",
         description:
           "検索・SNS・コンテンツ施策を組み合わせ、見込み顧客の獲得につながる施策を実行します。",
-      },
-      {
-        title: "保守・改善",
-        description:
-          "納品後も継続的なサポートで、新機能追加や改善要望に迅速に対応します。",
       },
     ],
   },

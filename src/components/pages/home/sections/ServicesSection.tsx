@@ -22,7 +22,8 @@ export default function ServicesSection() {
 
   return (
     <motion.section
-      className="py-24 bg-gradient-to-br from-cream via-white to-lavender/30 relative fade-in overflow-hidden"
+      className="py-24 relative fade-in overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 50%, rgba(232, 213, 242, 0.3) 100%)" }}
       id="services"
       variants={sectionVariants}
       initial="hidden"

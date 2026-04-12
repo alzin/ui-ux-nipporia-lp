@@ -142,9 +142,9 @@ const en: Translations = {
     sectionTitle: "Our Services",
     items: [
       {
-        title: "Next.js Development",
+        title: "Maintenance & Improvement",
         description:
-          "Building fast, maintainable websites using the latest React framework.",
+          "Ongoing support after launch — quickly responding to new features and improvement requests.",
       },
       {
         title: "SEO Optimization",
@@ -185,11 +185,6 @@ const en: Translations = {
         title: "Digital Marketing",
         description:
           "Executing data-driven campaigns across search, social, and content channels to generate qualified leads.",
-      },
-      {
-        title: "Maintenance & Improvement",
-        description:
-          "Ongoing support after launch — quickly responding to new features and improvement requests.",
       },
     ],
   },
