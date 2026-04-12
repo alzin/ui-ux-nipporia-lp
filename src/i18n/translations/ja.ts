@@ -106,7 +106,7 @@ const ja: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "サンプルプロジェクト",
+    sectionTitle: "プロジェクト",
     description: "クライアント様の実際のプロジェクトをご覧ください",
     prevProject: "前のプロジェクト",
     nextProject: "次のプロジェクト",
