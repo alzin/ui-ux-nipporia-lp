@@ -2,19 +2,19 @@
 import SectionTitle from "@/components/common/components/SectionTitle";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import Image from "next/image";
 
 import { problemsMeta } from "@/content/home/problems";
 
 export default function ProblemSection() {
 
-  // Framer Motion variants for section and cards
   const sectionVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.08 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const, staggerChildren: 0.12 } },
   };
   const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
   };
 
   const { t } = useLanguage();
@@ -35,48 +35,55 @@ export default function ProblemSection() {
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle title={t.problems.sectionTitle} />
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={sectionVariants}>
+        <motion.div
+          className="relative flex flex-col gap-8 mx-auto md:max-w-[684px]"
+          variants={sectionVariants}
+        >
+          {/* Vertical connector line — desktop only */}
+          <div className="hidden md:block absolute left-[28px] top-[155px] bottom-[155px] w-[4px] bg-gradient-to-b from-[#ea6a6a] via-[#f9781f] to-[#bde6ad] rounded-full opacity-50" />
+
           {t.problems.items.map((problem, index) => {
-            const { Icon, color, iconColor } = problemsMeta[index];
+            const { badgeGradient, iconGradient, iconSrc } = problemsMeta[index];
+            const num = String(index + 1).padStart(2, "0");
             return (
               <motion.div
                 key={index}
-                className="group relative bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-8 overflow-hidden transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/20"
+                className="flex items-center md:gap-8"
                 variants={cardVariants}
               >
-                {/* Gradient wash on hover */}
+                {/* Number badge — desktop only */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
-                />
-
-                {/* Icon (SVG) */}
-                <div className="relative w-16 h-16 mb-6">
-                  {/* icon background */}
-                  <div
-                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${color} opacity-10 group-hover:opacity-15 transition-opacity duration-300`}
-                  />
-                  {/* icon itself */}
-                  <div
-                    className={`relative z-10 h-full w-full flex items-center justify-center ${iconColor} group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <Icon className="w-10 h-10" />
-                  </div>
+                  className={`hidden md:flex flex-shrink-0 w-[60px] h-[60px] rounded-[8px] bg-gradient-to-br ${badgeGradient} items-center justify-center shadow-md z-10`}
+                >
+                  <span className="text-white font-bold text-lg leading-none">{num}</span>
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-purple-600 transition-colors duration-300">
+                {/* Card body */}
+                <div className="group flex-1 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-3xl p-5 md:p-8 transition-shadow duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+                  {/* Icon */}
+                  <div className="relative w-11 h-11 md:w-16 md:h-16 mb-4 md:mb-5">
+                    <div
+                      className={`absolute inset-0 rounded-[12px] md:rounded-2xl bg-gradient-to-br ${iconGradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}
+                    />
+                    <div className="relative z-10 h-full w-full flex items-center justify-center">
+                      <Image
+                        src={iconSrc}
+                        alt=""
+                        width={36}
+                        height={36}
+                        className="w-7 h-7 md:w-9 md:h-9"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Text */}
+                  <h3 className="text-lg md:text-xl font-bold text-[#1a1a2e] mb-2 md:mb-3">
                     {problem.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-[#1a1a2e]/70 leading-relaxed">
                     {problem.description}
                   </p>
                 </div>
-
-                {/* Bottom accent line */}
-                <div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
-                />
               </motion.div>
             );
           })}
