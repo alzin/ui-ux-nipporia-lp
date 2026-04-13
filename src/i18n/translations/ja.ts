@@ -553,7 +553,7 @@ export const jaPageContent: LocalizedPageContent = {
     pageTitle: "特定商取引法に基づく表記",
     rows: [
       { label: "販売事業者名", lines: ["Nipporia（ニッポリア）"] },
-      { label: "代表者", lines: ["Arjin Muhammad Ghais"] },
+      { label: "代表者", lines: ["アルジンムハンマドガイス"] },
       {
         label: "所在地",
         lines: ["埼玉県久喜市久喜中央1丁目9番4-902号"],
