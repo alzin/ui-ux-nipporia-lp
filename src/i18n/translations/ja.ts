@@ -43,28 +43,28 @@ const ja: Translations = {
 
   // Hero
   hero: {
-    title: "スピードと品質を両立したソフトウェア開発で、事業成長を支えます。",
-    titleTagline: "ビジネスに特化した独自のチャンス、精密に設計された長期的な価値",
+    title: "事業成長につながるAI ・ Web・アプリ・SaaS開発を、戦略設計から運用改善まで一貫支援",
+    titleTagline: "成果を見据えた設計と、スピード感ある開発体制でビジネスを前進させます",
     subtitle: "モバイルアプリ・ウェブサイト・SaaS・UI/UXデザイン・SEO・デジタルマーケティングで集客と売上を最大化。 無料相談（60分）・最短7日で改善案をご提案",
     cta: "",
-    primaryButton: "無料相談",
-    secondaryButton: "プロジェクトを探す",
+    primaryButton: "無料相談を予約する",
+    secondaryButton: "制作実績を見る",
     stickyConsultation: "無料相談",
-    stickyPortfolio: "サンプルプロジェクト",
-    accepting: "受付中",
+    stickyPortfolio: "制作実績",
+    accepting: "無料相談受付中",
     services: ["モバイルアプリ", "ウェブサイト", "AIソリューション", "UI/UXデザイン"],
   },
 
   heroWorkflow: {
     steps: [
-      { label: "オンライン会議", notification: "会議開始！", detail: "4名参加" },
-      { label: "要件定義", notification: "仕様確定！", detail: "優先度：高" },
-      { label: "UI/UXデザイン", notification: "デザイン完成！", detail: "モバイル＋デスクトップ" },
-      { label: "クライアントFB", notification: "FB受信！", detail: "3件のコメント" },
-      { label: "開発", notification: "構築中...", detail: "進捗：67%" },
-      { label: "クライアントレビュー", notification: "承認済み！", detail: "評価：★★★★★" },
-      { label: "QAテスト", notification: "全テスト合格！", detail: "カバレッジ：94%" },
-      { label: "デプロイ", notification: "公開完了！", detail: "ステータス：稼働中" },
+      { label: "お打ち合わせ", notification: "お打ち合わせ開始", detail: "参加者：4名" },
+      { label: "要件定義", notification: "要件整理完了", detail: "優先度：高" },
+      { label: "UI/UX設計", notification: "デザイン案を提出", detail: "モバイル・デスクトップ対応" },
+      { label: "ご確認・FB", notification: "フィードバックを反映中", detail: "コメント：3件" },
+      { label: "開発", notification: "開発進行中", detail: "進捗：67%" },
+      { label: "レビュー", notification: "承認済み", detail: "評価：★★★★★" },
+      { label: "テスト", notification: "テスト完了", detail: "カバレッジ：94%" },
+      { label: "公開", notification: "公開完了", detail: "ステータス：稼働中" },
     ],
   },
 
