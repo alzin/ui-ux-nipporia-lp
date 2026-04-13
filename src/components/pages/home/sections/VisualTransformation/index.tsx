@@ -32,7 +32,7 @@ export default function VisualTransformationSection() {
     >
       {/* Decorative blobs */}
       <div className="absolute top-16 md:top-20 right-8 md:right-20 w-56 md:w-72 h-56 md:h-72 bg-purple-300/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 md:bottom-20 left-6 md:left-20 w-64 md:w-80 h-64 md:h-80 bg-cyan-300/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 md:bottom-20 left-6 md:left-20 w-64 md:w-80 h-64 md:h-80 bg-purple-800/10 rounded-full blur-3xl" />
 
       <div className="max-w-[1480px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
         <SectionTitle
@@ -43,13 +43,13 @@ export default function VisualTransformationSection() {
 
       <div className="max-w-[1480px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
         <motion.div
-          className="relative group mt-6 md:mt-8 lg:mt-10"
+          className="relative group mt-6 md:mt-8 lg:mt-10 pb-5"
           variants={sectionVariant}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "0px 0px -50px 0px" }}
         >
-          <div className="absolute inset-0 pointer-events-none rounded-[2rem] bg-white/35 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 pointer-events-none rounded-[2rem] bg-white/35 backdrop-blur-sm border border-purple-800/20 shadow-xl shadow-black/5" />
 
           <div className="relative z-10 px-3 sm:px-5 md:px-8 pt-4 md:pt-5 lg:pt-6">
             <DeviceModePicker
