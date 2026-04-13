@@ -218,7 +218,7 @@ const ja: Translations = {
 
   // Pricing
   pricing: {
-    sectionTitle: "サービス & 料金プラン",
+    sectionTitle: "プラン & 料金",
     sectionDescription:
       "開発プロジェクトから継続的な運用まで、ワンストップでお客様のデジタル成長をサポートします",
     websiteDev: {
@@ -237,6 +237,7 @@ const ja: Translations = {
         "テスト・品質保証",
         "デプロイメント・運用引き継ぎ",
       ],
+      ctaText: "お申し込み",
     },
     monthlyPlansTitle: "月額サポートプラン",
     monthlyPlansDescription: "継続的な改善と成長をサポート",
@@ -291,6 +292,11 @@ const ja: Translations = {
         ctaText: "お問い合わせ",
       },
     ],
+    customizePlan: {
+      title: "またはカスタムプランを作成しましょう！",
+      description: "あなたの目標に合ったプランをカスタマイズするためにお問い合わせください",
+      ctaText: "お問い合わせ",
+    },
   },
 
   // CTA / Contact

@@ -209,7 +209,7 @@ const ar: Translations = {
   },
 
   pricing: {
-    sectionTitle: "الخدمات والأسعار",
+    sectionTitle: "الخطط والأسعار",
     sectionDescription:
       "من مشاريع التطوير إلى التشغيل المستمر — دعم شامل لنموك الرقمي",
     websiteDev: {
@@ -227,6 +227,7 @@ const ar: Translations = {
         "الاختبار وضمان الجودة",
         "النشر وتسليم التشغيل",
       ],
+      ctaText: "ابدأ الآن",
     },
     monthlyPlansTitle: "خطط الدعم الشهرية",
     monthlyPlansDescription: "تحسين مستمر ودعم للنمو",
@@ -281,6 +282,11 @@ const ar: Translations = {
         ctaText: "اتصل بنا",
       },
     ],
+    customizePlan: {
+      title: "أو خصّص خطتك الخاصة !",
+      description: "تواصل معنا لتصميم خطة تناسب أهدافك",
+      ctaText: "اتصل بنا",
+    },
   },
 
   contact: {

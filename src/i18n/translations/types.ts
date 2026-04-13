@@ -92,6 +92,7 @@ export interface Translations {
       durationNote: string;
       includedLabel: string;
       includedItems: string[];
+      ctaText: string;
     };
     monthlyPlansTitle: string;
     monthlyPlansDescription: string;
@@ -101,6 +102,11 @@ export interface Translations {
       features: string[];
       ctaText: string;
     }[];
+    customizePlan: {
+      title: string;
+      description: string;
+      ctaText: string;
+    };
   };
   contact: {
     sectionTitle: string;
