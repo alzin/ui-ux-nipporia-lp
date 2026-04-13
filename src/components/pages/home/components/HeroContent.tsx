@@ -34,17 +34,12 @@ export default function HeroContent() {
         {t.hero.titleTagline}
       </p>
 
-      {/* Desktop only: icons before CTAs */}
-      <div className="hidden lg:block w-full">
-        <HeroServiceIcons />
-      </div>
-
       {/* CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 flex justify-center lg:justify-start"
+        className="w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 flex justify-center lg:justify-start sm:mt-2"
       >
         <div
           className={`flex flex-col gap-4 ${isRTL ? "sm:flex-row-reverse lg:justify-start" : "sm:flex-row lg:justify-start"
@@ -95,7 +90,7 @@ export default function HeroContent() {
       </motion.div>
 
       {/* Mobile only: icons after CTAs */}
-      <div className="lg:hidden w-full mt-10">
+      <div className="w-full mt-14">
         <HeroServiceIcons />
       </div>
     </div>

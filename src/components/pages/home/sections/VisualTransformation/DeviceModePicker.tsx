@@ -35,14 +35,16 @@ export default function DeviceModePicker({ activeProject, deviceMode, setDeviceM
               onClick={() => setDeviceMode("laptop")}
               className={`flex-1 text-center px-3 py-1.5 text-sm rounded-full transition-colors ${deviceMode === "laptop" ? "bg-white text-purple-700 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
             >
-              {t.laptop}
+              {/* {t.laptop} */}
+              PC
             </button>
           )}
           <button
             onClick={() => setDeviceMode("phone")}
             className={`flex-1 text-center px-3 py-1.5 text-sm rounded-full transition-colors ${deviceMode === "phone" ? "bg-white text-purple-700 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
           >
-            {t.phone}
+            {/* {t.phone} */}
+            Phone
           </button>
         </div>
         {/* 
