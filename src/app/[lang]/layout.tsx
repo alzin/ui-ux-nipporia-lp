@@ -47,7 +47,7 @@ export default async function RootLayout({
         <TawkChat
           lang={lang}
           propertyId={process.env.TAWK_PROPERTY_ID ?? ""}
-          widgetId={process.env.TAWK_WIDGET_ID ?? ""}
+          widgetId={process.env.TAWK_WIDGET_ID_JA ?? ""}
         />
       </body>
     </html>
