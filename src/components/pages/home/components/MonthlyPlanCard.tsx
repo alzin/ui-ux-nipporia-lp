@@ -19,35 +19,31 @@ export default function MonthlyPlanCard({ plan, description, features, ctaText }
   return (
     <motion.div
       variants={itemVariants}
-      className={`group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 h-fit border transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${
-        plan.featured
-          ? "border-purple-300 shadow-xl shadow-purple-500/20"
-          : "border-gray-100 hover:border-purple-200 hover:shadow-purple-500/10"
-      }`}
+      className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 h-full flex flex-col justify-between border border-[#D4D4D8] shadow-[0_8px_10px_-6px_rgba(0,0,0,0.1),0_20px_25px_-5px_rgba(0,0,0,0.1)] transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl"
     >
-      <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-purple-600 transition-colors duration-300">
+      <h3 className="text-2xl font-bold text-[#1A1A2E] mb-4 text-center">
         {plan.name}
       </h3>
 
-      <p className="text-gray-600 text-center mb-8 leading-relaxed min-h-[4rem]">
+      <p className="text-[#1A1A2E] text-base text-center mb-8 leading-relaxed min-h-[4rem]">
         {description}
       </p>
 
       <div className="text-center mb-8">
-        <div className="flex items-baseline justify-center mb-2">
-          <span className="text-lg font-normal text-gray-500">¥</span>
+        <div className="flex items-baseline justify-center gap-3 mb-2">
+          <span className="text-lg font-normal text-[#1A1A2E]">¥</span>
           <span className={`text-4xl font-bold bg-gradient-to-r ${plan.color} text-transparent bg-clip-text`}>
             {plan.price}
           </span>
-          <span className="text-lg font-normal text-gray-500 ml-1">{plan.priceSuffix}</span>
+          <span className="text-lg font-normal text-[#1A1A2E]">{plan.priceSuffix}</span>
         </div>
       </div>
 
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8 flex-1">
         {features.map((feature, i) => (
           <li key={i} className="flex items-start gap-3 text-sm">
-            <span className="text-green-500 font-bold text-lg mt-[-2px]">✓</span>
-            <span className="text-gray-600">{feature}</span>
+            <span className="text-[#22C55E] font-bold text-sm mt-[1px]">✓</span>
+            <span className="text-[#1A1A2E]">{feature}</span>
           </li>
         ))}
       </ul>

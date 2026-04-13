@@ -14,7 +14,7 @@ export const plansMeta: TPlanMeta[] = [
     price: "250,000",
     priceSuffix: "/mo",
     featured: false,
-    color: "from-purple-400 to-indigo-400",
+    color: "from-[#F472B6] to-[#FB7185]",
   },
   {
     id: "growth",
@@ -22,7 +22,7 @@ export const plansMeta: TPlanMeta[] = [
     price: "350,000",
     priceSuffix: "/mo",
     featured: true,
-    color: "from-pink-400 to-rose-400",
+    color: "from-[#C084FC] to-[#818CF8]",
   },
   {
     id: "enterprise",
@@ -30,6 +30,6 @@ export const plansMeta: TPlanMeta[] = [
     price: "500,000",
     priceSuffix: "/mo",
     featured: false,
-    color: "from-cyan-400 to-blue-400",
+    color: "from-[#22D3EE] to-[#60A5FA]",
   },
 ];

@@ -218,7 +218,7 @@ const en: Translations = {
 
   // Pricing
   pricing: {
-    sectionTitle: "Services & Pricing",
+    sectionTitle: "Plans & Pricing",
     sectionDescription:
       "From development projects to ongoing operations — one-stop support for your digital growth",
     websiteDev: {
@@ -237,6 +237,7 @@ const en: Translations = {
         "Testing & QA",
         "Deployment & Handover",
       ],
+      ctaText: "Get Started",
     },
     monthlyPlansTitle: "Monthly Support Plans",
     monthlyPlansDescription: "Ongoing improvement and growth support",
@@ -291,6 +292,11 @@ const en: Translations = {
         ctaText: "Contact Us",
       },
     ],
+    customizePlan: {
+      title: "Or Customize Your Own Plan !",
+      description: "Contact Us To Customize A Plan That Fits With Your Goals",
+      ctaText: "Contact Us",
+    },
   },
 
   // CTA / Contact
