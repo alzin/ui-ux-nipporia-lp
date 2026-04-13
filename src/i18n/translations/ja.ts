@@ -295,15 +295,15 @@ const ja: Translations = {
 
   // CTA / Contact
   contact: {
-    sectionTitle: "今すぐデジタル戦略を始めましょう",
+    sectionTitle: "無料相談・お問い合わせ",
     sectionDescription:
-      "無料相談で、ビジネスに最適なデジタル施策をご提案します",
+      "課題やご要望をお伺いしたうえで、最適な進め方や必要な施策をご提案します。",
     companyLabel: "会社名",
     nameLabel: "お名前",
     emailLabel: "メールアドレス",
-    websiteLabel: "会社サイトURL（任意）",
+    websiteLabel: "WebサイトURL（任意）",
     messageLabel: "ご相談内容",
-    submitButton: "無料相談を申し込む",
+    submitButton: "お問い合わせを送信する",
     submitting: "送信中...",
   },
 
@@ -322,7 +322,7 @@ const ja: Translations = {
   // Footer
   footer: {
     tagline:
-      "スピードと品質を両立したソフトウェア開発で、事業成長を支えます。",
+      "事業成長につながるAI ・ Web・アプリ・SaaS開発を、戦略設計から運用改善まで一貫支援",
     quickLinks: "クイックリンク",
     quickLinkItems: {
       services: "サービス",
