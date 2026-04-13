@@ -142,34 +142,9 @@ const en: Translations = {
     sectionTitle: "Our Services",
     items: [
       {
-        title: "Maintenance & Improvement",
-        description:
-          "Ongoing support after launch — quickly responding to new features and improvement requests.",
-      },
-      {
-        title: "SEO Optimization",
-        description:
-          "Achieving top search rankings and dramatically increasing organic traffic.",
-      },
-      {
-        title: "Blog Management",
-        description:
-          "Creating and publishing professional blog articles monthly for ongoing customer acquisition.",
-      },
-      {
-        title: "Google Ads Management",
-        description:
-          "Designing and running effective ad campaigns for immediate traffic results.",
-      },
-      {
         title: "UI/UX Design",
         description:
           "Beautiful, user-friendly designs focused on converting visitors into customers.",
-      },
-      {
-        title: "AI Solutions",
-        description:
-          "Integrating practical AI features like smart automation and conversational assistants to boost efficiency.",
       },
       {
         title: "Mobile Applications",
@@ -182,9 +157,34 @@ const en: Translations = {
           "Building scalable SaaS platforms with subscription workflows, dashboards, and secure multi-tenant architecture.",
       },
       {
+        title: "AI Solutions",
+        description:
+          "Integrating practical AI features like smart automation and conversational assistants to boost efficiency.",
+      },
+      {
         title: "Digital Marketing",
         description:
           "Executing data-driven campaigns across search, social, and content channels to generate qualified leads.",
+      },
+      {
+        title: "SEO Optimization",
+        description:
+          "Achieving top search rankings and dramatically increasing organic traffic.",
+      },
+      {
+        title: "Google Ads Management",
+        description:
+          "Designing and running effective ad campaigns for immediate traffic results.",
+      },
+      {
+        title: "Blog Management",
+        description:
+          "Creating and publishing professional blog articles monthly for ongoing customer acquisition.",
+      },
+      {
+        title: "Maintenance & Improvement",
+        description:
+          "Ongoing support after launch — quickly responding to new features and improvement requests.",
       },
     ],
   },
