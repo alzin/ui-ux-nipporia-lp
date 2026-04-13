@@ -105,8 +105,8 @@ const ar: Translations = {
     description: "شاهد مشاريع حقيقية أنجزناها لعملائنا",
     prevProject: "المشروع السابق",
     nextProject: "المشروع التالي",
-    laptop: "لابتوب",
-    phone: "هاتف",
+    laptop: "PC",
+    phone: "Phone",
     viewLiveSite: "عرض الموقع المباشر",
     loadingPreview: "جارٍ تحميل المعاينة...",
     desktopPreview: "معاينة سطح المكتب",
@@ -213,7 +213,7 @@ const ar: Translations = {
     sectionDescription:
       "من مشاريع التطوير إلى التشغيل المستمر — دعم شامل لنموك الرقمي",
     websiteDev: {
-    title: "تطوير المشاريع",
+      title: "تطوير المشاريع",
       description: "خدمة متكاملة للمواقع والتطبيقات وحلول SaaS والذكاء الاصطناعي — من التخطيط إلى النشر",
       priceLabel: "السعر",
       priceNote: "يختلف حسب تعقيد المشروع",
