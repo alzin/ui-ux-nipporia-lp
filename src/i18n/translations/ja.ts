@@ -106,16 +106,16 @@ const ja: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "プロジェクト",
-    description: "クライアント様の実際のプロジェクトをご覧ください",
-    prevProject: "前のプロジェクト",
-    nextProject: "次のプロジェクト",
-    laptop: "ノートPC",
+    sectionTitle: "制作実績",
+    description: "これまでの制作実績をご紹介します",
+    prevProject: "前の実績",
+    nextProject: "次の実績",
+    laptop: "PC",
     phone: "スマートフォン",
     viewLiveSite: "サイトを見る",
-    loadingPreview: "プレビューを読み込み中...",
-    desktopPreview: "デスクトッププレビュー",
-    mobilePreview: "モバイルプレビュー",
+    loadingPreview: "プレビューを読み込んでいます...",
+    desktopPreview: "PCプレビュー",
+    mobilePreview: "スマートフォンプレビュー",
   },
 
   // Projects
