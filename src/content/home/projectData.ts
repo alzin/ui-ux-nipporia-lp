@@ -24,6 +24,16 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Rio Design",
+    description: "",
+    tags: ["UI/UX", "AI"],
+    mediaType: "url",
+    siteUrl: "https://rio-app.design/top-jp/",
+    desktopUrl: "https://rio-app.design/top-jp/",
+    mobileUrl: "https://rio-app.design/top-jp/",
+  },
+  {
+    id: 3,
     title: "Thrive in Japan",
     description:
       "日本での生活や機会をサポートする総合プラットフォーム。豊富なコンテンツとリソースを提供。",
@@ -35,16 +45,6 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: "Rio Design",
-    description: "",
-    tags: ["UI/UX", "AI"],
-    mediaType: "url",
-    siteUrl: "https://rio-app.design/",
-    desktopUrl: "https://rio-app.design/",
-    mobileUrl: "https://rio-app.design/",
-  },
-  {
-    id: 5,
     title: "Yum Gott",
     description: "",
     tags: ["Flutter", "Application"],

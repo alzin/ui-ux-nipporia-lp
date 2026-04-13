@@ -7,7 +7,7 @@ const ja: Translations = {
     home: "ホーム",
     problems: "課題",
     transformation: "実績",
-    visualExamples: "プロジェクト",
+    visualExamples: "制作実績",
     services: "サービス",
     process: "進め方？",
     pricing: "料金プラン",
