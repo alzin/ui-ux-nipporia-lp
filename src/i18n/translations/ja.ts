@@ -111,7 +111,7 @@ const ja: Translations = {
     prevProject: "前の実績",
     nextProject: "次の実績",
     laptop: "PC",
-    phone: "スマートフォン",
+    phone: "Phone",
     viewLiveSite: "サイトを見る",
     loadingPreview: "プレビューを読み込んでいます...",
     desktopPreview: "PCプレビュー",

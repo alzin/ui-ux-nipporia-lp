@@ -27,7 +27,18 @@ export default function CTASection() {
 
       <div className="max-w-[1200px] mx-auto px-8 relative z-10">
         <SectionTitle
-          title={t.contact.sectionTitle}
+          title={
+            lang === "ja" ? (
+              <>
+                {t.contact.sectionTitle.split("・")[0]}
+                <br className="md:hidden" />
+                <span className="md:inline hidden">・</span>
+                {t.contact.sectionTitle.split("・")[1]}
+              </>
+            ) : (
+              t.contact.sectionTitle
+            )
+          }
           description={t.contact.sectionDescription}
         />
 

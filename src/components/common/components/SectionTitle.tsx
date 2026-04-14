@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
+
 interface ISectionTitleProps {
-  title: string;
+  title: ReactNode;
   description?: string;
 }
 
