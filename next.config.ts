@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Allow Clarity replay player to fetch CSS/JS/fonts for session recordings
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
     ];
   },
 };
