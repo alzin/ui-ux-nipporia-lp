@@ -28,7 +28,7 @@ const Index = () => {
       <ProcessSection />
       <VisualTransformationSection />
       <ServicesSection />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <CTASection />
     </>
   );

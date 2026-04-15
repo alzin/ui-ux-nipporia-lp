@@ -18,7 +18,7 @@ export default function Header() {
     { href: localizePath("/#process"), title: t.nav.process },
     { href: localizePath("/#visual-examples"), title: t.nav.visualExamples },
     { href: localizePath("/#services"), title: t.nav.services },
-    { href: localizePath("/#pricing"), title: t.nav.pricing },
+    // { href: localizePath("/#pricing"), title: t.nav.pricing },
   ];
 
   return (

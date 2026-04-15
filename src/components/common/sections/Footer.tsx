@@ -56,14 +56,14 @@ const Footer = () => {
                   {t.footer.quickLinkItems.services}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href={localizePath("/#pricing")}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
                 >
                   {t.footer.quickLinkItems.pricing}
                 </Link>
-              </li>
+              </li> */}
               {/* <li>
                 <Link
                   href={localizePath("/templates")}
