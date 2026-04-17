@@ -21,15 +21,16 @@ export async function generateBlogMetadata({
     const blogData = await getBlogDataHtml(slug);
     const blog = createProcessedBlogObject(slug, blogData);
     const canonicalLang = isSiteLanguage(routeLang) ? routeLang : DEFAULT_LANGUAGE;
+    const seoTitle = blog.metadata.metaTitle ?? blog.metadata.title;
 
     return {
-      title: blog.metadata.title,
+      title: seoTitle,
       description: blog.metadata.description,
       alternates: {
         canonical: `${baseUrl}/${canonicalLang}/blogs/${encodeURIComponent(slug)}`,
       },
       openGraph: {
-        title: blog.metadata.title,
+        title: seoTitle,
         description: blog.metadata.description,
         images: blog.metadata.images,
         type: 'article',
@@ -41,7 +42,7 @@ export async function generateBlogMetadata({
       },
       twitter: {
         card: 'summary_large_image',
-        title: blog.metadata.title,
+        title: seoTitle,
         description: blog.metadata.description,
         images: blog.metadata.images,
       },

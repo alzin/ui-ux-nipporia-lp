@@ -4,10 +4,13 @@ import Image from "next/image";
 import { TProcessedBlogType } from "@/types/blog.type";
 import "@/styles/blog.css";
 import { useLanguage } from "@/i18n/LanguageContext";
+import RequirementsSheet from "./RequirementsSheet";
 
 interface IBlogPage {
   blog: TProcessedBlogType;
 }
+
+const REQUIREMENTS_SHEET_BLOG_SLUG = "development-inquiry-estimate-checklist";
 
 const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
   const { t } = useLanguage();
@@ -60,6 +63,8 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
         className="article prose prose-lg max-w-none bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-10 shadow-xl border border-purple-100 space-y-3"
         dangerouslySetInnerHTML={{ __html: blog.contentHtml }}
       />
+
+      {blog.slug === REQUIREMENTS_SHEET_BLOG_SLUG && <RequirementsSheet />}
     </main>
   );
 };
