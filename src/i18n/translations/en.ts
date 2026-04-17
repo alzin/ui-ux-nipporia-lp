@@ -364,6 +364,40 @@ const en: Translations = {
     blogImage: "Blog image",
     readPost: "Read blog post",
   },
+  requirementsSheet: {
+    tag: "Free template",
+    title: "Requirements Brief Sheet (Word)",
+    description:
+      "A ready-made template to organize your challenges, users, required features, timeline, and budget before reaching out to a development company. Review the preview below, then download to fill it in.",
+    viewOnly: "View only",
+    viewOnlyNote:
+      "This preview is view-only. You cannot edit or copy the document content. Please download the file to fill it in.",
+    downloadButton: "Download",
+    pageLabel: "Page",
+    previous: "Previous",
+    next: "Next",
+    zoomIn: "Zoom in",
+    zoomOut: "Zoom out",
+    modal: {
+      title: "Enter your email to download",
+      subtitle:
+        "We may occasionally share useful resources with the email you provide.",
+      emailLabel: "Email address",
+      emailPlaceholder: "you@example.com",
+      submit: "Download",
+      submitting: "Sending…",
+      cancel: "Cancel",
+      privacyNote:
+        "Your information is handled under our privacy policy and will not be sold or shared for marketing purposes.",
+      successTitle: "Download started",
+      successMessage:
+        "Your file should begin downloading automatically. If it does not, please try again.",
+      errorMessage:
+        "Something went wrong. Please try again in a moment.",
+      invalidEmail: "Please enter a valid email address.",
+      close: "Close",
+    },
+  },
   notFoundPage: {
     message: "The page you are looking for could not be found.",
     backHome: "Back to Home",

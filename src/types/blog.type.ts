@@ -12,6 +12,7 @@ export type TProcessedBlogType = {
 
 export type TMetaData = {
   title?: string;
+  metaTitle?: string;
   date?: string;
   description?: string;
   images?: string[];

@@ -365,6 +365,40 @@ const ja: Translations = {
     blogImage: "ブログ画像",
     readPost: "ブログ記事を読む",
   },
+  requirementsSheet: {
+    tag: "無料テンプレート",
+    title: "要件整理シート（Word形式）",
+    description:
+      "開発会社へのご相談前に、課題・利用者・必要な機能・希望時期・予算感などを整理できるテンプレートです。下のプレビューで内容を確認し、ダウンロードしてご利用ください。",
+    viewOnly: "閲覧専用",
+    viewOnlyNote:
+      "このプレビューは閲覧専用です。文書の内容の編集・コピーはできません。ご記入にはダウンロードしたファイルをご利用ください。",
+    downloadButton: "ダウンロードする",
+    pageLabel: "ページ",
+    previous: "前へ",
+    next: "次へ",
+    zoomIn: "拡大",
+    zoomOut: "縮小",
+    modal: {
+      title: "ダウンロード前にメールアドレスを入力",
+      subtitle:
+        "ご登録いただいたメールアドレス宛に、今後役立つ情報をお届けする場合があります。",
+      emailLabel: "メールアドレス",
+      emailPlaceholder: "you@example.com",
+      submit: "ダウンロード",
+      submitting: "送信中…",
+      cancel: "キャンセル",
+      privacyNote:
+        "入力された情報はプライバシーポリシーに基づき適切に管理され、営業目的で第三者に提供されることはありません。",
+      successTitle: "ダウンロードを開始しました",
+      successMessage:
+        "ファイルが自動的にダウンロードされます。開始されない場合は再度お試しください。",
+      errorMessage:
+        "送信に失敗しました。時間をおいて再度お試しください。",
+      invalidEmail: "有効なメールアドレスを入力してください。",
+      close: "閉じる",
+    },
+  },
   notFoundPage: {
     message: "お探しのページが見つかりませんでした。",
     backHome: "ホームに戻る",

@@ -19,6 +19,7 @@ export function createProcessedBlogObject(slug: string, blogData: TProcessedBlog
     slug,
     metadata: {
       title: blogData.metadata.title,
+      metaTitle: blogData.metadata.metaTitle,
       date: blogData.metadata.date,
       description: blogData.metadata.description,
       images: blogData.metadata.images || [],

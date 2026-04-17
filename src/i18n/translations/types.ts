@@ -166,6 +166,34 @@ export interface Translations {
     blogImage: string;
     readPost: string;
   };
+  requirementsSheet: {
+    tag: string;
+    title: string;
+    description: string;
+    viewOnly: string;
+    viewOnlyNote: string;
+    downloadButton: string;
+    pageLabel: string;
+    previous: string;
+    next: string;
+    zoomIn: string;
+    zoomOut: string;
+    modal: {
+      title: string;
+      subtitle: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      submit: string;
+      submitting: string;
+      cancel: string;
+      privacyNote: string;
+      successTitle: string;
+      successMessage: string;
+      errorMessage: string;
+      invalidEmail: string;
+      close: string;
+    };
+  };
   notFoundPage: {
     message: string;
     backHome: string;
