@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import FloatingSocial from "@/components/common/components/FloatingSocial";
+import StickyCTA from "@/components/common/components/StickyCTA";
 import TawkChat from "@/components/common/components/TawkChat";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { LanguageProvider } from "@/i18n/LanguageContext";
@@ -41,6 +42,7 @@ export default async function RootLayout({
         <LanguageProvider currentLang={lang}>
           <Header />
           <FloatingSocial />
+          <StickyCTA />
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
