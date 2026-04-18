@@ -9,11 +9,9 @@ interface TocHeading {
   level: number;
 }
 
-const BlogTableOfContents = () => {
-  const { t } = useLanguage();
+function useTocHeadings() {
   const [headings, setHeadings] = useState<TocHeading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
-  const [isOpen, setIsOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -35,21 +33,21 @@ const BlogTableOfContents = () => {
     });
 
     setHeadings(items);
-
-    if (items.length > 0) {
-      setActiveId(items[0].id);
-    }
+    if (items.length > 0) setActiveId(items[0].id);
   }, []);
 
-  const handleIntersect = useCallback((entries: IntersectionObserverEntry[]) => {
-    const visible = entries.filter((e) => e.isIntersecting);
-    if (visible.length > 0) {
-      const sorted = visible.sort(
-        (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
-      );
-      setActiveId(sorted[0].target.id);
-    }
-  }, []);
+  const handleIntersect = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      if (visible.length > 0) {
+        const sorted = visible.sort(
+          (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+        );
+        setActiveId(sorted[0].target.id);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     if (headings.length === 0) return;
@@ -74,92 +72,129 @@ const BlogTableOfContents = () => {
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
       setActiveId(id);
-      setIsOpen(false);
     }
   };
+
+  return { headings, activeId, scrollTo };
+}
+
+function TocList({
+  headings,
+  activeId,
+  scrollTo,
+  onItemClick,
+}: {
+  headings: TocHeading[];
+  activeId: string;
+  scrollTo: (id: string) => void;
+  onItemClick?: () => void;
+}) {
+  return (
+    <ul className="space-y-1">
+      {headings.map(({ id, text, level }) => (
+        <li key={id}>
+          <button
+            onClick={() => {
+              scrollTo(id);
+              onItemClick?.();
+            }}
+            className={`
+              w-full text-left text-sm py-2 px-3 rounded-lg transition-all duration-200
+              min-h-[44px] flex items-center
+              ${level === 3 ? "pl-6" : ""}
+              ${activeId === id
+                ? "bg-purple-100 text-purple-700 font-medium border-l-2 border-purple-600"
+                : "text-gray-500 hover:text-gray-800 hover:bg-gray-50 active:bg-gray-100"
+              }
+            `}
+          >
+            <span className="line-clamp-2 leading-snug">{text}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Desktop: sticky sidebar */
+export function BlogTocDesktop() {
+  const { t } = useLanguage();
+  const { headings, activeId, scrollTo } = useTocHeadings();
 
   if (headings.length === 0) return null;
 
   return (
-    <>
-      {/* Mobile toggle button */}
+    <nav
+      className="sticky top-[100px] w-full bg-white/80 backdrop-blur-md rounded-2xl border border-purple-100 shadow-lg"
+      aria-label={t.blogUi.tableOfContents}
+    >
+      <div className="p-5">
+        <h2 className="text-sm font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-600 to-cyan-500" />
+          {t.blogUi.tableOfContents}
+        </h2>
+        <TocList headings={headings} activeId={activeId} scrollTo={scrollTo} />
+      </div>
+    </nav>
+  );
+}
+
+/** Mobile: inline after image, sticky to top on scroll */
+export function BlogTocMobile() {
+  const { t } = useLanguage();
+  const { headings, activeId, scrollTo } = useTocHeadings();
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const activeHeading = headings.find((h) => h.id === activeId);
+
+  if (headings.length === 0) return null;
+
+  return (
+    <nav
+      className="lg:hidden sticky top-[72px] z-30 bg-white/95 backdrop-blur-md rounded-2xl border border-purple-100 shadow-md mb-6"
+      aria-label={t.blogUi.tableOfContents}
+    >
+      {/* Toggle bar: shows current section */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed bottom-6 left-6 z-50 w-12 h-12 rounded-full bg-purple-600 text-white shadow-lg flex items-center justify-center hover:bg-purple-700 transition-colors"
-        aria-label={t.blogUi.tableOfContents}
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-between px-4 min-h-[48px] active:bg-purple-50 transition-colors duration-150 rounded-2xl"
+        aria-expanded={isExpanded}
       >
+        <span className="flex items-center gap-2 min-w-0">
+          <span className="w-1 h-4 rounded-full bg-gradient-to-b from-purple-600 to-cyan-500 flex-shrink-0" />
+          <span className="text-xs font-medium text-gray-800 truncate">
+            {activeHeading?.text || t.blogUi.tableOfContents}
+          </span>
+        </span>
         <svg
-          width="20"
-          height="20"
+          width="16"
+          height="16"
           viewBox="0 0 20 20"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="2.5"
           strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`text-gray-400 flex-shrink-0 ml-2 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""
+            }`}
         >
-          <line x1="3" y1="5" x2="17" y2="5" />
-          <line x1="3" y1="10" x2="13" y2="10" />
-          <line x1="3" y1="15" x2="15" y2="15" />
+          <polyline points="6 8 10 12 14 8" />
         </svg>
       </button>
 
-      {/* Mobile overlay */}
-      {isOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black/40 z-40"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <nav
-        className={`
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:translate-x-0
-          fixed lg:sticky top-0 lg:top-[100px]
-          left-0 z-40 lg:z-auto
-          h-screen lg:h-auto lg:max-h-[calc(100vh-120px)]
-          w-72 lg:w-full
-          bg-white/95 lg:bg-white/80
-          backdrop-blur-md
-          lg:rounded-2xl
-          border-r lg:border border-purple-100
-          shadow-xl lg:shadow-lg
-          overflow-y-auto
-          transition-transform duration-300 lg:transition-none
-          scrollbar-thin
-        `}
-        aria-label={t.blogUi.tableOfContents}
-      >
-        <div className="p-5 pt-16 lg:pt-5">
-          <h2 className="text-sm font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-600 to-cyan-500" />
-            {t.blogUi.tableOfContents}
-          </h2>
-          <ul className="space-y-1">
-            {headings.map(({ id, text, level }) => (
-              <li key={id}>
-                <button
-                  onClick={() => scrollTo(id)}
-                  className={`
-                    w-full text-left text-sm py-1.5 px-3 rounded-lg transition-all duration-200
-                    ${level === 3 ? "pl-6" : ""}
-                    ${
-                      activeId === id
-                        ? "bg-purple-100 text-purple-700 font-medium border-l-2 border-purple-600"
-                        : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
-                    }
-                  `}
-                >
-                  <span className="line-clamp-2 leading-snug">{text}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
+      {/* Expanded: heading list */}
+      {isExpanded && (
+        <div className="px-4 pb-3 max-h-[60vh] overflow-y-auto border-t border-purple-50">
+          <TocList
+            headings={headings}
+            activeId={activeId}
+            scrollTo={scrollTo}
+            onItemClick={() => setIsExpanded(false)}
+          />
         </div>
-      </nav>
-    </>
+      )}
+    </nav>
   );
-};
+}
 
-export default BlogTableOfContents;
+export default BlogTocDesktop;
