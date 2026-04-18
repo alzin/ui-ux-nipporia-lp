@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export interface EmailDownloadModalProps {
   open: boolean;
@@ -48,11 +49,15 @@ export const EmailDownloadModal: React.FC<EmailDownloadModalProps> = ({
     setStatus("idle");
     setErrorMsg(null);
     setEmail("");
-    const prev = document.body.style.overflow;
+
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+
     const t = window.setTimeout(() => inputRef.current?.focus(), 80);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
       window.clearTimeout(t);
     };
   }, [open]);
@@ -122,9 +127,9 @@ export const EmailDownloadModal: React.FC<EmailDownloadModalProps> = ({
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="requirements-modal-title"
@@ -335,7 +340,8 @@ export const EmailDownloadModal: React.FC<EmailDownloadModalProps> = ({
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
 
