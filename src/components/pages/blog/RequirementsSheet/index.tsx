@@ -71,7 +71,7 @@ export const RequirementsSheet: React.FC = () => {
         pages={REQUIREMENTS_SHEET_PAGES}
         title={ui.title}
         pageLabel={ui.pageLabel}
-      />
+/>
 
       <EmailDownloadModal
         open={modalOpen}

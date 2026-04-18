@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
+const FREE_PAGES = 7;
+
 export interface DocxViewerProps {
   pages: string[];
   title: string;
@@ -15,6 +17,7 @@ export const DocxViewer: React.FC<DocxViewerProps> = ({
   pageLabel,
 }) => {
   const [pageIndex, setPageIndex] = useState(0);
+  const isLocked = pageIndex >= FREE_PAGES;
 
   const blockCopy = useCallback((e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -97,10 +100,31 @@ export const DocxViewer: React.FC<DocxViewerProps> = ({
                 width={1240}
                 height={1754}
                 sizes="(max-width: 768px) 80vw, 500px"
-                className="w-full h-auto block pointer-events-none select-none max-w-[500px]"
+                className={`w-full h-auto block pointer-events-none select-none max-w-[500px] transition-[filter] duration-300 ${isLocked ? "blur-md" : ""}`}
                 draggable={false}
                 priority={pageIndex === 0}
               />
+              {/* Lock overlay for pages beyond free preview */}
+              {isLocked && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60 backdrop-blur-sm rounded-sm">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-purple-600"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                </div>
+              )}
               <div
                 aria-hidden="true"
                 className="absolute inset-0"
@@ -124,7 +148,9 @@ export const DocxViewer: React.FC<DocxViewerProps> = ({
             className={`w-2.5 h-2.5 rounded-full transition ${
               i === pageIndex
                 ? "bg-gradient-to-r from-purple-600 to-cyan-500 scale-125"
-                : "bg-purple-200 hover:bg-purple-300"
+                : i >= FREE_PAGES
+                  ? "bg-gray-300 hover:bg-gray-400"
+                  : "bg-purple-200 hover:bg-purple-300"
             }`}
           />
         ))}
