@@ -59,12 +59,10 @@ const BlogPage: React.FC<IBlogPage> = ({ blog }) => {
         <div className="w-full aspect-video bg-gradient-to-br from-purple-100 to-cyan-100 mb-8 rounded-2xl" />
       )}
 
-      <article
-        className="article prose prose-lg max-w-none bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-10 shadow-xl border border-purple-100 space-y-3"
-        dangerouslySetInnerHTML={{ __html: blog.contentHtml }}
-      />
-
-      {blog.slug === REQUIREMENTS_SHEET_BLOG_SLUG && <RequirementsSheet />}
+      <article className="article prose prose-lg max-w-none bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-10 shadow-xl border border-purple-100 space-y-3">
+        <div dangerouslySetInnerHTML={{ __html: blog.contentHtml }} />
+        {blog.slug === REQUIREMENTS_SHEET_BLOG_SLUG && <RequirementsSheet />}
+      </article>
     </main>
   );
 };

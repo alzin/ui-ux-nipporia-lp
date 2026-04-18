@@ -1,21 +1,12 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageContext";
-import { useFixedActionsVisibility } from "@/hooks/scroll/useFixedActionsVisibility";
 import HeroMockups from "../components/HeroMockups";
 import HeroContent from "../components/HeroContent";
-import StickyDesktopCTA from "../components/StickyDesktopCTA";
-import StickyMobileCTA from "../components/StickyMobileCTA";
 
 export default function Hero() {
   const { lang } = useLanguage();
   const isRTL = lang === "ar";
-
-  const { isVisible: showStickyCTA } = useFixedActionsVisibility({
-    scrollThreshold: 300,
-    hideWhenSectionVisibleId: "visual-examples",
-    sectionThreshold: 0.15,
-  });
 
   return (
     <section
@@ -44,8 +35,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <StickyDesktopCTA isVisible={showStickyCTA} />
-      <StickyMobileCTA isVisible={showStickyCTA} />
     </section>
   );
 }

@@ -366,7 +366,7 @@ const en: Translations = {
   },
   requirementsSheet: {
     tag: "Free template",
-    title: "Requirements Brief Sheet (Word)",
+    title: "Requirements Brief Sheet",
     description:
       "A ready-made template to organize your challenges, users, required features, timeline, and budget before reaching out to a development company. Review the preview below, then download to fill it in.",
     viewOnly: "View only",
