@@ -364,6 +364,7 @@ const ja: Translations = {
     noTags: "タグなし",
     blogImage: "ブログ画像",
     readPost: "ブログ記事を読む",
+    tableOfContents: "目次",
   },
   requirementsSheet: {
     tag: "無料テンプレート",

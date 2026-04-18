@@ -351,6 +351,7 @@ const ar: Translations = {
     noTags: "لا توجد وسوم",
     blogImage: "صورة المقال",
     readPost: "قراءة المقال",
+    tableOfContents: "جدول المحتويات",
   },
   requirementsSheet: {
     tag: "قالب مجاني",

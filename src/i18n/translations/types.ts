@@ -165,6 +165,7 @@ export interface Translations {
     noTags: string;
     blogImage: string;
     readPost: string;
+    tableOfContents: string;
   };
   requirementsSheet: {
     tag: string;
