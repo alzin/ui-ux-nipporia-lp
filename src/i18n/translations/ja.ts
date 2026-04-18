@@ -367,7 +367,7 @@ const ja: Translations = {
   },
   requirementsSheet: {
     tag: "無料テンプレート",
-    title: "要件整理シート（Word形式）",
+    title: "要件整理シート",
     description:
       "開発会社へのご相談前に、課題・利用者・必要な機能・希望時期・予算感などを整理できるテンプレートです。下のプレビューで内容を確認し、ダウンロードしてご利用ください。",
     viewOnly: "閲覧専用",
