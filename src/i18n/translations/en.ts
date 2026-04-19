@@ -363,6 +363,7 @@ const en: Translations = {
     noTags: "No tags",
     blogImage: "Blog image",
     readPost: "Read blog post",
+    tableOfContents: "Table of Contents",
   },
   requirementsSheet: {
     tag: "Free template",

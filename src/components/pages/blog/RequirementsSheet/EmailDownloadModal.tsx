@@ -98,7 +98,10 @@ export const EmailDownloadModal: React.FC<EmailDownloadModalProps> = ({
         const res = await fetch("/api/requirements-sheet", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: trimmed }),
+          body: JSON.stringify({
+            email: trimmed,
+            country: Intl.DateTimeFormat().resolvedOptions().timeZone ?? "",
+          }),
         });
 
         if (!res.ok) {
