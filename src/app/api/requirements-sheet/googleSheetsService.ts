@@ -1,7 +1,7 @@
 import { google } from "googleapis";
 
 const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_ID ?? "";
-const SHEET_RANGE = "Sheet1!A:D";
+const SHEET_RANGE = "Sheet1!A:C";
 
 function getAuth() {
   const credentials = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
@@ -24,7 +24,6 @@ function getAuth() {
 export async function appendToGoogleSheet(row: {
   timestamp: string;
   email: string;
-  ip: string;
   country: string;
 }) {
   const auth = getAuth();
@@ -36,7 +35,7 @@ export async function appendToGoogleSheet(row: {
     valueInputOption: "RAW",
     insertDataOption: "INSERT_ROWS",
     requestBody: {
-      values: [[row.timestamp, row.email, row.ip, row.country]],
+      values: [[row.timestamp, row.email, row.country]],
     },
   });
 }

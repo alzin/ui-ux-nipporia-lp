@@ -10,8 +10,6 @@ export interface EmailDownloadModalProps {
   downloadUrl: string;
   fileName: string;
   labels: {
-    title: string;
-    subtitle: string;
     emailLabel: string;
     emailPlaceholder: string;
     submit: string;
@@ -207,38 +205,6 @@ export const EmailDownloadModal: React.FC<EmailDownloadModalProps> = ({
             </div>
           ) : (
             <>
-              <div className="mb-5 flex items-start gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-purple-100 to-cyan-100 text-purple-600 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3
-                    id="requirements-modal-title"
-                    className="text-lg font-bold text-gray-800"
-                  >
-                    {labels.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mt-1">
-                    {labels.subtitle}
-                  </p>
-                </div>
-              </div>
-
               <form onSubmit={handleSubmit} noValidate>
                 <label
                   htmlFor="requirements-email"

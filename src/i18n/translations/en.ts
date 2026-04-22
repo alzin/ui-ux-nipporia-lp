@@ -380,9 +380,6 @@ const en: Translations = {
     zoomIn: "Zoom in",
     zoomOut: "Zoom out",
     modal: {
-      title: "Enter your email to download",
-      subtitle:
-        "We may occasionally share useful resources with the email you provide.",
       emailLabel: "Email address",
       emailPlaceholder: "you@example.com",
       submit: "Download",
