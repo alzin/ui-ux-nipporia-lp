@@ -368,9 +368,6 @@ const ar: Translations = {
     zoomIn: "تكبير",
     zoomOut: "تصغير",
     modal: {
-      title: "أدخل بريدك الإلكتروني للتنزيل",
-      subtitle:
-        "قد نُشارك معك بعض المحتوى المفيد على البريد الإلكتروني الذي تُدخله.",
       emailLabel: "البريد الإلكتروني",
       emailPlaceholder: "you@example.com",
       submit: "تنزيل",

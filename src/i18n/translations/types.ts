@@ -180,8 +180,6 @@ export interface Translations {
     zoomIn: string;
     zoomOut: string;
     modal: {
-      title: string;
-      subtitle: string;
       emailLabel: string;
       emailPlaceholder: string;
       submit: string;

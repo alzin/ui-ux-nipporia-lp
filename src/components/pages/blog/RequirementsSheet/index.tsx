@@ -79,8 +79,6 @@ export const RequirementsSheet: React.FC = () => {
         downloadUrl={REQUIREMENTS_SHEET_DOWNLOAD_URL}
         fileName={REQUIREMENTS_SHEET_FILE}
         labels={{
-          title: ui.modal.title,
-          subtitle: ui.modal.subtitle,
           emailLabel: ui.modal.emailLabel,
           emailPlaceholder: ui.modal.emailPlaceholder,
           submit: ui.modal.submit,

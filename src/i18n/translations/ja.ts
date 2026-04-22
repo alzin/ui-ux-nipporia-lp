@@ -381,9 +381,6 @@ const ja: Translations = {
     zoomIn: "拡大",
     zoomOut: "縮小",
     modal: {
-      title: "ダウンロード前にメールアドレスを入力",
-      subtitle:
-        "ご登録いただいたメールアドレス宛に、今後役立つ情報をお届けする場合があります。",
       emailLabel: "メールアドレス",
       emailPlaceholder: "you@example.com",
       submit: "ダウンロード",
