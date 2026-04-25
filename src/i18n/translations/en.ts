@@ -14,6 +14,7 @@ const en: Translations = {
     contact: "Contact",
     blog: "Blog",
     templates: "Templates",
+    businessOverview: "Business Overview",
     menu: {
       open: "Open menu",
       close: "Close menu",
@@ -396,6 +397,40 @@ const en: Translations = {
       close: "Close",
     },
   },
+  businessOverview: {
+    pageTitle: "Business Overview",
+    heroDescription:
+      "Founded in 2024. We provide end-to-end support for AI, Web, App, and SaaS development — from strategic planning to operational improvement. Accelerating business growth through the power of technology.",
+    breadcrumbHome: "Home",
+    breadcrumbBusinessOverview: "Business Overview",
+    companyName: { label: "Business Name", value: "Nipporia" },
+    established: { label: "Established", value: "April 2024" },
+    capital: { label: "Capital", value: "" },
+    representative: {
+      label: "Representative",
+      value: "Mohamad Ghaith Alzin",
+    },
+    employees: { label: "Employees", value: "" },
+    business: {
+      label: "Business Activities",
+      values: [
+        "UI/UX Design",
+        "Mobile App Development",
+        "SaaS Application Development",
+        "AI Solution Implementation",
+        "Digital Marketing",
+        "SEO Optimization",
+        "Google Ads Management",
+        "Blog Management",
+        "Website, App, SaaS & AI Design, Development & Engineering",
+      ],
+    },
+    address: {
+      label: "Headquarters",
+      postalCode: "〒346-0003",
+      value: "1-9-4-902 Kukichuo, Kuki City, Saitama, Japan",
+    },
+  },
   notFoundPage: {
     message: "The page you are looking for could not be found.",
     backHome: "Back to Home",
@@ -443,6 +478,10 @@ export const enPageContent: LocalizedPageContent = {
   templates: {
     title: "Templates | Nipporia",
     description: "Explore premium website templates crafted by Nipporia. Modern design, cutting-edge technology.",
+  },
+  businessOverview: {
+    metadataTitle: "Business Overview | Nipporia",
+    metadataDescription: "Business overview for Nipporia. Providing UI/UX design, mobile app development, SaaS development, AI solutions, and digital marketing.",
   },
   privacyPolicy: {
     metadataTitle: "Privacy Policy | Nipporia",

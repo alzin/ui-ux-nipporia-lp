@@ -80,6 +80,14 @@ const Footer = () => {
                   {t.footer.quickLinkItems.blog}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={localizePath("/business-overview")}
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-300"
+                >
+                  {t.nav.businessOverview}
+                </Link>
+              </li>
             </ul>
           </div>
 

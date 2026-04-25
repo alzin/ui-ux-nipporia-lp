@@ -23,6 +23,7 @@ export const getLocalizedPageContent = (
   localizedPageContentByLanguage[DEFAULT_LANGUAGE];
 
 export type {
+  BusinessOverviewContent,
   CommerceContent,
   DisclosureRow,
   LayoutSeoContent,
