@@ -10,6 +10,7 @@ export interface Translations {
     contact: string;
     blog: string;
     templates: string;
+    businessOverview: string;
     menu: {
       open: string;
       close: string;
@@ -197,6 +198,19 @@ export interface Translations {
     message: string;
     backHome: string;
   };
+  businessOverview: {
+    pageTitle: string;
+    heroDescription: string;
+    breadcrumbHome: string;
+    breadcrumbBusinessOverview: string;
+    companyName: { label: string; value: string };
+    established: { label: string; value: string };
+    capital: { label: string; value: string };
+    representative: { label: string; value: string };
+    employees: { label: string; value: string };
+    business: { label: string; values: string[] };
+    address: { label: string; postalCode: string; value: string };
+  };
 } 
 export type SeoMetadata = {
   title: string;
@@ -259,12 +273,18 @@ export type CommerceContent = {
   updatedDate: string;
 };
 
+export type BusinessOverviewContent = {
+  metadataTitle: string;
+  metadataDescription: string;
+};
+
 export type LocalizedPageContent = {
   layout: LayoutSeoContent;
   notFound: SeoMetadata;
   blogs: SeoMetadata;
   missingBlog: SeoMetadata;
   templates: SeoMetadata;
+  businessOverview: BusinessOverviewContent;
   privacyPolicy: PrivacyContent;
   termsOfService: TermsContent;
   commerceDisclosure: CommerceContent;

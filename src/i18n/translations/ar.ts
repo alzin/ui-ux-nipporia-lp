@@ -13,6 +13,7 @@ const ar: Translations = {
     contact: "اتصل بنا",
     blog: "المدونة",
     templates: "القوالب",
+    businessOverview: "نبذة عن العمل",
     menu: {
       open: "فتح القائمة",
       close: "إغلاق القائمة",
@@ -383,6 +384,40 @@ const ar: Translations = {
       close: "إغلاق",
     },
   },
+  businessOverview: {
+    pageTitle: "نبذة عن العمل",
+    heroDescription:
+      "تأسسنا عام 2024. نقدم دعما شاملا لتطوير الذكاء الاصطناعي والويب والتطبيقات وSaaS — من التخطيط الاستراتيجي إلى التحسين التشغيلي. نسرّع نمو الأعمال بقوة التكنولوجيا.",
+    breadcrumbHome: "الرئيسية",
+    breadcrumbBusinessOverview: "نبذة عن العمل",
+    companyName: { label: "اسم المؤسسة", value: "Nipporia" },
+    established: { label: "تأسست", value: "أبريل 2024" },
+    capital: { label: "رأس المال", value: "" },
+    representative: {
+      label: "الممثل",
+      value: "محمد غيث الزين",
+    },
+    employees: { label: "عدد الموظفين", value: "" },
+    business: {
+      label: "الأنشطة التجارية",
+      values: [
+        "تصميم UI/UX",
+        "تطوير تطبيقات الجوال",
+        "تطوير تطبيقات SaaS",
+        "تنفيذ حلول الذكاء الاصطناعي",
+        "التسويق الرقمي",
+        "تحسين محركات البحث (SEO)",
+        "إدارة إعلانات Google",
+        "إدارة المدونات",
+        "تصميم وتطوير المواقع والتطبيقات وSaaS وحلول الذكاء الاصطناعي",
+      ],
+    },
+    address: {
+      label: "المقر الرئيسي",
+      postalCode: "〒346-0003",
+      value: "1-9-4-902 كوكيتشوو، مدينة كوكي، سايتاما، اليابان",
+    },
+  },
   notFoundPage: {
     message: "تعذر العثور على الصفحة التي تبحث عنها.",
     backHome: "العودة إلى الصفحة الرئيسية",
@@ -429,6 +464,10 @@ export const arPageContent: LocalizedPageContent = {
   templates: {
     title: "القوالب | Nipporia",
     description: "استعرض قوالب المواقع الاحترافية من Nipporia. تصميم عصري وتقنيات متقدمة.",
+  },
+  businessOverview: {
+    metadataTitle: "نبذة عن العمل | Nipporia",
+    metadataDescription: "نبذة عن عمل Nipporia. نقدم تصميم UI/UX، تطوير تطبيقات الجوال، تطوير SaaS، حلول الذكاء الاصطناعي، والتسويق الرقمي.",
   },
   privacyPolicy: {
     metadataTitle: "سياسة الخصوصية | Nipporia",

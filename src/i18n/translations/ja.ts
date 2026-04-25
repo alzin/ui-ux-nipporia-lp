@@ -14,6 +14,7 @@ const ja: Translations = {
     contact: "お問い合わせ",
     blog: "ブログ",
     templates: "テンプレート",
+    businessOverview: "事業概要",
     menu: {
       open: "メニューを開く",
       close: "メニューを閉じる",
@@ -397,6 +398,37 @@ const ja: Translations = {
       close: "閉じる",
     },
   },
+  businessOverview: {
+    pageTitle: "事業概要",
+    heroDescription:
+      "2024年設立。AI・Web・アプリ・SaaS開発を、戦略設計から運用改善まで一貫支援。テクノロジーの力でお客様の事業成長を加速させます。",
+    breadcrumbHome: "トップ",
+    breadcrumbBusinessOverview: "事業概要",
+    companyName: { label: "事業者名", value: "Nipporia" },
+    established: { label: "設立", value: "2024年4月" },
+    capital: { label: "資本金", value: "" },
+    representative: { label: "代表者", value: "アルジンムハンマドガイス" },
+    employees: { label: "社員数", value: "" },
+    business: {
+      label: "事業内容",
+      values: [
+        "UI/UXデザイン",
+        "モバイルアプリ開発",
+        "SaaSアプリケーション開発",
+        "AIソリューション導入",
+        "デジタルマーケティング",
+        "SEO最適化",
+        "Google広告運用",
+        "ブログ運用",
+        "Webサイト・アプリ・SaaS・AI機能の設計、デザイン、開発",
+      ],
+    },
+    address: {
+      label: "本社所在地",
+      postalCode: "〒346-0003",
+      value: "埼玉県久喜市久喜中央1丁目9番4-902号",
+    },
+  },
   notFoundPage: {
     message: "お探しのページが見つかりませんでした。",
     backHome: "ホームに戻る",
@@ -443,6 +475,10 @@ export const jaPageContent: LocalizedPageContent = {
   templates: {
     title: "テンプレート | Nipporia",
     description: "Nipporiaが制作したプレミアムWebサイトテンプレートをご覧ください。モダンなデザインと最新技術。",
+  },
+  businessOverview: {
+    metadataTitle: "事業概要 | Nipporia",
+    metadataDescription: "Nipporiaの事業概要。UI/UXデザイン、モバイルアプリ開発、SaaS開発、AIソリューション、デジタルマーケティングを提供。",
   },
   privacyPolicy: {
     metadataTitle: "プライバシーポリシー | Nipporia",
