@@ -44,3 +44,5 @@ next-env.d.ts
 *-lock.*
 
 /data
+/.workflow
+nipporia-audit-report.docx

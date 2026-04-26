@@ -67,10 +67,11 @@ export default function ProblemSection() {
                 {/* Person illustration */}
                 <div className="flex justify-center">
                   <Image
-                    src={`/images/problems/problem_${index + 1}.png`}
+                    src={`/images/problems/problem_${index + 1}.webp`}
                     alt=""
                     width={280}
                     height={280}
+                    sizes="(max-width: 768px) 208px, (max-width: 1024px) 256px, 288px"
                     className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain"
                   />
                 </div>
