@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { heroServices } from "@/content/home/heroServices";
 
@@ -9,11 +8,8 @@ export default function HeroServiceIcons() {
   const { t } = useLanguage();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="grid grid-cols-4 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full mb-10 [@media(min-width:1024px)_and_(max-height:800px)]:mb-6"
+    <div
+      className="opacity-0 animate-fade-in-up-delay-300 grid grid-cols-4 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full mb-10 [@media(min-width:1024px)_and_(max-height:800px)]:mb-6"
     >
       {heroServices.map((item, i) => (
         <div
@@ -34,6 +30,6 @@ export default function HeroServiceIcons() {
           </span>
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
