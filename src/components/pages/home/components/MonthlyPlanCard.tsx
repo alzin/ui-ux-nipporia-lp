@@ -49,7 +49,7 @@ export default function MonthlyPlanCard({ plan, description, features, ctaText }
       </ul>
 
       <a
-        href="#contact"
+        href="/#contact"
         className={`w-full block text-center bg-gradient-to-r ${plan.color} text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
       >
         {ctaText}
