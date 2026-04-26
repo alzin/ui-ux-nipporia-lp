@@ -44,9 +44,9 @@ const ja: Translations = {
 
   // Hero
   hero: {
-    title: "事業成長につながるAI ・ Web・アプリ・SaaS開発を、戦略設計から運用改善まで一貫支援",
-    titleTagline: "成果を見据えた設計と、スピード感ある開発体制でビジネスを前進させます",
-    subtitle: "モバイルアプリ・ウェブサイト・SaaS・UI/UXデザイン・SEO・デジタルマーケティングで集客と売上を最大化。 無料相談（60分）・最短7日で改善案をご提案",
+    title: "プロの伴走で、\nAI・Webシステムを\n最短ルートで実用化",
+    titleTagline: "要件定義・小規模PoC・本格開発まで対応",
+    subtitle: "内製化で進まないプロジェクトや、\n検証だけで止まったPoCを再設計。\n確かな技術力と事業視点で、企画から\n開発・改善までゴールに向けて伴走します。",
     cta: "",
     primaryButton: "無料相談",
     secondaryButton: "実績",

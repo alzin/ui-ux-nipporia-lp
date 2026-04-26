@@ -16,8 +16,24 @@ export default function HeroContent() {
         : "lg:text-left lg:-ml-8 xl:-ml-12 lg:pr-8 xl:pr-12"
         }`}
     >
+      {/* Kicker pill — service tagline as a badge above the title */}
+      <div className="opacity-0 animate-fade-in-up mt-4 mb-5 [@media(min-width:1024px)_and_(max-height:800px)]:mt-2 [@media(min-width:1024px)_and_(max-height:800px)]:mb-3">
+        <span className="inline-flex items-center gap-2.5 rounded-full border border-purple-200/70 bg-white/70 backdrop-blur-sm px-5 py-2.5 shadow-sm shadow-purple-500/10">
+          <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-purple-400 opacity-60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500" />
+          </span>
+          <span
+            className="text-[15px] sm:text-[16px] font-semibold tracking-[0.01em] leading-none"
+            style={{ backgroundImage: "linear-gradient(90deg, #9333EA 0%, #EC4899 50%, #06B6D4 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+          >
+            {t.hero.titleTagline}
+          </span>
+        </span>
+      </div>
+
       {/* Title */}
-      <h1 className="opacity-0 animate-fade-in-up font-bold text-[32px] sm:text-[40px] leading-[45px] tracking-[-0.02em] mb-3 mt-4 capitalize [@media(min-width:1024px)_and_(max-height:800px)]:mb-2 [@media(min-width:1024px)_and_(max-height:800px)]:mt-2">
+      <h1 className="opacity-0 animate-fade-in-up font-bold text-[34px] sm:text-[44px] leading-[1.18] tracking-[-0.025em] mb-6 capitalize whitespace-pre-line [@media(min-width:1024px)_and_(max-height:800px)]:mb-4">
         <span
           className="text-transparent bg-clip-text"
           style={{ backgroundImage: "linear-gradient(90deg, #9333EA 0%, #EC4899 50%, #06B6D4 100%)" }}
@@ -26,12 +42,9 @@ export default function HeroContent() {
         </span>
       </h1>
 
-      {/* Title tagline */}
-      <p
-        className="opacity-0 animate-fade-in-up text-[18px] font-normal leading-[26px] tracking-normal mb-8 [@media(min-width:1024px)_and_(max-height:800px)]:mb-4"
-        style={{ backgroundImage: "linear-gradient(90deg, #9333EA 0%, #EC4899 50%, #06B6D4 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-      >
-        {t.hero.titleTagline}
+      {/* Subtitle */}
+      <p className="opacity-0 animate-fade-in-up text-[14.5px] sm:text-[15.5px] font-normal leading-[1.8] tracking-[0.005em] text-gray-600 mb-9 max-w-[500px] whitespace-pre-line [@media(min-width:1024px)_and_(max-height:800px)]:mb-5">
+        {t.hero.subtitle}
       </p>
 
       {/* CTAs */}

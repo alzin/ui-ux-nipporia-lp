@@ -21,12 +21,14 @@ import {
   PHP,
   Ruby,
   OpenAI,
+  ClaudeAI,
   TailwindCSS,
   PostgreSQL,
   MongoDB,
   Firebase,
 } from "developer-icons";
 import { type ComponentType, type SVGProps } from "react";
+import { Gemini } from "./customTechIcons";
 
 export type TTechLogo = {
   name: string;
@@ -58,6 +60,8 @@ export const techLogos: TTechLogo[] = [
   { name: "PHP",        Icon: PHP },
   { name: "Ruby",       Icon: Ruby },
   { name: "OpenAI",     Icon: OpenAI },
+  { name: "Claude",     Icon: ClaudeAI },
+  { name: "Gemini",     Icon: Gemini },
   { name: "Tailwind",   Icon: TailwindCSS },
   { name: "PostgreSQL", Icon: PostgreSQL },
   { name: "MongoDB",    Icon: MongoDB },
