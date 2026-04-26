@@ -7,7 +7,7 @@ const ja: Translations = {
     home: "ホーム",
     problems: "課題",
     transformation: "実績",
-    visualExamples: "制作実績",
+    visualExamples: "実績",
     services: "サービス",
     process: "進め方？",
     pricing: "料金プラン",
@@ -48,8 +48,8 @@ const ja: Translations = {
     titleTagline: "成果を見据えた設計と、スピード感ある開発体制でビジネスを前進させます",
     subtitle: "モバイルアプリ・ウェブサイト・SaaS・UI/UXデザイン・SEO・デジタルマーケティングで集客と売上を最大化。 無料相談（60分）・最短7日で改善案をご提案",
     cta: "",
-    primaryButton: "無料相談を予約する",
-    secondaryButton: "制作実績を見る",
+    primaryButton: "無料相談",
+    secondaryButton: "実績",
     stickyConsultation: "無料相談",
     stickyPortfolio: "制作実績",
     accepting: "無料相談受付中",
@@ -71,22 +71,36 @@ const ja: Translations = {
 
   // Problems
   problems: {
-    sectionTitle: "こんな課題はありませんか？",
+    sectionTitle: "課題と解決策",
+    problemLabel: "課題",
+    solutionLabel: "解決",
     items: [
       {
-        title: "開発・集客・改善が分断されている",
-        description:
-          "Webサイト制作、広告運用、SEO、アプリ開発が別々に進み、事業全体としての成果につながっていない。",
+        problem:
+          "AIやWebシステムを\n活用したいが、\n何から始めればよいかわからない…",
+        solution: {
+          title: "課題整理から最適な進め方を設計",
+          description:
+            "現状の課題や事業目標、ユーザーの導線を整理し、AI・Web・アプリ・SaaSの中から最適な解決策をご提案します。アイデアがまだ曖昧な段階でも、必要な機能や優先順位を明確にし、実行しやすい開発計画へ落とし込みます。",
+        },
       },
       {
-        title: "デジタル投資の優先順位が整理できていない",
-        description:
-          "AI導入や新規開発を検討しているものの、何から始めるべきか判断できず、意思決定が進まない。",
+        problem:
+          "作りたいサービスの\nイメージはあるが、\n実現できるか不安がある…",
+        solution: {
+          title: "実現可能性を見極める設計・提案",
+          description:
+            "ご要望をもとに、必要な機能、UXフロー、技術構成を整理し、無理のない形で実現可能性を検証します。MVPやPoCの設計にも対応し、最初に何をどこまで作るべきかを明確にすることで、開発リスクを抑えます。",
+        },
       },
       {
-        title: "公開後の改善体制がなく、成果が伸びない",
-        description:
-          "制作や開発の後に分析・改善まで伴走できる体制がなく、見込み客獲得や売上向上に結びついていない。",
+        problem:
+          "初期費用を抑えながら、\n効果のある\nシステムを作りたい…",
+        solution: {
+          title: "段階的に始められる費用設計",
+          description:
+            "必要な機能を優先度ごとに整理し、小規模な開発から段階的に拡張できる進め方をご提案します。初期投資を抑えつつ、公開後の改善や機能追加を見据えた構成にすることで、無理なく事業成長につなげます。",
+        },
       },
     ],
   },
@@ -107,7 +121,7 @@ const ja: Translations = {
 
   // Visual Transformation
   visualTransformation: {
-    sectionTitle: "制作実績",
+    sectionTitle: "実績",
     description: "これまでの制作実績をご紹介します",
     prevProject: "前の実績",
     nextProject: "次の実績",
@@ -302,15 +316,15 @@ const ja: Translations = {
 
   // CTA / Contact
   contact: {
-    sectionTitle: "無料相談・お問い合わせ",
+    sectionTitle: "ご相談・お見積りフォーム",
     sectionDescription:
       "課題やご要望をお伺いしたうえで、最適な進め方や必要な施策をご提案します。",
     companyLabel: "会社名",
     nameLabel: "お名前",
     emailLabel: "メールアドレス",
     websiteLabel: "WebサイトURL（任意）",
-    messageLabel: "ご相談内容",
-    submitButton: "お問い合わせを送信する",
+    messageLabel: "お問い合わせ内容",
+    submitButton: "送信する",
     submitting: "送信中...",
   },
 

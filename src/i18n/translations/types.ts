@@ -45,7 +45,12 @@ export interface Translations {
   };
   problems: {
     sectionTitle: string;
-    items: { title: string; description: string }[];
+    problemLabel: string;
+    solutionLabel: string;
+    items: {
+      problem: string;
+      solution: { title: string; description: string };
+    }[];
   };
   transformation: {
     sectionTitle: string;

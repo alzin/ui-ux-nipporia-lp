@@ -71,22 +71,36 @@ const en: Translations = {
 
   // Problems
   problems: {
-    sectionTitle: "Are you facing these challenges?",
+    sectionTitle: "Challenges & Solutions",
+    problemLabel: "Challenge",
+    solutionLabel: "Solution",
     items: [
       {
-        title: "Disconnected Efforts, Wasted Budget",
-        description:
-          "Your website, ads, apps, and SEO are handled separately — leading to misalignment, higher costs, and little to no measurable impact.",
+        problem:
+          "You have a problem you want to solve with generative AI, but you're not sure how to approach it…",
+        solution: {
+          title: "Clarifying the Right Approach",
+          description:
+            "Our experts unpack the background of your challenge and the underlying user needs to clarify *how* it should be solved. Even starting from a vague problem statement, we deepen the requirements and select the right technology to translate it into a concrete, optimal approach.",
+        },
       },
       {
-        title: "Falling Behind in a Fast-Moving Digital World",
-        description:
-          "While competitors leverage AI and modern tools, your business is stuck using outdated systems that limit growth.",
+        problem:
+          "You have an idea of the system you want to build, but aren't confident it's the right one…",
+        solution: {
+          title: "PoC Design That Maximizes Success",
+          description:
+            "Drawing on extensive generative AI development experience, we validate feasibility from multiple angles. Through UX flows and MVP definition, we design a PoC that clarifies what to build and how far to go — minimizing the risk of project failure.",
+        },
       },
       {
-        title: "Investing More, Seeing Less Return",
-        description:
-          "You're putting money into websites and ads — but not generating leads, revenue, or clear insights on what's going wrong.",
+        problem:
+          "You want to keep initial costs down, but the estimates always blow the budget…",
+        solution: {
+          title: "Optimized Cost Design for a Lean Start",
+          description:
+            "Milestone-based phasing, small-scale PoC, co-development — we propose the cost structure that fits your situation. Keep upfront investment low and build out your generative AI system in steady, sustainable steps.",
+        },
       },
     ],
   },
