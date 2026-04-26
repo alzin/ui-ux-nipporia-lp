@@ -8,9 +8,10 @@ import { useLanguage } from "@/i18n/LanguageContext";
 interface IBlogCardProps {
   slug: string;
   metadata: TMetaData;
+  priority?: boolean;
 }
 
-const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
+const BlogCard = ({ slug, metadata, priority = false }: IBlogCardProps) => {
   const { t, localizePath } = useLanguage();
   const localeText = t.blogUi;
   const title = metadata.title || localeText.untitled;
@@ -37,7 +38,8 @@ const BlogCard = ({ slug, metadata }: IBlogCardProps) => {
               height={675}
               sizes="(max-width: 768px) 100vw, 50vw"
               className="group-hover:scale-110 transition-transform duration-500 rounded-xl"
-              priority
+              loading={priority ? "eager" : "lazy"}
+              priority={priority}
             />
           </div>
         ) : (

@@ -22,8 +22,8 @@ const BlogsPage: React.FC<IIndexProps> = ({ blogs }) => {
         {t.blogUi.allBlogsTitle}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map(({ slug, metadata }, _index) => (
-          <BlogCard key={_index} metadata={metadata} slug={slug} />
+        {blogs.map(({ slug, metadata }, index) => (
+          <BlogCard key={index} metadata={metadata} slug={slug} priority={index === 0} />
         ))}
       </div>
     </main>
