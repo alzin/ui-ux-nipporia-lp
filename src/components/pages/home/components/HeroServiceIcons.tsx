@@ -25,6 +25,7 @@ export default function HeroServiceIcons() {
               src={item.iconSrc}
               alt={t.hero.services[item.translationIndex]}
               fill
+              priority
               className="object-contain"
             />
           </div>

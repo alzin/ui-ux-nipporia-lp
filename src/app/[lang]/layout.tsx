@@ -30,6 +30,11 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={rtl ? "rtl" : "ltr"} className="scroll-smooth">
       <head>
+        {/* Preload above-the-fold hero service icons for faster LCP */}
+        <link rel="preload" href="/images/icons/ui-ux-design.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/images/icons/mobile-apps.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/images/icons/websites.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/images/icons/ai-solutions.svg" as="image" type="image/svg+xml" />
         <SchemaInjector schemas={[buildOrganizationSchema(), buildWebSiteSchema()]} />
       </head>
       <GoogleTagManager gtmId="GTM-NQGV6M9D" />
