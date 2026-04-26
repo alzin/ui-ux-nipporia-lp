@@ -18,7 +18,7 @@ const itemVariants = {
 };
 
 const PlansSection = () => {
-  const { t } = useLanguage();
+  const { t, localizePath } = useLanguage();
 
   return (
     <section
@@ -93,7 +93,7 @@ const PlansSection = () => {
                 </p>
               </div>
               <a
-                href="/#contact"
+                href={localizePath("/#contact")}
                 className="w-[312px] shrink-0 text-center bg-gradient-to-r from-[#9333EB] to-[#EC4899] text-white font-bold text-lg py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 whitespace-nowrap"
               >
                 {t.pricing.customizePlan.ctaText}

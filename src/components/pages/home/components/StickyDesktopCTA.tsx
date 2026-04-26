@@ -6,7 +6,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 type Props = { isVisible: boolean };
 
 export default function StickyDesktopCTA({ isVisible }: Props) {
-  const { t, lang } = useLanguage();
+  const { t, lang, localizePath } = useLanguage();
   const isRTL = lang === "ar";
   const arrowPath = isRTL ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7";
 
@@ -22,7 +22,7 @@ export default function StickyDesktopCTA({ isVisible }: Props) {
       aria-hidden={!isVisible}
     >
       <Link
-        href="/#contact"
+        href={localizePath("/#contact")}
         className={`group relative flex items-center gap-3 py-3.5 bg-[#1a2744] text-white font-semibold text-sm shadow-xl shadow-[#1a2744]/30 hover:shadow-2xl hover:shadow-[#1a2744]/40 transition-all duration-300 ${isRTL
             ? "rounded-r-full pr-5 pl-4 hover:pr-7"
             : "rounded-l-full pl-5 pr-4 hover:pl-7"

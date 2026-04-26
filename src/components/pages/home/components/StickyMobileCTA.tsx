@@ -6,7 +6,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 type Props = { isVisible: boolean };
 
 export default function StickyMobileCTA({ isVisible }: Props) {
-  const { t } = useLanguage();
+  const { t, localizePath } = useLanguage();
 
   return (
     <div
@@ -19,14 +19,14 @@ export default function StickyMobileCTA({ isVisible }: Props) {
       <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
         <div className="flex gap-2">
           <Link
-            href="/#contact"
+            href={localizePath("/#contact")}
             className="flex-1 text-center px-4 py-3 rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-500 font-semibold text-sm shadow-lg shadow-purple-500/30"
           >
             {t.hero.stickyConsultation}
           </Link>
 
           <Link
-            href="/#visual-examples"
+            href={localizePath("/#visual-examples")}
             className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-[13px]"
           >
             {t.hero.stickyPortfolio}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { TPlanMeta } from "@/content/home/pricing";
 
 const itemVariants = {
@@ -16,6 +17,8 @@ type Props = {
 };
 
 export default function MonthlyPlanCard({ plan, description, features, ctaText }: Props) {
+  const { localizePath } = useLanguage();
+
   return (
     <motion.div
       variants={itemVariants}
@@ -49,7 +52,7 @@ export default function MonthlyPlanCard({ plan, description, features, ctaText }
       </ul>
 
       <a
-        href="/#contact"
+        href={localizePath("/#contact")}
         className={`w-full block text-center bg-gradient-to-r ${plan.color} text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
       >
         {ctaText}

@@ -9,7 +9,7 @@ const itemVariants = {
 };
 
 export default function WebsitePricingCard() {
-  const { t } = useLanguage();
+  const { t, localizePath } = useLanguage();
   const w = t.pricing.websiteDev;
 
   return (
@@ -84,7 +84,7 @@ export default function WebsitePricingCard() {
 
           {/* CTA Button */}
           <a
-            href="/#contact"
+            href={localizePath("/#contact")}
             className="w-[280px] block text-center bg-gradient-to-r from-[#C084FC] to-[#818CF8] text-white text-[16px] font-bold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
           >
             {w.ctaText}
