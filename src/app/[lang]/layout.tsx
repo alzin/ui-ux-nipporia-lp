@@ -4,7 +4,7 @@ import Header from "@/components/common/sections/Header";
 import Footer from "@/components/common/sections/Footer";
 import FloatingSocial from "@/components/common/components/FloatingSocial";
 import StickyCTA from "@/components/common/components/StickyCTA";
-import TawkChat from "@/components/common/components/TawkChat";
+// import TawkChat from "@/components/common/components/TawkChat";
 import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
@@ -51,11 +51,11 @@ export default async function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </LanguageProvider>
-        <TawkChat
+        {/* <TawkChat
           lang={lang}
           propertyId={process.env.TAWK_PROPERTY_ID ?? ""}
           widgetId={process.env.TAWK_WIDGET_ID_JA ?? ""}
-        />
+        /> */}
       </body>
     </html>
   );
