@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
+import type SwalType from "sweetalert2";
 import { TFormData } from "@/types/formData.type";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -31,6 +31,10 @@ export const useFormHandler = () => {
     e.preventDefault();
 
     setIsSubmitting(true);
+
+    const Swal: typeof SwalType = await import("sweetalert2").then(
+      (m) => m.default
+    );
 
     Swal.fire({
       title: t.form.sendingTitle,
