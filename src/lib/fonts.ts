@@ -1,19 +1,19 @@
 import { Noto_Sans_JP, Noto_Sans_Arabic } from "next/font/google";
 
 export const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   weight: ["400", "500", "700"],
-  display: "swap",
+  display: "fallback",
   variable: "--font-noto-sans-jp",
-  preload: false,
+  preload: true,
 });
 
 export const notoSansArabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "700"],
-  display: "swap",
+  display: "fallback",
   variable: "--font-noto-sans-arabic",
-  preload: false,
+  preload: true,
 });
 
 export function resolveFontConfig(rtl: boolean): {
