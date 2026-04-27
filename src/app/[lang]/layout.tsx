@@ -28,7 +28,7 @@ export default async function RootLayout({
   const { fontVariable, fontFamily } = resolveFontConfig(rtl);
 
   return (
-    <html lang={lang} dir={rtl ? "rtl" : "ltr"} className="scroll-smooth">
+    <html lang={lang} dir={rtl ? "rtl" : "ltr"} data-scroll-behavior="smooth">
       <head>
         {/* Preload above-the-fold hero service icons for faster LCP */}
         <link rel="preload" href="/images/icons/ui-ux-design.svg" as="image" type="image/svg+xml" />
