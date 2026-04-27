@@ -1,4 +1,4 @@
-import { Noto_Sans_JP, Noto_Sans_Arabic } from "next/font/google";
+import { Noto_Sans_JP, Noto_Sans_Arabic, JetBrains_Mono } from "next/font/google";
 
 export const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
@@ -14,6 +14,14 @@ export const notoSansArabic = Noto_Sans_Arabic({
   display: "fallback",
   variable: "--font-noto-sans-arabic",
   preload: true,
+});
+
+export const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  preload: false,
 });
 
 export function resolveFontConfig(rtl: boolean): {

@@ -9,7 +9,7 @@ import { SchemaInjector } from "@/components/common/components/SchemaInjector";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { isRTL, resolveSiteLanguage } from "@/i18n/serverLanguage";
 import { buildOrganizationSchema, buildWebSiteSchema } from "@/lib/jsonld";
-import { resolveFontConfig } from "@/lib/fonts";
+import { resolveFontConfig, jetBrainsMono } from "@/lib/fonts";
 import { generateLayoutMetadata } from "@/lib/metadata/layoutMetadata";
 
 export { generateLayoutMetadata as generateMetadata };
@@ -41,7 +41,7 @@ export default async function RootLayout({
 
       <body
         suppressHydrationWarning
-        className={`min-h-screen flex flex-col ${fontVariable}`}
+        className={`min-h-screen flex flex-col ${fontVariable} ${jetBrainsMono.variable}`}
         style={{ fontFamily }}
       >
         <LanguageProvider currentLang={lang}>
