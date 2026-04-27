@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   turbopack: {},
   reactStrictMode: true,
+  experimental: {
+    inlineCss: true,
+    optimizePackageImports: ["framer-motion", "lucide-react"],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
   },
