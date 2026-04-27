@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   turbopack: {},
   reactStrictMode: true,
   experimental: {
+    optimizeCss: true,
     inlineCss: true,
     optimizePackageImports: ["framer-motion", "lucide-react"],
   },
