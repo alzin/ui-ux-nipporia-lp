@@ -2,47 +2,8 @@
 
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
-import Flag from "react-world-flags";
 import { useClickOutside } from "@/hooks/ui/useClickOutside";
-import { languageOptions, TLanguageOption } from "@/content/header/languageOptions";
-
-function SyriaThreeStarsFlag({ className, label }: { className?: string; label: string }) {
-  return (
-    <svg
-      viewBox="0 0 60 40"
-      className={className}
-      role="img"
-      aria-label={label}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="60" height="13.333" y="0" fill="#198754" />
-      <rect width="60" height="13.334" y="13.333" fill="#FFFFFF" />
-      <rect width="60" height="13.333" y="26.667" fill="#111111" />
-      <polygon points="15,16.3 16.1,19.1 19,19.1 16.65,20.85 17.55,23.6 15,21.9 12.45,23.6 13.35,20.85 11,19.1 13.9,19.1" fill="#D62828" />
-      <polygon points="30,16.3 31.1,19.1 34,19.1 31.65,20.85 32.55,23.6 30,21.9 27.45,23.6 28.35,20.85 26,19.1 28.9,19.1" fill="#D62828" />
-      <polygon points="45,16.3 46.1,19.1 49,19.1 46.65,20.85 47.55,23.6 45,21.9 42.45,23.6 43.35,20.85 41,19.1 43.9,19.1" fill="#D62828" />
-    </svg>
-  );
-}
-
-function LanguageFlag({ option }: { option: TLanguageOption }) {
-  if (option.value === "ar") {
-    return (
-      <SyriaThreeStarsFlag
-        className="h-4 w-6 rounded-[2px] object-cover shadow-sm"
-        label={option.title}
-      />
-    );
-  }
-
-  return (
-    <Flag
-      code={option.countryCode ?? "US"}
-      className="h-4 w-6 rounded-[2px] object-cover shadow-sm"
-      alt={option.title}
-    />
-  );
-}
+import { languageOptions } from "@/content/header/languageOptions";
 
 export default function LanguageSwitcher() {
   const { lang, setLang, t } = useLanguage();
@@ -68,7 +29,6 @@ export default function LanguageSwitcher() {
         aria-haspopup="menu"
         aria-label={localeText.selectLanguage}
       >
-        {/* <LanguageFlag option={selectedOption} /> */}
         <span className="hidden sm:inline">{selectedOption.title}</span>
         <span className="sm:hidden">{selectedOption.label}</span>
         <svg
@@ -111,7 +71,6 @@ export default function LanguageSwitcher() {
                     : "text-gray-700 hover:bg-gray-50"
                 } ${isRtl ? "text-right" : "text-left"}`}
               >
-                {/* <LanguageFlag option={option} /> */}
                 <span>{option.title}</span>
               </button>
             );
