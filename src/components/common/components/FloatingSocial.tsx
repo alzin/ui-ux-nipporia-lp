@@ -21,7 +21,7 @@ export default function FloatingSocial() {
         ? "opacity-100 translate-x-0"
         : `opacity-0 ${hiddenTranslateClass} pointer-events-none`
         } ${isRTL ? "right-0" : "left-0"}`}
-      aria-hidden={!isVisible}
+      inert={!isVisible ? true : undefined}
     >
       <div className="flex flex-col gap-0.5">
         {socialLinks.map((social, i) => (
