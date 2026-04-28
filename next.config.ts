@@ -4,7 +4,16 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["localhost:3000", "192.168.1.123:3000", "192.168.1.123"],
   // output: 'standalone',
   productionBrowserSourceMaps: false,
-  turbopack: {},
+  turbopack: {
+    rules: {
+      // Inline SVGs imported from src/assets as React components via SVGR.
+      // Files in public/ are unaffected — they're served as static URLs.
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
   reactStrictMode: true,
   experimental: {
     optimizeCss: true,

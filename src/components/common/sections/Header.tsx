@@ -34,11 +34,12 @@ export default function Header() {
           className="shrink-0 hover:scale-105 transition-transform duration-300 flex items-center gap-2"
         >
           <Image
-            src="/images/logo.svg"
+            src="/images/logo.webp"
             alt="Nipporia Logo"
             width={40}
             height={40}
-            priority
+            fetchPriority="high"
+            loading="eager"
             className="w-10 h-10 object-contain rounded-lg"
           />
           <span className="text-xl font-bold text-[#1a2744] uppercase tracking-[0.15em]">

@@ -1,5 +1,11 @@
 type PurchaseProcessCategoryType = "On-site purchase" | "Home delivery purchase" | "Bring-in purchase"
 
+declare module "*.svg" {
+  import type { FunctionComponent, SVGProps } from "react";
+  const Component: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string }>;
+  export default Component;
+}
+
 type SubContentType = "simple" | "faq" | "list" | "image" | "video";
 
 interface BlogItemBase {

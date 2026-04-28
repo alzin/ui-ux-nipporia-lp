@@ -16,7 +16,7 @@ export function buildOrganizationSchema() {
     url: baseUrl,
     logo: {
       "@type": "ImageObject",
-      url: `${baseUrl}/images/logo.svg`,
+      url: `${baseUrl}/images/logo.webp`,
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -190,7 +190,7 @@ export function buildArticleSchema({
       name: "Nipporia",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/images/logo.svg`,
+        url: `${baseUrl}/images/logo.webp`,
       },
     },
     isPartOf: {
