@@ -9,7 +9,7 @@ export default function HeroServiceIcons() {
 
   return (
     <div
-      className="opacity-0 animate-fade-in-up-delay-300 grid grid-cols-4 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full mb-10 [@media(min-width:1024px)_and_(max-height:800px)]:mb-6"
+      className="animate-fade-in-up-delay-300 grid grid-cols-4 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full mb-10 [@media(min-width:1024px)_and_(max-height:800px)]:mb-6"
     >
       {heroServices.map((item, i) => (
         <div

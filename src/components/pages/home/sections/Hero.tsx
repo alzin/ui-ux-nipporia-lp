@@ -5,7 +5,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import HeroContent from "../components/HeroContent";
 
 const HeroMockups = dynamic(() => import("../components/HeroMockups"), {
-  ssr: false,
+  ssr: true,
   loading: () => (
     <div className="w-full h-[500px] sm:h-[600px] lg:h-[700px]" />
   ),

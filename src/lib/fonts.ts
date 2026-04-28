@@ -5,7 +5,7 @@ export const notoSansJP = Noto_Sans_JP({
   weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-noto-sans-jp",
-  preload: false,
+  preload: true,
 });
 
 export const notoSansArabic = Noto_Sans_Arabic({
@@ -13,7 +13,7 @@ export const notoSansArabic = Noto_Sans_Arabic({
   weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-noto-sans-arabic",
-  preload: false,
+  preload: true,
 });
 
 export const jetBrainsMono = JetBrains_Mono({
