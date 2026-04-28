@@ -15,12 +15,14 @@ export default function StickyMobileCTA({ isVisible }: Props) {
         : "translate-y-6 opacity-0 pointer-events-none"
         }`}
       aria-hidden={!isVisible}
+      inert={!isVisible ? true : undefined}
     >
       <div className="bg-white/95 backdrop-blur-xl border border-purple-100 shadow-2xl shadow-purple-500/20 rounded-2xl p-2">
         <div className="flex gap-2">
           <Link
             href={localizePath("/#contact")}
             className="flex-1 text-center px-4 py-3 rounded-xl text-white bg-gradient-to-r from-purple-600 to-pink-500 font-semibold text-sm shadow-lg shadow-purple-500/30"
+            tabIndex={isVisible ? undefined : -1}
           >
             {t.hero.stickyConsultation}
           </Link>
@@ -28,6 +30,7 @@ export default function StickyMobileCTA({ isVisible }: Props) {
           <Link
             href={localizePath("/#visual-examples")}
             className="flex-1 text-center px-4 py-3 rounded-xl bg-white border-2 border-purple-200 text-purple-600 font-semibold text-[13px]"
+            tabIndex={isVisible ? undefined : -1}
           >
             {t.hero.stickyPortfolio}
           </Link>

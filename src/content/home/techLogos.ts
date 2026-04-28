@@ -1,5 +1,5 @@
 import {
-  React as ReactIcon,
+  ReactIcon,
   NextJs,
   TypeScript,
   JavaScript,
@@ -26,7 +26,7 @@ import {
   PostgreSQL,
   MongoDB,
   Firebase,
-} from "developer-icons";
+} from "./techIcons";
 import { type ComponentType, type SVGProps } from "react";
 import { Gemini } from "./customTechIcons";
 

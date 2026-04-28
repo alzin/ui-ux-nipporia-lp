@@ -3,8 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["localhost:3000", "192.168.1.123:3000", "192.168.1.123"],
   output: 'standalone',
+  productionBrowserSourceMaps: true,
   turbopack: {},
   reactStrictMode: true,
+  experimental: {
+    optimizeCss: true,
+    inlineCss: true,
+    optimizePackageImports: ["framer-motion", "lucide-react"],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
   },

@@ -6,13 +6,13 @@ import TemplateCard, { type TemplateItem } from "./components/TemplateCard";
 /** Static config per template (not translated) */
 const templateMeta = [
   {
-    previewImage: "/images/templates/real-estate-v71.png",
+    previewImage: "/images/templates/real-estate-v71.webp",
     liveUrl:
       "https://website-examples-topaz.vercel.app/real-estate/v7/index.html",
     theme: "dark" as const,
   },
   {
-    previewImage: "/images/templates/jsoms-redesign1.png",
+    previewImage: "/images/templates/jsoms-redesign1.webp",
     liveUrl:
       "https://website-examples-topaz.vercel.app/jsoms-redesign/index.html",
     theme: "light" as const,

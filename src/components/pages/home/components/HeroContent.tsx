@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import HeroServiceIcons from "./HeroServiceIcons";
 
@@ -48,11 +47,8 @@ export default function HeroContent() {
       </p>
 
       {/* CTAs */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 flex justify-center lg:justify-start sm:mt-2"
+      <div
+        className="opacity-0 animate-fade-in-up w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 flex justify-center lg:justify-start sm:mt-2"
       >
         <div
           className={`flex flex-col gap-4 ${isRTL ? "sm:flex-row-reverse lg:justify-start" : "sm:flex-row lg:justify-start"
@@ -100,7 +96,7 @@ export default function HeroContent() {
             {t.hero.secondaryButton}
           </Link>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile only: icons after CTAs */}
       <div className="w-full mt-14">

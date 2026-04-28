@@ -1,8 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useLanguage } from "@/i18n/LanguageContext";
-import HeroMockups from "../components/HeroMockups";
 import HeroContent from "../components/HeroContent";
+
+const HeroMockups = dynamic(() => import("../components/HeroMockups"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] sm:h-[600px] lg:h-[700px]" />
+  ),
+});
 
 export default function Hero() {
   const { lang } = useLanguage();

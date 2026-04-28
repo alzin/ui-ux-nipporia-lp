@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { IconProps } from "./techIcons";
 
 /**
  * Google Gemini "spark" mark — 4-pointed star with concave sides.
@@ -8,7 +8,7 @@ export function Gemini({
   className,
   size,
   ...rest
-}: SVGProps<SVGSVGElement> & { size?: number }) {
+}: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

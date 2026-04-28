@@ -5,7 +5,7 @@ description: "Web制作、システム開発、アプリ開発を相談する際
 date: "2026-04-16"
 readTime: "9分"
 tags: ["開発相談", "見積もり", "要件定義", "システム開発", "Web制作"]
-images: ["/images/blogs/development-inquiry-estimate-checklist.jpg"]
+images: ["/images/blogs/development-inquiry-estimate-checklist.webp"]
 author: "Nipporia編集部"
 ---
 

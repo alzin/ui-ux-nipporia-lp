@@ -30,6 +30,7 @@ export default {
       animation: {
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
         'fade-in-up-delay': 'fadeInUp 0.6s ease-out 0.2s forwards',
+        'fade-in-up-delay-300': 'fadeInUp 0.6s ease-out 0.3s forwards',
         gradientShift: 'gradientShift 3s ease infinite',
         float: 'float 20s infinite ease-in-out',
         fadeInUp: 'fadeInUp 1s ease',

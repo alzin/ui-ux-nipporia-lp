@@ -24,8 +24,8 @@ export default function Header() {
 
   return (
     <nav className={`fixed top-0 w-full z-[1000] transition-all duration-500 ${scrolled
-        ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
-        : "bg-white/70 backdrop-blur-md"
+      ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-purple-500/10"
+      : "bg-white/70 backdrop-blur-md"
       }`}>
       <div className="max-w-[1400px] mx-auto px-4 py-3 flex items-center" dir={isRTL ? "rtl" : "ltr"}>
         {/* Logo - fixed left */}

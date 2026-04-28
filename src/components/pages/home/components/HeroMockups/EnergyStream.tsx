@@ -28,6 +28,7 @@ export default function EnergyStream({ isRTL }: { isRTL: boolean }) {
         <motion.circle
           r="6"
           fill="#67e8f9"
+          initial={{ cx: 630, cy: 395, opacity: 0 }}
           animate={{
             cx: [630, 545, 455, 360, 270, 190, 120],
             cy: [395, 403, 428, 462, 505, 536, 500],

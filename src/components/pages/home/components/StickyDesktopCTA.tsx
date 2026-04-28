@@ -19,7 +19,7 @@ export default function StickyDesktopCTA({ isVisible }: Props) {
             ? "-translate-x-full opacity-0 pointer-events-none"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
-      aria-hidden={!isVisible}
+      inert={!isVisible ? true : undefined}
     >
       <Link
         href={localizePath("/#contact")}
@@ -38,6 +38,7 @@ export default function StickyDesktopCTA({ isVisible }: Props) {
 
         {/* Chat icon */}
         <svg
+          aria-hidden="true"
           className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover:rotate-12 ${isRTL ? "mr-2" : "ml-2"
             }`}
           fill="none"
@@ -56,6 +57,7 @@ export default function StickyDesktopCTA({ isVisible }: Props) {
 
         {/* Directional arrow */}
         <svg
+          aria-hidden="true"
           className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${isRTL ? "group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5"
             }`}
           fill="none"
