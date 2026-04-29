@@ -25,10 +25,11 @@ const Footer = () => {
             >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative shrink-0">
                 <Image
-                  src="/images/logo.svg"
+                  src="/images/logo.webp"
                   alt="Nipporia"
                   width={40}
                   height={40}
+                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>

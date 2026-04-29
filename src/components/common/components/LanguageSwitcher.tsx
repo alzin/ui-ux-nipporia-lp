@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
         className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-3 py-1.5 text-sm font-medium text-gray-700 backdrop-blur-sm transition-all duration-300 hover:border-purple-400 hover:bg-purple-50"
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        aria-label={localeText.selectLanguage}
+        aria-label={`${selectedOption.label} ${selectedOption.title} – ${localeText.selectLanguage}`}
       >
         <span className="hidden sm:inline">{selectedOption.title}</span>
         <span className="sm:hidden">{selectedOption.label}</span>

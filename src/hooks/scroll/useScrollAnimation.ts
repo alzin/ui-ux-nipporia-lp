@@ -88,7 +88,7 @@ export const useMultipleScrollAnimation = (options: ScrollAnimationOptions = {})
           entry.target.classList.add("visible");
           entry.target.querySelectorAll(`.${animationClass}`).forEach((child, i) => {
             setTimeout(() => {
-              (child as HTMLElement).style.animation = "slideInUp 0.5s ease forwards";
+              child.classList.add("slide-in-visible");
             }, i * staggerDelay);
           });
           observer.unobserve(entry.target);
